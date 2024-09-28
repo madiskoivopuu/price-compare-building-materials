@@ -1,11 +1,28 @@
-# Getting Started with Create React App
+# Building materials front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the front-end portion of the project.
+The current folder structure is as follows:
+
+    .
+    ├── public                   # Compiled React.js files (alternatively `dist`)
+    ├── src                     # Source files (alternatively `lib` or `app`)
+    |   ├── components          # React functional components that get reused in multiple pages
+    |   |   └── *.js
+    |   ├── pages               # Different locations for react-router or some similar library twill take the page files from
+    |   |   ├── home
+    |   |   :
+    |   |   :
+    |   ├── App.js              # Root component of the React.js page
+    |   ├── App.test.js         # Tests related to the main page
+    |   ├── index.js            # ReactDOM root
+    |   └── setupTests.js       # JS file which will set up the environment for tests
+    └── README.md
 
 ## Available Scripts
 
-In the project directory, you can run:
+Node.js is required to run the following scripts. NPM also has to be installed.
 
+In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
