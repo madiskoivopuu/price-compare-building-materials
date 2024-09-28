@@ -8,7 +8,7 @@ The current folder structure is as follows:
     ├── src                     # Source files (alternatively `lib` or `app`)
     |   ├── components          # React functional components that get reused in multiple pages
     |   |   └── *.js
-    |   ├── pages               # Different locations for react-router or some similar library twill take the page files from
+    |   ├── pages               # Different locations for react-router or some similar library to take the page files from
     |   |   ├── home
     |   |   :
     |   |   :
