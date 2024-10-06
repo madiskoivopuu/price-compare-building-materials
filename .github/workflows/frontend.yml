@@ -10,11 +10,11 @@ name: Frontend CI Pipeline
 on:
   push:
     paths:
-      - backend/*
+      - frontend/*
     branches: [ "main", "feature/#17-create-pipeline" ]
   pull_request:
     paths:
-      - backend/*
+      - frontend/*
     branches: [ "main" ]
 
 jobs:
