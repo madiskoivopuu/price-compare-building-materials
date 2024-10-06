@@ -9,13 +9,16 @@ name: Backend CI Pipeline
 
 on:
   push:
+    paths:
+      - backend/*
     branches: [ "main", "feature/#17-create-pipeline" ]
   pull_request:
+    paths:
+      - backend/*
     branches: [ "main" ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -39,5 +42,5 @@ jobs:
       working-directory: ./backend
 
     - name: Build Backend with Gradle Wrapper
-      run: ./gradlew build
+      run: ./gradlew build              # runs tests too
       working-directory: ./backend
