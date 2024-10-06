@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import priceCompare.backend.dto.CategoriesDto;
 import priceCompare.backend.dto.CategoryDto;
 import priceCompare.backend.service.CategoryServiceImpl;
+import priceCompare.backend.service.FindProductsServiceImpl;
+
 import java.util.List;
 
 @WebMvcTest(Controller.class)
@@ -23,6 +25,9 @@ class ControllerTest {
 
     @MockBean
     private CategoryServiceImpl categoryService;
+
+    @MockBean
+    private FindProductsServiceImpl findProductsService;
 
     @Test
     void testGetCategories() throws Exception {
@@ -37,7 +42,7 @@ class ControllerTest {
 
         when(categoryService.getCategories()).thenReturn(mockCategoriesDto);
 
-        mockMvc.perform(get("/categories")
+        mockMvc.perform(get("/request/categories")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
