@@ -42,11 +42,15 @@ jobs:
             ${{ runner.os }}-
        
       - name: Install dependencies
-        run: npm install    
+        run: npm install
+        working-directory: ./frontend
         
       - name: Run tests
         run: npm test
         env:
           CI: true
+        working-directory: ./frontend
+        
       - name: Generate build
         run: npm run build
+        working-directory: ./frontend
