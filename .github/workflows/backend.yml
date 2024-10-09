@@ -11,7 +11,7 @@ on:
   push:
     paths:
       - backend/*
-    branches: [ "main", "feature/#17-create-pipeline" ]
+    branches: [ "main" ]
   pull_request:
     paths:
       - backend/*
