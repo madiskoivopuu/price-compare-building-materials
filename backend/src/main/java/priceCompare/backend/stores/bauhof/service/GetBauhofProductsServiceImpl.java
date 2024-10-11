@@ -6,16 +6,16 @@ import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
 
     @Override
-    public ProductsDto getBauhofProducts(String name, Double price, List<String> location, Integer minQuantity, Map<String, String> allParams) {
+    public ProductsDto getBauhofProducts(Category category, Subcategory subcategory) {
         //todo replace following hard coded logic with the real one
         LocationDto returnedLocation = LocationDto.builder()
                 .locationName(TALLINN)

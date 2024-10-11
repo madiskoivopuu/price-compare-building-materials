@@ -133,4 +133,13 @@ public enum Subcategory {
     public String getDisplayName() {
         return displayName;
     }
+
+    public static Subcategory fromDisplayName(String displayName) {
+        for (Subcategory subcategory : Subcategory.values()) {
+            if (subcategory.getDisplayName().equalsIgnoreCase(displayName)) {
+                return subcategory;
+            }
+        }
+        throw new IllegalArgumentException("Invalid subcategory display name: " + displayName);
+    }
 }

@@ -1,10 +1,9 @@
 package priceCompare.backend.stores.bauhof.service;
 
 import priceCompare.backend.dto.ProductsDto;
-
-import java.util.List;
-import java.util.Map;
+import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Subcategory;
 
 public interface GetBauhofProductsService {
-    ProductsDto getBauhofProducts(String name, Double price, List<String> location, Integer minQuantity, Map<String, String> allParams);
+    ProductsDto getBauhofProducts(Category category, Subcategory subcategory);
 }

@@ -8,11 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import priceCompare.backend.dto.CategoriesDto;
 import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.CategoryServiceImpl;
 import priceCompare.backend.service.FindProductsServiceImpl;
-
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RestController
@@ -35,15 +34,10 @@ public class Controller {
     @GetMapping("/search")
     @ResponseStatus(OK)
     public ResponseEntity<ProductsDto> searchProducts(
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) Double price,
-            @RequestParam(required = false) List<String> location,
-            @RequestParam(required = false) Integer minQuantity,
-            //todo find proper way to include additional filters in request, maybe keep it in FE
-            @RequestParam Map<String, String> allParams) {
+            @RequestParam(required = false) Category category,
+            @RequestParam(required = false) Subcategory subcategory) {
 
-
-        ProductsDto products = findProductsService.findProducts(name, price, location, minQuantity, allParams);
+        ProductsDto products = findProductsService.findProducts(category, subcategory);
 
         return ResponseEntity.ok(products);
     }

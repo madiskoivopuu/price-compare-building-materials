@@ -1,9 +1,9 @@
 package priceCompare.backend.stores.krauta.service;
 
 import priceCompare.backend.dto.ProductsDto;
-import java.util.List;
-import java.util.Map;
+import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Subcategory;
 
 public interface GetKRautaProductsService {
-    ProductsDto getKRautaProducts(String name, Double price, List<String> location, Integer minQuantity, Map<String, String> allParams);
+    ProductsDto getKRautaProducts(Category category, Subcategory subcategory);
 }

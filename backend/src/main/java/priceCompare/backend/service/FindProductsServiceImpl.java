@@ -3,11 +3,12 @@ package priceCompare.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
+
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class FindProductsServiceImpl implements FindProductService {
@@ -19,18 +20,17 @@ public class FindProductsServiceImpl implements FindProductService {
     private GetKRautaProductsServiceImpl getKRautaProductsService;
 
     @Override
-    public ProductsDto findProducts(String name, Double price, List<String> location, Integer minQuantity, Map<String, String> allParams) {
-        ProductsDto products = ProductsDto.builder()
-                .products(new ArrayList<>())
-                .build();
-        AddFetchedProductsToList(products, getBauhofProductsService.getBauhofProducts(name, price, location, minQuantity, allParams));
-        AddFetchedProductsToList(products, getKRautaProductsService.getKRautaProducts(name, price, location, minQuantity, allParams));
-
+    public ProductsDto findProducts(Category category, Subcategory subcategory) {
+        ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
+        AddFetchedProductsToList(products, getBauhofProductsService.getBauhofProducts(category, subcategory));
+        AddFetchedProductsToList(products, getKRautaProductsService.getKRautaProducts(category, subcategory));
         return products;
     }
 
     private ProductsDto AddFetchedProductsToList(ProductsDto products, ProductsDto productsToBeAdded) {
-        products.getProducts().addAll(productsToBeAdded.getProducts());
+        if (productsToBeAdded != null) {
+            products.getProducts().addAll(productsToBeAdded.getProducts());
+        }
         return products;
     }
 
