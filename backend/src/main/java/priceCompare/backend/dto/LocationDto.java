@@ -7,7 +7,6 @@ import priceCompare.backend.enums.LocationName;
 
 @Builder
 @Getter
-@Setter
 public class LocationDto {
     LocationName locationName;
     Integer quantity;

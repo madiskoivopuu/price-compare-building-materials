@@ -9,6 +9,7 @@ import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
+
 import java.util.Collections;
 
 @Service
@@ -16,16 +17,11 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
     @Override
     public ProductsDto getKRautaProducts(String keyword, Category category, Subcategory subcategory) {
         //todo replace following hard coded logic with the real one
-        LocationDto returnedLocation = LocationDto.builder()
-                .locationName(TALLINN)
-                .quantity(5)
-                .build();
 
         ProductDto sampleProduct = ProductDto.builder()
                 .name("Sample Product")
                 .price(19.99)
                 .unit(Unit.TK)
-                .location(returnedLocation)
                 .build();
 
         return ProductsDto.builder()
