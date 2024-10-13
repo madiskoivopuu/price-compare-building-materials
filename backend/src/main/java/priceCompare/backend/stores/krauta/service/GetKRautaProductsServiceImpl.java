@@ -11,6 +11,7 @@ import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import priceCompare.backend.service.GetStoreProductsService;
@@ -80,6 +81,7 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
 
                 try {
                     ProductDto productDto = ProductDto.builder()
+                            .store(Store.KRAUTA)
                             .linkToProduct("https://k-rauta.ee" + singleProductJson.getString(""))
                             .linkToPicture(singleProductJson.getString("image"))
                             .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
