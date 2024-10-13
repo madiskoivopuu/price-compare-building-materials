@@ -5,5 +5,5 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 
 public interface FindProductService {
-    ProductsDto findProducts(Category category, Subcategory subcategory);
+    ProductsDto findProducts(String keyword, Category category, Subcategory subcategory);
 }

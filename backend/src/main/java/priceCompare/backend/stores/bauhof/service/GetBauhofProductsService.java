@@ -5,5 +5,5 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 
 public interface GetBauhofProductsService {
-    ProductsDto getBauhofProducts(Category category, Subcategory subcategory);
+    ProductsDto getBauhofProducts(String keyword, Category category, Subcategory subcategory);
 }

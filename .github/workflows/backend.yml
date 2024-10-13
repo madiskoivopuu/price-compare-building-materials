@@ -10,11 +10,11 @@ name: Backend CI Pipeline
 on:
   push:
     paths:
-      - backend/*
+      - "backend/**"
     branches: [ "main" ]
   pull_request:
     paths:
-      - backend/*
+      - "backend/**"
     branches: [ "main" ]
 
 jobs:

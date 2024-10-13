@@ -7,11 +7,8 @@ import lombok.Setter;
 import priceCompare.backend.enums.Unit;
 
 @Data
-
-
 @Builder
 @Getter
-@Setter
 public class ProductDto {
     String name;
     Double price;

@@ -20,10 +20,10 @@ public class FindProductsServiceImpl implements FindProductService {
     private GetKRautaProductsServiceImpl getKRautaProductsService;
 
     @Override
-    public ProductsDto findProducts(Category category, Subcategory subcategory) {
+    public ProductsDto findProducts(String keyword, Category category, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
-        AddFetchedProductsToList(products, getBauhofProductsService.getBauhofProducts(category, subcategory));
-        AddFetchedProductsToList(products, getKRautaProductsService.getKRautaProducts(category, subcategory));
+        AddFetchedProductsToList(products, getBauhofProductsService.getBauhofProducts(keyword, category, subcategory));
+        AddFetchedProductsToList(products, getKRautaProductsService.getKRautaProducts(keyword, category, subcategory));
         return products;
     }
 

@@ -37,10 +37,10 @@ public class FindProductsServiceImplTest {
         ProductsDto bauhofProducts = ProductsDto.builder().products(Arrays.asList(product1)).build();
         ProductsDto kRautaProducts = ProductsDto.builder().products(Arrays.asList(product2)).build();
 
-        when(getBauhofProductsService.getBauhofProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
-        when(getKRautaProductsService.getKRautaProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
+        when(getBauhofProductsService.getBauhofProducts("kipsplaat" ,Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
+        when(getKRautaProductsService.getKRautaProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
 
-        ProductsDto result = findProductsService.findProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
+        ProductsDto result = findProductsService.findProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
         assertEquals(2, result.getProducts().size());
@@ -54,10 +54,10 @@ public class FindProductsServiceImplTest {
         ProductsDto bauhofProducts = ProductsDto.builder().products(Arrays.asList(product1)).build();
         ProductsDto kRautaProducts = ProductsDto.builder().products(Collections.emptyList()).build();
 
-        when(getBauhofProductsService.getBauhofProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
-        when(getKRautaProductsService.getKRautaProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
+        when(getBauhofProductsService.getBauhofProducts("kipsplaat",Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
+        when(getKRautaProductsService.getKRautaProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
 
-        ProductsDto result = findProductsService.findProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
+        ProductsDto result = findProductsService.findProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
         assertEquals(1, result.getProducts().size());
@@ -68,10 +68,10 @@ public class FindProductsServiceImplTest {
     public void testFindProducts_WhenBothServicesReturnEmpty() {
         ProductsDto emptyProducts = ProductsDto.builder().products(Collections.emptyList()).build();
 
-        when(getBauhofProductsService.getBauhofProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
-        when(getKRautaProductsService.getKRautaProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
+        when(getBauhofProductsService.getBauhofProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
+        when(getKRautaProductsService.getKRautaProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
 
-        ProductsDto result = findProductsService.findProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
+        ProductsDto result = findProductsService.findProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
         assertTrue(result.getProducts().isEmpty());
@@ -81,10 +81,10 @@ public class FindProductsServiceImplTest {
     public void testFindProducts_WhenServiceReturnsNull() {
         ProductsDto bauhofProducts = ProductsDto.builder().products(Collections.emptyList()).build();
 
-        when(getBauhofProductsService.getBauhofProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
-        when(getKRautaProductsService.getKRautaProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(null);
+        when(getBauhofProductsService.getBauhofProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
+        when(getKRautaProductsService.getKRautaProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT)).thenReturn(null);
 
-        ProductsDto result = findProductsService.findProducts(Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
+        ProductsDto result = findProductsService.findProducts("kipsplaat", Category.EHITUSPLAADID, Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
         assertTrue(result.getProducts().isEmpty());

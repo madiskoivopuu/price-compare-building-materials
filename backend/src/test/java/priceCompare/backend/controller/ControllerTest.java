@@ -1,6 +1,5 @@
 package priceCompare.backend.controller;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -73,10 +72,11 @@ class ControllerTest {
                 .products(List.of(mockProduct1, mockProduct2))
                 .build();
 
-        when(findProductsService.findProducts(any(Category.class), any(Subcategory.class)))
+        when(findProductsService.findProducts(any(String.class), any(Category.class), any(Subcategory.class)))
                 .thenReturn(mockProductsDto);
 
         mockMvc.perform(get("/request/search")
+                        .param("keyword", "kipsplaat")
                         .param("category", "Ehitusplaadid")
                         .param("subcategory", "Kipsplaat")
                         .contentType(MediaType.APPLICATION_JSON))
