@@ -75,13 +75,23 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
             for(int i = 0; i < docs.length(); i++) {
                 JSONObject singleProductJson = docs.getJSONObject(i);
 
-                ProductDto productDto = ProductDto.builder()
-                        .productUrl("https://k-rauta.ee" + singleProductJson.getString(""))
-                        .name(singleProductJson.getString("title"))
-                        .price(singleProductJson.getDouble("priceDefault"))
-                        .build();
+                if(!singleProductJson.getBoolean("inStock"))
+                    continue;
 
-                products.add(productDto);
+                try {
+                    ProductDto productDto = ProductDto.builder()
+                            .linkToProduct("https://k-rauta.ee" + singleProductJson.getString(""))
+                            .linkToPicture(singleProductJson.getString("image"))
+                            .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
+                            .name(singleProductJson.getString("title"))
+                            .price(singleProductJson.getDouble("priceDefault"))
+                            .build();
+
+                    products.add(productDto);
+                } catch(IllegalArgumentException e) {
+                    System.err.println("Error getting certain values from JSON for product: " + e.getMessage());
+                    System.err.println(singleProductJson.toString());
+                }
             }
 
             return ProductsDto.builder()
@@ -121,11 +131,13 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
         }
 
         ProductsDto products = fetchProductsListFromKRauta(query, category, subcategory);
+
         // TODO: fetching core info & subcategory specific info
-        /*products = fetchCoreInfoForProducts(products);
+        /*products = fetchCoreInfoForProducts(products); // fetches location info if available
 
          if(subcategory != null) {
             // map subcategory to a k-rauta one
+            products = fetchSubcategorySpecificInfo(products, subcategory);
          }
 
          */

@@ -13,9 +13,10 @@ import priceCompare.backend.enums.Unit;
 @Getter
 @Setter
 public class ProductDto {
-    String productUrl;
     String name;
     Double price;
     Unit unit;
     LocationsDto location;
+    String linkToProduct;
+    String linkToPicture;
 }
