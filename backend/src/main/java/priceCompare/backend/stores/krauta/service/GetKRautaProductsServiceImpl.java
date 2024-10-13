@@ -73,7 +73,7 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
                 try {
                     ProductDto productDto = ProductDto.builder()
                             .store(Store.KRAUTA)
-                            .linkToProduct("https://k-rauta.ee" + singleProductJson.getString(""))
+                            .linkToProduct("https://k-rauta.ee" + singleProductJson.getString("url"))
                             .linkToPicture(singleProductJson.getString("image"))
                             .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
                             .name(singleProductJson.getString("title"))
