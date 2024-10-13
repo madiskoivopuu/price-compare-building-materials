@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
+public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
     public static final String QUERY_KEY_FETCH_PRODUCTS = "NSykN7XLeh4CPAauPZ4TAvVuFUjPt7QY";
 
     private URI formatSearchUrl(String query, Subcategory subcategory) {
@@ -125,7 +125,7 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
      * @return If subcategory is defined, returns ProductsDto with every object in it having category specific metadata. Otherwise, returns ProductsDto without category metadata.
      */
     @Override
-    public ProductsDto getStoreProducts(String query, Category category, Subcategory subcategory) {
+    public ProductsDto getKRautaProducts(String query, Category category, Subcategory subcategory) {
         if(subcategory == null && (query == null || query.isEmpty())) {
             return ProductsDto.builder().build();
         }
