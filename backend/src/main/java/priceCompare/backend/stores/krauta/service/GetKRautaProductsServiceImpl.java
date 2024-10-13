@@ -1,24 +1,17 @@
 package priceCompare.backend.stores.krauta.service;
 
-import static priceCompare.backend.enums.LocationName.TALLINN;
-
-import jdk.jshell.spi.ExecutionControl;
-import org.apache.tomcat.util.json.JSONParser;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
-import priceCompare.backend.service.GetStoreProductsService;
 
 import java.io.IOException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -26,9 +19,7 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
