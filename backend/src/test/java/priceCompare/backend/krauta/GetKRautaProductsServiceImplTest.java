@@ -29,6 +29,6 @@ public class GetKRautaProductsServiceImplTest {
         assertNotNull(products.getProducts().getFirst().getUnit(), "Product unit type should not be null");
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
 
-        assertTrue(products.getProducts().getFirst().getLinkToProduct().contains("https://www.k-rauta.ee/p/"), "Product URL should point to the k-rauta.ee domain");
+        assertTrue(products.getProducts().getFirst().getLinkToProduct().contains("https://k-rauta.ee/p/"), "Product URL should point to the k-rauta.ee domain");
     }
 }
