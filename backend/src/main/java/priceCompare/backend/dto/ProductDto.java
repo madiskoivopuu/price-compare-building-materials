@@ -4,17 +4,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Unit;
 
 @Data
-
-
 @Builder
 @Getter
-@Setter
 public class ProductDto {
+    Store store;
     String name;
     Double price;
     Unit unit;
-    LocationDto location;
+    LocationsDto location;
+    String linkToProduct;
+    String linkToPicture;
 }
