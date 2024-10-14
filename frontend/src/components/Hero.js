@@ -6,7 +6,7 @@ function Hero() {
     const [q, setQ] = useState('')
     const [inputValue, setInputValue] = useState('')
 
-    const fetchFruit = useEffect(() => {
+    useEffect(() => {
         fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${q}`)
         .then((res) => res.json())
         .then((res) => setItems(res))
