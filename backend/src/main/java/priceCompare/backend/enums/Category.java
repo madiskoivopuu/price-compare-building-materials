@@ -177,11 +177,20 @@ public enum Category {
             Subcategory.FIBOTARVIKUD
     });
 
-    private final String displayName;
-    private final Subcategory[] subcategories;
+    protected final String displayName;
+    protected final Subcategory[] subcategories;
 
     Category(String displayName, Subcategory[] subcategories) {
         this.displayName = displayName;
         this.subcategories = subcategories;
+    }
+
+    public static Category fromDisplayName(String displayName) {
+        for (Category category : Category.values()) {
+            if (category.getDisplayName().equalsIgnoreCase(displayName)) {
+                return category;
+            }
+        }
+        throw new IllegalArgumentException("Invalid category display name: " + displayName);
     }
 }

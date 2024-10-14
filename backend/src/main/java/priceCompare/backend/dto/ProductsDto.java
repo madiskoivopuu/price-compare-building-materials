@@ -3,11 +3,10 @@ package priceCompare.backend.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.List;
 
 @Builder
 @Getter
-public class CategoriesDto {
-    private List<CategoryDto> categories;
+public class ProductsDto {
+    private List<ProductDto> products;
 }

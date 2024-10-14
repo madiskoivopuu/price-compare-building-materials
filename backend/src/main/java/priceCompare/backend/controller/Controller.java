@@ -7,20 +7,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import priceCompare.backend.dto.CategoriesDto;
+import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.CategoryServiceImpl;
+import priceCompare.backend.service.FindProductsServiceImpl;
 
 @Slf4j
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/request")
 public class Controller {
 
     @Autowired
     private CategoryServiceImpl categoryService;
 
-    @GetMapping
+    @Autowired
+    private FindProductsServiceImpl findProductsService;
+
+    @GetMapping("/categories")
     @ResponseStatus(OK)
 
     public ResponseEntity<CategoriesDto> getCategories() {
         return ResponseEntity.ok(categoryService.getCategories());
+    }
+
+    @GetMapping("/search")
+    @ResponseStatus(OK)
+    public ResponseEntity<ProductsDto> searchProducts(
+            @RequestParam() String keyword,
+            @RequestParam(required = false) Category category,
+            @RequestParam(required = false) Subcategory subcategory) {
+
+        ProductsDto products = findProductsService.findProducts(keyword, category, subcategory);
+
+        return ResponseEntity.ok(products);
     }
 }
