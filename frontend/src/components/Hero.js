@@ -13,11 +13,14 @@ function Hero() {
     useEffect(() => {
         if (q) {
             fetch(`http://localhost:8080/request/search?keyword=${q}`)
-                .then((res) => res.json())
+                .then(async (response) => {
+                    const decoder = new TextDecoder('utf-8');
+                    const decodedResponse = decoder.decode(await response.arrayBuffer());
+                    return JSON.parse(decodedResponse);
+                })
                 .then((res) => {
-                    const sortedProducts = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-                    setItems({...res, products: sortedProducts});
-                    setCurrentPage(1);
+                    const sortedProducts = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
+                    setItems({ ...res, products: sortedProducts });
                 })
                 .catch((err) => console.error("Fetch error:", err));
         }
