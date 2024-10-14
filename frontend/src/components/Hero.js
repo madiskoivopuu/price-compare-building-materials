@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import SearchResult from './SearchResult'
 
 function Hero() {
     const [items, setItems] = useState({})
@@ -7,7 +8,7 @@ function Hero() {
     const [inputValue, setInputValue] = useState('')
 
     useEffect(() => {
-        fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${q}`)
+        fetch(`http://localhost:8080/request/search?keyword=${q}`)
         .then((res) => res.json())
         .then((res) => setItems(res))
     }, [q])
@@ -19,7 +20,7 @@ function Hero() {
             e.preventDefault()
             setQ(inputValue)
         }}
-            className='flex border-2 border-gray-200 rounded'
+            className='flex border-2 border-gray-200 rounded mb-4'
         >
             <input 
             className='w-full h-12 pl-2' 
@@ -34,9 +35,27 @@ function Hero() {
                 </svg>
             </button>
         </form>
-        <h1>{items.length > 0 ? items[0].phonetic : "no response"}</h1>
 
         
+
+        <div className='w-full h-max'>
+            <ul className='flex flex-col gap-4'>
+                {items.products?.map((item, index) => 
+                    items.products.length > 0 
+                    ?
+                    (<li key={index}>
+                            <SearchResult 
+                                name={item.name} 
+                                linkToPicture={item.linkToPicture}
+                                linkToProduct={item.linkToProduct}
+                                price={item.price}
+                            />
+                    </li>)
+                    : 
+                    <li></li>
+                )}
+            </ul>
+        </div>
     </div>
     )
 }
