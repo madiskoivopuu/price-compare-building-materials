@@ -74,6 +74,7 @@ function Hero() {
                                     linkToPicture={item.linkToPicture}
                                     linkToProduct={item.linkToProduct}
                                     price={item.price}
+                                    unit={item.unit}
                                 />
                             </li>)
                             :
