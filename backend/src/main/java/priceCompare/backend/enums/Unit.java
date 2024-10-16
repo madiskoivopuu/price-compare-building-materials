@@ -5,9 +5,13 @@ import lombok.Getter;
 @Getter
 public enum Unit {
     PAKK("pakk"),
+    PAAR("paar"),
+    PURK("purk"),
     M2("m2"),
+    M("m"),
     TK("tk"),
-    RULL("rull");
+    RULL("rull"),
+    KOMPL("kompl.");
 
     private final String displayName;
 
