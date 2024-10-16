@@ -19,8 +19,10 @@ public class KRautaAPIs {
     public static final String QUERY_KEY_FETCH_PRODUCTS = "NSykN7XLeh4CPAauPZ4TAvVuFUjPt7QY";
     public static final int SEARCH_API_PAGE_SIZE = 72;
 
-    @Autowired
-    private HttpClientService httpClientService;
+    private final HttpClientService httpClientService;
+    public KRautaAPIs(HttpClientService httpClientService) {
+        this.httpClientService = httpClientService;
+    }
 
     public URI formatSearchUrl(String query, Subcategory subcategory, int offset) {
         // TODO: map ematerjal.ee categories to krauta

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
@@ -28,7 +29,7 @@ public class GetKRautaProductsServiceImplTest {
     @Test
     public void testRegularKrautaSearch() {
         String keyword = "kipsplaat";
-        GetKRautaProductsServiceImpl getKRautaProductsService = new GetKRautaProductsServiceImpl(new KRautaAPIs());
+        GetKRautaProductsServiceImpl getKRautaProductsService = new GetKRautaProductsServiceImpl(new KRautaAPIs(new HttpClientService()));
 
         ProductsDto products = getKRautaProductsService.getKRautaProducts(keyword, null, null);
 
