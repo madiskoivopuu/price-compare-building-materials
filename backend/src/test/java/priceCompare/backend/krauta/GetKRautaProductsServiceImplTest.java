@@ -45,7 +45,7 @@ public class GetKRautaProductsServiceImplTest {
 
     @Test
     public void testSearchListsAllProducts() throws IOException, InterruptedException {
-        String keyword = "kipsplaat";
+        String keyword = "knauf";
         final int numProductsInStock = 61;
 
         // set up api mocking

@@ -1,7 +1,9 @@
 package priceCompare.backend.stores.krauta.service;
 
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 
 import java.io.IOException;
@@ -16,6 +18,9 @@ import java.nio.charset.StandardCharsets;
 public class KRautaAPIs {
     public static final String QUERY_KEY_FETCH_PRODUCTS = "NSykN7XLeh4CPAauPZ4TAvVuFUjPt7QY";
     public static final int SEARCH_API_PAGE_SIZE = 72;
+
+    @Autowired
+    private HttpClientService httpClientService;
 
     public URI formatSearchUrl(String query, Subcategory subcategory, int offset) {
         // TODO: map ematerjal.ee categories to krauta
@@ -33,27 +38,8 @@ public class KRautaAPIs {
      * @param offset The amount of products we want to skip from the search result. Search API always gives products in the same order.
      * @return The products fetched from offset to the page limit (48)
      */
-    public JSONObject fetchPageFromSearchAPI(HttpClient client, String query, Subcategory subcategory, int offset) {
-        HttpRequest productsReq = HttpRequest.newBuilder()
-                .uri(formatSearchUrl(query, subcategory, offset))
-                .GET()
-                .build();
-
-        HttpResponse<String> response;
-        try {
-            response = client.send(productsReq, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            System.err.println("KRautaAPIs: very first search API request failed, cannot");
-            e.printStackTrace();
-            return null;
-        }
-
-        if(response.statusCode() != 200) {
-            System.err.println("KRautaAPIs: search API responded with status code " + response.statusCode());
-            System.err.println("KRautaAPIs:  " + response.body());
-            return null;
-        }
-
-        return new JSONObject(response.body());
+    public JSONObject fetchPageFromSearchAPI(String query, Subcategory subcategory, int offset) {
+        URI uri = formatSearchUrl(query, subcategory, offset);
+        return httpClientService.Get(uri);
     }
 }
