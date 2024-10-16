@@ -1,19 +1,20 @@
 package priceCompare.backend.stores.bauhof.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,36 +25,20 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
     private static final String API_KEY = "---protected---";
     private static final String BAUHOF_PRODUCT_URL_BEGINNING = "https://www.bauhof.ee/et/p/";
 
+    @Autowired
+    private HttpClientService httpClientService;
+
     @Override
     public ProductsDto getBauhofProducts(String keyword, Category category, Subcategory subcategory) {
-        List<ProductDto> productList = new ArrayList<>();
-
-        try {
-            HttpURLConnection connection = createConnection(keyword);
-            String requestBody = buildRequestBody(keyword);
-            sendRequest(connection, requestBody);
-
-            String response = readResponse(connection);
-            productList = parseResponse(response);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        JSONObject response = httpClientService.PostWithBody(buildUrl(keyword), buildRequestBody(keyword));
+        List<ProductDto> productList = parseResponse(response.toString());
         return ProductsDto.builder()
                 .products(productList)
                 .build();
     }
 
-    private HttpURLConnection createConnection(String keyword) throws IOException {
-        String urlString = BAUHOF_API_URL + "?query=" + keyword;
-        URL url = new URL(urlString);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Authorization", "Bearer " + API_KEY);
-        connection.setDoOutput(true);
-        return connection;
+    private URI buildUrl(String keyword){
+        return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, keyword));
     }
 
     private String buildRequestBody(String keyword) {
@@ -62,30 +47,20 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
                 API_KEY, keyword);
     }
 
-    private void sendRequest(HttpURLConnection connection, String requestBody) throws IOException {
-        connection.getOutputStream().write(requestBody.getBytes());
-    }
-
-    private String readResponse(HttpURLConnection connection) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder responseBuilder = new StringBuilder();
-        String line;
-
-        while ((line = reader.readLine()) != null) {
-            responseBuilder.append(line);
-        }
-        reader.close();
-        return responseBuilder.toString();
-    }
-
-    private List<ProductDto> parseResponse(String response) throws IOException {
+    private List<ProductDto> parseResponse(String response) {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode rootNode = objectMapper.readTree(response);
+        JsonNode rootNode = null;
+        try {
+            rootNode = objectMapper.readTree(response);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         JsonNode recordsNode = rootNode.path("queryResults").get(0).path("records");
 
         List<ProductDto> productList = new ArrayList<>();
         for (JsonNode productNode : recordsNode) {
             ProductDto product = ProductDto.builder()
+                    .store(Store.BAUHOF)
                     .name(productNode.path("name").asText())
                     .price(productNode.path("price").asDouble())
                     .unit(Unit.fromDisplayName(productNode.path("unit_id").asText()))
