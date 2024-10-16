@@ -1,19 +1,21 @@
 package priceCompare.backend.stores.bauhof.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
+import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
+import priceCompare.backend.stores.krauta.service.KRautaAPIs;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,69 +25,70 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
     private static final String BAUHOF_API_URL = "https://www.bauhof.ee/api/klevu/search";
     private static final String API_KEY = "---protected---";
     private static final String BAUHOF_PRODUCT_URL_BEGINNING = "https://www.bauhof.ee/et/p/";
+    private static final int SEARCH_API_PAGE_SIZE = 64;
+    private static final int FETCH_MAX_NUM_PRODUCTS = 1024;
+
+    private final HttpClientService httpClientService;
+    public GetBauhofProductsServiceImpl(HttpClientService httpClientService) {
+        this.httpClientService = httpClientService;
+    }
 
     @Override
     public ProductsDto getBauhofProducts(String keyword, Category category, Subcategory subcategory) {
-        List<ProductDto> productList = new ArrayList<>();
+        List<ProductDto> products = new ArrayList<>();
+        int offset = 0;
+        int numProductsTotal = 0;
 
-        try {
-            HttpURLConnection connection = createConnection(keyword);
-            String requestBody = buildRequestBody(keyword);
-            sendRequest(connection, requestBody);
+        do {
+            JSONObject response = httpClientService.PostWithBody(buildUrl(keyword), buildRequestBody(keyword, offset));
+            if(response == null && numProductsTotal == 0) {
+                System.err.println("Bauhof products service: very first search API request failed, cannot continue fetching products");
+                break;
+            }
+            if(response == null) { // we should still continue with the rest of the request even if part of products are missing
+                offset += SEARCH_API_PAGE_SIZE;
+                continue;
+            }
 
-            String response = readResponse(connection);
-            productList = parseResponse(response);
+            numProductsTotal = response.getJSONArray("queryResults").getJSONObject(0).getJSONObject("meta").getInt("totalResultsFound");
+            numProductsTotal = Math.min(numProductsTotal, FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
+            offset += SEARCH_API_PAGE_SIZE;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            products.addAll(parseResponse(response.toString()));
+        } while(offset < numProductsTotal);
 
         return ProductsDto.builder()
-                .products(productList)
+                .products(products)
                 .build();
     }
 
-    private HttpURLConnection createConnection(String keyword) throws IOException {
-        String urlString = BAUHOF_API_URL + "?query=" + keyword;
-        URL url = new URL(urlString);
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Authorization", "Bearer " + API_KEY);
-        connection.setDoOutput(true);
-        return connection;
+    private URI buildUrl(String keyword){
+        return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, keyword));
     }
 
-    private String buildRequestBody(String keyword) {
+    private String buildRequestBody(String keyword, int offset) {
         return String.format(
-                "{\"context\":{\"apiKeys\":[\"%s\"]},\"recordQueries\":[{\"id\":\"search\",\"typeOfRequest\":\"SEARCH\",\"settings\":{\"query\":{\"term\":\"%s\"},\"id\":\"search\",\"limit\":32,\"typeOfRecords\":[\"KLEVU_PRODUCT\"],\"offset\":0,\"sort\":\"RELEVANCE\"}}]}",
-                API_KEY, keyword);
+                "{\"context\":{\"apiKeys\":[\"%s\"]},\"recordQueries\":[{\"id\":\"search\",\"typeOfRequest\":\"SEARCH\",\"settings\":{\"query\":{\"term\":\"%s\"},\"id\":\"search\",\"limit\":%d,\"typeOfRecords\":[\"KLEVU_PRODUCT\"],\"offset\":%d,\"sort\":\"RELEVANCE\"}}]}",
+                API_KEY, keyword, SEARCH_API_PAGE_SIZE, offset);
     }
 
-    private void sendRequest(HttpURLConnection connection, String requestBody) throws IOException {
-        connection.getOutputStream().write(requestBody.getBytes());
-    }
-
-    private String readResponse(HttpURLConnection connection) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        StringBuilder responseBuilder = new StringBuilder();
-        String line;
-
-        while ((line = reader.readLine()) != null) {
-            responseBuilder.append(line);
-        }
-        reader.close();
-        return responseBuilder.toString();
-    }
-
-    private List<ProductDto> parseResponse(String response) throws IOException {
+    private List<ProductDto> parseResponse(String response) {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode rootNode = objectMapper.readTree(response);
+        JsonNode rootNode = null;
+        try {
+            rootNode = objectMapper.readTree(response);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
         JsonNode recordsNode = rootNode.path("queryResults").get(0).path("records");
 
         List<ProductDto> productList = new ArrayList<>();
         for (JsonNode productNode : recordsNode) {
+            if(productNode.path("inStock").asText("yes").equals("no"))
+                continue;
+
             ProductDto product = ProductDto.builder()
+                    .store(Store.BAUHOF)
                     .name(productNode.path("name").asText())
                     .price(productNode.path("price").asDouble())
                     .unit(Unit.fromDisplayName(productNode.path("unit_id").asText()))
