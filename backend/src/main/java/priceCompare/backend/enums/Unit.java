@@ -6,6 +6,7 @@ import lombok.Getter;
 public enum Unit {
     PAKK("pakk"),
     M2("m2"),
+    M("m"),
     TK("tk"),
     RULL("rull"),
     PURK("purk"),
