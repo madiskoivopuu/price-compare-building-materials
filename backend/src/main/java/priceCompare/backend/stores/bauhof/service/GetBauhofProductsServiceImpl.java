@@ -13,6 +13,7 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
+import priceCompare.backend.stores.krauta.service.KRautaAPIs;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -24,16 +25,40 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
     private static final String BAUHOF_API_URL = "https://www.bauhof.ee/api/klevu/search";
     private static final String API_KEY = "---protected---";
     private static final String BAUHOF_PRODUCT_URL_BEGINNING = "https://www.bauhof.ee/et/p/";
+    private static final int SEARCH_API_PAGE_SIZE = 64;
+    private static final int FETCH_MAX_NUM_PRODUCTS = 1024;
 
-    @Autowired
-    private HttpClientService httpClientService;
+    private final HttpClientService httpClientService;
+    public GetBauhofProductsServiceImpl(HttpClientService httpClientService) {
+        this.httpClientService = httpClientService;
+    }
 
     @Override
     public ProductsDto getBauhofProducts(String keyword, Category category, Subcategory subcategory) {
-        JSONObject response = httpClientService.PostWithBody(buildUrl(keyword), buildRequestBody(keyword));
-        List<ProductDto> productList = parseResponse(response.toString());
+        List<ProductDto> products = new ArrayList<>();
+        int offset = 0;
+        int numProductsTotal = 0;
+
+        do {
+            JSONObject response = httpClientService.PostWithBody(buildUrl(keyword), buildRequestBody(keyword, offset));
+            if(response == null && numProductsTotal == 0) {
+                System.err.println("Bauhof products service: very first search API request failed, cannot continue fetching products");
+                break;
+            }
+            if(response == null) { // we should still continue with the rest of the request even if part of products are missing
+                offset += SEARCH_API_PAGE_SIZE;
+                continue;
+            }
+
+            numProductsTotal = response.getJSONArray("queryResults").getJSONObject(0).getJSONObject("meta").getInt("totalResultsFound");
+            numProductsTotal = Math.min(numProductsTotal, FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
+            offset += SEARCH_API_PAGE_SIZE;
+
+            products.addAll(parseResponse(response.toString()));
+        } while(offset < numProductsTotal);
+
         return ProductsDto.builder()
-                .products(productList)
+                .products(products)
                 .build();
     }
 
@@ -41,10 +66,10 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
         return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, keyword));
     }
 
-    private String buildRequestBody(String keyword) {
+    private String buildRequestBody(String keyword, int offset) {
         return String.format(
-                "{\"context\":{\"apiKeys\":[\"%s\"]},\"recordQueries\":[{\"id\":\"search\",\"typeOfRequest\":\"SEARCH\",\"settings\":{\"query\":{\"term\":\"%s\"},\"id\":\"search\",\"limit\":32,\"typeOfRecords\":[\"KLEVU_PRODUCT\"],\"offset\":0,\"sort\":\"RELEVANCE\"}}]}",
-                API_KEY, keyword);
+                "{\"context\":{\"apiKeys\":[\"%s\"]},\"recordQueries\":[{\"id\":\"search\",\"typeOfRequest\":\"SEARCH\",\"settings\":{\"query\":{\"term\":\"%s\"},\"id\":\"search\",\"limit\":%d,\"typeOfRecords\":[\"KLEVU_PRODUCT\"],\"offset\":%d,\"sort\":\"RELEVANCE\"}}]}",
+                API_KEY, keyword, SEARCH_API_PAGE_SIZE, offset);
     }
 
     private List<ProductDto> parseResponse(String response) {
@@ -59,6 +84,9 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
 
         List<ProductDto> productList = new ArrayList<>();
         for (JsonNode productNode : recordsNode) {
+            if(productNode.path("inStock").asText("yes").equals("no"))
+                continue;
+
             ProductDto product = ProductDto.builder()
                     .store(Store.BAUHOF)
                     .name(productNode.path("name").asText())

@@ -8,7 +8,8 @@ public enum Unit {
     M2("m2"),
     TK("tk"),
     RULL("rull"),
-    PURK("purk");
+    PURK("purk"),
+    KOMPL("kompl.");
 
     private final String displayName;
 

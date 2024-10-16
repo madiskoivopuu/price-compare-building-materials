@@ -47,7 +47,7 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
             List<ProductDto> products = new ArrayList<>();
 
             do {
-                JSONObject productsJson = apis.fetchPageFromSearchAPI(client, query, subcategory, offset);
+                JSONObject productsJson = apis.fetchPageFromSearchAPI(query, subcategory, offset);
                 if(productsJson == null && numProducts == 0) {
                     System.err.println("K-rauta products service: very first search API request failed, cannot continue fetching products");
                     break;

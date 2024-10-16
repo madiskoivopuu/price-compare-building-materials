@@ -50,15 +50,15 @@ public class GetKRautaProductsServiceImplTest {
 
         // set up api mocking
         KRautaAPIs apis = mock(KRautaAPIs.class);
-        when(apis.fetchPageFromSearchAPI(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.eq(0)))
-                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/search_api_response_knauf_1.txt"))));
-        when(apis.fetchPageFromSearchAPI(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.eq(72)))
-                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/search_api_response_knauf_2.txt"))));
+        when(apis.fetchPageFromSearchAPI(Mockito.any(), Mockito.any(), Mockito.eq(0)))
+                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/krauta_search_api_response_knauf_1.txt"))));
+        when(apis.fetchPageFromSearchAPI(Mockito.any(), Mockito.any(), Mockito.eq(72)))
+                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/krauta_search_api_response_knauf_2.txt"))));
 
         GetKRautaProductsServiceImpl getKRautaProductsService = new GetKRautaProductsServiceImpl(apis);
         ProductsDto products = getKRautaProductsService.getKRautaProducts(keyword, null, null);
 
         assertEquals(numProductsInStock, products.getProducts().size(), "K-rauta products service did not properly fetch the products that are in stock");
-        verify(apis, times(2).description("K-rauta products service should have fetched products 2 times from the APIs")).fetchPageFromSearchAPI(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.anyInt());
+        verify(apis, times(2).description("K-rauta products service should have fetched products 2 times from the APIs")).fetchPageFromSearchAPI(Mockito.any(), Mockito.any(), Mockito.anyInt());
     }
 }
