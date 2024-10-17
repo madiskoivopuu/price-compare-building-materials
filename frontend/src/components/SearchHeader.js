@@ -34,8 +34,16 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                 </button>
             );
 
-            let startPage = Math.max(2, currentPage);
-            let endPage = Math.min(startPage + visiblePages - 1, totalPages - 1);
+            let startPage;
+            let endPage;
+
+            if (currentPage >= totalPages - visiblePages) {
+                startPage = totalPages - visiblePages;
+                endPage = totalPages;
+            } else {
+                startPage = Math.max(2, currentPage);
+                endPage = Math.min(startPage + visiblePages - 1, totalPages - 1);
+            }
 
             if (startPage > 2) {
                 pageNumbers.push(<span key="dots1">...</span>);
@@ -57,15 +65,17 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                 pageNumbers.push(<span key="dots2">...</span>);
             }
 
-            pageNumbers.push(
-                <button
-                    key={totalPages}
-                    onClick={() => handlePageChange(totalPages)}
-                    className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${totalPages === currentPage ? 'bg-gray-300' : ''}`}
-                >
-                    {totalPages}
-                </button>
-            );
+            if (endPage < totalPages) {
+                pageNumbers.push(
+                    <button
+                        key={totalPages}
+                        onClick={() => handlePageChange(totalPages)}
+                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${totalPages === currentPage ? 'bg-gray-300' : ''}`}
+                    >
+                        {totalPages}
+                    </button>
+                );
+            }
         }
 
         return pageNumbers;

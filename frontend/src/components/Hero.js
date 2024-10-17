@@ -5,10 +5,11 @@ import SearchHeader from './SearchHeader';
 
 function Hero() {
     const [items, setItems] = useState({products: []})
+    const [sortedProducts, setSortedProducts] = useState([])
     const [q, setQ] = useState('')
     const [inputValue, setInputValue] = useState('')
-    const [currentPage, setCurrentPage] = useState(1);
-    const productsPerPage = 25; //currently a constant
+    const [currentPage, setCurrentPage] = useState(1)
+    const productsPerPage = 25 //currently a constant
 
     useEffect(() => {
         if (q) {
@@ -19,8 +20,11 @@ function Hero() {
                     return JSON.parse(decodedResponse);
                 })
                 .then((res) => {
-                    const sortedProducts = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
-                    setItems({ ...res, products: sortedProducts });
+                    setItems(res);
+                    const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
+                    setSortedProducts(sorted);
+                    setCurrentPage(1);
+                    console.log("fetching")
                 })
                 .catch((err) => console.error("Fetch error:", err));
         }
@@ -28,7 +32,7 @@ function Hero() {
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = items.products?.slice(indexOfFirstProduct, indexOfLastProduct);
+    const currentProducts = sortedProducts?.slice(indexOfFirstProduct, indexOfLastProduct);
     console.log(currentProducts)
 
 
@@ -66,7 +70,7 @@ function Hero() {
             <div className='w-full h-max'>
                 <ul className='flex flex-col gap-4'>
                     {currentProducts?.map((item, index) =>
-                        items.products.length > 0
+                        sortedProducts.length > 0
                             ?
                             (<li key={index}>
                                 <SearchResult
