@@ -21,3 +21,15 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# JetBrains IDEs
+.idea/
+
+# Gradle
+.gradle/
+build/
+*.gradle
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+gradle-wrapper.properties
