@@ -1,18 +1,20 @@
-import React from 'react'
+import React from 'react';
 
 function Header() {
-  return (
-    <>
-    <div className='w-full h-32 md:h-16 drop-shadow bg-white flex justify-center'>
-        <div className='w-full h-32 md:h-16 max-w-7xl flex flex-wrap justify-between items-center'>
-            <div className='w-full md:w-1/4 h-16 flex justify-center items-center'>
-                <h1 className='font-sans font-bold hover:animate-spin cursor-default'>eMaterjal</h1>
+    return (
+        <div className='w-full h-16 drop-shadow bg-white flex justify-center'>
+            <div className='w-full max-w-7xl flex'>
+                {/* Left Section - eMATERJAL */}
+                <div className='flex-none w-1/6 h-16 flex justify-center items-center bg-white'>
+                    <h1 className='font-sans font-bold cursor-default'>eMATERJAL</h1>
+                </div>
+                {/* Right Section - REKLAAM */}
+                <div className='flex-grow h-16 flex justify-center items-center bg-blue-800'>
+                    <h1 className='font-sans font-bold text-white cursor-default'>REKLAAM</h1>
+                </div>
             </div>
-            <img alt='dog' className='w-full md:w-3/4 h-16' src='https://cdn-fpbjb.nitrocdn.com/BgnUcCadFhrlhRbGUXsTJeHYOawZbpXn/assets/images/optimized/rev-9d94d71/hearingsense.com.au/wp-content/uploads/2022/01/8-Fun-Facts-About-Your-Dog-s-Ears.webp' />
         </div>
-    </div>
-    </>
-  )
+    );
 }
 
-export default Header
+export default Header;
