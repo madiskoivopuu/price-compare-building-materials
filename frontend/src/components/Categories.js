@@ -18,7 +18,7 @@ function Categories() {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8080/categories')  // This is for testing environment
+        fetch('http://localhost:8080/request/categories')  // This is for testing environment
             .then(response => response.json())
             .then(data => {
                 setCategories(data.categories);
