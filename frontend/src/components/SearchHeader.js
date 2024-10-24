@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerPage }) {
+function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerPage, isLoading }) {
     const totalPages = Math.ceil(totalProducts / productsPerPage);
 
     const handlePageChange = (pageNumber) => {
@@ -84,7 +84,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
     return (
         <div className="flex justify-between items-center p-4 border-b">
             <div className="text-gray-700">
-                <p>Leitud {totalProducts} toodet</p>
+                <p>Leitud {isLoading ? <span className='animate-pulse'>...</span> : totalProducts} toodet</p>
             </div>
             <div className="flex items-center gap-2 justify-center flex-grow">
                 <button
