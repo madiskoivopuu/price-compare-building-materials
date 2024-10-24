@@ -60,3 +60,9 @@ jobs:
     - name: Push Docker image
       if: success()
       run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:${{ github.sha }}
+
+    - name: Tag Docker image as latest
+      run: docker tag ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:latest
+
+    - name: Push Docker image with latest tag
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:latest

@@ -67,3 +67,9 @@ jobs:
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha }}
+
+      - name: Tag Docker image as latest
+        run: docker tag ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:latest
+
+      - name: Push Docker image with latest tag
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:latest
