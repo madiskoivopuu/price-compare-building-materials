@@ -87,6 +87,7 @@ function Hero() {
                             (<li key={index}>
                                 <SearchResult
                                     name={item.name}
+                                    store={item.store}
                                     linkToPicture={item.linkToPicture}
                                     linkToProduct={item.linkToProduct}
                                     price={item.price}
