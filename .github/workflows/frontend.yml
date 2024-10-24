@@ -62,15 +62,15 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha::7 }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha }} .
         working-directory: ./frontend
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha::7 }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha }}
 
       - name: Tag Docker image as latest
         if: success()
-        run: docker tag ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha::7 }} ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:latest
+        run: docker tag ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:latest
 
       - name: Push Docker image with latest tag
         if: success()
