@@ -17,7 +17,7 @@ on:
       - "frontend/**"
     branches:
       - main
-
+# github actions
 permissions:
   contents: write
   packages: write
