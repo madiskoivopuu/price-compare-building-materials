@@ -17,7 +17,6 @@ on:
       - "backend/**"
     branches:
       - main
-    types: [closed] # when a pull request is closed
 
 permissions:
   contents: write
