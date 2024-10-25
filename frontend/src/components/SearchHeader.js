@@ -70,7 +70,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={totalPages}
                         onClick={() => handlePageChange(totalPages)}
-                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${totalPages === currentPage ? 'bg-gray-300' : ''}`}
+                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center ${totalPages === currentPage ? 'border' : ''}`}
                     >
                         {totalPages}
                     </button>
