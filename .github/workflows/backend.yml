@@ -13,6 +13,8 @@ on:
       - "backend/**"
     branches: [ "main" ]
   pull_request:
+    paths:
+      - "backend/**"
     branches:
       - main
     types: [closed] # when a pull request is closed

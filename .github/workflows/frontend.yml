@@ -15,7 +15,9 @@ on:
   pull_request:
     paths:
       - "frontend/**"
-    branches: [ "main" ]
+    branches:
+      - main
+    types: [closed]
 
 permissions:
   contents: write
