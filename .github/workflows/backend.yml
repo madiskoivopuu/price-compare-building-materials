@@ -17,6 +17,11 @@ on:
       - main
     types: [closed] # when a pull request is closed
 
+permissions:
+  contents: write
+  packages: write
+  actions: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
