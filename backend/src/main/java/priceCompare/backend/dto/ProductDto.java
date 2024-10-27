@@ -8,7 +8,7 @@ import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Unit;
 
 @Data
-@Builder
+@Builder(toBuilder = true)
 @Getter
 public class ProductDto {
     Store store;

@@ -40,7 +40,7 @@ function Categories() {
                 <path fillRule="evenodd" clipRule="evenodd" d="M12 4C12.5523 4 13 4.44772 13 5V11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H13V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V13H5C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11H11V5C11 4.44772 11.4477 4 12 4Z" fill="#000000"/>
             </svg>
         </button>
-        <div className={`w-1/4 h-max py-8 pl-8 fixed -left-80 md:relative md:left-0 max-h-screen z-[99]  ${isExpanded ? 'left-0 w-3/4 bg-white top-16 ease-in transition duration-100 opacity-95' : ''}`}>
+        <div className={`bg-white w-1/4 py-8 pl-8 fixed -left-80 md:relative md:left-0 z-[99]  ${isExpanded ? 'left-0 w-3/4 bg-white top-16 ease-in transition duration-100 opacity-95' : ''}`}>
             <h1 className="font-bold">Kategooriad</h1>
             <ul className="p-2">
                 {categories.map((category, index) => (

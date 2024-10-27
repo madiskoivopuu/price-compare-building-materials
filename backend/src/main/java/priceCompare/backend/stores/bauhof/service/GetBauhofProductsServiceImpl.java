@@ -16,6 +16,8 @@ import priceCompare.backend.enums.Unit;
 import priceCompare.backend.stores.krauta.service.KRautaAPIs;
 
 import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +65,7 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
     }
 
     private URI buildUrl(String keyword){
-        return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, keyword));
+        return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, URLEncoder.encode(keyword, StandardCharsets.UTF_8)));
     }
 
     private String buildRequestBody(String keyword, int offset) {

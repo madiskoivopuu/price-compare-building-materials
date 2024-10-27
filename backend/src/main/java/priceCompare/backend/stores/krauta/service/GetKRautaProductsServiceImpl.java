@@ -38,57 +38,52 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
      * @return A list of ProductDtos with their URLs (and some other metadata that was able to be fetched from the search api)
      */
     private ProductsDto fetchProductsListFromKRauta(String query, Category category, Subcategory subcategory) {
-        try(HttpClient client = HttpClient.newBuilder()
-                .connectTimeout(Duration.ofSeconds(10))
-                .build()) {
+        int offset = 0;
+        int numProducts = 0;
+        List<ProductDto> products = new ArrayList<>();
 
-            int offset = 0;
-            int numProducts = 0;
-            List<ProductDto> products = new ArrayList<>();
-
-            do {
-                JSONObject productsJson = apis.fetchPageFromSearchAPI(query, subcategory, offset);
-                if(productsJson == null && numProducts == 0) {
-                    System.err.println("K-rauta products service: very first search API request failed, cannot continue fetching products");
-                    break;
-                }
-                if(productsJson == null) { // we should still continue with the rest of the request even if part of products are missing
-                    offset += KRautaAPIs.SEARCH_API_PAGE_SIZE;
-                    continue;
-                }
-
-                JSONArray docs = productsJson.getJSONArray("docs");
-                numProducts = Math.min(productsJson.getInt("doc_count"), FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
+        do {
+            JSONObject productsJson = apis.fetchPageFromSearchAPI(query, subcategory, offset);
+            if(productsJson == null && numProducts == 0) {
+                System.err.println("K-rauta products service: very first search API request failed, cannot continue fetching products");
+                break;
+            }
+            if(productsJson == null) { // we should still continue with the rest of the request even if part of products are missing
                 offset += KRautaAPIs.SEARCH_API_PAGE_SIZE;
+                continue;
+            }
 
-                for(int i = 0; i < docs.length(); i++) {
-                    JSONObject singleProductJson = docs.getJSONObject(i);
+            JSONArray docs = productsJson.getJSONArray("docs");
+            numProducts = Math.min(productsJson.getInt("doc_count"), FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
+            offset += KRautaAPIs.SEARCH_API_PAGE_SIZE;
 
-                    if(!singleProductJson.getBoolean("inStock"))
-                        continue;
+            for(int i = 0; i < docs.length(); i++) {
+                JSONObject singleProductJson = docs.getJSONObject(i);
 
-                    try {
-                        ProductDto productDto = ProductDto.builder()
-                                .store(Store.KRAUTA)
-                                .linkToProduct("https://k-rauta.ee" + singleProductJson.getString("url"))
-                                .linkToPicture(singleProductJson.getString("image"))
-                                .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
-                                .name(singleProductJson.getString("title"))
-                                .price(singleProductJson.getDouble("priceDefault"))
-                                .build();
+                if(!singleProductJson.getBoolean("inStock"))
+                    continue;
 
-                        products.add(productDto);
-                    } catch(IllegalArgumentException e) {
-                        System.err.println("K-rauta products service: Error getting certain values from JSON for product: " + e.getMessage());
-                        System.err.println(singleProductJson);
-                    }
+                try {
+                    ProductDto productDto = ProductDto.builder()
+                            .store(Store.KRAUTA)
+                            .linkToProduct("https://k-rauta.ee" + singleProductJson.getString("url"))
+                            .linkToPicture(singleProductJson.getString("image"))
+                            .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
+                            .name(singleProductJson.getString("title"))
+                            .price(singleProductJson.getDouble("priceDefault"))
+                            .build();
+
+                    products.add(productDto);
+                } catch(org.json.JSONException e) {
+                    System.err.println("K-rauta products service: Error getting certain values from JSON for product: " + e.getMessage());
+                    System.err.println(singleProductJson);
                 }
-            } while(offset < numProducts);
+            }
+        } while(offset < numProducts);
 
-            return ProductsDto.builder()
-                    .products(products)
-                    .build();
-        }
+        return ProductsDto.builder()
+                .products(products)
+                .build();
     }
 
     /**

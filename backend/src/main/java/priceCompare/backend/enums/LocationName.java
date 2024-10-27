@@ -1,29 +1,36 @@
 package priceCompare.backend.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum LocationName {
     TALLINN("Tallinn"),
     TARTU("Tartu"),
+    TURI("Türi"),
     NARVA("Narva"),
-    PÄRNU("Pärnu"),
+    PARNU("Pärnu"),
     KOHTLA_JARVE("Kohtla-Järve"),
     VILJANDI("Viljandi"),
+    VORU("Võru"),
     RAKVERE("Rakvere"),
     SILLAMAE("Sillamäe"),
     MAARDU("Maardu"),
     KURESSAARE("Kuressaare"),
-    VORU("Võru"),
     VALGA("Valga"),
-    JOHVI("Jõhvi"),
+    VASTSELIINA("Vastseliina"),
+    HAAPSALU("Haapsalu"),
+    KEILA("Keila"),
     POLVA("Põlva"),
-    HAAPSALU("Haapsalu");
+    JOGEVA("JÕGEVA"),
+    MUHU("Muhu"),
+    JOHVI("Jõhvi"),
+    RAPLA("Rapla"),
+    RAPINA("Räpina"),
+    PAIDE("Paide");
 
     private final String displayName;
 
     LocationName(String displayName) {
         this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
     }
 }
