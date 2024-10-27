@@ -1,5 +1,7 @@
 package priceCompare.backend.stores.espak.service;
 
+import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
+
 import com.google.common.collect.Lists;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +15,6 @@ import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.*;
 import priceCompare.backend.stores.GetStoreProductsService;
-
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpResponse;
@@ -79,9 +80,12 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                 for(Element productElement : productElements) {
                     if(!productElement.select("p.listing-stock-in").text().equals("Laos")) continue;
 
+                    String productName = productElement.select("p.name.product-title > a").text();
+                    if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
+
                     ProductDto product = ProductDto.builder()
                             .store(Store.ESPAK)
-                            .name(productElement.select("p.name.product-title > a").text())
+                            .name(productName)
                             .price(Double.parseDouble(productElement.select("div.price-wrapper > div:nth-child(1)").text()))
                             .linkToProduct(productElement.select("p.name.product-title > a").attr("href"))
                             .linkToPicture(productElement.select("img").attr("src"))

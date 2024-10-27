@@ -1,5 +1,7 @@
 package priceCompare.backend.stores.krauta.service;
 
+import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -9,15 +11,6 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,8 +25,9 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
 
     /**
      * Fetches a list of products from the search API.
-     * @param query Keywords used in the search
-     * @param category Ematerjal.ee main category
+     *
+     * @param query       Keywords used in the search
+     * @param category    Ematerjal.ee main category
      * @param subcategory Ematerjal.ee subcategory
      * @return A list of ProductDtos with their URLs (and some other metadata that was able to be fetched from the search api)
      */
@@ -44,11 +38,11 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
 
         do {
             JSONObject productsJson = apis.fetchPageFromSearchAPI(query, subcategory, offset);
-            if(productsJson == null && numProducts == 0) {
+            if (productsJson == null && numProducts == 0) {
                 System.err.println("K-rauta products service: very first search API request failed, cannot continue fetching products");
                 break;
             }
-            if(productsJson == null) { // we should still continue with the rest of the request even if part of products are missing
+            if (productsJson == null) { // we should still continue with the rest of the request even if part of products are missing
                 offset += KRautaAPIs.SEARCH_API_PAGE_SIZE;
                 continue;
             }
@@ -57,29 +51,33 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
             numProducts = Math.min(productsJson.getInt("doc_count"), FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
             offset += KRautaAPIs.SEARCH_API_PAGE_SIZE;
 
-            for(int i = 0; i < docs.length(); i++) {
+            for (int i = 0; i < docs.length(); i++) {
                 JSONObject singleProductJson = docs.getJSONObject(i);
 
-                if(!singleProductJson.getBoolean("inStock"))
+                if (!singleProductJson.getBoolean("inStock"))
                     continue;
 
                 try {
+
+                    String productName = singleProductJson.getString("title");
+                    if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
+
                     ProductDto productDto = ProductDto.builder()
                             .store(Store.KRAUTA)
                             .linkToProduct("https://k-rauta.ee" + singleProductJson.getString("url"))
                             .linkToPicture(singleProductJson.getString("image"))
                             .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
-                            .name(singleProductJson.getString("title"))
+                            .name(productName)
                             .price(singleProductJson.getDouble("priceDefault"))
                             .build();
 
                     products.add(productDto);
-                } catch(org.json.JSONException e) {
+                } catch (org.json.JSONException e) {
                     System.err.println("K-rauta products service: Error getting certain values from JSON for product: " + e.getMessage());
                     System.err.println(singleProductJson);
                 }
             }
-        } while(offset < numProducts);
+        } while (offset < numProducts);
 
         return ProductsDto.builder()
                 .products(products)
@@ -88,6 +86,7 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
 
     /**
      * Fetches all the core information fields for ProductDto-s.
+     *
      * @param products A list of products with their URLs stored in the data transfer object
      * @return A new ProductsDto, which has all core fields filled for the products.
      */
@@ -97,6 +96,7 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
 
     /**
      * Fetches subcategory specific fields into a hashmap inside ProductDto.
+     *
      * @param products A list of products with their URLs stored in the data transfer object
      * @return A new ProductsDto, which has all subcategory specific fields filled for the products.
      */
@@ -106,13 +106,14 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
 
     /**
      * Fetches all the in-stock products & their metadata from K-rauta that match the query and subcategory
-     * @param query User input containing keywords for the product
+     *
+     * @param query       User input containing keywords for the product
      * @param subcategory Subcategory chosen on Ematerjal.ee
      * @return If subcategory is defined, returns ProductsDto with every object in it having category specific metadata. Otherwise, returns ProductsDto without category metadata.
      */
     @Override
     public ProductsDto getKRautaProducts(String query, Category category, Subcategory subcategory) {
-        if(subcategory == null && (query == null || query.isEmpty())) {
+        if (subcategory == null && (query == null || query.isEmpty())) {
             return ProductsDto.builder().build();
         }
 
