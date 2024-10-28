@@ -17,7 +17,7 @@ function Hero() {
         if (q) {
             setIsLoading(true)
             fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
-
+            //fetch(`http://localhost:8080/request/search?keyword=${q}`)
                 .then(async (response) => {
                     const decoder = new TextDecoder('utf-8');
                     const decodedResponse = decoder.decode(await response.arrayBuffer());
@@ -77,7 +77,7 @@ function Hero() {
                 { isLoading ?
                 <div className='w-full mt-4 flex justify-center'>
                     <svg className='animate-spin' width="40px" height="40px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.5 12.5C4.5 16.9183 8.08172 20.5 12.5 20.5C16.9183 20.5 20.5 16.9183 20.5 12.5C20.5 8.08172 16.9183 4.5 12.5 4.5" stroke="#121923" stroke-width="1.2"/>
+                        <path d="M4.5 12.5C4.5 16.9183 8.08172 20.5 12.5 20.5C16.9183 20.5 20.5 16.9183 20.5 12.5C20.5 8.08172 16.9183 4.5 12.5 4.5" stroke="#121923" strokeWidth="1.2"/>
                     </svg>
                 </div>
                 :
@@ -88,6 +88,7 @@ function Hero() {
                             (<li key={index}>
                                 <SearchResult
                                     name={item.name}
+                                    store={item.store}
                                     linkToPicture={item.linkToPicture}
                                     linkToProduct={item.linkToProduct}
                                     price={item.price}
