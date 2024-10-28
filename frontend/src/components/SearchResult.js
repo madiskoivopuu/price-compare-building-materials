@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 function SearchResult({name, linkToPicture, linkToProduct, price, unit, store}) {
   const logos = {
     "BAUHOF": "bauhof.png",
-    "KRAUTA": "krauta.jpg"
+    "KRAUTA": "krauta.jpg",
+      "ESPAK": "espak.jpg",
   }
 
   const [isExpanded, setIsExpanded] = useState(false)
