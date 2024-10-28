@@ -1,0 +1,1543 @@
+
+<!DOCTYPE html>
+<!--[if IE 9 ]> <html lang="et" class="ie9 loading-site no-js"> <![endif]-->
+<!--[if IE 8 ]> <html lang="et" class="ie8 loading-site no-js"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="et" class="loading-site no-js"> <!--<![endif]-->
+<head>
+	<!-- BEGIN Usercentrics related code -->
+	<link rel="preconnect" href="//app.usercentrics.eu">
+	<link rel="preconnect" href="//api.usercentrics.eu">
+	<link rel="preconnect" href="//privacy-proxy.usercentrics.eu">
+	<link rel="preload" href="//app.usercentrics.eu/browser-ui/latest/loader.js" as="script">
+	<link rel="preload" href="//privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js" as="script">
+	<script data-noptimize id="usercentrics-cmp" data-settings-id="XzK8RLU7xGiT_j" src="https://app.usercentrics.eu/browser-ui/latest/loader.js" async></script>
+	<script data-noptimize type="application/javascript" src="https://privacy-proxy.usercentrics.eu/latest/uc-block.bundle.js"></script>
+	<script type="text/javascript">
+        // create dataLayer
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("consent", "default", {
+            ad_user_data: "denied",
+            ad_personalization: "denied",
+            ad_storage: "denied",
+            analytics_storage: "denied",
+            wait_for_update: 2000 // milliseconds to wait for update
+        });
+        // Enable ads data redaction by default [optional]
+        gtag("set", "ads_data_redaction", true);
+    </script>
+	<!-- END Usercentrics related code -->
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138210227-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-138210227-1');
+	</script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://espak.ee/epood/xmlrpc.php" />
+
+	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
+<meta name='robots' content='noindex, follow' />
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+	const gtm4wp_use_sku_instead = false;
+	const gtm4wp_id_prefix = '';
+	const gtm4wp_remarketing = false;
+	const gtm4wp_eec = true;
+	const gtm4wp_classicec = false;
+	const gtm4wp_currency = 'EUR';
+	const gtm4wp_product_per_impression = 10;
+	const gtm4wp_needs_shipping_address = false;
+	const gtm4wp_business_vertical = 'retail';
+	const gtm4wp_business_vertical_id = 'id';
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- This site is optimized with the Yoast SEO plugin v21.2 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Lehte ei leitud - Espak E-pood</title>
+	<meta property="og:locale" content="et_EE" />
+	<meta property="og:title" content="Lehte ei leitud - Espak E-pood" />
+	<meta property="og:site_name" content="Espak E-pood" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://espak.ee/epood/#website","url":"https://espak.ee/epood/","name":"Espak E-pood","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://espak.ee/epood/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"et"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel='prefetch' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/flatsome.js?ver=43f05e0ca79aa585a6aa' />
+<link rel='prefetch' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/chunk.slider.js?ver=3.17.7' />
+<link rel='prefetch' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/chunk.popups.js?ver=3.17.7' />
+<link rel='prefetch' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/chunk.tooltips.js?ver=3.17.7' />
+<link rel='prefetch' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/woocommerce.js?ver=1a392523165907adee6a' />
+<link rel="alternate" type="application/rss+xml" title="Espak E-pood &raquo; RSS" href="https://espak.ee/epood/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Espak E-pood &raquo; Kommentaaride RSS" href="https://espak.ee/epood/comments/feed/" />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<link rel='stylesheet' id='algolia-instantsearch-style-css' href='https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/algolia-min.css?ver=6.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='algolia-autocomplete-style-css' href='https://cdn.jsdelivr.net/npm/@algolia/autocomplete-theme-classic?ver=6.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='starkup-algolia-style-css' href='https://espak.ee/epood/wp-content/plugins/starkup-algolia-search/assets/style.css?ver=6.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='woo-shipping-dpd-baltic-css' href='https://espak.ee/epood/wp-content/plugins/woo-shipping-dpd-baltic/public/css/dpd-public.css?ver=1.2.63' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+.woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='font-awesome-css' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css?ver=6.3.1' type='text/css' media='all' />
+<link rel='stylesheet' id='flatsome-main-css' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.17.7' type='text/css' media='all' />
+<style id='flatsome-main-inline-css' type='text/css'>
+@font-face {
+				font-family: "fl-icons";
+				font-display: block;
+				src: url(https://espak.ee/epood/wp-content/themes/flatsome/assets/css/icons/fl-icons.eot?v=3.17.7);
+				src:
+					url(https://espak.ee/epood/wp-content/themes/flatsome/assets/css/icons/fl-icons.eot#iefix?v=3.17.7) format("embedded-opentype"),
+					url(https://espak.ee/epood/wp-content/themes/flatsome/assets/css/icons/fl-icons.woff2?v=3.17.7) format("woff2"),
+					url(https://espak.ee/epood/wp-content/themes/flatsome/assets/css/icons/fl-icons.ttf?v=3.17.7) format("truetype"),
+					url(https://espak.ee/epood/wp-content/themes/flatsome/assets/css/icons/fl-icons.woff?v=3.17.7) format("woff"),
+					url(https://espak.ee/epood/wp-content/themes/flatsome/assets/css/icons/fl-icons.svg?v=3.17.7#fl-icons) format("svg");
+			}
+</style>
+<link rel='stylesheet' id='flatsome-shop-css' href='https://espak.ee/epood/wp-content/themes/flatsome/assets/css/flatsome-shop.css?ver=3.17.7' type='text/css' media='all' />
+<link rel='stylesheet' id='flatsome-style-css' href='https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/style.css?ver=3.0' type='text/css' media='all' />
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/jquery/jquery.min.js?ver=3.7.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce-eabi-postoffice/js/jquery.cascadingdropdown.js?ver=6.3.1' id='jquery-cascadingdropdown-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce-eabi-postoffice/js/eabi.cascadingdropdown.js?ver=6.3.1' id='eabi-cascadingdropdown-js'></script>
+<script type='text/javascript' id='woo-shipping-dpd-baltic-js-extra'>
+/* <![CDATA[ */
+var dpd = {"fe_ajax_nonce":"ffaa78946b"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woo-shipping-dpd-baltic/public/js/dpd-public-dist.js?ver=1.2.63' id='woo-shipping-dpd-baltic-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-woocommerce-enhanced.js?ver=1.18.1' id='gtm4wp-woocommerce-enhanced-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woo-lhv-hire-purchase/assets/js/checkout.js?ver=6.3.1' id='lhv-hire-purchase-js'></script>
+<link rel="https://api.w.org/" href="https://espak.ee/epood/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://espak.ee/epood/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.3.1" />
+<meta name="generator" content="WooCommerce 8.1.1" />
+	<script>
+
+				</script>
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to automatic -->
+<script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
+	var dataLayer_content = {"pagePostType":"404-error"};
+	dataLayer.push( dataLayer_content );
+</script>
+<script data-cfasync="false">
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXXJ99N');
+</script>
+<!-- End Google Tag Manager -->
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><script>
+jQuery(function(){
+    // Submenu hover effects
+    jQuery(".starkup-submenu>li").hover(function(){
+        jQuery('.starkup-submenu-lvl2',this).css('opacity', '1');
+        jQuery('.starkup-submenu-lvl2',this).css('left', '100%');
+    }, function(){
+        jQuery('.starkup-submenu-lvl2',this).css('opacity', '0');
+        jQuery('.starkup-submenu-lvl2',this).css('left', '-3000px');
+    });
+
+    // Add overlay when menu open
+    jQuery(".menu-item-has-children").hover(function(){
+        jQuery('.starkup-overlay').css('opacity', '0.9');
+        jQuery('.starkup-overlay').css('filter', 'alpha(opacity=90)');
+        jQuery('.starkup-overlay').css('-moz-opacity', '0.9');
+        jQuery('.starkup-overlay').css('-khtml-opacity', '0.9');
+        jQuery('.starkup-overlay',).css('left', '0');
+        jQuery('.starkup-overlay').css('display', 'block');
+        jQuery('#wrapper').css('overflow', 'hidden');
+    }, function(){
+        jQuery('.starkup-overlay').css('opacity', '0');
+        jQuery('.starkup-overlay').css('filter', 'alpha(opacity=0)');
+        jQuery('.starkup-overlay').css('-moz-opacity', '0');
+        jQuery('.starkup-overlay').css('-khtml-opacity', '0');
+        jQuery('.starkup-overlay').css('left', '-3000px');
+        jQuery('.starkup-overlay').css('display', 'none');
+        jQuery('#wrapper').css('overflow', 'unset');
+    });
+
+     // Set product category first
+    /*jQuery(window).on('load', function() {
+    jQuery('.product-categories > .active').prependTo('.product-categories');
+}); */
+});
+// Product quantity to 2 decimals
+jQuery(document).ready(function(){
+    jQuery('input.qty').change(function(){
+        jQuery(this).val(parseFloat(Math.round(jQuery(this).val() * 1000) / 1000).toFixed(3));
+    });
+});
+</script>	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	   <script data-cfasync="false" data-no-optimize="1" data-pagespeed-no-defer>
+      var tvc_lc = 'EUR';
+    </script>
+       <script data-cfasync="false" data-no-optimize="1" data-pagespeed-no-defer>
+      var tvc_lc = 'EUR';
+    </script>
+          <script>(window.gaDevIds=window.gaDevIds||[]).push('5CDcaG');</script>
+      <link rel="icon" href="https://espak.ee/epood/wp-content/uploads/cropped-Espak-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://espak.ee/epood/wp-content/uploads/cropped-Espak-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://espak.ee/epood/wp-content/uploads/cropped-Espak-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://espak.ee/epood/wp-content/uploads/cropped-Espak-favicon-270x270.png" />
+<style id="custom-css" type="text/css">:root {--primary-color: #01285f;}.container-width, .full-width .ubermenu-nav, .container, .row{max-width: 1370px}.row.row-collapse{max-width: 1340px}.row.row-small{max-width: 1362.5px}.row.row-large{max-width: 1400px}.header-main{height: 115px}#logo img{max-height: 115px}#logo{width:215px;}.stuck #logo img{padding:15px 0;}.header-bottom{min-height: 43px}.header-top{min-height: 20px}.transparent .header-main{height: 30px}.transparent #logo img{max-height: 30px}.has-transparent + .page-title:first-of-type,.has-transparent + #main > .page-title,.has-transparent + #main > div > .page-title,.has-transparent + #main .page-header-wrapper:first-of-type .page-title{padding-top: 110px;}.header.show-on-scroll,.stuck .header-main{height:70px!important}.stuck #logo img{max-height: 70px!important}.search-form{ width: 80%;}.header-bg-color {background-color: rgba(255,255,255,0)}.header-bg-image {background-image: url('https://espak.ee/hinnakiri/wp-content/uploads/header_back.jpg');}.header-bg-image {background-repeat: repeat;}.header-bottom {background-color: #f7f7f7}.header-main .nav > li > a{line-height: 16px }.stuck .header-main .nav > li > a{line-height: 50px }.header-bottom-nav > li > a{line-height: 43px }@media (max-width: 549px) {.header-main{height: 95px}#logo img{max-height: 95px}}.header-top{background-color:#00133d!important;}/* Color */.accordion-title.active, .has-icon-bg .icon .icon-inner,.logo a, .primary.is-underline, .primary.is-link, .badge-outline .badge-inner, .nav-outline > li.active> a,.nav-outline >li.active > a, .cart-icon strong,[data-color='primary'], .is-outline.primary{color: #01285f;}/* Color !important */[data-text-color="primary"]{color: #01285f!important;}/* Background Color */[data-text-bg="primary"]{background-color: #01285f;}/* Background */.scroll-to-bullets a,.featured-title, .label-new.menu-item > a:after, .nav-pagination > li > .current,.nav-pagination > li > span:hover,.nav-pagination > li > a:hover,.has-hover:hover .badge-outline .badge-inner,button[type="submit"], .button.wc-forward:not(.checkout):not(.checkout-button), .button.submit-button, .button.primary:not(.is-outline),.featured-table .title,.is-outline:hover, .has-icon:hover .icon-label,.nav-dropdown-bold .nav-column li > a:hover, .nav-dropdown.nav-dropdown-bold > li > a:hover, .nav-dropdown-bold.dark .nav-column li > a:hover, .nav-dropdown.nav-dropdown-bold.dark > li > a:hover, .header-vertical-menu__opener ,.is-outline:hover, .tagcloud a:hover,.grid-tools a, input[type='submit']:not(.is-form), .box-badge:hover .box-text, input.button.alt,.nav-box > li > a:hover,.nav-box > li.active > a,.nav-pills > li.active > a ,.current-dropdown .cart-icon strong, .cart-icon:hover strong, .nav-line-bottom > li > a:before, .nav-line-grow > li > a:before, .nav-line > li > a:before,.banner, .header-top, .slider-nav-circle .flickity-prev-next-button:hover svg, .slider-nav-circle .flickity-prev-next-button:hover .arrow, .primary.is-outline:hover, .button.primary:not(.is-outline), input[type='submit'].primary, input[type='submit'].primary, input[type='reset'].button, input[type='button'].primary, .badge-inner{background-color: #01285f;}/* Border */.nav-vertical.nav-tabs > li.active > a,.scroll-to-bullets a.active,.nav-pagination > li > .current,.nav-pagination > li > span:hover,.nav-pagination > li > a:hover,.has-hover:hover .badge-outline .badge-inner,.accordion-title.active,.featured-table,.is-outline:hover, .tagcloud a:hover,blockquote, .has-border, .cart-icon strong:after,.cart-icon strong,.blockUI:before, .processing:before,.loading-spin, .slider-nav-circle .flickity-prev-next-button:hover svg, .slider-nav-circle .flickity-prev-next-button:hover .arrow, .primary.is-outline:hover{border-color: #01285f}.nav-tabs > li.active > a{border-top-color: #01285f}.widget_shopping_cart_content .blockUI.blockOverlay:before { border-left-color: #01285f }.woocommerce-checkout-review-order .blockUI.blockOverlay:before { border-left-color: #01285f }/* Fill */.slider .flickity-prev-next-button:hover svg,.slider .flickity-prev-next-button:hover .arrow{fill: #01285f;}/* Focus */.primary:focus-visible, .submit-button:focus-visible, button[type="submit"]:focus-visible { outline-color: #01285f!important; }/* Background Color */[data-icon-label]:after, .secondary.is-underline:hover,.secondary.is-outline:hover,.icon-label,.button.secondary:not(.is-outline),.button.alt:not(.is-outline), .badge-inner.on-sale, .button.checkout, .single_add_to_cart_button, .current .breadcrumb-step{ background-color:#01285f; }[data-text-bg="secondary"]{background-color: #01285f;}/* Color */.secondary.is-underline,.secondary.is-link, .secondary.is-outline,.stars a.active, .star-rating:before, .woocommerce-page .star-rating:before,.star-rating span:before, .color-secondary{color: #01285f}/* Color !important */[data-text-color="secondary"]{color: #01285f!important;}/* Border */.secondary.is-outline:hover{border-color:#01285f}/* Focus */.secondary:focus-visible, .alt:focus-visible { outline-color: #01285f!important; }body{color: #011b46}h1,h2,h3,h4,h5,h6,.heading-font{color: #01285f;}body{font-size: 100%;}@media screen and (max-width: 549px){body{font-size: 100%;}}body{font-family: "Open Sans", sans-serif;}body {font-weight: 400;font-style: normal;}.nav > li > a {font-family: "Open Sans", sans-serif;}.mobile-sidebar-levels-2 .nav > li > ul > li > a {font-family: "Open Sans", sans-serif;}.nav > li > a,.mobile-sidebar-levels-2 .nav > li > ul > li > a {font-weight: 600;font-style: normal;}h1,h2,h3,h4,h5,h6,.heading-font, .off-canvas-center .nav-sidebar.nav-vertical > li > a{font-family: "Open Sans", sans-serif;}h1,h2,h3,h4,h5,h6,.heading-font,.banner h1,.banner h2 {font-weight: 700;font-style: normal;}.alt-font{font-family: "Open Sans", sans-serif;}.alt-font {font-weight: 400!important;font-style: normal!important;}.header:not(.transparent) .header-bottom-nav.nav > li > a{color: #011b46;}.header:not(.transparent) .header-bottom-nav.nav > li > a:hover,.header:not(.transparent) .header-bottom-nav.nav > li.active > a,.header:not(.transparent) .header-bottom-nav.nav > li.current > a,.header:not(.transparent) .header-bottom-nav.nav > li > a.active,.header:not(.transparent) .header-bottom-nav.nav > li > a.current{color: #011b46;}.header-bottom-nav.nav-line-bottom > li > a:before,.header-bottom-nav.nav-line-grow > li > a:before,.header-bottom-nav.nav-line > li > a:before,.header-bottom-nav.nav-box > li > a:hover,.header-bottom-nav.nav-box > li.active > a,.header-bottom-nav.nav-pills > li > a:hover,.header-bottom-nav.nav-pills > li.active > a{color:#FFF!important;background-color: #011b46;}a{color: #01285f;}a:hover{color: #ff9b00;}.tagcloud a:hover{border-color: #ff9b00;background-color: #ff9b00;}@media screen and (min-width: 550px){.products .box-vertical .box-image{min-width: 500px!important;width: 500px!important;}}.footer-1{background-color: #494949}.absolute-footer, html{background-color: #303030}.nav-vertical-fly-out > li + li {border-top-width: 1px; border-top-style: solid;}/* Custom CSS *//* Font */h1, h2, h3, h4, h5, h6, .nav > li > a {font-weight: 400;}@media screen and (max-width: 1250px) {.box-text-inner h5 {font-size: 0.8em;}}@media screen and (min-width: 850px) and (max-width: 1050px) {.box-text-inner h5 {font-size: 0.65em;}}/* Product images to size */.box-image a {text-align: center;}.box-image img {max-height: 250px;width: auto !important;}/* Header #top-bar {background: url(https://espak.ee/tellimiskeskkond/wp-content/uploads/espaktaust.png) no-repeat 0 bottom;}*/.nav>li>a, .nav-dropdown>li>a, .nav-column>li>a {color: #303030;}.nav-small .nav>li>a, .nav.nav-small>li>a {font-weight: 700;text-transform: uppercase;}.nav > li > a {letter-spacing: 1.2px;}#masthead {border-bottom: 4px solid #01285f;}.cta-red {background-color: #c00025;}/* Menu contact color */a.tooltip.tooltipstered {color: #011b46;}/* Front page first menu element active */.page-id-28 .header-bottom-nav.nav > li:first-of-type> a {color: #FFF!important;background-color: #01285f;}/* Form labels & adjustments */label {color: #01285f;}.wpcf7-submit {margin-right: 0 !important;}/* Out of stock color */p.stock.out-of-stock {color: #b20000;}/* Checkout coupon adjustment */.has-border {padding: 25px 30px 30px;}/* Fix thumbnails scrollbar */@media screen and (min-width: 850px) {.vertical-thumbnails {overflow: hidden;}}/* Home side banner text adjustments */.home-side-banner {font-size: 130%;}@media screen and (max-width: 1400px) {.home-side-banner {font-size: 100%;}}@media screen and (max-width: 1100px) {.home-side-banner {font-size: 70%;}}/* Coupon text color */.showcoupon {color: #ff9b00;}/* Hide uncategorized */.cat-item-135 {display: none !important;}/* Custom price display */.price-wrapper {padding-bottom: 30px;font-family: 'din', "Open Sans", sans-serif;font-weight: 700;}.price-wrapper-regular {font-size: 2.5em;font-weight: 700;max-width: 280px;text-align: center;width: 100%;height: 60px;line-height: 1.3em;}.price-wrapper-regular p {margin-bottom: 0;}.price-wrapper-regular-top {max-width: 280px;border: 3px solid #000;}.price-wrapper-regular.is_unit {height: 100%;width: 72%;border-right: 3px solid #000;display: inline-block;}.price-wrapper-regular-unit {margin-bottom: 12px;text-align: center;}.price-wrapper-loyal {max-width: 280px;border: 3px solid #000;box-shadow: inset 0 0 0 3px #000;border-top: none;}.price-wrapper-loyal-top {border-bottom: 3px solid #000;background-color: #fff;}.price-wrapper-loyal-bottom {background-color: #e2001a;}.price-wrapper-loyal-price {height: 100%;width: 100%;/*width: 72%; *//*border-right: 3px solid #000; */background-color: #e2001a;color: #fff;display: inline-block;font-size: 3em;font-weight: 700;}.price-wrapper-loyal-price p {line-height: 1.1em; margin-bottom: 0;text-align: center;}.price-wrapper-loyal-additional, .price-wrapper-loyal-discount, .price-wrapper-regular-additional {width: 25%;display: inline-block;vertical-align: bottom;}.price-wrapper-loyal-size {margin-bottom: 0.1em;font-size: 1em;color: #e2001a;line-height: 1.4em;text-align: center;}.price-wrapper-loyal-liter {margin-bottom: 0;font-size: 0.85em;text-align: center;}.price-wrapper-loyal-card {background-color: #fff;line-height: 2em;}.price-wrapper-loyal-discount p {color: #fff;font-size: 1.25em;}.price-wrapper-loyal-card p, .price-wrapper-loyal-discount p {margin-bottom: 0;text-align: center;}/* If collrate exists */.price-wrapper-regular.is_collrate, .price-wrapper-loyal.is_collrate {max-width: 280px;}.is_collrate .price-wrapper-regular-price, .is_collrate .price-wrapper-loyal-price, .price-wrapper-loyal-card {height: 100%;width: 72%;border-right: 3px solid #000;display: inline-block;}/* Video adjustments */.video-fit {padding-top: 0 !important;min-height: 150px;}.video-fit video {object-fit: contain;}/* Sale badge */.badge-inner.on-sale {background-color: #e2001a;}.badge-container .on-sale {font-family: din, "Open Sans", sans-serif;font-size: 1.25em;}/* Hide sale badge on product */.woocommerce-product-gallery .badge-container {display: none;}/* Slider image to center */.flickity-slider .box-image div {text-align: center;}/* Hide result count */.woocommerce-result-count {display: none;}/* Header divider */.nav>li.header-divider {height: 15px;margin: 0 4.5px;}/* Home products */.home-products-roll .section-content>.row>.col {padding-bottom: 0;}/* Header search adjustments */#masthead.nav-dark .form-flat input:not([type="submit"]) {background-color: rgba(255,255,255,0.8) !important;color: #01285f !important;}.icon-search {color: #01285f;}::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */color: #01285f !important;opacity: 1; /* Firefox */font-family: 'din', "Open Sans", sans-serif;}:-ms-input-placeholder { /* Internet Explorer 10-11 */color: #01285f !important;font-family: 'din', "Open Sans", sans-serif;}::-ms-input-placeholder { /* Microsoft Edge */color: #01285f !important;font-family: 'din', "Open Sans", sans-serif;}.label-new.menu-item > a:after{content:"New";}.label-hot.menu-item > a:after{content:"Hot";}.label-sale.menu-item > a:after{content:"Sale";}.label-popular.menu-item > a:after{content:"Popular";}</style><style id="kirki-inline-styles">/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4taVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4kaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4saVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4jaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4iaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B5caVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B5OaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4vaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4uaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVQUwaEQXjM.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4taVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4kaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4saVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4jaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4iaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x5caVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x5OaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4vaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4uaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4gaVQUwaEQXjM.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4taVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4kaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4saVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4jaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4iaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x5caVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x5OaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4vaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4uaVQUwaEQXjN_mQ.woff) format('woff');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://espak.ee/epood/wp-content/fonts/open-sans/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVQUwaEQXjM.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}</style><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript></head>
+
+<body class="error404 theme-flatsome woocommerce-no-js lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border mobile-submenu-slide mobile-submenu-slide-levels-2 mobile-submenu-toggle">
+
+<a class="skip-link screen-reader-text" href="#main">Skip to content</a>
+
+<div id="wrapper">
+
+
+<header id="header" class="header has-sticky sticky-jump">
+   <div class="header-wrapper">
+	<div id="top-bar" class="header-top hide-for-sticky nav-dark">
+    <div class="flex-row container">
+      <div class="flex-col hide-for-medium flex-left">
+          <ul class="nav nav-left medium-nav-center nav-small  nav-divided">
+                        </ul>
+      </div>
+
+      <div class="flex-col hide-for-medium flex-center">
+          <ul class="nav nav-center nav-small  nav-divided">
+                        </ul>
+      </div>
+
+      <div class="flex-col hide-for-medium flex-right">
+         <ul class="nav top-bar-nav nav-right nav-small  nav-divided">
+              <li id="menu-item-25" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25 menu-item-design-default"><a href="https://espak.ee" class="nav-top-link">Espak koduleht</a></li>
+<li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23 menu-item-design-default"><a href="https://espak.ee/hinnakiri" class="nav-top-link">E-pood</a></li>
+<li id="menu-item-179982" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-179982 menu-item-design-default"><a href="https://kliendiportaal.espak.ee" class="nav-top-link">Kliendiportaal</a></li>
+<li class="header-divider"></li><li class="html custom html_topbar_left"><div class="social-icons follow-icons"><a href="https://www.instagram.com/espak_official/" target="_blank" rel="noopener noreferrer nofollow" data-label="Instagram" class="icon plain  instagram tooltip tooltipstered" style="font-size: 1.4em; color: rgba(255,255,255,0.8);"><i class="icon-instagram" style="margin-top: 5px;"></i></a><a href="https://www.facebook.com/Espak-106574691069214" target="_blank" rel="noopener noreferrer nofollow" data-label="facebook" class="icon plain  facebook tooltip tooltipstered" style="font-size: 1.4em; color: rgba(255,255,255,0.8);"><i class="icon-facebook" style="margin-top: 5px;"></i></a></div></li>          </ul>
+      </div>
+
+            <div class="flex-col show-for-medium flex-grow">
+          <ul class="nav nav-center nav-small mobile-nav  nav-divided">
+              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25 menu-item-design-default"><a href="https://espak.ee" class="nav-top-link">Espak koduleht</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23 menu-item-design-default"><a href="https://espak.ee/hinnakiri" class="nav-top-link">E-pood</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-179982 menu-item-design-default"><a href="https://kliendiportaal.espak.ee" class="nav-top-link">Kliendiportaal</a></li>
+          </ul>
+      </div>
+
+    </div>
+</div>
+<div id="masthead" class="header-main hide-for-sticky nav-dark">
+      <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
+
+          <!-- Logo -->
+          <div id="logo" class="flex-col logo">
+
+<!-- Header logo -->
+<a href="https://espak.ee/epood/" title="Espak E-pood" rel="home">
+		<img width="600" height="200" src="https://espak.ee/epood/wp-content/uploads/Espak-logo.png" class="header_logo header-logo" alt="Espak E-pood"/><img  width="433" height="147" src="https://espak.ee/epood/wp-content/uploads/E-POOD_LOGO_varjuga_solo.png" class="header-logo-dark" alt="Espak E-pood"/></a>
+          </div>
+
+          <!-- Mobile Left Elements -->
+          <div class="flex-col show-for-medium flex-left">
+            <ul class="mobile-nav nav nav-left ">
+              <li class="nav-icon has-icon">
+  		<a href="#" data-open="#main-menu" data-pos="left" data-bg="main-menu-overlay" data-color="" class="is-small" aria-label="Menu" aria-controls="main-menu" aria-expanded="false">
+
+		  <i class="icon-menu" ></i>
+		  		</a>
+	</li>
+            </ul>
+          </div>
+
+          <!-- Left Elements -->
+          <div class="flex-col hide-for-medium flex-left
+            flex-grow">
+            <ul class="header-nav header-nav-main nav nav-left  nav-uppercase" >
+              <li class="html custom html_topbar_right">    <div id="search-container-header-search">
+        <div id="header-search"></div>
+    </div>
+    <script nowprocket>
+    document.addEventListener('DOMContentLoaded', function() {
+        const screenWidth = window.innerWidth;
+        //const isHeaderSearch = screenWidth > 850;
+        const containerId = 'header-search';
+
+        if (containerId !== 'header-search') return;
+
+        const { autocomplete, getAlgoliaResults } = window['@algolia/autocomplete-js'] || {};
+        const searchClient = algoliasearch('UTKUHA7JT0', 'b9c55a35ad2799389ce3d4584a5f9def');
+
+        function debouncePromise(fn, time) {
+            let timerId;
+            return function debounced(...args) {
+                if (timerId) {
+                    clearTimeout(timerId);
+                }
+                return new Promise((resolve) => {
+                    timerId = setTimeout(() => resolve(fn(...args)), time);
+                });
+            };
+        }
+
+        // Change the debounce time here
+        const debounceTime = 450;
+        const debouncedGetSources = debouncePromise(({ query }) => {
+            return [
+                {
+                    sourceId: 'products',
+                    getItems() {
+                        return getAlgoliaResults({
+                            searchClient,
+                            queries: [
+                                {
+                                    indexName: 'vwwm_posts_product',
+                                    query,
+                                    params: {
+                                        hitsPerPage: 8,
+                                        facetFilters: ['stock_status:in-stock'],
+                                        attributesToSnippet: ['post_title:10', 'description:35'],
+                                        snippetEllipsisText: '…',
+                                    },
+                                },
+                            ],
+                        });
+                    },
+                    templates: {
+                        header() {
+                            return 'Tooted:';
+                        },
+                        item({ item, components, html }) {
+                            const imageUrl = item.images && item.images.thumbnail && item.images.thumbnail.url ? item.images.thumbnail.url : null;
+
+                            return html`
+                            <a href="${item.permalink}">
+                                <div class="autocomplete-suggestion" data-index="${item.objectID}">
+                                    ${imageUrl ? html`
+                                            <img
+                                                src="${imageUrl}"
+                                                alt="${item.name}"
+                                                width="40"
+                                                height="40"
+                                            />` : ''}
+                                        <div class="search-name">
+                                            <strong>${components.Highlight({ hit: item, attribute: 'post_title' })}</strong>
+                                        </div>
+                                        <span class="search-price">
+                                            ${item.sale_price ? html`
+                                                <span class="aa-ItemPrice aa-ItemPrice--regular">Tavahind: ${parseFloat(item.regular_price).toFixed(2)}€</span>
+                                                <span class="aa-ItemPrice aa-ItemPrice--sale">Kliendi hind: ${parseFloat(item.sale_price).toFixed(2)}€</span>
+                                            ` : html`
+                                                <span class="aa-ItemPrice aa-ItemPrice--regular">Tavahind: ${parseFloat(item.regular_price).toFixed(2)}€</span>
+                                            `}
+                                        </span>
+                                </div>
+                            </a>`;
+                        },
+                    },
+                },
+                {
+                    sourceId: 'brands',
+                    getItems() {
+                        return getAlgoliaResults({
+                            searchClient,
+                            queries: [
+                                {
+                                    indexName: 'vwwm_terms_pa_kaubamark',
+                                    query,
+                                    params: {
+                                        hitsPerPage: 3,
+                                    },
+                                },
+                            ],
+                        });
+                    },
+                    templates: {
+                        header() {
+                            return 'Kaubamärgid:';
+                        },
+                        item({ item, html }) {
+                            return html`
+                                <a href="${item.permalink}">
+                                    <div class="autocomplete-suggestion" data-index="${item.objectID}">
+                                        <div class="search-name">
+                                            <strong>${item.name}</strong>
+                                        </div>
+                                    </div>
+                                </a>
+                            `;
+                        },
+                    },
+                },
+            ];
+        }, debounceTime);
+
+        autocomplete({
+            container: '#header-search',
+            placeholder: 'Otsing',
+            insights: true,
+            openOnFocus: false,
+            shouldPanelOpen({ state }) {
+                return state.query.length >= 2;
+            },
+            getSources: debouncedGetSources,
+        });
+
+        // Handle the form submission to redirect to WooCommerce search results
+        document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Blokeeri vormi standardne submit
+
+        // Hangi praegune otsingupäring
+        const searchQuery = document.querySelector('#header-search input').value;
+
+        // Kui otsingupäring ei ole tühi, suuna WooCommerce'i otsingulehele
+        if (searchQuery) {
+            const searchUrl = `/epood/?s=${encodeURIComponent(searchQuery)}&post_type=product`;
+            window.location.href = searchUrl;
+        }
+    }
+});
+    });
+    </script>
+    </li>            </ul>
+          </div>
+
+          <!-- Right Elements -->
+          <div class="flex-col hide-for-medium flex-right">
+            <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
+              <li class="cart-item has-icon">
+
+	<a href="https://espak.ee/epood/cart/" class="header-cart-link off-canvas-toggle nav-top-link is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Ostukorv" data-pos="right">
+
+<span class="header-cart-title">
+   Ostukorv   /      <span class="cart-price"><span class="woocommerce-Price-amount amount"><bdi>0.00<span class="woocommerce-Price-currencySymbol">&euro;</span></bdi></span></span>
+  </span>
+
+    <span class="cart-icon image-icon">
+    <strong>0</strong>
+  </span>
+  </a>
+
+
+
+  <!-- Cart Sidebar Popup -->
+  <div id="cart-popup" class="mfp-hide widget_shopping_cart">
+  <div class="cart-popup-inner inner-padding">
+      <div class="cart-popup-title text-center">
+          <h4 class="uppercase">Ostukorv</h4>
+          <div class="is-divider"></div>
+      </div>
+      <div class="widget_shopping_cart_content">
+
+
+	<p class="woocommerce-mini-cart__empty-message">Ostukorvis ei ole tooteid.</p>
+
+
+      </div>
+            <div class="cart-sidebar-content relative"></div>  </div>
+  </div>
+
+</li>
+            </ul>
+          </div>
+
+          <!-- Mobile Right Elements -->
+          <div class="flex-col show-for-medium flex-right">
+            <ul class="mobile-nav nav nav-right ">
+              <li class="cart-item has-icon">
+
+      <a href="https://espak.ee/epood/cart/" class="header-cart-link off-canvas-toggle nav-top-link is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Ostukorv" data-pos="right">
+
+    <span class="cart-icon image-icon">
+    <strong>0</strong>
+  </span>
+  </a>
+
+</li>
+            </ul>
+          </div>
+
+      </div>
+
+            <div class="container"><div class="top-divider full-width"></div></div>
+      </div>
+<div id="wide-nav" class="header-bottom wide-nav hide-for-medium">
+    <div class="flex-row container">
+
+                        <div class="flex-col hide-for-medium flex-left">
+                <ul class="nav header-nav header-bottom-nav nav-left  nav-box nav-size-xlarge nav-spacing-medium nav-uppercase">
+                    <li id="menu-item-881" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-881 menu-item-design-default has-dropdown"><a href="https://espak.ee/epood/tootevalik/" class="nav-top-link" aria-expanded="false" aria-haspopup="menu">Tootevalik<i class="icon-angle-down" ></i></a>
+<ul class="sub-menu nav-dropdown nav-dropdown-default">
+	<li id="menu-item-44193" class="menu-item menu-item-type-gs_sim menu-item-object-gs_sim menu-item-44193"><div class="row row-collapse align-equal ux-menu-callout"  id="row-971732529">
+
+
+	<div id="col-1046344489" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<ul class="starkup-submenu">
+<li><a href="https://espak.ee/epood/tootekategooria/rauakaubad/">RAUAKAUBAD</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/RAUAKAUBAD.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-1717867312">
+
+
+	<div id="col-1480091229" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>RAUAKAUBAD</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/rauakaubad/kinnitustarvikud/">Kinnitustarvikud</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/rauakaubad/rauakaubad-rauakaubad/rauakaubad-rauakaubad-rauakaubad/">Rauakaubad</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/rauakaubad/redelid-ja-tellingud/">Redelid ja tellingud</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Rauakaubad.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/">VIIMISTLUSKAUBAD</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/VIIMISTLUSMATERJALID.svg" width="35" height="35" class="starkup-submenu-icon" style="margin-top: 0;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-657078823">
+
+
+	<div id="col-809005089" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>VIIMISTLUSKAUBAD</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/ehituskeemia/">Ehituskeemia</a></li><li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/liistud/">Liistud</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/parketid/">Parketid</a></li><li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/seinakatted/">Seinakatted</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/uksed/">Uksed</a></li><li><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/varvid-lakid-lahustid-puidukaitsed-olid/">Värvid, lakid, lahustid, puidukaitsed, õlid</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Viimistluskaubad.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/uldehitus">ÜLDEHITUS</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/ULDEHITUS.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-1938976026">
+
+
+	<div id="col-2062407951" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>ÜLDEHITUS</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/uldehitus/ehitusplaadid/">Ehitusplaadid</a></li><li><a href="https://espak.ee/epood/tootekategooria/uldehitus/fassaadimaterjalid/">Fassaadimaterjalid</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/uldehitus/isolatsioonimaterjalid/">Isolatsioonimaterjalid</a></li><li><a href="https://espak.ee/epood/tootekategooria/uldehitus/muurimaterjalid/">Müürimaterjalid</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/uldehitus/pahtlid-ja-kuivsegud/">Pahtlid ja kuivsegud</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Uldehitus.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad">AIATARBED JA KODUKAUBAD</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/AIATARBED_JA_KODUKAUBAD.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-1214111799">
+
+
+	<div id="col-1188544890" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>AIATARBED JA KODUKAUBAD</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/aiatarbed/">Aiatarbed</a></li><li><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/autokaubad/">Autokaubad</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/kodukaubad/">Kodukaubad</a></li><li><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/tookaitsevahendid/">Töökaitsevahendid</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Aiatarbed ja kodukaubad.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/kute-ja-ventilatsioon">KÜTE JA VENTILATSIOON</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/KUTE_JA_VENTILATSIOON.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-1773238325">
+
+
+	<div id="col-192952379" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>KÜTE JA VENTILATSIOON</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/kute-ja-ventilatsioon/ahjud-kaminad-kerised/">Ahjud, kaminad, kerised</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Kute ja ventilatsioon.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/elektrikaubad-ja-valgustid">ELEKTRIKAUBAD JA VALGUSTID</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/ELEKTRIKAUBAD_JA_VALGUSTID.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-2049892611">
+
+
+	<div id="col-1213605176" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>ELEKTRIKAUBAD JA VALGUSTID</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/elektrikaubad-ja-valgustid/elektrikaubad/">Elektrikaubad</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/elektrikaubad-ja-valgustid/valgustid/valgustid-valgustid/">Valgustid</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Elektrikaubad ja valgustid.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/sanitaartehnika">SANITAARTEHNIKA</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/SANITAARTEHNIKA.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-495148423">
+
+
+	<div id="col-1756781794" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>SANITAARTEHNIKA</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/sanitaartehnika/sanitaartehnika-sanitaartehnika/">Sanitaartehnika</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Sanitaartehnika.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+<li><a href="https://espak.ee/epood/tootekategooria/tooriistad">TÖÖRIISTAD</a> <img src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/icons/TOORIISTAD.svg" width="45" height="45" class="starkup-submenu-icon" style="margin-top: -5px;"><br />
+<div class="row row-collapse align-equal starkup-submenu-lvl2"  id="row-767604094">
+
+
+	<div id="col-1479373614" class="col medium-12 small-12 large-12"  >
+				<div class="col-inner"  >
+
+
+
+<h3>TÖÖRIISTAD</h3>
+<p><div class="row"><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/tooriistad/elektritooriistad/">Elektritööriistad</a></li><li><a href="https://espak.ee/epood/tootekategooria/tooriistad/kasitooriistad/">Käsitööriistad</a></li></ul></div></div><div class="col medium-4 small-12 large-4" style="min-height: 115px;"><div class="col-inner"><ul><li><a href="https://espak.ee/epood/tootekategooria/tooriistad/lihvtarbed/">Lihvtarbed</a></li><li><a href="https://espak.ee/epood/tootekategooria/tooriistad/tooriistatarvikud/">Tööriistatarvikud</a></li></ul></div></div><div class="row"><div class="col medium-12 small-12 large-12" style="position: absolute; bottom: 0; padding: 0; left: 0;"><div class="col-inner"><div class="img has-hover x md-x lg-x y md-y lg-y">
+								<div class="img-inner dark">
+			<img width="840" height="234" src="https://espak.ee/epood/wp-content/themes/espak-tellimiskeskkond/assets/images/Tooriistad.jpg">
+					</div>
+	</div></div></div></p>
+
+		</div>
+					</div>
+
+
+
+</div>
+</li>
+</ul>
+
+		</div>
+
+<style>
+#col-1046344489 > .col-inner {
+  padding: 0px 0px 0px 0;
+}
+</style>
+	</div>
+
+
+
+
+<style>
+#row-971732529 > .col > .col-inner {
+  padding: 0px 0px 0px 20px;
+}
+</style>
+</div></li>
+</ul>
+</li>
+<li id="menu-item-44269" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44269 menu-item-design-default"><a href="https://espak.ee/epood/ostuinfo/" class="nav-top-link">Ostuinfo</a></li>
+<li id="menu-item-44270" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44270 menu-item-design-default"><a href="https://espak.ee/epood/tingimused/" class="nav-top-link">Tingimused</a></li>
+<li id="menu-item-103979" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-103979 menu-item-design-default"><a href="https://espak.ee/epood/tootekategooria/leiunurk/" class="nav-top-link">LEIUNURK</a></li>
+                </ul>
+            </div>
+
+
+                        <div class="flex-col hide-for-medium flex-right flex-grow">
+              <ul class="nav header-nav header-bottom-nav nav-right  nav-box nav-size-xlarge nav-spacing-medium nav-uppercase">
+                   <li class="header-contact-wrapper">
+		<ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
+
+						<li class="">
+			  <a href="mailto:epood@espak.ee" class="tooltip" title="epood@espak.ee">
+				  <i class="icon-envelop" style="font-size:16px;" ></i>			       <span>
+			       	Email			       </span>
+			  </a>
+			</li>
+
+
+				</ul>
+</li>
+              </ul>
+            </div>
+
+
+    </div>
+</div>
+
+<div class="header-bg-container fill"><div class="header-bg-image fill"></div><div class="header-bg-color fill"></div></div>   </div><!-- header-wrapper-->
+</header>
+
+<div class="starkup-overlay"></div>
+<main id="main" class="">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main container pt" role="main">
+			<section class="error-404 not-found mt mb">
+				<div class="row">
+					<div class="col medium-3"><span class="header-font" style="font-size: 6em; font-weight: bold; opacity: .3">404</span></div>
+					<div class="col medium-9">
+						<header class="page-title">
+							<h1 class="page-title">Lehte ei leitud kahjuks</h1>
+						</header>
+						<div class="page-content">
+							<p>Antud lehte kahjuks ei leitud, kuid proovige kasutades otsingut leida soovitud leht.</p>
+							<form method="get" class="searchform" action="https://espak.ee/epood/" role="search">
+		<div class="flex-row relative">
+			<div class="flex-col flex-grow">
+	   	   <input type="search" class="search-field mb-0" name="s" value="kruvikeeraja" id="s" placeholder="Otsing&hellip;" />
+			</div>
+			<div class="flex-col">
+				<button type="submit" class="ux-search-submit submit-button secondary button icon mb-0" aria-label="Submit">
+					<i class="icon-search" ></i>				</button>
+			</div>
+		</div>
+    <div class="live-search-results text-left z-top"></div>
+</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
+
+</main>
+
+<footer id="footer" class="footer-wrapper">
+
+	<div class="row align-center"  id="row-230606132">
+
+
+	<div id="col-453085512" class="col medium-6 small-12 large-2"  >
+				<div class="col-inner dark"  >
+
+
+
+<h2>E-pood</h2>
+<p><a href="/epood/tootevalik/">Tootevalik</a><br /><a href="/epood/ostuinfo/">Ostuinfo</a><br /><a href="/epood/ostuinfo/#tarne">Tarneviisid</a><br /><a href="/epood/tingimused/">Tingimused</a><br /><a href="/epood/tingimused/#privaatsuspoliitika">Privaatsuspoliitika</a><br /><a href="/epood/tingimused/#tagastamine">Tagastamine</a></p>
+<p><a href="https://elektroonikaromu.ee/elektroonikaromude-patareide-ja-vanade-akude-kogumiskohad/">Vanade seadmete kogumiskohad</a></p>
+
+		</div>
+					</div>
+
+
+
+	<div id="col-186621398" class="col medium-6 small-12 large-3"  >
+				<div class="col-inner dark"  >
+
+
+
+	<div id="text-2482295358" class="text">
+
+
+<h2>Kliendi&shy;teenindus<br />
+</h2>
+<p><a href="mailto:epood@espak.ee">epood@espak.ee</a></p>
+
+<style>
+#text-2482295358 {
+  text-align: left;
+}
+</style>
+	</div>
+
+<p>Klienditeenindus on avatud tööpäeviti 8-16.30</p>
+
+		</div>
+					</div>
+
+
+
+	<div id="col-74948243" class="col medium-6 small-12 large-2"  >
+				<div class="col-inner dark"  >
+
+
+
+<h2>Tarneviisid</h2>
+<p><strong>Tulen ise järgi</strong> - Espak Tallinna kauplusesse<br /><strong>Itella Smartpost</strong><br /><strong>Itella kuller</strong></p>
+<p><strong>DPD pakiautomaat</strong></p>
+<p><strong>DPD kuller</strong></p>
+
+		</div>
+					</div>
+
+
+
+	<div id="col-1423293638" class="col medium-6 small-12 large-2"  >
+				<div class="col-inner dark"  >
+
+
+
+<h2>Makseviisid</h2>
+<p>Swedbank<br />SEB<br />Luminor<br />LHV<br />Citadele<br />Mastercard<br />VISA<br /><a href="https://espak.ee/epood/lhv-jarelmaks/"><u>LHV Järelmaks</u></a></p>
+
+		</div>
+					</div>
+
+
+
+	<div id="col-564301025" class="col medium-6 small-12 large-4"  >
+				<div class="col-inner"  >
+
+
+
+	<div id="gap-1367117011" class="gap-element clearfix hide-for-medium" style="display:block; height:auto;">
+
+<style>
+#gap-1367117011 {
+  padding-top: 30px;
+}
+</style>
+	</div>
+
+
+	<div id="stack-3372366396" class="stack stack-row justify-start items-stretch">
+
+
+	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_579357008">
+								<div class="img-inner dark" >
+			<img width="300" height="300" src="https://espak.ee/epood/wp-content/uploads/2022/10/Creditinfo_mark_2022_EST_1-300x300.png" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://espak.ee/epood/wp-content/uploads/2022/10/Creditinfo_mark_2022_EST_1-300x300.png 300w, https://espak.ee/epood/wp-content/uploads/2022/10/Creditinfo_mark_2022_EST_1-500x500.png 500w, https://espak.ee/epood/wp-content/uploads/2022/10/Creditinfo_mark_2022_EST_1-100x100.png 100w, https://espak.ee/epood/wp-content/uploads/2022/10/Creditinfo_mark_2022_EST_1-150x150.png 150w, https://espak.ee/epood/wp-content/uploads/2022/10/Creditinfo_mark_2022_EST_1.png 600w" sizes="(max-width: 300px) 100vw, 300px" />
+					</div>
+
+<style>
+#image_579357008 {
+  width: 100%;
+}
+</style>
+	</div>
+
+
+	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1252796143">
+								<div class="img-inner dark" >
+			<img width="300" height="295" src="https://espak.ee/epood/wp-content/uploads/Eesti_Kaubandus_Toostuskoja_Liige_655x645_white-300x295.png" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://espak.ee/epood/wp-content/uploads/Eesti_Kaubandus_Toostuskoja_Liige_655x645_white-300x295.png 300w, https://espak.ee/epood/wp-content/uploads/Eesti_Kaubandus_Toostuskoja_Liige_655x645_white-500x492.png 500w, https://espak.ee/epood/wp-content/uploads/Eesti_Kaubandus_Toostuskoja_Liige_655x645_white-150x148.png 150w, https://espak.ee/epood/wp-content/uploads/Eesti_Kaubandus_Toostuskoja_Liige_655x645_white-510x502.png 510w, https://espak.ee/epood/wp-content/uploads/Eesti_Kaubandus_Toostuskoja_Liige_655x645_white.png 655w" sizes="(max-width: 300px) 100vw, 300px" />
+					</div>
+
+<style>
+#image_1252796143 {
+  width: 100%;
+}
+</style>
+	</div>
+
+
+	<div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1931471757">
+								<div class="img-inner dark" >
+			<img width="300" height="300" src="https://espak.ee/epood/wp-content/uploads/2022/02/EKL_Circular_Logo_White.png" class="attachment-original size-original" alt="" decoding="async" srcset="https://espak.ee/epood/wp-content/uploads/2022/02/EKL_Circular_Logo_White.png 300w, https://espak.ee/epood/wp-content/uploads/2022/02/EKL_Circular_Logo_White-100x100.png 100w, https://espak.ee/epood/wp-content/uploads/2022/02/EKL_Circular_Logo_White-150x150.png 150w" sizes="(max-width: 300px) 100vw, 300px" />
+					</div>
+
+<style>
+#image_1931471757 {
+  width: 100%;
+}
+</style>
+	</div>
+
+
+
+
+<style>
+#stack-3372366396 > * {
+  --stack-gap: 0rem;
+}
+</style>
+	</div>
+
+
+		</div>
+					</div>
+
+
+
+
+<style>
+#row-230606132 > .col > .col-inner {
+  padding: 10px 0px 0px 0px;
+}
+@media (min-width:550px) {
+  #row-230606132 > .col > .col-inner {
+    padding: 30px 0px 0px 0px;
+  }
+}
+</style>
+</div>
+<div class="absolute-footer dark medium-text-center text-center">
+  <div class="container clearfix">
+
+
+    <div class="footer-primary pull-left">
+            <div class="copyright-footer">
+        Copyright 2024 © <strong>ESPAK AS</strong> / <span class="footer-manager"><a href="https://starkup.ee/" target="_blank">Starkup</a></span>      </div>
+          </div>
+  </div>
+</div>
+
+<a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline hide-for-medium circle" id="top-link" aria-label="Go to top"><i class="icon-angle-up" ></i></a>
+
+</footer>
+
+</div>
+<script type="text/javascript">
+	/*
+jQuery(document).ready(function($) {
+    console.log('go');
+
+    // Function to setup the observer
+    function setupObserver() {
+        var targetNode = document.querySelector('.select2-results');
+        if (!targetNode) {
+            console.log("Target node not available, retrying...");
+            setTimeout(setupObserver, 500); // Retry after 500ms
+            return;
+        }
+
+        // Set up a MutationObserver to listen for changes in aria-selected
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'aria-selected') {
+                    var $target = $(mutation.target);
+                    var isSelected = $target.attr('aria-selected') === 'true';
+                    var terminalId = $target.attr('id').split('-').pop();
+
+                    console.log('Changed selection to:', terminalId, 'Selected:', isSelected);
+
+                    // Execute AJAX if a certain terminal ID is picked and is selected
+                    if (terminalId === "01007597" && isSelected) {
+						console.log('AJAX triggered');
+                        $.ajax({
+							type: 'POST',
+							url: wc_checkout_params.ajax_url,
+							data: {
+								'action': 'woocommerce_update_order_review',
+								'security': wc_checkout_params.update_order_review_nonce,
+								'post_data': $('form.checkout').serialize()
+							},
+							success: function (response) {
+								console.log('Checkout updated!');
+							},
+							error: function () {
+								console.log('Error updating checkout');
+							}
+                        });
+                    }
+                }
+            });
+        });
+
+        // Options for the observer (which mutations to observe)
+        var config = { attributes: true, childList: false, subtree: true };
+
+        // Start observing the target node for configured mutations
+        observer.observe(targetNode, config);
+    }
+
+    // Initialize observer after a delay or after a certain event that ensures elements are loaded
+    setupObserver();
+});
+*/
+
+
+</script>
+
+
+
+
+
+
+<div id="main-menu" class="mobile-sidebar no-scrollbar mfp-hide mobile-sidebar-slide mobile-sidebar-levels-1 mobile-sidebar-levels-2" data-levels="2">
+
+
+	<div class="sidebar-menu no-scrollbar ">
+
+
+					<ul class="nav nav-sidebar nav-vertical nav-uppercase nav-slide" data-tab="1">
+				<li class="header-search-form search-form html relative has-icon">
+	<div class="header-search-form-wrapper">
+		<div class="searchform-wrapper ux-search-box relative form-flat is-normal"><form role="search" method="get" class="searchform" action="https://espak.ee/epood/">
+	<div class="flex-row relative">
+						<div class="flex-col flex-grow">
+			<label class="screen-reader-text" for="woocommerce-product-search-field-0">Otsi:</label>
+			<input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Otsing&hellip;" value="kruvikeeraja" name="s" />
+			<input type="hidden" name="post_type" value="product" />
+					</div>
+		<div class="flex-col">
+			<button type="submit" value="Otsi" class="ux-search-submit submit-button secondary button  icon mb-0" aria-label="Submit">
+				<i class="icon-search" ></i>			</button>
+		</div>
+	</div>
+	<div class="live-search-results text-left z-top"></div>
+</form>
+</div>	</div>
+</li>
+<li id="menu-item-44202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-44202"><a href="https://espak.ee/epood/tootevalik/">Tootevalik</a>
+<ul class="sub-menu nav-sidebar-ul children">
+	<li id="menu-item-44213" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44213"><a href="https://espak.ee/epood/tootekategooria/rauakaubad/">RAUAKAUBAD</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44216" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44216"><a href="https://espak.ee/epood/tootekategooria/rauakaubad/kinnitustarvikud/">Kinnitustarvikud</a></li>
+		<li id="menu-item-44215" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44215"><a href="https://espak.ee/epood/tootekategooria/rauakaubad/rauakaubad-rauakaubad/">Rauakaubad</a></li>
+		<li id="menu-item-44217" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44217"><a href="https://espak.ee/epood/tootekategooria/rauakaubad/redelid-ja-tellingud/">Redelid ja tellingud</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44218" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44218"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/">VIIMISTLUSKAUBAD</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44219" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44219"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/ehituskeemia/">Ehituskeemia</a></li>
+		<li id="menu-item-44220" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44220"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/liistud/">Liistud</a></li>
+		<li id="menu-item-44221" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44221"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/parketid/">Parketid</a></li>
+		<li id="menu-item-44222" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44222"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/seinakatted/">Seinakatted</a></li>
+		<li id="menu-item-44224" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44224"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/uksed/">Uksed</a></li>
+		<li id="menu-item-44223" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44223"><a href="https://espak.ee/epood/tootekategooria/viimistluskaubad/varvid-lakid-lahustid-puidukaitsed-olid/">Värvid, lakid, lahustid, puidukaitsed, õlid</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44225" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44225"><a href="https://espak.ee/epood/tootekategooria/uldehitus/">ÜLDEHITUS</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44226" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44226"><a href="https://espak.ee/epood/tootekategooria/uldehitus/ehitusplaadid/">Ehitusplaadid</a></li>
+		<li id="menu-item-44227" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44227"><a href="https://espak.ee/epood/tootekategooria/uldehitus/fassaadimaterjalid/">Fassaadimaterjalid</a></li>
+		<li id="menu-item-44228" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44228"><a href="https://espak.ee/epood/tootekategooria/uldehitus/isolatsioonimaterjalid/">Isolatsioonimaterjalid</a></li>
+		<li id="menu-item-44229" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44229"><a href="https://espak.ee/epood/tootekategooria/uldehitus/muurimaterjalid/">Müürimaterjalid</a></li>
+		<li id="menu-item-44230" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44230"><a href="https://espak.ee/epood/tootekategooria/uldehitus/pahtlid-ja-kuivsegud/">Pahtlid ja kuivsegud</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44203" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44203"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/">AIATARBED JA KODUKAUBAD</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44204" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44204"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/aiatarbed/">Aiatarbed</a></li>
+		<li id="menu-item-44207" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44207"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/autokaubad/">Autokaubad</a></li>
+		<li id="menu-item-44208" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44208"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/kodukaubad/">Kodukaubad</a></li>
+		<li id="menu-item-44209" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44209"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/aiatarbed/koormakatted/">Koormakatted</a></li>
+		<li id="menu-item-44210" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44210"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/kodukaubad/sisustus-ja-majapidamine/sisustus-ja-majapidamistarbed/">Sisustus- ja majapidamistarbed</a></li>
+		<li id="menu-item-44211" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44211"><a href="https://espak.ee/epood/tootekategooria/aiatarbed-ja-kodukaubad/tookaitsevahendid/">Töökaitsevahendid</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44231" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44231"><a href="https://espak.ee/epood/tootekategooria/kute-ja-ventilatsioon/">KÜTE JA VENTILATSIOON</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44232" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44232"><a href="https://espak.ee/epood/tootekategooria/kute-ja-ventilatsioon/ahjud-kaminad-kerised/">Ahjud, kaminad, kerised</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44234" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44234"><a href="https://espak.ee/epood/tootekategooria/elektrikaubad-ja-valgustid/">ELEKTRIKAUBAD JA VALGUSTID</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44233" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44233"><a href="https://espak.ee/epood/tootekategooria/elektrikaubad-ja-valgustid/elektrikaubad/">Elektrikaubad</a></li>
+		<li id="menu-item-44236" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44236"><a href="https://espak.ee/epood/tootekategooria/elektrikaubad-ja-valgustid/valgustid/">Valgustid</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44238" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44238"><a href="https://espak.ee/epood/tootekategooria/sanitaartehnika/">SANITAARTEHNIKA</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44237" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44237"><a href="https://espak.ee/epood/tootekategooria/sanitaartehnika/sanitaartehnika-sanitaartehnika/">Sanitaartehnika</a></li>
+	</ul>
+</li>
+	<li id="menu-item-44239" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-44239"><a href="https://espak.ee/epood/tootekategooria/tooriistad/">TÖÖRIISTAD</a>
+	<ul class="sub-menu nav-sidebar-ul">
+		<li id="menu-item-44241" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44241"><a href="https://espak.ee/epood/tootekategooria/tooriistad/elektritooriistad/">Elektritööriistad</a></li>
+		<li id="menu-item-44242" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44242"><a href="https://espak.ee/epood/tootekategooria/tooriistad/kasitooriistad/">Käsitööriistad</a></li>
+		<li id="menu-item-44243" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44243"><a href="https://espak.ee/epood/tootekategooria/tooriistad/lihvtarbed/">Lihvtarbed</a></li>
+		<li id="menu-item-44240" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-44240"><a href="https://espak.ee/epood/tootekategooria/tooriistad/tooriistatarvikud/">Tööriistatarvikud</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-44200" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44200"><a href="https://espak.ee/epood/ostuinfo/">Ostuinfo</a></li>
+<li id="menu-item-44201" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44201"><a href="https://espak.ee/epood/tingimused/">Tingimused</a></li>
+<li id="menu-item-103980" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-103980"><a href="https://espak.ee/epood/tootekategooria/leiunurk/">LEIUNURK</a></li>
+			</ul>
+
+
+	</div>
+
+
+</div>
+    <div id="login-form-popup" class="lightbox-content mfp-hide">
+            	<div class="woocommerce">
+      		<div class="woocommerce-notices-wrapper"></div>
+<div class="account-container lightbox-inner">
+
+
+			<div class="account-login-inner">
+
+				<h3 class="uppercase">Logi sisse</h3>
+
+				<form class="woocommerce-form woocommerce-form-login login" method="post">
+
+
+					<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+						<label for="username">Kasutajanimi või e-posti aadress&nbsp;<span class="required">*</span></label>
+						<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" autocomplete="username" value="" />					</p>
+					<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+						<label for="password">Parool&nbsp;<span class="required">*</span></label>
+						<input class="woocommerce-Input woocommerce-Input--text input-text" type="password" name="password" id="password" autocomplete="current-password" />
+					</p>
+
+
+					<p class="form-row">
+						<label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme">
+							<input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever" /> <span>Jäta mind meelde</span>
+						</label>
+						<input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="e69e84150d" /><input type="hidden" name="_wp_http_referer" value="/epood/page/28/?s=kruvikeeraja&#038;post_type=product" />						<button type="submit" class="woocommerce-button button woocommerce-form-login__submit" name="login" value="Logi sisse">Logi sisse</button>
+					</p>
+					<p class="woocommerce-LostPassword lost_password">
+						<a href="https://espak.ee/epood/my-account/lost-password/">Kaotasid parooli?</a>
+					</p>
+
+
+				</form>
+			</div>
+
+
+</div>
+
+		</div>
+      	    </div>
+  <script type="text/javascript">var algolia = {"debug":false,"application_id":"UTKUHA7JT0","search_api_key":"b9c55a35ad2799389ce3d4584a5f9def","powered_by_enabled":true,"query":"kruvikeeraja","autocomplete":{"sources":[{"index_id":"posts_product","index_name":"vwwm_posts_product","label":"Products","admin_name":"Products","position":10,"max_suggestions":5,"tmpl_suggestion":"autocomplete-post-suggestion","enabled":true},{"index_id":"terms_pa_kaubamark","index_name":"vwwm_terms_pa_kaubamark","label":"Product Kaubam\u00e4rk","admin_name":"Product Kaubam\u00e4rk","position":20,"max_suggestions":3,"tmpl_suggestion":"autocomplete-term-suggestion","enabled":true}],"input_selector":"input[name='s']:not(.no-autocomplete):not(#adminbar-search)"},"indices":{"posts_product":{"name":"vwwm_posts_product","id":"posts_product","enabled":true,"replicas":[]},"terms_pa_kaubamark":{"name":"vwwm_terms_pa_kaubamark","id":"terms_pa_kaubamark","enabled":true,"replicas":[]}}};</script>	<script type="text/javascript">
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/algoliasearch@4.10.5/dist/algoliasearch-lite.umd.js' id='algolia-search-client-js'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/instantsearch.js@4.37.2/dist/instantsearch.production.min.js' id='algolia-instantsearch-js'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/@algolia/autocomplete-js' id='algolia-autocomplete-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.8.1.1' id='jquery-blockui-js'></script>
+<script type='text/javascript' id='wc-add-to-cart-js-extra'>
+/* <![CDATA[ */
+var wc_add_to_cart_params = {"ajax_url":"\/epood\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/epood\/?wc-ajax=%%endpoint%%","i18n_view_cart":"Vaata ostukorvi","cart_url":"https:\/\/espak.ee\/epood\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=8.1.1' id='wc-add-to-cart-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.8.1.1' id='js-cookie-js'></script>
+<script type='text/javascript' id='woocommerce-js-extra'>
+/* <![CDATA[ */
+var woocommerce_params = {"ajax_url":"\/epood\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/epood\/?wc-ajax=%%endpoint%%"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=8.1.1' id='woocommerce-js'></script>
+<script id="rocket-browser-checker-js-after" type="text/javascript">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/epood(\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/checkout\/??(.*)|\/cart\/?|\/my-account\/??(.*)|\/wc-api\/v(.*)|\/(index.php\/)?(.*)wp-json(\/.*|$))|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/espak.ee\/epood","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script id="rocket-preload-links-js-after" type="text/javascript">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/hoverIntent.min.js?ver=1.10.2' id='hoverIntent-js'></script>
+<script type='text/javascript' id='flatsome-js-js-extra'>
+/* <![CDATA[ */
+var flatsomeVars = {"theme":{"version":"3.17.7"},"ajaxurl":"https:\/\/espak.ee\/epood\/wp-admin\/admin-ajax.php","rtl":"","sticky_height":"70","stickyHeaderHeight":"0","scrollPaddingTop":"0","assets_url":"https:\/\/espak.ee\/epood\/wp-content\/themes\/flatsome\/assets\/","lightbox":{"close_markup":"<button title=\"%title%\" type=\"button\" class=\"mfp-close\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"><\/line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"><\/line><\/svg><\/button>","close_btn_inside":false},"user":{"can_edit_pages":false},"i18n":{"mainMenu":"Main Menu","toggleButton":"Toggle"},"options":{"cookie_notice_version":"1","swatches_layout":false,"swatches_disable_deselect":false,"swatches_box_select_event":false,"swatches_box_behavior_selected":false,"swatches_box_update_urls":"1","swatches_box_reset":false,"swatches_box_reset_limited":false,"swatches_box_reset_extent":false,"swatches_box_reset_time":300,"search_result_latency":"0"},"is_mini_cart_reveal":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/flatsome.js?ver=43f05e0ca79aa585a6aa' id='flatsome-js-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/themes/flatsome/inc/integrations/wp-rocket/flatsome-wp-rocket.js?ver=3.17.7' id='flatsome-wp-rocket-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/themes/flatsome/assets/js/woocommerce.js?ver=1a392523165907adee6a' id='flatsome-theme-woocommerce-js-js'></script>
+<!--[if IE]>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/intersection-observer-polyfill@0.1.0/dist/IntersectionObserver.js?ver=0.1.0' id='intersection-observer-polyfill-js'></script>
+<![endif]-->
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/enhanced-e-commerce-for-woocommerce-store/public/js/tvc-ee-google-analytics.js?ver=6.6.2' id='enhanced-ecommerce-google-analytics-js'></script>
+<script type='text/javascript' id='wc-cart-fragments-js-extra'>
+/* <![CDATA[ */
+var wc_cart_fragments_params = {"ajax_url":"\/epood\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/epood\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_feda0b9604e52255a3443ed2c8cb9e7d","fragment_name":"wc_fragments_feda0b9604e52255a3443ed2c8cb9e7d","request_timeout":"5000"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=8.1.1' id='wc-cart-fragments-js'></script>
+<!--[if IE]>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.0.1/ie11CustomProperties.min.js?ver=4.0.1' id='css-vars-polyfill-js'></script>
+<![endif]-->
+<script type='text/javascript' id='zxcvbn-async-js-extra'>
+/* <![CDATA[ */
+var _zxcvbnSettings = {"src":"https:\/\/espak.ee\/epood\/wp-includes\/js\/zxcvbn.min.js"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/zxcvbn-async.min.js?ver=1.0' id='zxcvbn-async-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2' id='wp-polyfill-inert-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.11' id='regenerator-runtime-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef' id='wp-i18n-js'></script>
+<script id="wp-i18n-js-after" type="text/javascript">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script type='text/javascript' id='password-strength-meter-js-extra'>
+/* <![CDATA[ */
+var pwsL10n = {"unknown":"Parooli tugevus teadmata","short":"V\u00e4ga n\u00f5rk","bad":"N\u00f5rk","good":"Keskmine","strong":"Tugev","mismatch":"Ei kattu"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-admin/js/password-strength-meter.min.js?ver=6.3.1' id='password-strength-meter-js'></script>
+<script type='text/javascript' id='wc-password-strength-meter-js-extra'>
+/* <![CDATA[ */
+var wc_password_strength_meter_params = {"min_password_strength":"3","stop_checkout":"","i18n_password_error":"Palun sisesta keerukam salas\u00f5na.","i18n_password_hint":"Vihje: Sinu parool peaks olema v\u00e4hemalt seitse m\u00e4rki pikk. Tugevama parooli saamiseks kasuta nii suur- kui v\u00e4iket\u00e4hti, numbreid ja erim\u00e4rke nagu ! \" ? $ % ^ & )."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://espak.ee/epood/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js?ver=8.1.1' id='wc-password-strength-meter-js'></script>
+<!-- WooCommerce JavaScript -->
+<script type="text/javascript">
+jQuery(function($) {
+tvc_smd={"tvc_wcv":"8.1.1","tvc_wpv":"6.3.1","tvc_eev":"6.6.2","tvc_cnf":{"t_cg":"","t_ec":"","t_ee":"on","t_df":"","t_gUser":"","t_UAen":"","t_thr":"6","t_IPA":"","t_PrivacyPolicy":"1"},"tvc_sub_data":{"sub_id":"","cu_id":"","pl_id":"","ga_tra_option":"","ga_property_id":"","ga_measurement_id":"","ga_ads_id":"","ga_gmc_id":"","ga_gmc_id_p":"","op_gtag_js":"","op_en_e_t":"","op_rm_t_t":"","op_dy_rm_t_t":"","op_li_ga_wi_ads":"","gmc_is_product_sync":"","gmc_is_site_verified":"","gmc_is_domain_claim":"","gmc_product_count":"","fb_pixel_id":"","tracking_method":"","user_gtm_id":""}};
+ });
+</script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://espak.ee/epood/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>
+</body>
+</html>
+
+<!-- Performance optimized by Redis Object Cache. Learn more: https://wprediscache.com -->

@@ -5,9 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import priceCompare.backend.enums.LocationName;
 
-@Builder
+@Builder(toBuilder=true)
 @Getter
 public class LocationDto {
     LocationName locationName;
+    String address;
     Integer quantity;
+    Boolean infoUnavailable;
+    String additionalNotes;
 }

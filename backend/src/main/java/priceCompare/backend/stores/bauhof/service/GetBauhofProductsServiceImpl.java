@@ -1,10 +1,11 @@
 package priceCompare.backend.stores.bauhof.service;
 
+import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
@@ -13,11 +14,12 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
-import priceCompare.backend.stores.krauta.service.KRautaAPIs;
-
 import java.net.URI;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
@@ -54,7 +56,7 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
             numProductsTotal = Math.min(numProductsTotal, FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
             offset += SEARCH_API_PAGE_SIZE;
 
-            products.addAll(parseResponse(response.toString()));
+            products.addAll(parseResponse(response.toString(), keyword));
         } while(offset < numProductsTotal);
 
         return ProductsDto.builder()
@@ -63,7 +65,7 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
     }
 
     private URI buildUrl(String keyword){
-        return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, keyword));
+        return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, URLEncoder.encode(keyword, StandardCharsets.UTF_8)));
     }
 
     private String buildRequestBody(String keyword, int offset) {
@@ -72,7 +74,7 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
                 API_KEY, keyword, SEARCH_API_PAGE_SIZE, offset);
     }
 
-    private List<ProductDto> parseResponse(String response) {
+    private List<ProductDto> parseResponse(String response, String keyword) {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = null;
         try {
@@ -87,9 +89,12 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
             if(productNode.path("inStock").asText("yes").equals("no"))
                 continue;
 
+            String productName = productNode.path("name").asText();
+            if (!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+
             ProductDto product = ProductDto.builder()
                     .store(Store.BAUHOF)
-                    .name(productNode.path("name").asText())
+                    .name(productName)
                     .price(productNode.path("price").asDouble())
                     .unit(Unit.fromDisplayName(productNode.path("unit_id").asText()))
                     .linkToProduct(BAUHOF_PRODUCT_URL_BEGINNING + productNode.path("sku").asText() + "/" + productNode.path("url_key").asText())
