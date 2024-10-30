@@ -83,6 +83,9 @@ public class DecoraAPIs {
         URI locationUri = URI.create(String.format("https://www.decora.ee/stockavailability/load/stock/?product_sku=%s&_=%d", sku, System.currentTimeMillis()));
         return httpClientService.GetStringAsync(locationUri)
                 .thenApply(HttpResponse::body)
-                .thenApply(Jsoup::parse);
+                .thenApply(JSONObject::new)
+                .thenApply(obj -> obj.getString("html"))
+                .thenApply(html -> String.format("<table>%s</table>", html)) // not including this will mean that jsoup wont parse the html contents properly
+                .thenApply(Jsoup::parseBodyFragment);
     }
 }
