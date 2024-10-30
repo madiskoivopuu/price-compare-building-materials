@@ -28,7 +28,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                 <button
                     key={1}
                     onClick={() => handlePageChange(1)}
-                    className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${1 === currentPage ? 'bg-gray-300' : ''}`}
+                    className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${1 === currentPage ? 'border' : ''}`}
                 >
                     1
                 </button>
@@ -54,7 +54,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={i}
                         onClick={() => handlePageChange(i)}
-                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${i === currentPage ? 'bg-gray-300' : ''}`}
+                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${i === currentPage ? 'border' : ''}`}
                     >
                         {i}
                     </button>
@@ -70,7 +70,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={totalPages}
                         onClick={() => handlePageChange(totalPages)}
-                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${totalPages === currentPage ? 'bg-gray-300' : ''}`}
+                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center ${totalPages === currentPage ? 'border' : ''}`}
                     >
                         {totalPages}
                     </button>
@@ -82,11 +82,11 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
     };
 
     return (
-        <div className="flex justify-between items-center p-4 border-b">
+        <div className="flex justify-between items-center py-4 border-t border-gray-700">
             <div className="text-gray-700">
                 <p>Leitud {isLoading ? <span className='animate-pulse'>...</span> : totalProducts} toodet</p>
             </div>
-            <div className="flex items-center gap-2 justify-center flex-grow">
+            <div className="flex items-center gap-2 justify-center">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
@@ -98,7 +98,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                         {'<'}
                     </span>
                 </button>
-                {renderPageNumbers()}
+                <div className='flex'>{renderPageNumbers()}</div>
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
@@ -111,6 +111,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     </span>
                 </button>
             </div>
+            <div className='w-24'></div>
         </div>
     );
 }
