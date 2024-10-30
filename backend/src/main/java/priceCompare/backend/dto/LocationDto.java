@@ -23,6 +23,6 @@ public class LocationDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getLocationName(), getAddress());
+        return Objects.hash(getLocationName().getDisplayName(), getAddress());
     }
 }

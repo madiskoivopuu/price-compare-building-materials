@@ -1,8 +1,10 @@
 package priceCompare.backend.stores.decora.service;
 
+import lombok.Getter;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.enums.LocationName;
 
+@Getter
 public enum DecoraStoreLocation {
     TALLINN(LocationDto.builder()
             .locationName(LocationName.TALLINN)

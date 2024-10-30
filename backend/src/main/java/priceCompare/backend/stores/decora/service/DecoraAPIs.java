@@ -3,6 +3,7 @@ package priceCompare.backend.stores.decora.service;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 
@@ -10,6 +11,7 @@ import java.net.URI;
 import java.net.http.HttpResponse;
 import java.util.concurrent.CompletableFuture;
 
+@Service
 public class DecoraAPIs {
     public static final int SEARCH_API_PAGE_SIZE = 100;
 
