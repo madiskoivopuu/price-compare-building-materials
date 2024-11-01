@@ -60,7 +60,7 @@ public enum Category {
     }),
     FASSAAD("Fassaad", new Subcategory[]{
             Subcategory.VALISVOODRILAUD,
-            Subcategory.PLAADID,
+            Subcategory.FASSAAD_PLAADID,
             Subcategory.PROFIILID,
             Subcategory.TARVIKUD
     }),
@@ -94,7 +94,7 @@ public enum Category {
     }),
     EHITUSMETALL("Ehitusmetall", new Subcategory[]{
             Subcategory.NURGAD,
-            Subcategory.PLAADID,
+            Subcategory.EHITUSMETALL_PLAADID,
             Subcategory.POSTIJALAD,
             Subcategory.EHITUSKOBAD,
             Subcategory.BETOONIHARGID,
@@ -104,7 +104,7 @@ public enum Category {
     AKNAD_JA_UKSED("Aknad ja uksed", new Subcategory[]{
             Subcategory.SISEUKSED,
             Subcategory.VALISUKSED,
-            Subcategory.SAUNUKSED,
+            Subcategory.SAUNAUKSED,
             Subcategory.UKSELENGID,
             Subcategory.POONINGULUUGID,
             Subcategory.KONTROLLLUUGID,
@@ -123,23 +123,29 @@ public enum Category {
             Subcategory.VALIS
     }),
     LIISTUD("Liistud", new Subcategory[]{
-            Subcategory.PORAND,
+            Subcategory.LIISTUD_PORAND,
             Subcategory.AVATAITED,
-            Subcategory.LAGI,
-            Subcategory.VIIMISTLUSPLAADID,
-            Subcategory.PORAND,
-            Subcategory.LAGI,
+            Subcategory.LIISTUD_LAGI,
+    }),
+    VIIMISTLUSPLAADID("Viimistlusplaadid", new Subcategory[]{
+            Subcategory.LIISTUD_PORAND,
+            Subcategory.LIISTUD_LAGI,
             Subcategory.SEIN
     }),
-    LAHUSTID("Lahustid", new Subcategory[]{}),
+    LAHUSTID("Lahustid", new Subcategory[]{
+            Subcategory.LAHUSTID
+    }),
     TEIBID("Tebid", new Subcategory[]{
             Subcategory.MAALRITEIP,
             Subcategory.TUULETOKKETEIP,
             Subcategory.UNIVERSAAL
     }),
     SILIKOONID("Silikoonid", new Subcategory[]{
-            Subcategory.LIIMID,
             Subcategory.UNIVERSAAL
+    }),
+    LIIMID("Liimid", new Subcategory[]{
+            Subcategory.LIIM_PUIT,
+            Subcategory.LIIM_UNIVERSAAL,
     }),
     HUDROISOLATSIOON("Hüdroisolatsioon", new Subcategory[]{
             Subcategory.HUDROISOLATSIOON
@@ -171,7 +177,8 @@ public enum Category {
             Subcategory.ANKRUD,
             Subcategory.KEERMELATID,
             Subcategory.MUUD,
-            Subcategory.TARVIKUD,
+    }),
+    TARVIKUD("Tarvikud", new Subcategory[]{
             Subcategory.KIPSITARVIKUD,
             Subcategory.BAUROCI_TARVIKUD,
             Subcategory.FIBOTARVIKUD
