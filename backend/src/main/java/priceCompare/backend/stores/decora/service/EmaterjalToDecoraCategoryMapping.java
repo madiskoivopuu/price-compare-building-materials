@@ -11,41 +11,50 @@ import static priceCompare.backend.enums.Subcategory.*;
 
 // Mappings of ematerjal.ee categories to decora.ee categories that klevu search api accepts
 public class EmaterjalToDecoraCategoryMapping {
-    public static final Map<Subcategory, List<String>> subcatMap = Map.ofEntries(
+    public static final Map<Subcategory, List<String>> subcatMap = Map.<Subcategory, List<String>>ofEntries(
             Map.entry(KIPSPLAAT, List.of("Kipsplaadid")),
             Map.entry(OSB_PLAAT, List.of("Puitlaast- ja puitkiudplaadid")),
             Map.entry(VINEER, List.of("Vineerid")),
             Map.entry(TSEMENTKIUDPLAAT, List.of("Tsementplaadid")),
             Map.entry(PUITKIUDPLAAT, List.of("Puitlaast- ja puitkiudplaadid")),
             Map.entry(PUITLAASTPLAAT, List.of("Puitlaast- ja puitkiudplaadid")),
-            Map.entry(TUULETOKKEPLAAT, List.of("Tuuletõkkeplaadid")),
             Map.entry(KIPSKIUDPLAAT, null),
-            Map.entry(MDF_PLAAT, List.of("Melamiinplaadid")),
-            Map.entry(WEDI_PLAAT, List.of("??")),
-            Map.entry(TYCROC_PLAAT, List.of("??")),
-            Map.entry(TEMPSI_PLAAT, List.of("??")),
-            Map.entry(POORBETOON_BAUROC, List.of("Müürisegud ja betoonid")),
-            Map.entry(FIBO, List.of("Sillused", "Ehitusplokk")),
+            Map.entry(WEDI_PLAAT, null),
+            Map.entry(TYCROC_PLAAT, List.of("XPS ja PIR soojustusplaadid")),
+            Map.entry(POORBETOON_BAUROC, List.of("Ehitusplokk")),
+            Map.entry(FIBO, List.of("Ehitusplokk")),
             Map.entry(OONESPLOKK, List.of("Ehitusplokk")),
             Map.entry(TELLIS, List.of("Tellised")),
+            Map.entry(SILLUSED, List.of("Sillused")),
             Map.entry(SILIKAATPLOKK, List.of("Tellised")),
             Map.entry(LAKKAPLOKK, null),
-            Map.entry(KERATERM, List.of("Seinaplaadid", "Dekoorplaadid ja bordüürid", "Põrandaplaadid", "Klaasplokid", "Mosaiikplaadid", "Naturaalkivid")),
+            Map.entry(KERATERM, null),
             Map.entry(VUNDAMENDIPLOKK, null),
             Map.entry(TANAVAKIVI, List.of("Tänavakivid")),
             Map.entry(KONNITEPLAAT, List.of("Tänavakivid")),
             Map.entry(AAREKIVID, List.of("Tänavakivid")),
-            Map.entry(VIHMAVEERENN, null),
-            Map.entry(LOODUSKIVID, List.of("Naturaalkivid")),
+            Map.entry(VIHMAVEERENN, List.of("Tänavakivid")),
+            Map.entry(KORSTNAD, null),
+            Map.entry(LOODUSKIVID, null),
             Map.entry(KIVIVILL, List.of("Kivivillad")),
             Map.entry(KLAASVILL, List.of("Klaasvillad")),
+            Map.entry(TSELLUVILL, List.of("Tselluvill")),
             Map.entry(EPS, List.of("EPS-vahtpolüstüreen")),
             Map.entry(XPS, List.of("XPS ja PIR soojustusplaadid")),
             Map.entry(PIR, List.of("XPS ja PIR soojustusplaadid")),
+            Map.entry(TUULETOKKEPLAAT, List.of("Tuuletõkkeplaadid")),
             Map.entry(PRUSSID, List.of("Saematerjal")),
-            Map.entry(LAUAD, List.of("Höövelmaterjal", "Liimpuit", "Saematerjal", "Saunamaterjal", "Terrassilaud", "Voodrilaud")),
-            Map.entry(HOOVELPUIT, List.of("Höövelmaterjal")),
-            Map.entry(PAHTEL, List.of("Valmispahtlid", "Pahtlid")),
+            Map.entry(LAUAD, List.of("Saematerjal")),
+            Map.entry(KALIBREERITUD_PRUSSID, null),
+            Map.entry(KALIBREERITUD_LAUAD, null),
+            Map.entry(HOOVELLAUAD, List.of("Höövelmaterjal")),
+            Map.entry(LIIMPUIT, List.of("Liimpuit")),
+            Map.entry(PORANDALAUAD, null),
+            Map.entry(TERRASSILAUAD, List.of("Terrassilaud")),
+            Map.entry(SISEVOODRILAUAD, List.of("Saunamaterjal", "Voordilaud"))
+
+            // customer has not yet mapped these, will only be done until Fassaad category
+            /*Map.entry(PAHTEL, List.of("Valmispahtlid", "Pahtlid")),
             Map.entry(KROHV, List.of("Krohvid ja tarvikud")),
             Map.entry(MUURISEGU, List.of("Müürisegud ja betoonid")),
             Map.entry(PLAATIMISSEGU, List.of("Plaatimissegud")),
@@ -59,6 +68,7 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(FASSAAD_PLAADID, List.of("Tsementplaadid")),
             Map.entry(PROFIILID, List.of("?")),
             Map.entry(TARVIKUD, List.of("Fassaadisegud ja tarvikud")),
+            Map.entry(TEMPSI_PLAAT, List.of("??")), // kliendi teha veel
             Map.entry(KIVI, null),
             Map.entry(TERAS, null),
             Map.entry(ETERNIIT, List.of("Eterniitkatused")),
@@ -66,7 +76,6 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(PVC, List.of("PVC katusematerjalid")),
             Map.entry(PC, null),
             Map.entry(RULLMATERJAL, List.of("Katuse aluskatted")),
-            Map.entry(KORSTNAD, List.of("Metallkorstnad", "Moodulkorstnad")),
             Map.entry(TARVIKUD, List.of("Eterniitkatused", "Bituumenkatused", "PVC katusematerjalid")),
             Map.entry(VARIKATUSED, List.of("Päikesevarjud ja varikatused")),
             Map.entry(PLEKK, List.of("Laekarkassid", "Seinakarkassid")),
@@ -136,12 +145,13 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(MUUD, List.of("Kruvid", "Naelad", "Kinnitustarvikud", "Poldid, mutrid, seibid", "Klambripüstolid ja klambrid", "Aiavõrgud ja piirded", "MDF seina- ja laepaneelid", "Installatsioonitarvikud", "Keermelatid")),
             Map.entry(KIPSITARVIKUD, null),
             Map.entry(BAUROCI_TARVIKUD, null),
-            Map.entry(FIBOTARVIKUD, null)
+            Map.entry(FIBOTARVIKUD, null)*/
     );
 
-    public static final Map<Subcategory, Function<ProductParseDto, Boolean>> subcatAdditionalVerification = Map.ofEntries(
-            Map.entry(OSB_PLAAT, (ProductParseDto product) -> {
-                return true;
+    public static final Map<Subcategory, Function<ProductParseDto, Boolean>> subcatAdditionalVerification = Map.<Subcategory, Function<ProductParseDto, Boolean>>ofEntries(
+            // need customer
+            /*Map.entry(OSB_PLAAT, (ProductParseDto product) -> {
+                return product.getProduct().getName().contains("OSB");
             }),
             Map.entry(TSEMENTKIUDPLAAT, (ProductParseDto product) -> {
                 return true;
@@ -314,6 +324,11 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(MUUD, (ProductParseDto product) -> { // ülejäägid lihtsalt?
                 // programmaatiliselt keeruline, ei saa seda hashmapi selle funktsiooni sees referencida
                 return true;
-            })
+            })*/
     );
+
+    public static boolean additionalVerification(Subcategory subcategory, ProductParseDto product) {
+        Function<ProductParseDto, Boolean> verify = subcatAdditionalVerification.getOrDefault(subcategory, (ProductParseDto p) -> true);
+        return verify.apply(product);
+    }
 }

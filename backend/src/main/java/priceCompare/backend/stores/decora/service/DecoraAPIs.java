@@ -9,11 +9,28 @@ import priceCompare.backend.enums.Subcategory;
 
 import java.net.URI;
 import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Service
 public class DecoraAPIs {
     public static final int SEARCH_API_PAGE_SIZE = 100;
+
+    private static final String categoryFilterJson = """
+            , "applyFilters": {
+                      "filters": [
+                        {
+                          "key": "category",
+                          "values": [
+                            %s
+                          ],
+                          "settings": {
+                            "singleSelect": "false"
+                          }
+                        }
+                      ]
+                    }
+            """;
 
     private final HttpClientService httpClientService;
     public DecoraAPIs(HttpClientService httpClientService) {
@@ -28,6 +45,13 @@ public class DecoraAPIs {
      * @return The products fetched from offset to the page limit
      */
     public JSONObject fetchPageFromSearchAPI(String query, Subcategory subcategory, int offset) {
+        String categoryFilter = "";
+        List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, null);
+        if(subcategory != null && categoryMappings != null) {
+            String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));
+            categoryFilter = String.format(categoryFilterJson, categories);
+        }
+
         String body = String.format("""
                 {
                   "context": {
@@ -66,10 +90,11 @@ public class DecoraAPIs {
                           ]
                         }
                       }
+                      %s
                     }
                   ]
                 }
-                """, query, SEARCH_API_PAGE_SIZE, offset);
+                """, query, SEARCH_API_PAGE_SIZE, offset, categoryFilter);
 
         return httpClientService.PostWithBody(URI.create("https://decoracsv2.ksearchnet.com/cs/v2/search"), body);
     }
