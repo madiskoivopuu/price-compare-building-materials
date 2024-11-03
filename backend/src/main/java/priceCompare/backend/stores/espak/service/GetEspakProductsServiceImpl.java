@@ -7,8 +7,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.LocationDto;
@@ -17,7 +15,6 @@ import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.*;
 import priceCompare.backend.stores.GetStoreProductsService;
-
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpResponse;
@@ -29,7 +26,6 @@ import java.util.concurrent.CompletionException;
 
 @Service
 public class GetEspakProductsServiceImpl implements GetStoreProductsService {
-    private static final Logger logger = LoggerFactory.getLogger(GetEspakProductsServiceImpl.class);
     public static final int FETCH_MAX_NUM_PRODUCTS = 1024;
     private static final int PRODUCT_BATCH_SIZE = 20;
     private static final int SEARCH_BATCH_SIZE = 8;
@@ -43,132 +39,115 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
         return URI.create(String.format("https://espak.ee/epood/page/%d/?s=%s&post_type=product", page, URLEncoder.encode(query, StandardCharsets.UTF_8)));
     }
 
+    /**
+     * Returns all the products (up to FETCH_MAX_NUM_PRODUCTS) that the espak.ee search API gives us.
+     * @param query Query to search products with
+     * @return A list of products that are in stock somewhere. Some core ProductDto fields might be filled
+     */
     private List<ProductDto> performEspakSearch(String query) {
         int page = 1;
         List<ProductDto> products = new ArrayList<>();
         boolean moreProductsToFetch = true;
 
         do {
-            long batchStartTime = System.currentTimeMillis();
-
             List<CompletableFuture<HttpResponse<String>>> searchPageResponses = new ArrayList<>();
-            for (int i = 0; i < SEARCH_BATCH_SIZE; i++) {
-                URI pageUri = formatSearchUri(query, page + i);
-                logger.info("Fetching Espak search page: {}", pageUri);
-                searchPageResponses.add(httpClientService.GetStringAsync(pageUri));
-            }
+            for(int i = 0; i < SEARCH_BATCH_SIZE; i++)
+                searchPageResponses.add(
+                        httpClientService.GetStringAsync(formatSearchUri(query, page+i))
+                );
 
-            for (CompletableFuture<HttpResponse<String>> responseFuture : searchPageResponses) {
+            for(CompletableFuture<HttpResponse<String>> responseFuture : searchPageResponses) {
                 page++;
                 HttpResponse<String> response;
+                String htmlPage;
 
                 try {
                     response = responseFuture.join();
-                    logger.info("Received response for page {} with status code: {}", page, response.statusCode());
-                } catch (CompletionException e) {
-                    logger.error("Error fetching data from search page {}: {}", page, e.getMessage());
+                } catch(CompletionException e) {
+                    System.err.printf("ESPAK products service: Error fetching data from search page: %s, Exception: %s\n", page, e.getMessage());
                     continue;
                 }
 
-                if (response.statusCode() == 404) {
+                if(response.statusCode() == 404) { // no more products to fetch
                     moreProductsToFetch = false;
-                    logger.info("No more products to fetch; reached page 404.");
                     break;
                 }
 
-                String htmlPage = response.body();
-                logger.debug("Response body for page {}: {}", page, htmlPage.substring(0, Math.min(htmlPage.length(), 500))); // Log only the first 500 characters
-
-                Document doc = Jsoup.parse(htmlPage);
+                Document doc = Jsoup.parse(response.body());
                 Elements productElements = doc.select("div.product.type-product");
+                if(productElements.isEmpty()) continue; // some pages are randomly empty on espak.ee
 
-                if (productElements.isEmpty()) {
-                    logger.warn("No product elements found on page {}", page);
-                    continue;
-                }
-
-                for (Element productElement : productElements) {
-                    if (!productElement.select("p.listing-stock-in").text().equals("Laos")) {
-                        logger.debug("Product out of stock on page {}: {}", page, productElement);
-                        continue;
-                    }
+                for(Element productElement : productElements) {
+                    if(!productElement.select("p.listing-stock-in").text().equals("Laos")) continue;
 
                     String productName = productElement.select("p.name.product-title > a").text();
-                    if (!checkProductNameCorrespondsToSearch(productName, query)) {
-                        logger.debug("Product name does not match search query on page {}: {}", page, productName);
-                        continue;
-                    }
+                    if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
 
-                    try {
-                        double price = Double.parseDouble(productElement.select("div.price-wrapper > div:nth-child(1)").text().replace("€", "").trim());
-                        ProductDto product = ProductDto.builder()
-                                .store(Store.ESPAK)
-                                .name(productName)
-                                .price(price)
-                                .linkToProduct(productElement.select("p.name.product-title > a").attr("href"))
-                                .linkToPicture(productElement.select("img").attr("src"))
-                                .location(mapLocationWithStock())
-                                .build();
-                        products.add(product);
-                        logger.info("Added product: {}", productName);
-                    } catch (Exception e) {
-                        logger.error("Error parsing product element on page {}: {}", page, e.getMessage());
-                    }
+                    ProductDto product = ProductDto.builder()
+                            .store(Store.ESPAK)
+                            .name(productName)
+                            .price(Double.parseDouble(productElement.select("div.price-wrapper > div:nth-child(1)").text()))
+                            .linkToProduct(productElement.select("p.name.product-title > a").attr("href"))
+                            .linkToPicture(productElement.select("img").attr("src"))
+                            .location(mapLocationWithStock())
+                            .build();
+
+                    products.add(product);
                 }
             }
+        } while(products.size() < FETCH_MAX_NUM_PRODUCTS && moreProductsToFetch);
 
-            long batchEndTime = System.currentTimeMillis();
-            logger.info("Batch of {} pages took {} ms", SEARCH_BATCH_SIZE, (batchEndTime - batchStartTime));
-
-        } while (products.size() < FETCH_MAX_NUM_PRODUCTS && moreProductsToFetch);
-
-        logger.info("Finished fetching Espak products. Total products found: {}", products.size());
         return products;
     }
 
+    /**
+     * Fetches core information fields that were not filled in ProductDto only with the search API request
+     * @param products All the products that were fetched from the search API
+     * @return ProductsDto with core fields filled
+     */
     private List<ProductDto> fetchCoreInfoFields(List<ProductDto> products) {
         List<ProductDto> newProducts = new ArrayList<>();
         List<List<ProductDto>> batches = Lists.partition(products, PRODUCT_BATCH_SIZE);
 
-        for (List<ProductDto> batch : batches) {
-            long batchStartTime = System.currentTimeMillis();
-
+        // send reqs
+        for(List<ProductDto> batch : batches) {
             List<CompletableFuture<String>> responseFutures = new ArrayList<>();
-            for (ProductDto product : batch) {
-                URI productUri = URI.create(product.getLinkToProduct());
-                logger.info("Fetching detailed info for product: {}", productUri);
-                responseFutures.add(httpClientService.GetStringAsync(productUri).thenApply(HttpResponse::body));
+            for(ProductDto product : batch) {
+                responseFutures.add(
+                        httpClientService.GetStringAsync(URI.create(product.getLinkToProduct())).thenApply(HttpResponse::body)
+                );
             }
 
-            for (int i = 0; i < batch.size(); i++) {
+            for(int i = 0; i < batch.size(); i++) {
                 CompletableFuture<String> future = responseFutures.get(i);
                 ProductDto product = batch.get(i);
 
                 try {
                     String resp = future.join();
+
                     Document body = Jsoup.parse(resp);
-                    String unitText = body.select("div.unit").text();
-                    product = product.toBuilder().unit(Unit.fromDisplayName(unitText)).build();
-                    logger.info("Updated product with detailed info: {}", product.getName());
-                } catch (CompletionException e) {
-                    logger.error("Error fetching data from URL {}: {}", product.getLinkToProduct(), e.getMessage());
+                    product = product.toBuilder()
+                            .unit(Unit.fromDisplayName(body.select("div.unit").text()))
+                            .build();
+                } catch(CompletionException e) {
+                    System.err.printf("ESPAK products service: Error fetching data from URL: %s, Exception: %s\n", product.getLinkToProduct(), e.getMessage());
                 } finally {
                     newProducts.add(product);
                 }
             }
-
-            long batchEndTime = System.currentTimeMillis();
-            logger.info("Batch of {} products took {} ms to fetch detailed information", PRODUCT_BATCH_SIZE, (batchEndTime - batchStartTime));
         }
 
-        logger.info("Finished fetching detailed info for Espak products. Total products enriched: {}", newProducts.size());
         return newProducts;
     }
 
+    /**
+     * Gives all store locations stock information. If stock is not available in a certain store (LocationDto), then the stock will remain at 0. Special cases, where the product is always in stock but the amount isnt mentioned, is shown with stock set to -1
+     * @return List of store locations along with the stock in every one. This is hardcoded since Espak always lists products in stock at their Tallinn shop.
+     */
     private LocationsDto mapLocationWithStock() {
         List<LocationDto> locations = new ArrayList<>();
-        for (EspakStoreLocation storeLocation : EspakStoreLocation.values()) {
-            if (storeLocation.location.getLocationName() == LocationName.TALLINN) {
+        for(EspakStoreLocation storeLocation : EspakStoreLocation.values()) {
+            if(storeLocation.location.getLocationName() == LocationName.TALLINN) {
                 locations.add(
                         storeLocation.location.toBuilder()
                                 .quantity(-1)
@@ -196,7 +175,8 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
         List<ProductDto> products = performEspakSearch(query);
         products = fetchCoreInfoFields(products);
 
-        logger.info("Completed product search for Espak with query '{}'. Total products returned: {}", query, products.size());
-        return ProductsDto.builder().products(products).build();
+        return ProductsDto.builder()
+                .products(products)
+                .build();
     }
 }

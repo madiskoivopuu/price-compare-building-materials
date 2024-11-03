@@ -14,7 +14,6 @@ import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Service
@@ -32,44 +31,44 @@ public class FindProductsServiceImpl implements FindProductService {
 
     @Override
     public ProductsDto findProducts(String keyword, Category category, Subcategory subcategory) {
+        // Record the start time
+        long startTime = System.currentTimeMillis();
+        logger.info("Starting concurrent product fetch for Bauhof, Krauta, and Espak services");
 
-        // Start fetching products concurrently for Bauhof and Krauta
-        logger.info("Starting concurrent product fetch for Bauhof service");
+        // Start fetching products concurrently for Bauhof, Krauta, and Espak
         CompletableFuture<ProductsDto> bauhofFuture = CompletableFuture.supplyAsync(() ->
                 getBauhofProductsService.getBauhofProducts(keyword, category, subcategory)
         );
-        logger.info("Starting concurrent product fetch for Krauta service");
         CompletableFuture<ProductsDto> krautaFuture = CompletableFuture.supplyAsync(() ->
                 getKRautaProductsService.getKRautaProducts(keyword, category, subcategory)
+        );
+        CompletableFuture<ProductsDto> espakFuture = CompletableFuture.supplyAsync(() ->
+                getEspakProductsService.searchForProducts(keyword, category, subcategory)
         );
 
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
 
-        // wait for Bauhof and Krauta to complete, then add their results
-        CompletableFuture<Void> allFutures = CompletableFuture.allOf(bauhofFuture, krautaFuture);
+        // Wait for all services to complete and combine results
+        CompletableFuture<Void> allFutures = CompletableFuture.allOf(bauhofFuture, krautaFuture, espakFuture);
 
         allFutures.thenRun(() -> {
-            List<ProductsDto> fetchedProducts = Stream.of(bauhofFuture, krautaFuture)
-                    .map(CompletableFuture::join) // wait for each future to complete
+            List<ProductsDto> fetchedProducts = Stream.of(bauhofFuture, krautaFuture, espakFuture)
+                    .map(CompletableFuture::join) // Wait for each future to complete
                     .toList();
 
             for (ProductsDto fetchedProduct : fetchedProducts) {
                 AddFetchedProductsToList(products, fetchedProduct);
             }
 
-            logger.info("Concurrent fetch for Bauhof and Krauta complete. Total products so far: {}", products.getProducts().size());
-        }).join(); // wait for Bauhof and KRauta to complete
-
-        // Run the Espak service synchronously after Bauhof and KRauta
-        logger.info("Fetching products from Espak service synchronously");
-        ProductsDto espakProducts = getEspakProductsService.searchForProducts(keyword, category, subcategory);
-        AddFetchedProductsToList(products, espakProducts);
-
-        logger.info("All product fetch operations complete. Total products found: {}", products.getProducts().size());
+            // Log the total time taken
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            logger.info("Concurrent fetch for Bauhof, Krauta, and Espak complete in {} ms. Total products found: {}",
+                    duration, products.getProducts().size());
+        }).join(); // Wait for all futures to complete
 
         return products;
     }
-
 
     private ProductsDto AddFetchedProductsToList(ProductsDto products, ProductsDto productsToBeAdded) {
         if (productsToBeAdded != null) {

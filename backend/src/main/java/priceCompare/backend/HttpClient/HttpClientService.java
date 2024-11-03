@@ -27,6 +27,7 @@ public class HttpClientService {
                 .version(HttpClient.Version.HTTP_2) // concurrent requests in 1 connection
                 .connectTimeout(Duration.ofSeconds(30))
                 .build();
+        logger.info("Created HttpClientService");
     }
     
     public JSONObject GetJson(URI url) {
