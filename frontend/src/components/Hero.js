@@ -12,26 +12,56 @@ function Hero() {
     const productsPerPage = 25 //currently a constant
     const [isLoading, setIsLoading] = useState(false) // Loading state while fetching products
 
+    // useEffect(() => {
+    //     if (q) {
+    //         setIsLoading(true)
+    //         //fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
+    //         fetch(`http://localhost:8080/request/search?keyword=${q}`)
+    //             .then(async (response) => {
+    //                 const decoder = new TextDecoder('utf-8');
+    //                 const decodedResponse = decoder.decode(await response.arrayBuffer());
+    //                 return JSON.parse(decodedResponse);
+    //             })
+    //             .then((res) => {
+    //                 setItems(res);
+    //                 const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
+    //                 setSortedProducts(sorted);
+    //                 setCurrentPage(1);
+    //             })
+    //             .then(() => setIsLoading(false))
+    //             .catch((err) => console.error("Fetch error:", err));
+    //     }
+    // }, [q]);
+
     useEffect(() => {
-        if (q) {
-            setIsLoading(true)
-            fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
-            //fetch(`http://localhost:8080/request/search?keyword=${q}`)
-                .then(async (response) => {
-                    const decoder = new TextDecoder('utf-8');
-                    const decodedResponse = decoder.decode(await response.arrayBuffer());
-                    return JSON.parse(decodedResponse);
-                })
-                .then((res) => {
-                    setItems(res);
-                    const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
-                    setSortedProducts(sorted);
-                    setCurrentPage(1);
-                })
-                .then(() => setIsLoading(false))
-                .catch((err) => console.error("Fetch error:", err));
+        // Sample data based on provided JSON for testing
+        const sampleData = {
+            products: [
+                {
+                    store: "KRAUTA",
+                    name: "Kipsplaat GN13 standard 12,5x1200x2600",
+                    price: 14.1,
+                    unit: "PLAAT",
+                    locations: [
+                        { location: { locationName: "TALLINN", address: "Laki põik 4" }, quantity: 274, infoUnavailable: false },
+                        { location: { locationName: "TARTU", address: "Riia 193" }, quantity: 146, infoUnavailable: false },
+                        { location: { locationName: "PARNU", address: "Suur-Jõe 57/1" }, quantity: 66, infoUnavailable: false },
+                        { location: { locationName: "VORU", address: "Lepa 2" }, quantity: 73, infoUnavailable: false },
+                        { location: { locationName: "VILJANDI", address: "Leola 53" }, quantity: 59, infoUnavailable: false },
+                        { location: { locationName: "JOGEVA", address: "Puiestee 38" }, quantity: 0, infoUnavailable: true },
+                        { location: { locationName: "POLTSAMAA", address: "Laki põik 4" }, quantity: 0, infoUnavailable: true },
+                    ],
+                    linkToProduct: "https://www.decora.ee/5721-kipsplaat-gn13-standard-125x1200x2600",
+                    linkToPicture: "https://media.decora.ee/klevu_images/200X200/b/5/e/8/b5e81d0d9540515e8029b7602236264c2bc6da7a_4439692.jpg"
+                }
+            ]
         }
-    }, [q]);
+
+        setItems(sampleData);
+        const sorted = sampleData.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+        setSortedProducts(sorted);
+        setCurrentPage(1);
+    }, []);
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -89,6 +119,7 @@ function Hero() {
                                     linkToProduct={item.linkToProduct}
                                     price={item.price}
                                     unit={item.unit}
+                                    locations={item.locations}
                                 />
                             </li>)
                             :
