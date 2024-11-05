@@ -6,6 +6,7 @@ import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
+import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
 import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
 
@@ -23,12 +24,16 @@ public class FindProductsServiceImpl implements FindProductService {
     @Autowired
     private GetEspakProductsServiceImpl getEspakProductsService;
 
+    @Autowired
+    private GetDecoraProductsServiceImpl getDecoraProductsService;
+
     @Override
     public ProductsDto findProducts(String keyword, Category category, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
         AddFetchedProductsToList(products, getBauhofProductsService.getBauhofProducts(keyword, category, subcategory));
         AddFetchedProductsToList(products, getKRautaProductsService.getKRautaProducts(keyword, category, subcategory));
         AddFetchedProductsToList(products, getEspakProductsService.searchForProducts(keyword, category, subcategory));
+        AddFetchedProductsToList(products, getDecoraProductsService.searchForProducts(keyword, category, subcategory));
         return products;
     }
 

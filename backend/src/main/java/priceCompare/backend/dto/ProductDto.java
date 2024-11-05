@@ -15,7 +15,7 @@ public class ProductDto {
     String name;
     Double price;
     Unit unit;
-    LocationsDto location;
+    StockInLocationsDto stock;
     String linkToProduct;
     String linkToPicture;
 }

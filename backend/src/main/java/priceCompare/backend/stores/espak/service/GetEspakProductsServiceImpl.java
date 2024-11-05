@@ -9,10 +9,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
-import priceCompare.backend.dto.LocationDto;
-import priceCompare.backend.dto.LocationsDto;
-import priceCompare.backend.dto.ProductDto;
-import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.dto.*;
+import priceCompare.backend.dto.StockInLocationsDto;
 import priceCompare.backend.enums.*;
 import priceCompare.backend.stores.GetStoreProductsService;
 import java.net.URI;
@@ -89,7 +87,7 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                             .price(Double.parseDouble(productElement.select("div.price-wrapper > div:nth-child(1)").text()))
                             .linkToProduct(productElement.select("p.name.product-title > a").attr("href"))
                             .linkToPicture(productElement.select("img").attr("src"))
-                            .location(mapLocationWithStock())
+                            .stock(mapLocationWithStock())
                             .build();
 
                     products.add(product);
@@ -144,12 +142,13 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
      * Gives all store locations stock information. If stock is not available in a certain store (LocationDto), then the stock will remain at 0. Special cases, where the product is always in stock but the amount isnt mentioned, is shown with stock set to -1
      * @return List of store locations along with the stock in every one. This is hardcoded since Espak always lists products in stock at their Tallinn shop.
      */
-    private LocationsDto mapLocationWithStock() {
-        List<LocationDto> locations = new ArrayList<>();
+    private StockInLocationsDto mapLocationWithStock() {
+        List<StockDto> locations = new ArrayList<>();
         for(EspakStoreLocation storeLocation : EspakStoreLocation.values()) {
             if(storeLocation.location.getLocationName() == LocationName.TALLINN) {
                 locations.add(
-                        storeLocation.location.toBuilder()
+                        StockDto.builder()
+                                .location(storeLocation.location)
                                 .quantity(-1)
                                 .infoUnavailable(false)
                                 .additionalNotes("ESPAKi veebipood näitab toodete kättesaadavust Tallinna poes.")
@@ -157,7 +156,8 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                 );
             } else {
                 locations.add(
-                        storeLocation.location.toBuilder()
+                        StockDto.builder()
+                                .location(storeLocation.location)
                                 .quantity(0)
                                 .infoUnavailable(true)
                                 .build()
@@ -165,7 +165,7 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
             }
         }
 
-        return LocationsDto.builder()
+        return StockInLocationsDto.builder()
                 .locations(locations)
                 .build();
     }

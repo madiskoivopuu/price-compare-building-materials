@@ -58,7 +58,7 @@ public class GetEspakProductsServiceImplTest {
             assertNotNull(product.getName(), "Product name should not be null");
             assertNotNull(product.getPrice(), "Product should have a price");
             assertNotNull(product.getUnit(), "Product should have a unit");
-            assertNotNull(product.getLocation(), "Product should have locations attached to it");
+            assertNotNull(product.getStock(), "Product should have stock attached to it");
             assertNotNull(product.getLinkToProduct(), "Product should have link to the store");
             assertNotNull(product.getLinkToPicture(), "Product should have link to the image");
         }
