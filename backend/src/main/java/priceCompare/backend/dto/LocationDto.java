@@ -25,4 +25,9 @@ public class LocationDto {
     public int hashCode() {
         return Objects.hash(getLocationName().getDisplayName(), getAddress());
     }
+
+    @Override
+    public String toString() {
+        return locationName.getDisplayName() + ", " + address;
+    }
 }

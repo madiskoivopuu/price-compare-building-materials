@@ -32,7 +32,7 @@ public enum DecoraStoreLocation {
             .build()),
     POLTSAMAA(LocationDto.builder()
             .locationName(LocationName.POLTSAMAA)
-            .address("Laki põik 4")
+            .address("Jõgeva mnt 23a")
             .build());
 
     protected final LocationDto location;

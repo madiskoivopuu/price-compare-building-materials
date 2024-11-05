@@ -21,7 +21,7 @@ public enum LocationName {
     HAAPSALU("Haapsalu"),
     KEILA("Keila"),
     POLVA("Põlva"),
-    JOGEVA("JÕGEVA"),
+    JOGEVA("Jõgeva"),
     MUHU("Muhu"),
     JOHVI("Jõhvi"),
     RAPLA("Rapla"),

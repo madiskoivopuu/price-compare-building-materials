@@ -18,8 +18,8 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(TSEMENTKIUDPLAAT, List.of("Tsementplaadid")),
             Map.entry(PUITKIUDPLAAT, List.of("Puitlaast- ja puitkiudplaadid")),
             Map.entry(PUITLAASTPLAAT, List.of("Puitlaast- ja puitkiudplaadid")),
-            Map.entry(KIPSKIUDPLAAT, null),
-            Map.entry(WEDI_PLAAT, null),
+            Map.entry(KIPSKIUDPLAAT, List.of()),
+            Map.entry(WEDI_PLAAT, List.of()),
             Map.entry(TYCROC_PLAAT, List.of("XPS ja PIR soojustusplaadid")),
             Map.entry(POORBETOON_BAUROC, List.of("Ehitusplokk")),
             Map.entry(FIBO, List.of("Ehitusplokk")),
@@ -27,15 +27,15 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(TELLIS, List.of("Tellised")),
             Map.entry(SILLUSED, List.of("Sillused")),
             Map.entry(SILIKAATPLOKK, List.of("Tellised")),
-            Map.entry(LAKKAPLOKK, null),
-            Map.entry(KERATERM, null),
-            Map.entry(VUNDAMENDIPLOKK, null),
+            Map.entry(LAKKAPLOKK, List.of()),
+            Map.entry(KERATERM, List.of()),
+            Map.entry(VUNDAMENDIPLOKK, List.of()),
             Map.entry(TANAVAKIVI, List.of("Tänavakivid")),
             Map.entry(KONNITEPLAAT, List.of("Tänavakivid")),
             Map.entry(AAREKIVID, List.of("Tänavakivid")),
             Map.entry(VIHMAVEERENN, List.of("Tänavakivid")),
-            Map.entry(KORSTNAD, null),
-            Map.entry(LOODUSKIVID, null),
+            Map.entry(KORSTNAD, List.of()),
+            Map.entry(LOODUSKIVID, List.of()),
             Map.entry(KIVIVILL, List.of("Kivivillad")),
             Map.entry(KLAASVILL, List.of("Klaasvillad")),
             Map.entry(TSELLUVILL, List.of("Tselluvill")),
@@ -45,11 +45,11 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(TUULETOKKEPLAAT, List.of("Tuuletõkkeplaadid")),
             Map.entry(PRUSSID, List.of("Saematerjal")),
             Map.entry(LAUAD, List.of("Saematerjal")),
-            Map.entry(KALIBREERITUD_PRUSSID, null),
-            Map.entry(KALIBREERITUD_LAUAD, null),
+            Map.entry(KALIBREERITUD_PRUSSID, List.of()),
+            Map.entry(KALIBREERITUD_LAUAD, List.of()),
             Map.entry(HOOVELLAUAD, List.of("Höövelmaterjal")),
             Map.entry(LIIMPUIT, List.of("Liimpuit")),
-            Map.entry(PORANDALAUAD, null),
+            Map.entry(PORANDALAUAD, List.of()),
             Map.entry(TERRASSILAUAD, List.of("Terrassilaud")),
             Map.entry(SISEVOODRILAUAD, List.of("Saunamaterjal", "Voordilaud"))
 
@@ -69,12 +69,12 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(PROFIILID, List.of("?")),
             Map.entry(TARVIKUD, List.of("Fassaadisegud ja tarvikud")),
             Map.entry(TEMPSI_PLAAT, List.of("??")), // kliendi teha veel
-            Map.entry(KIVI, null),
-            Map.entry(TERAS, null),
+            Map.entry(KIVI, List.of()),
+            Map.entry(TERAS, List.of()),
             Map.entry(ETERNIIT, List.of("Eterniitkatused")),
             Map.entry(BITUUMEN, List.of("Bituumenkatused")),
             Map.entry(PVC, List.of("PVC katusematerjalid")),
-            Map.entry(PC, null),
+            Map.entry(PC, List.of()),
             Map.entry(RULLMATERJAL, List.of("Katuse aluskatted")),
             Map.entry(TARVIKUD, List.of("Eterniitkatused", "Bituumenkatused", "PVC katusematerjalid")),
             Map.entry(VARIKATUSED, List.of("Päikesevarjud ja varikatused")),
@@ -113,7 +113,7 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(SISE, List.of("Lakid, õlid, vahad")),
             Map.entry(VALIS, List.of("Lakid, õlid, vahad")),
             Map.entry(LIISTUD_PORAND, List.of("Puitliistud", "Seinapaneeli liistud", "Plast põrandaliistud")),
-            Map.entry(AVATAITED, null),
+            Map.entry(AVATAITED, List.of()),
             Map.entry(LIISTUD_LAGI, List.of("Penoplastist liistud ja laerosetid", "Seinapaneeli liistud")),
             Map.entry(VIIMISTLUSPLAADID_PORAND, List.of("Põrandaplaadid")),
             Map.entry(VIIMISTLUSPLAADID_LAGI, List.of("Laekatted penoplastist", "MDF seina- ja laepaneelid", "Plast seina- ja laepaneelid")),
@@ -143,9 +143,9 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(ANKRUD, List.of("Poldid, mutrid, seibid")),
             Map.entry(KEERMELATID, List.of("Keermelatid")),
             Map.entry(MUUD, List.of("Kruvid", "Naelad", "Kinnitustarvikud", "Poldid, mutrid, seibid", "Klambripüstolid ja klambrid", "Aiavõrgud ja piirded", "MDF seina- ja laepaneelid", "Installatsioonitarvikud", "Keermelatid")),
-            Map.entry(KIPSITARVIKUD, null),
+            Map.entry(KIPSITARVIKUD, List.of()),
             Map.entry(BAUROCI_TARVIKUD, null),
-            Map.entry(FIBOTARVIKUD, null)*/
+            Map.entry(FIBOTARVIKUD, List.of())*/
     );
 
     public static final Map<Subcategory, Function<ProductParseDto, Boolean>> subcatAdditionalVerification = Map.<Subcategory, Function<ProductParseDto, Boolean>>ofEntries(
@@ -327,7 +327,15 @@ public class EmaterjalToDecoraCategoryMapping {
             })*/
     );
 
+    /**
+     * Does subcategory specific verification to make sure the right products are shown in ematerjal.ee
+     * @param subcategory Ematerjal.ee subcategory
+     * @param product Product parse information
+     * @return True if the product passed verification
+     */
     public static boolean additionalVerification(Subcategory subcategory, ProductParseDto product) {
+        if(subcategory == null) return true;
+
         Function<ProductParseDto, Boolean> verify = subcatAdditionalVerification.getOrDefault(subcategory, (ProductParseDto p) -> true);
         return verify.apply(product);
     }

@@ -40,18 +40,21 @@ public class DecoraAPIs {
     /**
      * Fetch one page of results from the search API.
      * @param query Keywords used in the search
-     * @param subcategory Ematerjal.ee subcategory
+     * @param subcategory Ematerjal.ee subcategory to filter products with
      * @param offset The amount of products we want to skip from the search result. Search API always gives products in the same order.
      * @return The products fetched from offset to the page limit
      */
     public JSONObject fetchPageFromSearchAPI(String query, Subcategory subcategory, int offset) {
         String categoryFilter = "";
-        List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, null);
-        if(subcategory != null && categoryMappings != null) {
-            String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));
-            categoryFilter = String.format(categoryFilterJson, categories);
-        }
+        if(subcategory != null) {
+            List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, null);
 
+            if(categoryMappings.isEmpty()) {
+                String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));
+                categoryFilter = String.format(categoryFilterJson, categories);
+            }
+
+        }
         String body = String.format("""
                 {
                   "context": {

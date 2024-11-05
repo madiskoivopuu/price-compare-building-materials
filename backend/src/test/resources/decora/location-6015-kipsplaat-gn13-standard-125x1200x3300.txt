@@ -1,0 +1,1 @@
+    <tbody>            <tr class="store-row">            <td class="store-name">Tallinn, Laki põik 4</td>            <td class="store-stock">27</td>        </tr>            <tr class="store-row">            <td class="store-name">Võru, Lepa 2</td>            <td class="store-stock">33</td>        </tr>        </tbody>

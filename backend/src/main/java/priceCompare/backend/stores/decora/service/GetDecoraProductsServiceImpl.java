@@ -142,7 +142,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
         HashMap<String, Integer> stockForLoc = new HashMap<>();
         Elements trs = locationsHtml.select("tr.store-row");
         for (Element tr : trs) {
-            String location = tr.select("td.store-name").text(); // 0 - city, 1 - street addr
+            String location = tr.select("td.store-name").text(); // formatted as: city, street addr
             try {
                 Integer quantity = Integer.parseInt(tr.select("td.store-stock").text());
                 stockForLoc.put(location, quantity);
@@ -154,6 +154,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
         List<StockDto> stockInfo = new ArrayList<>();
         for (DecoraStoreLocation store : DecoraStoreLocation.values()) {
             String displayedLocation = String.format("%s, %s", store.getLocation().getLocationName().getDisplayName(), store.getLocation().getAddress());
+
             if(stockForLoc.containsKey(displayedLocation)) {
                 stockInfo.add(
                         StockDto.builder()
