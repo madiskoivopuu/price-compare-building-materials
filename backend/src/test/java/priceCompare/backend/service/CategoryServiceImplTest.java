@@ -36,10 +36,18 @@ class CategoryServiceImplTest {
             assertEquals("Puit", categoryDto.getName());
 
             List<String> subcategories = categoryDto.getSubcategories();
-            assertEquals(3, subcategories.size());
+            assertEquals(11, subcategories.size());
             assertEquals("Prussid", subcategories.get(0));
             assertEquals("Lauad", subcategories.get(1));
-            assertEquals("Höövelpuit", subcategories.get(2));
+            assertEquals("Kalibreeritud prussid", subcategories.get(2));
+            assertEquals("Kalibreeritud lauad", subcategories.get(3));
+            assertEquals("Höövelprussid", subcategories.get(4));
+            assertEquals("Höövellauad", subcategories.get(5));
+            assertEquals("Servamata", subcategories.get(6));
+            assertEquals("Liimpuit", subcategories.get(7));
+            assertEquals("Põrandalauad", subcategories.get(8));
+            assertEquals("Terrassilauad", subcategories.get(9));
+            assertEquals("Sisevoodrilauad", subcategories.get(10));
         }
     }
 }
