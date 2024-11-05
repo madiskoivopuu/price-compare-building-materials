@@ -60,19 +60,23 @@ public enum Category {
             Subcategory.KROHV,
             Subcategory.MUURISEGU,
             Subcategory.PLAATIMISSEGU,
+            Subcategory.AHJUSEGUD,
+            Subcategory.VUUGISEGUD,
             Subcategory.TSEMENT,
             Subcategory.BETOON,
             Subcategory.LIIM,
-            Subcategory.VUUGITAIDE,
+            Subcategory.PORANDATASANDUS,
+            Subcategory.SEGUD_TARVIKUD,
+            Subcategory.SIDEAINED,
             Subcategory.MUUD_SEGUD,
-            Subcategory.PORANDATASANDUS
     }),
     FASSAAD("Fassaad", new Subcategory[]{
-            Subcategory.VALISVOODRILAUD,
+            Subcategory.PUITVOODRILAUAD,
+            Subcategory.TSEMENTVOODRILAUAD,
+            Subcategory.PLASTVOODER,
             Subcategory.FASSAAD_PLAADID,
             Subcategory.PROFIILID,
             Subcategory.TARVIKUD,
-            Subcategory.TEMPSI_PLAAT
     }),
     KATUS("Katused", new Subcategory[]{
             Subcategory.KIVI,
