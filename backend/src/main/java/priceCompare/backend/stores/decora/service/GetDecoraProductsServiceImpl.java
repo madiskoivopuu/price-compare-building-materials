@@ -28,7 +28,7 @@ import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorr
 public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
 
     private final int FETCH_MAX_NUM_PRODUCTS = 1024;
-    private static final int LOCATION_FETCH_BATCH_SIZE = 24;
+    private static final int LOCATION_FETCH_BATCH_SIZE = 20;
     private final DecoraAPIs apis;
 
     public GetDecoraProductsServiceImpl(DecoraAPIs apis) {
