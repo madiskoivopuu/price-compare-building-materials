@@ -4,14 +4,13 @@ import SearchResult from './SearchResult'
 import SearchHeader from './SearchHeader';
 
 function Hero() {
-    const [items, setItems] = useState({products: []})
-    const [sortedProducts, setSortedProducts] = useState([])
-    const [q, setQ] = useState('')
-    const [inputValue, setInputValue] = useState('')
+    const [items, setItems] = useState({products: []}) // Products to display; None by default
+    const [sortedProducts, setSortedProducts] = useState([]) 
+    const [q, setQ] = useState('') // Query value
+    const [inputValue, setInputValue] = useState('') // InputBox value
     const [currentPage, setCurrentPage] = useState(1)
     const productsPerPage = 25 //currently a constant
-
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false) // Loading state while fetching products
 
     useEffect(() => {
         if (q) {
@@ -27,7 +26,6 @@ function Hero() {
                     const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
                     setSortedProducts(sorted);
                     setCurrentPage(1);
-                    console.log("fetching")
                 })
                 .then(() => setIsLoading(false))
                 .catch((err) => console.error("Fetch error:", err));
@@ -37,8 +35,6 @@ function Hero() {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = sortedProducts?.slice(indexOfFirstProduct, indexOfLastProduct);
-    console.log(currentProducts)
-
 
     return (
         <div className='w-full md:w-3/4 h-max p-10'>
