@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
+import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
+
 @Service
 public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
 
@@ -62,6 +64,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
 
             for(int i = 0; i < productsArr.length(); i++) {
                 JSONObject productJson = productsArr.getJSONObject(i);
+                if (!checkProductNameCorrespondsToSearch(productJson.getString("name"), query)) continue;
 
                 // instock check won't work here, it is only for web store but physical stores can still have stock
                 try {
