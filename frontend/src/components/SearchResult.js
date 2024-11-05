@@ -5,6 +5,7 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store}) 
     "BAUHOF": "bauhof.png",
     "KRAUTA": "krauta.jpg",
       "ESPAK": "espak.jpg",
+      "DECORA": "decora.png"
   }
 
   const [isExpanded, setIsExpanded] = useState(false)
