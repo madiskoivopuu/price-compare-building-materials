@@ -8,6 +8,33 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
       "DECORA": "decora.png"
   }
 
+    const LocationNameEnum = {
+        TALLINN: "Tallinn",
+        TARTU: "Tartu",
+        TURI: "Türi",
+        NARVA: "Narva",
+        PARNU: "Pärnu",
+        KOHTLA_JARVE: "Kohtla-Järve",
+        VILJANDI: "Viljandi",
+        VORU: "Võru",
+        RAKVERE: "Rakvere",
+        SILLAMAE: "Sillamäe",
+        MAARDU: "Maardu",
+        KURESSAARE: "Kuressaare",
+        VALGA: "Valga",
+        VASTSELIINA: "Vastseliina",
+        HAAPSALU: "Haapsalu",
+        KEILA: "Keila",
+        POLVA: "Põlva",
+        JOGEVA: "Jõgeva",
+        MUHU: "Muhu",
+        JOHVI: "Jõhvi",
+        RAPLA: "Rapla",
+        RAPINA: "Räpina",
+        PAIDE: "Paide",
+        POLTSAMAA: "Põltsamaa"
+    };
+
     const generateMapsLink = (address) => {
         return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
     }
@@ -36,7 +63,7 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
                 <div className="relative">
                     <button
                         onClick={() => setShowLocations(!showLocations)}
-                        className='w-24 h-max border border-gray-700 rounded p-1'
+                        className='w-64 h-max border border-gray-700 rounded p-1'
                     >
                         Saadavus
                     </button>
@@ -44,20 +71,22 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
                     {/* LOCATIONS DROPDOWN */}
                     {showLocations && (
                         <div className='absolute top-full left-0 w-64 bg-white border rounded shadow-lg z-50'>
-                            <ul>
+                            <ul className='text-sm'>
                                 {locations.map((location, index) => (
-                                    <li key={index} className='p-2 border-b last:border-b-0'>
+                                    <li key={index} className='p-2'>
                                         <div className='flex justify-between items-center'>
-                                            <strong>{location.location.locationName}</strong>
-                                            <a
-                                                href={generateMapsLink(location.location.address)}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-600 underline"
-                                            >
-                                                {location.location.address}
-                                            </a>
-                                            <span>Kogus: {location.quantity}</span>
+                                            <span>
+                            {LocationNameEnum[location.location.locationName] || location.location.locationName},&nbsp;
+                                                <a
+                                                    href={generateMapsLink(location.location.address)}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-600 underline"
+                                                >
+                                {location.location.address}
+                            </a>
+                        </span>
+                                            <span>{location.quantity} tk</span>
                                         </div>
                                     </li>
                                 ))}
@@ -68,7 +97,7 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
 
                 {/* "Poodi" Button */}
                 <a href={linkToProduct} className={`md:block ${isExpanded ? '' : 'hidden'} `}>
-                    <button className='w-24 h-max border border-gray-700 rounded p-1'>Poodi</button>
+                    <button className='w-24 h-max border border-gray-700 rounded p-1'>E-poodi</button>
                 </a>
                 <div className={`transition duration-150 ease-in w-24 h-max md:block ${isExpanded ? '' : 'hidden'} `}>
                     <img src={`/${logos[store]}`} alt={store} className='object-contain' />
