@@ -62,31 +62,42 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
                 {/* AVAILABILITY WITH DROPDOWN */}
                 <div className="relative">
                     <button
-                        onClick={() => setShowLocations(!showLocations)}
-                        className='w-64 h-max border border-gray-700 rounded p-1'
+                        onClick={() => {
+                            if (locations && locations.length > 0) {
+                                setShowLocations(!showLocations);
+                            }
+                        }}
+                        className={`w-64 h-max border rounded p-1 ${(!locations || locations.length === 0) ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'border-gray-700'}`}
+                        disabled={!locations || locations.length === 0} // Disables the button if no locations
                     >
-                        Saadavus
+                        {(!locations || locations.length === 0) ? 'Pole saadavusel' : 'Saadavus'}
                     </button>
 
                     {/* LOCATIONS DROPDOWN */}
-                    {showLocations && (
+                    {showLocations && locations && locations.length > 0 && (
                         <div className='absolute top-full left-0 w-64 bg-white border rounded shadow-lg z-50'>
                             <ul className='text-sm'>
                                 {locations.map((location, index) => (
                                     <li key={index} className='p-2'>
                                         <div className='flex justify-between items-center'>
-                                            <span>
-                            {LocationNameEnum[location.location.locationName] || location.location.locationName},&nbsp;
-                                                <a
-                                                    href={generateMapsLink(location.location.address)}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-blue-600 underline"
-                                                >
-                                {location.location.address}
-                            </a>
-                        </span>
-                                            <span>{location.quantity} tk</span>
+                            <span>
+                                {location.location && LocationNameEnum[location.location.locationName]
+                                    ? LocationNameEnum[location.location.locationName]
+                                    : location.location?.locationName || 'Unknown Location'},&nbsp;
+                                {location.location?.address ? (
+                                    <a
+                                        href={generateMapsLink(location.location.address)}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 underline"
+                                    >
+                                        {location.location.address}
+                                    </a>
+                                ) : (
+                                    'Teadmata'
+                                )}
+                            </span>
+                                            <span>{location.quantity ? `${location.quantity} tk` : 'teadmata'}</span>
                                         </div>
                                     </li>
                                 ))}
@@ -100,13 +111,14 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
                     <button className='w-24 h-max border border-gray-700 rounded p-1'>E-poodi</button>
                 </a>
                 <div className={`transition duration-150 ease-in w-24 h-max md:block ${isExpanded ? '' : 'hidden'} `}>
-                    <img src={`/${logos[store]}`} alt={store} className='object-contain' />
+                    <img src={`/${logos[store]}`} alt={store} className='object-contain'/>
                 </div>
                 {/* MOBILE BUTTON */}
                 <button className='md:hidden' onClick={() => setIsExpanded(!isExpanded)}>
-                    <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
                         <path
-                            d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+                            d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
                     </svg>
                 </button>
             </div>
