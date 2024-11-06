@@ -11,58 +11,72 @@ public enum Category {
             Subcategory.TSEMENTKIUDPLAAT,
             Subcategory.PUITKIUDPLAAT,
             Subcategory.PUITLAASTPLAAT,
-            Subcategory.TUULETOKKEPLAAT,
             Subcategory.KIPSKIUDPLAAT,
-            Subcategory.MDF_PLAAT,
             Subcategory.WEDI_PLAAT,
-            Subcategory.TYCROC_PLAAT,
-            Subcategory.TEMPSI_PLAAT
+            Subcategory.TYCROC_PLAAT
     }),
     PLOKID_JA_KIVID("Plokid ja kivid", new Subcategory[]{
             Subcategory.POORBETOON_BAUROC,
             Subcategory.FIBO,
             Subcategory.OONESPLOKK,
-            Subcategory.TELLIS,
             Subcategory.SILIKAATPLOKK,
             Subcategory.LAKKAPLOKK,
             Subcategory.KERATERM,
             Subcategory.VUNDAMENDIPLOKK,
+            Subcategory.TELLIS,
+            Subcategory.SILLUSED,
             Subcategory.TANAVAKIVI,
             Subcategory.KONNITEPLAAT,
             Subcategory.AAREKIVID,
             Subcategory.VIHMAVEERENN,
+            Subcategory.KORSTNAD,
             Subcategory.LOODUSKIVID
     }),
     SOOJUSTUS("Soojustus", new Subcategory[]{
             Subcategory.KIVIVILL,
             Subcategory.KLAASVILL,
+            Subcategory.TSELLUVILL,
             Subcategory.EPS,
             Subcategory.PIR,
             Subcategory.XPS,
+            Subcategory.TUULETOKKEPLAAT,
             Subcategory.POORBETOON_BAUROC
     }),
     PUIT("Puit", new Subcategory[]{
             Subcategory.PRUSSID,
             Subcategory.LAUAD,
-            Subcategory.HOOVELPUIT
+            Subcategory.KALIBREERITUD_PRUSSID,
+            Subcategory.KALIBREERITUD_LAUAD,
+            Subcategory.HOOVELPRUSSID,
+            Subcategory.HOOVELLAUAD,
+            Subcategory.SERVAMATA,
+            Subcategory.LIIMPUIT,
+            Subcategory.PORANDALAUAD,
+            Subcategory.TERRASSILAUAD,
+            Subcategory.SISEVOODRILAUAD
     }),
     SEGUD_VALMIS_KUIV("Segud valmis/kuiv", new Subcategory[]{
             Subcategory.PAHTEL,
             Subcategory.KROHV,
             Subcategory.MUURISEGU,
             Subcategory.PLAATIMISSEGU,
+            Subcategory.AHJUSEGUD,
+            Subcategory.VUUGISEGUD,
             Subcategory.TSEMENT,
             Subcategory.BETOON,
             Subcategory.LIIM,
-            Subcategory.VUUGITAIDE,
+            Subcategory.PORANDATASANDUS,
+            Subcategory.SEGUD_TARVIKUD,
+            Subcategory.SIDEAINED,
             Subcategory.MUUD_SEGUD,
-            Subcategory.PORANDATASANDUS
     }),
     FASSAAD("Fassaad", new Subcategory[]{
-            Subcategory.VALISVOODRILAUD,
-            Subcategory.PLAADID,
+            Subcategory.PUITVOODRILAUAD,
+            Subcategory.TSEMENTVOODRILAUAD,
+            Subcategory.PLASTVOODER,
+            Subcategory.FASSAAD_PLAADID,
             Subcategory.PROFIILID,
-            Subcategory.TARVIKUD
+            Subcategory.TARVIKUD,
     }),
     KATUS("Katused", new Subcategory[]{
             Subcategory.KIVI,
@@ -72,7 +86,6 @@ public enum Category {
             Subcategory.PVC,
             Subcategory.PC,
             Subcategory.RULLMATERJAL,
-            Subcategory.KORSTNAD,
             Subcategory.TARVIKUD,
             Subcategory.VARIKATUSED
     }),
@@ -94,7 +107,7 @@ public enum Category {
     }),
     EHITUSMETALL("Ehitusmetall", new Subcategory[]{
             Subcategory.NURGAD,
-            Subcategory.PLAADID,
+            Subcategory.EHITUSMETALL_PLAADID,
             Subcategory.POSTIJALAD,
             Subcategory.EHITUSKOBAD,
             Subcategory.BETOONIHARGID,
@@ -104,7 +117,7 @@ public enum Category {
     AKNAD_JA_UKSED("Aknad ja uksed", new Subcategory[]{
             Subcategory.SISEUKSED,
             Subcategory.VALISUKSED,
-            Subcategory.SAUNUKSED,
+            Subcategory.SAUNAUKSED,
             Subcategory.UKSELENGID,
             Subcategory.POONINGULUUGID,
             Subcategory.KONTROLLLUUGID,
@@ -123,23 +136,29 @@ public enum Category {
             Subcategory.VALIS
     }),
     LIISTUD("Liistud", new Subcategory[]{
-            Subcategory.PORAND,
+            Subcategory.LIISTUD_PORAND,
             Subcategory.AVATAITED,
-            Subcategory.LAGI,
-            Subcategory.VIIMISTLUSPLAADID,
-            Subcategory.PORAND,
-            Subcategory.LAGI,
+            Subcategory.LIISTUD_LAGI,
+    }),
+    VIIMISTLUSPLAADID("Viimistlusplaadid", new Subcategory[]{
+            Subcategory.LIISTUD_PORAND,
+            Subcategory.LIISTUD_LAGI,
             Subcategory.SEIN
     }),
-    LAHUSTID("Lahustid", new Subcategory[]{}),
+    LAHUSTID("Lahustid", new Subcategory[]{
+            Subcategory.LAHUSTID
+    }),
     TEIBID("Tebid", new Subcategory[]{
             Subcategory.MAALRITEIP,
             Subcategory.TUULETOKKETEIP,
             Subcategory.UNIVERSAAL
     }),
     SILIKOONID("Silikoonid", new Subcategory[]{
-            Subcategory.LIIMID,
             Subcategory.UNIVERSAAL
+    }),
+    LIIMID("Liimid", new Subcategory[]{
+            Subcategory.LIIM_PUIT,
+            Subcategory.LIIM_UNIVERSAAL,
     }),
     HUDROISOLATSIOON("Hüdroisolatsioon", new Subcategory[]{
             Subcategory.HUDROISOLATSIOON
@@ -171,7 +190,8 @@ public enum Category {
             Subcategory.ANKRUD,
             Subcategory.KEERMELATID,
             Subcategory.MUUD,
-            Subcategory.TARVIKUD,
+    }),
+    TARVIKUD("Tarvikud", new Subcategory[]{
             Subcategory.KIPSITARVIKUD,
             Subcategory.BAUROCI_TARVIKUD,
             Subcategory.FIBOTARVIKUD

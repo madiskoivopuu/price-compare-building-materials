@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
-function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, locations }) {
-    const logos = {
-        "BAUHOF": "bauhof.png",
-        "KRAUTA": "krauta.jpg",
-        "ESPAK": "espak.jpg",
-    }
+function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, locations}) {
+  const logos = {
+    "BAUHOF": "bauhof.png",
+    "KRAUTA": "krauta.jpg",
+      "ESPAK": "espak.jpg",
+      "DECORA": "decora.png"
+  }
 
     const generateMapsLink = (address) => {
         return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`

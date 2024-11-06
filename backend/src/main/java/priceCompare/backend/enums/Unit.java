@@ -10,8 +10,10 @@ import java.util.List;
 public enum Unit {
     PAKK("pakk", List.of("pk")),
     PAAR("paar", List.of()),
+    PLAAT("plaat", List.of()),
+    KARP("karp", List.of()),
     PURK("purk", List.of()),
-    M2("m2", List.of()),
+    M2("m2", List.of("m²")),
     M("m", List.of()),
     TK("tk", List.of("tükk")),
     RULL("rull", List.of()),
