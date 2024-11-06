@@ -110,25 +110,29 @@ function Hero() {
                     </svg>
                 </div>
                 :
-                (<ul className='flex flex-col gap-4'>
-                    {currentProducts?.map((item, index) =>
-                        sortedProducts.length > 0
-                            ?
-                            (<li key={index}>
-                                <SearchResult
-                                    name={item.name}
-                                    store={item.store}
-                                    linkToPicture={item.linkToPicture}
-                                    linkToProduct={item.linkToProduct}
-                                    price={parseFloat(item.price).toFixed(2)}
-                                    unit={item.unit}
-                                    locations={item.locations}
-                                />
-                            </li>)
-                            :
-                            <></>
-                    )}
-                </ul>)
+                    (<ul className='flex flex-col gap-4'>
+                        {currentProducts?.map((item, index) => {
+                            //console.log(item);
+
+                            return (
+                                sortedProducts.length > 0
+                                    ? (
+                                        <li key={index}>
+                                            <SearchResult
+                                                name={item.name}
+                                                store={item.store}
+                                                linkToPicture={item.linkToPicture}
+                                                linkToProduct={item.linkToProduct}
+                                                price={item.price.toFixed(2)}
+                                                unit={item.unit}
+                                                locations={item.locations}
+                                            />
+                                        </li>
+                                    )
+                                    : <></>
+                            );
+                        })}
+                    </ul>)
                 }
             </div>
         </div>
