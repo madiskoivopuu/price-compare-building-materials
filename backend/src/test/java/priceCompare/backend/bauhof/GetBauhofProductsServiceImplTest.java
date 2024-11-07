@@ -27,8 +27,6 @@ public class GetBauhofProductsServiceImplTest {
         GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(new HttpClientService());
         ProductsDto products = getBauhofProductsService.getBauhofProducts(keyword, null, null);
 
-        System.out.println(products.getProducts());
-
         assertNotNull(products, "ProductsDto should not be null");
         assertNotNull(products.getProducts(), "Product list should not be null");
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
