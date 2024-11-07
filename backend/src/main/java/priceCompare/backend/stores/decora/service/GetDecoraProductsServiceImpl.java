@@ -142,12 +142,12 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
      * @return List of locations with stock info for the store
      */
     private StockInLocationsDto mapLocationWithStock(Document locationsHtml) {
-        HashMap<String, Integer> stockForLoc = new HashMap<>();
+        HashMap<String, String> stockForLoc = new HashMap<>();
         Elements trs = locationsHtml.select("tr.store-row");
         for (Element tr : trs) {
             String location = tr.select("td.store-name").text(); // formatted as: city, street addr
             try {
-                Integer quantity = Integer.parseInt(tr.select("td.store-stock").text());
+                String quantity = String.format("%s tk", tr.select("td.store-stock").text());
                 stockForLoc.put(location, quantity);
             } catch (NumberFormatException e) {
                 System.err.printf("ESPAK products service: Error parsing quantity for location %s, Exception: %s\n", location, e.getMessage());
@@ -158,23 +158,12 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
         for (DecoraStoreLocation store : DecoraStoreLocation.values()) {
             String displayedLocation = String.format("%s, %s", store.getLocation().getLocationName().getDisplayName(), store.getLocation().getAddress());
 
-            if(stockForLoc.containsKey(displayedLocation)) {
-                stockInfo.add(
-                        StockDto.builder()
-                                .location(store.getLocation())
-                                .quantity(stockForLoc.get(displayedLocation))
-                                .infoUnavailable(false)
-                                .build()
-                );
-            } else {
-                stockInfo.add(
-                        StockDto.builder()
-                                .location(store.getLocation())
-                                .quantity(0)
-                                .infoUnavailable(true)
-                                .build()
-                );
-            }
+            stockInfo.add(
+                    StockDto.builder()
+                            .location(store.getLocation())
+                            .quantityText(stockForLoc.getOrDefault(displayedLocation, "Teadmata"))
+                            .build()
+            );
         }
 
         return StockInLocationsDto.builder()

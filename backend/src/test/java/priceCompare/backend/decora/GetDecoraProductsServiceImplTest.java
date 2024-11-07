@@ -66,7 +66,7 @@ public class GetDecoraProductsServiceImplTest {
 
             for(StockDto stock : product.getStock().getLocations()) {
                 assertNotNull(stock.getLocation(), "Stock location should not be null");
-                assertNotNull(stock.getQuantity(), "Location quantity should not be null");
+                assertNotNull(stock.getQuantityText(), "Location quantity should not be null");
             }
         }
 
@@ -86,14 +86,14 @@ public class GetDecoraProductsServiceImplTest {
 
         // mock prep
         final String query = "kipsplaat";
-        final Map<String, Integer> expectedStock = Map.ofEntries(
-                Map.entry("Tallinn, Laki põik 4", 389),
-                Map.entry("Tartu, Riia 193", -1),
-                Map.entry("Pärnu, Suur-Jõe 57/1", 61),
-                Map.entry("Võru, Lepa 2", 44),
-                Map.entry("Viljandi, Leola 53", 116),
-                Map.entry("Jõgeva, Puiestee 38", 21),
-                Map.entry("Põltsamaa, Jõgeva mnt 23a", -1)
+        final Map<String, String> expectedStock = Map.ofEntries(
+                Map.entry("Tallinn, Laki põik 4", "389 tk"),
+                Map.entry("Tartu, Riia 193", "Teadmata"),
+                Map.entry("Pärnu, Suur-Jõe 57/1", "61 tk"),
+                Map.entry("Võru, Lepa 2", "44 tk"),
+                Map.entry("Viljandi, Leola 53", "116 tk"),
+                Map.entry("Jõgeva, Puiestee 38", "21 tk"),
+                Map.entry("Põltsamaa, Jõgeva mnt 23a", "Teadmata")
         );
 
         DecoraAPIs apis = mock(DecoraAPIs.class);
@@ -112,11 +112,7 @@ public class GetDecoraProductsServiceImplTest {
         for(ProductDto product : products.getProducts()) {
             for(StockDto stock : product.getStock().getLocations()) {
                 assertTrue(expectedStock.containsKey(stock.getLocation().toString()), String.format("Location %s was not found in expected locations", stock.getLocation().toString()));
-                if(expectedStock.get(stock.getLocation().toString()) == -1) {
-                    assertTrue(stock.getInfoUnavailable());
-                } else {
-                    assertEquals(expectedStock.get(stock.getLocation().toString()), stock.getQuantity());
-                }
+                assertEquals(expectedStock.get(stock.getLocation().toString()), stock.getQuantityText());
             }
         }
 

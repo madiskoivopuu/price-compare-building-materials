@@ -149,17 +149,15 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                 locations.add(
                         StockDto.builder()
                                 .location(storeLocation.location)
-                                .quantity(-1)
-                                .infoUnavailable(false)
-                                .additionalNotes("ESPAKi veebipood näitab toodete kättesaadavust Tallinna poes.")
+                                .quantityText("Laos")
+                                .additionalNotes("ESPAKi veebipood näitab toodete kättesaadavust ainult Tallinna poes.")
                                 .build()
                 );
             } else {
                 locations.add(
                         StockDto.builder()
                                 .location(storeLocation.location)
-                                .quantity(0)
-                                .infoUnavailable(true)
+                                .quantityText("Teadmata")
                                 .build()
                 );
             }
