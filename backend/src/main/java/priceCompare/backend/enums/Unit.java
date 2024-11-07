@@ -8,6 +8,9 @@ import java.util.List;
 @JsonIgnoreProperties({"aliases"})
 @Getter
 public enum Unit {
+    ALUS("alus", List.of()),
+    JM("jm", List.of()),
+    LEHT("leht", List.of()),
     PAKK("pakk", List.of("pk")),
     PAAR("paar", List.of()),
     PLAAT("plaat", List.of()),
