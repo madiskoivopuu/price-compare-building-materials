@@ -7,7 +7,6 @@ import lombok.Getter;
 @Getter
 public class StockDto {
     LocationDto location;
-    Integer quantity;
-    Boolean infoUnavailable;
+    String quantityText;
     String additionalNotes;
 }
