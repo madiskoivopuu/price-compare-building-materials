@@ -68,9 +68,9 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
                             }
                         }}
                         className={`w-64 h-max border rounded p-1 ${(!locations || locations.length === 0) ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'border-gray-700'}`}
-                        disabled={!locations || locations.length === 0} // Disables the button if no locations
+                        disabled={!locations || locations.length === 0}
                     >
-                        {(!locations || locations.length === 0) ? 'Pole saadavusel' : 'Saadavus'}
+                        {(!locations || locations.length === 0) ? 'Asukoht pole saadaval' : 'Saadavus'}
                     </button>
 
                     {/* LOCATIONS DROPDOWN */}
@@ -83,7 +83,7 @@ function SearchResult({name, linkToPicture, linkToProduct, price, unit, store, l
                             <span>
                                 {location.location && LocationNameEnum[location.location.locationName]
                                     ? LocationNameEnum[location.location.locationName]
-                                    : location.location?.locationName || 'Unknown Location'},&nbsp;
+                                    : location.location?.locationName || 'Asukoht pole saadaval'},&nbsp;
                                 {location.location?.address ? (
                                     <a
                                         href={generateMapsLink(location.location.address)}
