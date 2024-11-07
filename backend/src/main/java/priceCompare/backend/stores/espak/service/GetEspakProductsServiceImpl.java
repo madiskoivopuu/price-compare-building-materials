@@ -129,6 +129,9 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                             .build();
                 } catch(CompletionException e) {
                     System.err.printf("ESPAK products service: Error fetching data from URL: %s, Exception: %s\n", product.getLinkToProduct(), e.getMessage());
+                } catch(IllegalArgumentException e) {
+                    System.err.println("ESPAK products service: " + e.getMessage());
+                    System.err.println(product.getLinkToProduct());
                 } finally {
                     newProducts.add(product);
                 }

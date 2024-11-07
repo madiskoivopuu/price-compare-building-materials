@@ -92,15 +92,20 @@ public class GetBauhofProductsServiceImpl implements GetBauhofProductsService {
             String productName = productNode.path("name").asText();
             if (!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
 
-            ProductDto product = ProductDto.builder()
-                    .store(Store.BAUHOF)
-                    .name(productName)
-                    .price(productNode.path("price").asDouble())
-                    .unit(Unit.fromDisplayName(productNode.path("unit_id").asText()))
-                    .linkToProduct(BAUHOF_PRODUCT_URL_BEGINNING + productNode.path("sku").asText() + "/" + productNode.path("url_key").asText())
-                    .linkToPicture(productNode.path("imageUrl").asText())
-                    .build();
-            productList.add(product);
+            try {
+                ProductDto product = ProductDto.builder()
+                        .store(Store.BAUHOF)
+                        .name(productName)
+                        .price(productNode.path("price").asDouble())
+                        .unit(Unit.fromDisplayName(productNode.path("unit_id").asText()))
+                        .linkToProduct(BAUHOF_PRODUCT_URL_BEGINNING + productNode.path("sku").asText() + "/" + productNode.path("url_key").asText())
+                        .linkToPicture(productNode.path("imageUrl").asText())
+                        .build();
+                productList.add(product);
+            } catch(IllegalArgumentException e) {
+                System.err.println("Bauhof products service: " + e.getMessage());
+                System.err.println(productNode.path("url_key").asText());
+            }
         }
 
         return productList;

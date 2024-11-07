@@ -88,6 +88,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
                     System.err.println(productJson);
                 } catch(IllegalArgumentException e) {
                     System.err.println("Decora products service: " + e.getMessage());
+                    System.err.println(productJson.getString("url"));
                 }
             }
         } while(offset < numProducts);

@@ -75,6 +75,9 @@ public class GetKRautaProductsServiceImpl implements GetKRautaProductsService {
                 } catch (org.json.JSONException e) {
                     System.err.println("K-rauta products service: Error getting certain values from JSON for product: " + e.getMessage());
                     System.err.println(singleProductJson);
+                } catch(IllegalArgumentException e) {
+                    System.err.println("K-rauta products service: " + e.getMessage());
+                    System.err.println(singleProductJson.getString("url"));
                 }
             }
         } while (offset < numProducts);
