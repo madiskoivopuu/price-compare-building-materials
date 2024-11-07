@@ -19,6 +19,7 @@ public enum Unit {
     M2("m2", List.of("m²")),
     M("m", List.of()),
     TK("tk", List.of("tükk")),
+    TONN("tonn", List.of("t")),
     RULL("rull", List.of()),
     KOTT("kott", List.of()),
     KOMPL("kompl", List.of("kmpl"));
