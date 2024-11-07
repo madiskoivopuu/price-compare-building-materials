@@ -22,7 +22,7 @@ public enum Unit {
     TONN("tonn", List.of("t")),
     RULL("rull", List.of()),
     KOTT("kott", List.of()),
-    KOMPL("kompl", List.of("kmpl"));
+    KOMPL("kompl", List.of("kmpl", "kpl"));
 
     private final String displayName;
     private final List<String> aliases;
