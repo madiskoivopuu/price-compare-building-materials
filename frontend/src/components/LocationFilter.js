@@ -108,7 +108,7 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
 
                 {/* Dropdown content */}
                 {isDropdownOpen && (
-                    <div className='absolute z-10 w-full border rounded bg-white shadow-lg max-h-60 overflow-y-auto mt-1'>
+                    <div className='absolute z-10 w-full border rounded bg-white shadow-lg max-h-[13.5rem] overflow-y-auto mt-1'>
                         {/* Search input */}
                         <input
                             type='text'
