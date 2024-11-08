@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 
-function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, locations }) {
+function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, locations, selectedLocations }) {
     const logos = {
         "BAUHOF": "bauhof.png",
         "KRAUTA": "krauta.jpg",
         "ESPAK": "espak.jpg",
         "DECORA": "decora.png"
-    }
+    };
 
     const LocationNameEnum = {
         TALLINN: "Tallinn",
@@ -35,10 +35,6 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
         POLTSAMAA: "Põltsamaa"
     };
 
-    const generateMapsLink = (address) => {
-        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-    }
-
     const [isExpanded, setIsExpanded] = useState(false);
     const [showLocations, setShowLocations] = useState(false);
     const dropdownRef = useRef(null);
@@ -56,6 +52,14 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
             document.removeEventListener('mousedown', handleOutsideClick);
         };
     }, []);
+
+    // Show all locations if no filter is applied; otherwise, filter based on the selected locations
+    const filteredLocations = selectedLocations.length > 0
+        ? locations.filter(location => selectedLocations.includes(location.location?.locationName))
+        : locations;
+
+    // Determine if the button should be greyed out
+    const isUnavailable = filteredLocations.length === 0;
 
     return (
         <div className='w-full h-20 rounded flex items-center justify-between pr-4 bg-white shadow-md relative'>
@@ -77,16 +81,11 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
                 {/* AVAILABILITY WITH DROPDOWN */}
                 <div className="relative" ref={dropdownRef}>
                     <button
-                        onClick={() => {
-                            if (locations && locations.length > 0) {
-                                setShowLocations(!showLocations);
-                                setIsExpanded(!isExpanded);
-                            }
-                        }}
-                        className={`w-64 h-max border rounded p-1 relative ${(!locations || locations.length === 0) ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'border-gray-700'}`}
-                        disabled={!locations || locations.length === 0}
+                        onClick={() => setShowLocations(!showLocations)}
+                        className={`w-64 h-max border rounded p-1 relative ${isUnavailable ? 'bg-gray-300 text-gray-600 cursor-not-allowed' : 'border-gray-700'}`}
+                        disabled={isUnavailable}
                     >
-                        {(!locations || locations.length === 0) ? 'Asukoht pole saadaval' : 'Saadavus'}
+                        {isUnavailable ? 'Asukoht pole saadaval' : 'Saadavus'}
                         <div className={`absolute right-2 top-1/2 transform -translate-y-1/2 transition-transform duration-300 ${showLocations ? 'rotate-180' : ''}`}>
                             <svg width="14px" height="14px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#0F0F0F"/>
@@ -95,10 +94,10 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
                     </button>
 
                     {/* LOCATIONS DROPDOWN */}
-                    {showLocations && locations && locations.length > 0 && (
+                    {showLocations && filteredLocations.length > 0 && (
                         <div className='absolute top-full left-0 w-64 bg-white border rounded shadow-lg z-50 max-h-40 overflow-y-auto'>
                             <ul className='text-sm'>
-                                {locations.map((location, index) => (
+                                {filteredLocations.map((location, index) => (
                                     <li key={index} className='p-2'>
                                         <div className='flex justify-between items-center'>
                                             <span>
@@ -107,7 +106,7 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
                                                     : location.location?.locationName || 'Asukoht pole saadaval'},&nbsp;
                                                 {location.location?.address ? (
                                                     <a
-                                                        href={generateMapsLink(location.location.address)}
+                                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.location.address)}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="text-blue-600 underline"
@@ -128,21 +127,17 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
                 </div>
 
                 {/* "E-poodi" Button */}
-                <a href={linkToProduct} target="_blank" rel="noopener noreferrer" className={`md:block ${isExpanded ? '' : 'hidden'} `}>
+                <a href={linkToProduct} target="_blank" rel="noopener noreferrer" className={`md:block ${isExpanded ? '' : 'hidden'}`}>
                     <button className='w-24 h-max border border-gray-700 rounded p-1'>E-poodi</button>
                 </a>
-                <div className={`transition duration-150 ease-in w-24 h-max md:block ${isExpanded ? '' : 'hidden'} `}>
+
+                {/* Store Logo */}
+                <div className={`transition duration-150 ease-in w-24 h-max md:block ${isExpanded ? '' : 'hidden'}`}>
                     <img src={`/${logos[store]}`} alt={store} className='object-contain' />
                 </div>
-                {/* MOBILE BUTTON */}
-                <button className='md:hidden' onClick={() => setIsExpanded(!isExpanded)}>
-                    <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-                    </svg>
-                </button>
             </div>
         </div>
-    )
+    );
 }
 
 export default SearchResult;

@@ -1,22 +1,21 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import SearchResult from './SearchResult'
+import React, { useState, useEffect } from 'react';
+import SearchResult from './SearchResult';
 import SearchHeader from './SearchHeader';
+import Filters from './Filters';
 
 function Hero() {
-    const [items, setItems] = useState({ products: [] })
-    const [sortedProducts, setSortedProducts] = useState([])
-    const [q, setQ] = useState('')
-    const [inputValue, setInputValue] = useState('')
-    const [currentPage, setCurrentPage] = useState(1)
-    const productsPerPage = 25 // currently a constant
-
-    const [isLoading, setIsLoading] = useState(false)
+    const [items, setItems] = useState({ products: [] });
+    const [sortedProducts, setSortedProducts] = useState([]);
+    const [q, setQ] = useState('');
+    const [inputValue, setInputValue] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [selectedLocations, setSelectedLocations] = useState([]);
+    const productsPerPage = 25; // currently a constant
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (q) {
-            setIsLoading(true)
-            //fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
+            setIsLoading(true);
             fetch(`http://localhost:8080/request/search?keyword=${q}`)
                 .then(async (response) => {
                     const decoder = new TextDecoder('utf-8');
@@ -36,17 +35,14 @@ function Hero() {
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = sortedProducts?.slice(indexOfFirstProduct, indexOfLastProduct);
-    console.log(currentProducts)
+    const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
     return (
         <div className='w-full md:w-3/4 h-max p-10'>
             <form onSubmit={(e) => {
-                e.preventDefault()
-                setQ(inputValue)
-            }}
-                  className='flex drop-shadow-md rounded mb-4 bg-white'
-            >
+                e.preventDefault();
+                setQ(inputValue);
+            }} className='flex drop-shadow-md rounded mb-4 bg-white'>
                 <input
                     className='w-full h-14 pl-2 rounded'
                     type='text'
@@ -61,6 +57,8 @@ function Hero() {
                     </svg>
                 </button>
             </form>
+
+            <Filters selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />
 
             <SearchHeader
                 isLoading={isLoading}
@@ -93,6 +91,7 @@ function Hero() {
                                                 price={item.price.toFixed(2)}
                                                 unit={item.unit}
                                                 locations={locations}
+                                                selectedLocations={selectedLocations} // Pass selected locations to filter
                                             />
                                         </li>
                                     )
@@ -103,7 +102,7 @@ function Hero() {
                 }
             </div>
         </div>
-    )
+    );
 }
 
-export default Hero
+export default Hero;
