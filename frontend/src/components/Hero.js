@@ -16,6 +16,7 @@ function Hero() {
     useEffect(() => {
         if (q) {
             setIsLoading(true);
+            //fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
             fetch(`http://localhost:8080/request/search?keyword=${q}`)
                 .then(async (response) => {
                     const decoder = new TextDecoder('utf-8');
