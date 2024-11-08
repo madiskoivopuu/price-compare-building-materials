@@ -1,33 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-
+import LocationNameEnum from '../utils/LocationNameEnum';
 function LocationFilter({ selectedLocations, setSelectedLocations }) {
     // Location options
-    const LocationNameEnum = {
-        TALLINN: "Tallinn",
-        TARTU: "Tartu",
-        TURI: "Türi",
-        NARVA: "Narva",
-        PARNU: "Pärnu",
-        KOHTLA_JARVE: "Kohtla-Järve",
-        VILJANDI: "Viljandi",
-        VORU: "Võru",
-        RAKVERE: "Rakvere",
-        SILLAMAE: "Sillamäe",
-        MAARDU: "Maardu",
-        KURESSAARE: "Kuressaare",
-        VALGA: "Valga",
-        VASTSELIINA: "Vastseliina",
-        HAAPSALU: "Haapsalu",
-        KEILA: "Keila",
-        POLVA: "Põlva",
-        JOGEVA: "Jõgeva",
-        MUHU: "Muhu",
-        JOHVI: "Jõhvi",
-        RAPLA: "Rapla",
-        RAPINA: "Räpina",
-        PAIDE: "Paide",
-        POLTSAMAA: "Põltsamaa"
-    };
+
 
     // State to handle the dropdown open/close and search term
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -78,10 +53,10 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
                 {/* Dropdown display and toggle */}
                 <div className='flex items-center w-full border rounded p-2 bg-white cursor-pointer' onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                     {/* Display selected locations */}
-                    <div className='flex flex-wrap items-center gap-1 flex-grow'>
+                    <div className='flex flex-wrap items-center gap-1 flex-grow min-w-0'>
                         {selectedLocations.length > 0 ? (
                             selectedLocations.map((location, index) => (
-                                <span key={index} className='bg-blue-100 text-blue-700 px-2 py-1 rounded flex items-center'>
+                                <span key={index} className='bg-blue-100 text-blue-700 px-2 py-0 rounded flex items-center whitespace-nowrap'>
                                     {LocationNameEnum[location]}
                                     {/* Button to remove individual selected location */}
                                     <button
@@ -92,10 +67,8 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
                                         className='ml-1 text-red-500'
                                     >
                                         {/* Close icon */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"
-                                             viewBox="0 0 24 24">
-                                            <path d="M23.5 20.188l-7.9-7.8 7.8-7.9-3.5-3.5-7.9 7.9-7.9-7.8-3.5 3.5 7.9 7.8-7.8 7.9 3.5 3.5 7.9-7.9 7.8 7.8z"
-                                                  stroke="none" fill="currentColor"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24">
+                                            <path d="M23.5 20.188l-7.9-7.8 7.8-7.9-3.5-3.5-7.9 7.9-7.9-7.8-3.5 3.5 7.9 7.8-7.8 7.9 3.5 3.5 7.9-7.9 7.8 7.8z" stroke="none" fill="currentColor"/>
                                         </svg>
                                     </button>
                                 </span>
@@ -108,31 +81,23 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
 
                     {/* Button to clear all selections */}
                     {selectedLocations.length > 0 && (
-                        <div className='flex items-stretch'>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation(); // Prevent dropdown toggle
-                                    clearSelections();
-                                }}
-                                className='ml-2 px-2'
-                                title='Clear all selections'
-                            >
-                                {/* Clear icon */}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
-                                    <path
-                                        d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/>
-                                </svg>
-                            </button>
-                            {/* Divider between clear and arrow */}
-                            <div className='border-l'></div>
-                        </div>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation(); // Prevent dropdown toggle
+                                clearSelections();
+                            }}
+                            className='ml-2 px-2'
+                            title='Clear all selections'
+                        >
+                            {/* Clear icon */}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
+                                <path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/>
+                            </svg>
+                        </button>
                     )}
-
                     {/* Clickable area around the arrow */}
                     <div className='pl-2' onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                        <div
-                            className={`transform ${isDropdownOpen ? 'rotate-180' : ''} transition-transform duration-300`}
-                        >
+                        <div className={`transform ${isDropdownOpen ? 'rotate-180' : ''} transition-transform duration-300`}>
                             {/* Arrow icon */}
                             <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#0F0F0F"/>
@@ -153,11 +118,11 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
                                 e.stopPropagation(); // Prevent dropdown toggle when typing
                                 setSearchTerm(e.target.value);
                             }}
-                            className='w-full p-2 border-b'
+                            className='w-full p-2 border-b text-sm'
                         />
                         {/* List of filtered locations */}
                         {filteredLocations.map(([key, value]) => (
-                            <label key={key} className='flex items-center p-2 hover:bg-gray-100 cursor-pointer w-full'>
+                            <label key={key} className='flex items-center p-2 hover:bg-gray-100 cursor-pointer w-full text-sm'>
                                 <input
                                     type='checkbox'
                                     value={key}
@@ -170,7 +135,7 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
                         ))}
                         {/* Message when no locations are found */}
                         {filteredLocations.length === 0 && (
-                            <div className='p-2 text-gray-500'>Asukohti ei leitud</div>
+                            <div className='p-2 text-gray-500 text-sm'>Asukohti ei leitud</div>
                         )}
                     </div>
                 )}

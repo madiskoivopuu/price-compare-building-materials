@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-
+import LocationNameEnum from '../utils/LocationNameEnum';
 function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, locations, selectedLocations }) {
     const logos = {
         "BAUHOF": "bauhof.png",
@@ -8,32 +8,6 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
         "DECORA": "decora.png"
     };
 
-    const LocationNameEnum = {
-        TALLINN: "Tallinn",
-        TARTU: "Tartu",
-        TURI: "Türi",
-        NARVA: "Narva",
-        PARNU: "Pärnu",
-        KOHTLA_JARVE: "Kohtla-Järve",
-        VILJANDI: "Viljandi",
-        VORU: "Võru",
-        RAKVERE: "Rakvere",
-        SILLAMAE: "Sillamäe",
-        MAARDU: "Maardu",
-        KURESSAARE: "Kuressaare",
-        VALGA: "Valga",
-        VASTSELIINA: "Vastseliina",
-        HAAPSALU: "Haapsalu",
-        KEILA: "Keila",
-        POLVA: "Põlva",
-        JOGEVA: "Jõgeva",
-        MUHU: "Muhu",
-        JOHVI: "Jõhvi",
-        RAPLA: "Rapla",
-        RAPINA: "Räpina",
-        PAIDE: "Paide",
-        POLTSAMAA: "Põltsamaa"
-    };
 
     const [isExpanded, setIsExpanded] = useState(false);
     const [showLocations, setShowLocations] = useState(false);
