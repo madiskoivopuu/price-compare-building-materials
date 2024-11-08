@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function LocationFilter({ selectedLocations, setSelectedLocations }) {
     const LocationNameEnum = {
@@ -30,6 +30,7 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const dropdownRef = useRef(null);
 
     const toggleSelection = (location) => {
         if (selectedLocations.includes(location)) {
@@ -39,44 +40,98 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
         }
     };
 
+    const clearSelections = () => {
+        setSelectedLocations([]);
+        setSearchTerm('');
+    };
+
     const filteredLocations = Object.entries(LocationNameEnum).filter(([key, value]) =>
         value.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // Close the dropdown when clicking outside
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, []);
+
     return (
-        <div className='mt-2 w-1/3'>
+        <div className='mt-2 w-1/3' ref={dropdownRef}>
             <label className='block mb-1 font-medium'>Vali asukoht</label>
             <div className='relative'>
-                <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className='w-full border rounded p-2 bg-white flex flex-wrap items-center gap-1'
-                >
-                    {selectedLocations.length > 0 ? (
-                        selectedLocations.map((location, index) => (
-                            <span key={index} className='bg-blue-100 text-blue-700 px-2 py-1 rounded flex items-center'>
-                                {LocationNameEnum[location]}
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation(); // Prevent dropdown toggle
-                                        toggleSelection(location);
-                                    }}
-                                    className='ml-1 text-red-500'
-                                >
-                                    x
-                                </button>
-                            </span>
-                        ))
-                    ) : (
-                        'Vali asukoht'
+                <div className='flex items-center w-full border rounded p-2 bg-white cursor-pointer'>
+                    <div className='flex flex-wrap items-center gap-1 flex-grow' onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+                        {selectedLocations.length > 0 ? (
+                            selectedLocations.map((location, index) => (
+                                <span key={index} className='bg-blue-100 text-blue-700 px-2 py-1 rounded flex items-center'>
+                                    {LocationNameEnum[location]}
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation(); // Prevent dropdown toggle
+                                            toggleSelection(location);
+                                        }}
+                                        className='ml-1 text-red-500'
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"
+                                             viewBox="0 0 24 24">
+                                            <path d="M23.5 20.188l-7.9-7.8 7.8-7.9-3.5-3.5-7.9 7.9-7.9-7.8-3.5 3.5 7.9 7.8-7.8 7.9 3.5 3.5 7.9-7.9 7.8 7.8z"
+                                                  stroke="none" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                </span>
+                            ))
+                        ) : (
+                            <span className='text-gray-500'>Vali asukoht</span>
+                        )}
+                    </div>
+                    {selectedLocations.length > 0 && (
+                        <div className='flex items-stretch'>
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation(); // Prevent dropdown toggle
+                                    clearSelections();
+                                }}
+                                className='ml-2 px-2'
+                                title='Clear all selections'
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.5 20.188l-7.9-7.8 7.8-7.9-3.5-3.5-7.9 7.9-7.9-7.8-3.5 3.5 7.9 7.8-7.8 7.9 3.5 3.5 7.9-7.9 7.8 7.8z"
+                                        stroke="none" fill="currentColor"/>
+                                </svg>
+                            </button>
+                            <div className='border-l'></div>
+                        </div>
                     )}
-                </button>
+                    <div className='pl-2'>
+                        <div
+                            className={`transform ${isDropdownOpen ? 'rotate-180' : ''} transition-transform duration-300`}
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        >
+                            <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#0F0F0F"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
                 {isDropdownOpen && (
-                    <div className='absolute z-10 w-full border rounded bg-white shadow-lg max-h-60 overflow-y-auto'>
+                    <div className='absolute z-10 w-full border rounded bg-white shadow-lg max-h-60 overflow-y-auto mt-1'>
                         <input
                             type='text'
                             placeholder='Otsi asukohta...'
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onChange={(e) => {
+                                e.stopPropagation(); // Prevent dropdown toggle when typing
+                                setSearchTerm(e.target.value);
+                            }}
                             className='w-full p-2 border-b'
                         />
                         {filteredLocations.map(([key, value]) => (
@@ -85,7 +140,10 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
                                     type='checkbox'
                                     value={key}
                                     checked={selectedLocations.includes(key)}
-                                    onChange={() => toggleSelection(key)}
+                                    onChange={(e) => {
+                                        e.stopPropagation(); // Prevent dropdown toggle
+                                        toggleSelection(key);
+                                    }}
                                     className='mr-2'
                                 />
                                 <label>{value}</label>
