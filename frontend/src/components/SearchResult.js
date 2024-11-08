@@ -68,7 +68,7 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
             </div>
             {/* TEXT */}
             <div className='flex-grow overflow-hidden'>
-                <h1 className='truncate'>{name}</h1>
+                <h1 className='truncate text-sm'>{name}</h1>
             </div>
             {/* BUTTONS AND PRICE */}
             <div className='w-max h-full flex items-center gap-4 ml-2 flex-shrink-0 relative'>
@@ -128,7 +128,7 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
                 </div>
 
                 {/* "E-poodi" Button */}
-                <a href={linkToProduct} className={`md:block ${isExpanded ? '' : 'hidden'} `}>
+                <a href={linkToProduct} target="_blank" rel="noopener noreferrer" className={`md:block ${isExpanded ? '' : 'hidden'} `}>
                     <button className='w-24 h-max border border-gray-700 rounded p-1'>E-poodi</button>
                 </a>
                 <div className={`transition duration-150 ease-in w-24 h-max md:block ${isExpanded ? '' : 'hidden'} `}>
