@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
+import priceCompare.backend.utils.UserInputEscaper;
 
 import java.net.URI;
 import java.net.http.HttpResponse;
@@ -49,12 +50,13 @@ public class DecoraAPIs {
         if(subcategory != null) {
             List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, null);
 
-            if(categoryMappings.isEmpty()) {
+            if(!categoryMappings.isEmpty()) {
                 String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));
                 categoryFilter = String.format(categoryFilterJson, categories);
             }
 
         }
+
         String body = String.format("""
                 {
                   "context": {
@@ -97,7 +99,7 @@ public class DecoraAPIs {
                     }
                   ]
                 }
-                """, query, SEARCH_API_PAGE_SIZE, offset, categoryFilter);
+                """, UserInputEscaper.escapeForJson(query), SEARCH_API_PAGE_SIZE, offset, categoryFilter);
 
         return httpClientService.PostWithBody(URI.create("https://decoracsv2.ksearchnet.com/cs/v2/search"), body);
     }

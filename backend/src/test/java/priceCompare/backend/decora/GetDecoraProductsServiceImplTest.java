@@ -115,6 +115,5 @@ public class GetDecoraProductsServiceImplTest {
                 assertEquals(expectedStock.get(stock.getLocation().toString()), stock.getQuantityText());
             }
         }
-
     }
 }
