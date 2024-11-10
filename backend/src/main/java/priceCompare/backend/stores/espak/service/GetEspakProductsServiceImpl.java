@@ -3,6 +3,8 @@ package priceCompare.backend.stores.espak.service;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.google.common.collect.Lists;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,74 +28,56 @@ import java.util.concurrent.CompletionException;
 public class GetEspakProductsServiceImpl implements GetStoreProductsService {
     public static final int FETCH_MAX_NUM_PRODUCTS = 1024;
     private static final int PRODUCT_BATCH_SIZE = 20;
-    private static final int SEARCH_BATCH_SIZE = 8;
-    private final HttpClientService httpClientService;
+    private final EspakAPIs apis;
 
-    public GetEspakProductsServiceImpl(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
-
-    private URI formatSearchUri(String query, int page) {
-        return URI.create(String.format("https://espak.ee/epood/page/%d/?s=%s&post_type=product", page, URLEncoder.encode(query, StandardCharsets.UTF_8)));
+    public GetEspakProductsServiceImpl(EspakAPIs apis) {
+        this.apis = apis;
     }
 
     /**
      * Returns all the products (up to FETCH_MAX_NUM_PRODUCTS) that the espak.ee search API gives us.
      * @param query Query to search products with
+     * @param subcategory Ematerjal.ee subcategory
      * @return A list of products that are in stock somewhere. Some core ProductDto fields might be filled
      */
-    private List<ProductDto> performEspakSearch(String query) {
-        int page = 1;
+    private List<ProductDto> performEspakSearch(String query, Subcategory subcategory) {
+        int page = 0;
+        int maxPages = 0;
         List<ProductDto> products = new ArrayList<>();
-        boolean moreProductsToFetch = true;
 
         do {
-            List<CompletableFuture<HttpResponse<String>>> searchPageResponses = new ArrayList<>();
-            for(int i = 0; i < SEARCH_BATCH_SIZE; i++)
-                searchPageResponses.add(
-                        httpClientService.GetStringAsync(formatSearchUri(query, page+i))
-                );
-
-            for(CompletableFuture<HttpResponse<String>> responseFuture : searchPageResponses) {
-                page++;
-                HttpResponse<String> response;
-                String htmlPage;
-
-                try {
-                    response = responseFuture.join();
-                } catch(CompletionException e) {
-                    System.err.printf("ESPAK products service: Error fetching data from search page: %s, Exception: %s\n", page, e.getMessage());
-                    continue;
-                }
-
-                if(response.statusCode() == 404) { // no more products to fetch
-                    moreProductsToFetch = false;
-                    break;
-                }
-
-                Document doc = Jsoup.parse(response.body());
-                Elements productElements = doc.select("div.product.type-product");
-                if(productElements.isEmpty()) continue; // some pages are randomly empty on espak.ee
-
-                for(Element productElement : productElements) {
-                    if(!productElement.select("p.listing-stock-in").text().equals("Laos")) continue;
-
-                    String productName = productElement.select("p.name.product-title > a").text();
-                    if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
-
-                    ProductDto product = ProductDto.builder()
-                            .store(Store.ESPAK)
-                            .name(productName)
-                            .price(Double.parseDouble(productElement.select("div.price-wrapper > div:nth-child(1)").text()))
-                            .linkToProduct(productElement.select("p.name.product-title > a").attr("href"))
-                            .linkToPicture(productElement.select("img").attr("src"))
-                            .stock(mapLocationWithStock())
-                            .build();
-
-                    products.add(product);
-                }
+            JSONObject searchResponse = apis.fetchPageFromSearchAPI(query, subcategory, page);
+            page++;
+            if(maxPages == 0 && searchResponse == null) {
+                System.err.println("ESPAK products service: very first search API request failed, cannot continue fetching products");
+                break;
             }
-        } while(products.size() < FETCH_MAX_NUM_PRODUCTS && moreProductsToFetch);
+
+            if(searchResponse == null) {
+                continue;
+            }
+
+            maxPages = searchResponse.getJSONArray("results").getJSONObject(0).getInt("nbPages");
+            JSONArray productsJsonArr = searchResponse.getJSONArray("results").getJSONObject(0).getJSONArray("hits");
+
+            for(int i = 0; i < productsJsonArr.length(); i++) {
+                JSONObject productJson = productsJsonArr.getJSONObject(i);
+
+                String productName = productJson.getString("post_title");
+                if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
+
+                ProductDto product = ProductDto.builder()
+                        .store(Store.ESPAK)
+                        .name(productName)
+                        .price(Double.parseDouble(productJson.getString("regular_price")))
+                        .linkToProduct(productJson.getString("permalink"))
+                        .linkToPicture(productJson.getJSONObject("images").getJSONObject("thumbnail").getString("url"))
+                        .stock(mapLocationWithStock())
+                        .build();
+
+                products.add(product);
+            }
+        } while(products.size() < FETCH_MAX_NUM_PRODUCTS && page < maxPages);
 
         return products;
     }
@@ -109,21 +93,19 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
 
         // send reqs
         for(List<ProductDto> batch : batches) {
-            List<CompletableFuture<String>> responseFutures = new ArrayList<>();
+            List<CompletableFuture<Document>> responseFutures = new ArrayList<>();
             for(ProductDto product : batch) {
                 responseFutures.add(
-                        httpClientService.GetStringAsync(URI.create(product.getLinkToProduct())).thenApply(HttpResponse::body)
+                        apis.fetchProductPage(product.getLinkToProduct())
                 );
             }
 
             for(int i = 0; i < batch.size(); i++) {
-                CompletableFuture<String> future = responseFutures.get(i);
+                CompletableFuture<Document> future = responseFutures.get(i);
                 ProductDto product = batch.get(i);
 
                 try {
-                    String resp = future.join();
-
-                    Document body = Jsoup.parse(resp);
+                    Document body = future.join();
                     product = product.toBuilder()
                             .unit(Unit.fromDisplayName(body.select("div.unit").text()))
                             .build();
@@ -173,7 +155,7 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
 
     @Override
     public ProductsDto searchForProducts(String query, Category category, Subcategory subcategory) {
-        List<ProductDto> products = performEspakSearch(query);
+        List<ProductDto> products = performEspakSearch(query, subcategory);
         products = fetchCoreInfoFields(products);
 
         return ProductsDto.builder()
