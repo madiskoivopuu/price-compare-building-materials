@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.decora.service.EmaterjalToDecoraCategoryMapping;
+import priceCompare.backend.utils.UserInputEscaper;
 
 import java.net.URI;
 import java.net.URLEncoder;
@@ -74,7 +75,7 @@ public class EspakAPIs {
      */
     public JSONObject fetchPageFromSearchAPI(String query, Subcategory subcategory, int page) {
         String facetFilters = formatFacetFilters(subcategory);
-        String reqBody = String.format(SEARCH_API_REQUEST, query, page, URLEncoder.encode(facetFilters, StandardCharsets.UTF_8));
+        String reqBody = String.format(SEARCH_API_REQUEST, UserInputEscaper.escapeForJson(query), page, URLEncoder.encode(facetFilters, StandardCharsets.UTF_8));
 
         return httpClientService.PostWithBody(URI.create(SEARCH_API_URL), reqBody);
     }
