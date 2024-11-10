@@ -49,7 +49,7 @@ public class DecoraAPIs {
         if(subcategory != null) {
             List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, null);
 
-            if(categoryMappings.isEmpty()) {
+            if(!categoryMappings.isEmpty()) {
                 String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));
                 categoryFilter = String.format(categoryFilterJson, categories);
             }
