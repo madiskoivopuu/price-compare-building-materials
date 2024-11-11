@@ -39,7 +39,7 @@ function Hero() {
     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
     return (
-        <div className='w-full md:w-3/4 h-max p-10'>
+        <div className='w-full md:w-3/4 h-max md:p-10 p-4'>
             <form onSubmit={(e) => {
                 e.preventDefault();
                 setQ(inputValue);
