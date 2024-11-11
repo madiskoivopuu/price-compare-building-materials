@@ -9,7 +9,6 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
     };
 
 
-    const [isExpanded, setIsExpanded] = useState(false)
     const [showLocations, setShowLocations] = useState(false)
     const dropdownRef = useRef(null)
 
@@ -18,7 +17,6 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
     const handleOutsideClick = (event) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setShowLocations(false);
-            setIsExpanded(false);
         }
     };
 
