@@ -28,12 +28,34 @@ public class FindProductsServiceImpl implements FindProductService {
     private GetDecoraProductsServiceImpl getDecoraProductsService;
 
     @Override
-    public ProductsDto findProducts(String keyword, Category category, Subcategory subcategory) {
+    public ProductsDto findProducts(String keyword, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
-        AddFetchedProductsToList(products, getBauhofProductsService.searchForProducts(keyword, category, subcategory));
-        AddFetchedProductsToList(products, getKRautaProductsService.getKRautaProducts(keyword, category, subcategory));
-        AddFetchedProductsToList(products, getEspakProductsService.searchForProducts(keyword, category, subcategory));
-        AddFetchedProductsToList(products, getDecoraProductsService.searchForProducts(keyword, category, subcategory));
+
+        long startTime, endTime, duration;
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getBauhofProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000; // Convert milliseconds to seconds
+        System.out.println("bauhof - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getKRautaProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("krauta - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getEspakProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("espak - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getDecoraProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("decora - Time taken: " + duration + " seconds");
         return products;
     }
 

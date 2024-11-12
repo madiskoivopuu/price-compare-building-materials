@@ -73,7 +73,7 @@ class ControllerTest {
                 .products(List.of(mockProduct1, mockProduct2))
                 .build();
 
-        when(findProductsService.findProducts(any(String.class), any(Category.class), any(Subcategory.class)))
+        when(findProductsService.findProducts(any(String.class), any(Subcategory.class)))
                 .thenReturn(mockProductsDto);
 
         mockMvc.perform(get("/request/search")

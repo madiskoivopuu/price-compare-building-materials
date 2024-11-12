@@ -1,16 +1,13 @@
 package priceCompare.backend.stores.bauhof.service;
 
-import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.stores.dto.ProductParseDto;
-
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-
 import static priceCompare.backend.enums.Subcategory.*;
 
+import priceCompare.backend.enums.Subcategory;
+import java.util.List;
+import java.util.Map;
+
 public class EmaterjalToBauhofCategoryMapping {
-    public static final Map<Subcategory, List<String>> subcatMap = Map.<Subcategory, List<String>>ofEntries(
+    public static final Map<Subcategory, List<String>> categoryMap = Map.<Subcategory, List<String>>ofEntries(
             Map.entry(KIPSPLAAT, List.of("Kipsplaadid")),
             Map.entry(OSB_PLAAT, List.of("Puitlaastplaadid")),
             Map.entry(VINEER, List.of("Vineerid")),
@@ -72,84 +69,6 @@ public class EmaterjalToBauhofCategoryMapping {
             Map.entry(FASSAAD_PLAADID, List.of("Fassaadiplaadid")),
             Map.entry(PROFIILID, List.of()),
             Map.entry(TARVIKUD, List.of("Fassaadiplaatide lisatarvikud"))
-            /*
-            Map.entry(TEMPSI_PLAAT, List.of("??")), // kliendi teha veel
-            Map.entry(KIVI, List.of()),
-            Map.entry(TERAS, List.of()),
-            Map.entry(ETERNIIT, List.of("Eterniitkatused")),
-            Map.entry(BITUUMEN, List.of("Bituumenkatused")),
-            Map.entry(PVC, List.of("PVC katusematerjalid")),
-            Map.entry(PC, List.of()),
-            Map.entry(RULLMATERJAL, List.of("Katuse aluskatted")),
-            Map.entry(VARIKATUSED, List.of("Päikesevarjud ja varikatused")),
-            Map.entry(PLEKK, List.of("Laekarkassid", "Seinakarkassid")),
-            Map.entry(ARMATUUR, List.of("Armatuur")),
-            Map.entry(KANDURID, List.of("Armatuuritoed ja -kandurid")),
-            Map.entry(TALDMIKU_VORMID, List.of("Armatuur")),
-            Map.entry(KILED, List.of("Kattematerjalid")),
-            Map.entry(AURUTOKE, List.of("Aurutõkked")),
-            Map.entry(GEOTEKSTIIL, List.of("Geotekstiilid")),
-            Map.entry(KATUSE_ALUSKATE, List.of("Katuse aluskatted")),
-            Map.entry(KANGAD, List.of("Tuuletõkke kangad")),
-            Map.entry(KOORMAKATTED, List.of("Koormarihmad ja -katted")),
-            Map.entry(EHITUSPAPP, List.of("Ehituspapid ja -paberid")),
-            Map.entry(TAPEET, List.of("Tapeedid", "Tapeet tellimisel", "Fototapeedid")),
-            Map.entry(NURGAD, List.of("Ehitusmetall")),
-            Map.entry(EHITUSMETALL_PLAADID, List.of("Ehitusmetall")),
-            Map.entry(POSTIJALAD, List.of("Ehitusmetall")),
-            Map.entry(EHITUSKOBAD, List.of("Ehitusmetall")),
-            Map.entry(BETOONIHARGID, List.of("Ehitusmetall")),
-            Map.entry(PALGIKINGAD, List.of("Ehitusmetall")),
-            Map.entry(PLEKKPROFIILID, List.of("Ehitusmetall")),
-            Map.entry(SISEUKSED, List.of("Siseuksed")),
-            Map.entry(VALISUKSED, List.of("Välisuksed")),
-            Map.entry(SAUNAUKSED, List.of("Saunauksed")),
-            Map.entry(UKSELENGID, List.of("Siseuksed")),
-            Map.entry(POONINGULUUGID, List.of("Pööninguluugid")),
-            Map.entry(KONTROLLLUUGID, List.of("Kontroll-luugid")),
-            Map.entry(AKNAD, List.of()), // TODO
-            Map.entry(KATUSEAKNAD, List.of("Katuseaknad")),
-            Map.entry(AKNAPROFIILID, List.of("Fassaadisegud ja tarvikud")),
-            Map.entry(AKNALAUAD, List.of("Aknalauad")),
-            Map.entry(SISEVARVID, List.of("Sisevärvid")),
-            Map.entry(VALISVARVID, List.of("Välisvärvid")),
-            Map.entry(KRUNT, List.of("Krundid")),
-            Map.entry(SISE, List.of("Lakid, õlid, vahad")),
-            Map.entry(VALIS, List.of("Lakid, õlid, vahad")),
-            Map.entry(LIISTUD_PORAND, List.of("Puitliistud", "Seinapaneeli liistud", "Plast põrandaliistud")),
-            Map.entry(AVATAITED, List.of()),
-            Map.entry(LIISTUD_LAGI, List.of("Penoplastist liistud ja laerosetid", "Seinapaneeli liistud")),
-            Map.entry(VIIMISTLUSPLAADID_PORAND, List.of("Põrandaplaadid")),
-            Map.entry(VIIMISTLUSPLAADID_LAGI, List.of("Laekatted penoplastist", "MDF seina- ja laepaneelid", "Plast seina- ja laepaneelid")),
-            Map.entry(SEIN, List.of("SPC seinaplaadid", "SPC digitaalprint seinapaneelid", "Seinaplaadid", "MDF seina- ja laepaneelid", "Plast seina- ja laepaneelid")),
-            Map.entry(LAHUSTID, List.of("Lahustid")),
-            Map.entry(MAALRITEIP, List.of("Teibid")),
-            Map.entry(TUULETOKKETEIP, List.of("Teibid")),
-            Map.entry(UNIVERSAAL, List.of("Teibid")),
-            Map.entry(SILIKOONID, List.of("Silikoonid ja hermeetikud")),
-            Map.entry(LIIM_PUIT, List.of("Liimid")),
-            Map.entry(LIIM_UNIVERSAAL, List.of("Liimid")),
-            Map.entry(HUDROISOLATSIOON, List.of("Hüdroisolatsioon")),
-            Map.entry(HERMEETIKUD, List.of(" Silikoonid ja hermeetikud")),
-            Map.entry(KANALISATSIOON, List.of("Sisekanalisatsioon", "Väliskanalisatsioon")),
-            Map.entry(VEETORUD, List.of("Veetorud ja -liitmikud")),
-            Map.entry(VENTILATSIOON, List.of("Ventilatsioonitorud ja liitmikud")),
-            Map.entry(VOOLIKUD, List.of("Voolikud")),
-            Map.entry(LISATARVIKUD, List.of()),
-            Map.entry(KRUVID, List.of("Kruvid")),
-            Map.entry(NAELAD, List.of("Naelad")),
-            Map.entry(TUUBLID, List.of("Kinnitustarvikud")),
-            Map.entry(POLDID, List.of("Poldid, mutrid, seibid")),
-            Map.entry(MUTRID, List.of("Poldid, mutrid, seibid")),
-            Map.entry(NEEDID, List.of("Kinnitustarvikud")),
-            Map.entry(SEIBID, List.of("Poldid, mutrid, seibid", "Kinnitustarvikud")),
-            Map.entry(KLAMBRID, List.of("Kinnitustarvikud", "Klambripüstolid ja klambrid", "Aiavõrgud ja piirded", "MDF seina- ja laepaneelid", "Installatsioonitarvikud")),
-            Map.entry(ANKRUD, List.of("Poldid, mutrid, seibid")),
-            Map.entry(KEERMELATID, List.of("Keermelatid")),
-            Map.entry(MUUD, List.of("Kruvid", "Naelad", "Kinnitustarvikud", "Poldid, mutrid, seibid", "Klambripüstolid ja klambrid", "Aiavõrgud ja piirded", "MDF seina- ja laepaneelid", "Installatsioonitarvikud", "Keermelatid")),
-            Map.entry(KIPSITARVIKUD, List.of()),
-            Map.entry(BAUROCI_TARVIKUD, null),
-            Map.entry(FIBOTARVIKUD, List.of())*/
     );
 
 }

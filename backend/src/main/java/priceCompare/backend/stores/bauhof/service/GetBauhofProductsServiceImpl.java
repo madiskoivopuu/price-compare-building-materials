@@ -1,5 +1,6 @@
 package priceCompare.backend.stores.bauhof.service;
 
+import static priceCompare.backend.utils.CategoryNameChecker.checkIsCorrectProductCategory;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
-import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
@@ -32,8 +32,6 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
     private static final int FETCH_MAX_NUM_PRODUCTS = 1024;
 
     private final HttpClientService httpClientService;
-
-
     private final LocationStockInformationFetcherBauhof locationStockInformationFetcher;
 
     public GetBauhofProductsServiceImpl(HttpClientService httpClientService, LocationStockInformationFetcherBauhof locationStockInformationFetcher) {
@@ -42,7 +40,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
     }
 
     @Override
-    public ProductsDto searchForProducts(String query, Category category, Subcategory subcategory) {
+    public ProductsDto searchForProducts(String query, Subcategory subcategory) {
         List<ProductDto> products = new ArrayList<>();
         int offset = 0;
         int numProductsTotal = 0;
@@ -80,7 +78,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
                 API_KEY, keyword, SEARCH_API_PAGE_SIZE, offset);
     }
 
-    private List<ProductDto> parseResponse(String response, String keyword, Subcategory category) {
+    private List<ProductDto> parseResponse(String response, String keyword, Subcategory subcategory) {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode;
         try {
@@ -97,7 +95,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
             if (!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
 
             String categoryName = productNode.path("klevu_category").asText();
-            if (!checkIsCorrectProductCategory(categoryName, category)) continue;
+            if (!checkIsCorrectProductCategory(categoryName, subcategory, EmaterjalToBauhofCategoryMapping.categoryMap)) continue;
 
             if(productNode.path("inStock").asText("yes").equals("no")) continue;
 
@@ -119,13 +117,5 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
         }
 
         return productList;
-    }
-
-    private static boolean checkIsCorrectProductCategory(String categoryName, Subcategory category) {
-        if (category == null) return true;
-        for (String bauhofCategoryName : EmaterjalToBauhofCategoryMapping.subcatMap.get(category)){
-            if (categoryName.contains(bauhofCategoryName)) return true;
-        }
-        return false;
     }
 }

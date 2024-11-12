@@ -1,5 +1,7 @@
 package priceCompare.backend.stores.decora.service;
 
+import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
+
 import com.google.common.collect.Lists;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -8,21 +10,16 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.*;
-import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import priceCompare.backend.stores.GetStoreProductsService;
 import priceCompare.backend.stores.dto.ProductParseDto;
-import priceCompare.backend.stores.krauta.service.KRautaAPIs;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
-
-import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 @Service
 public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
@@ -37,11 +34,10 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
     /**
      * Fetches the products matching the query & subcategory using decora.ee search API
      * @param query Query to search products with
-     * @param category Ematerjal.ee main category
      * @param subcategory Ematerjal.ee subcategory
      * @return Returns a list of ProductDto, with every field except for LocationDto filled
      */
-    private List<ProductParseDto> performDecoraSearch(String query, Category category, Subcategory subcategory) {
+    private List<ProductParseDto> performDecoraSearch(String query, Subcategory subcategory) {
         int offset = 0;
         int numProducts = 0;
         List<ProductParseDto> products = new ArrayList<>();
@@ -189,8 +185,8 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
     }
 
     @Override
-    public ProductsDto searchForProducts(String query, Category category, Subcategory subcategory) {
-        List<ProductParseDto> products = performDecoraSearch(query, category, subcategory);
+    public ProductsDto searchForProducts(String query, Subcategory subcategory) {
+        List<ProductParseDto> products = performDecoraSearch(query, subcategory);
         products = fetchLocationInfo(products);
         products = performAdditionalVerification(subcategory, products);
 

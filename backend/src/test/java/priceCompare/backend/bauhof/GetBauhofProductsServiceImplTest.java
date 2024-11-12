@@ -26,7 +26,7 @@ public class GetBauhofProductsServiceImplTest {
 
         GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(new HttpClientService(),
                 new LocationStockInformationFetcherBauhof(new HttpClientService()));
-        ProductsDto products = getBauhofProductsService.searchForProducts(keyword, null, null);
+        ProductsDto products = getBauhofProductsService.searchForProducts(keyword, null);
 
         assertNotNull(products, "ProductsDto should not be null");
         assertNotNull(products.getProducts(), "Product list should not be null");
@@ -49,7 +49,7 @@ public class GetBauhofProductsServiceImplTest {
 
         GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(httpClientService,
                 new LocationStockInformationFetcherBauhof(new HttpClientService()));
-        ProductsDto products = getBauhofProductsService.searchForProducts(keyword, null, null);
+        ProductsDto products = getBauhofProductsService.searchForProducts(keyword, null);
 
         assertEquals(numProductsInStock, products.getProducts().size(), "Bauhof products service did not properly fetch the products that are in stock");
         verify(httpClientService, times(2).description("Bauhof products service should have fetched products 2 times from the APIs")).PostWithBody(Mockito.any(), Mockito.any());

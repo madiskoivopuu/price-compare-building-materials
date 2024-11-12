@@ -35,10 +35,9 @@ public class Controller {
     @ResponseStatus(OK)
     public ResponseEntity<ProductsDto> searchProducts(
             @RequestParam() String keyword,
-            @RequestParam(required = false) Category category,
             @RequestParam(required = false) Subcategory subcategory) {
 
-        ProductsDto products = findProductsService.findProducts(keyword, category, subcategory);
+        ProductsDto products = findProductsService.findProducts(keyword, subcategory);
 
         return ResponseEntity.ok(products);
     }

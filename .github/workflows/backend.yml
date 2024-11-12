@@ -48,7 +48,7 @@ jobs:
       working-directory: ./backend
 
     - name: Build Backend with Gradle Wrapper
-      run: ./gradlew build              # runs tests too
+      run: ./gradlew build #--debug #remove comment to see detailed logs of tests, gradle build runs tests too
       working-directory: ./backend
 
     - name: Log in to Docker Hub

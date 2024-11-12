@@ -1,0 +1,73 @@
+package priceCompare.backend.stores.krauta.service;
+
+import static priceCompare.backend.enums.Subcategory.*;
+
+import priceCompare.backend.enums.Subcategory;
+import java.util.List;
+import java.util.Map;
+
+public class EmaterjalToKrautaCategoryMapping {
+    public static final Map<Subcategory, List<String>> subcatMap = Map.<Subcategory, List<String>>ofEntries(
+            Map.entry(KIPSPLAAT, List.of("Kipsplaadid")),
+            Map.entry(OSB_PLAAT, List.of("OSB-plaadid", "Puitlaastplaadid")),
+            Map.entry(VINEER, List.of("Ehitusvineer")),
+            Map.entry(TSEMENTKIUDPLAAT, List.of("Tsementlaastplaadid")),
+            Map.entry(PUITKIUDPLAAT, List.of("Puitlaastplaadid", "puitkiudplaadid")),
+            Map.entry(PUITLAASTPLAAT, List.of("Puitlaastplaadid")),
+            Map.entry(KIPSKIUDPLAAT, List.of()),
+            Map.entry(WEDI_PLAAT, List.of()),
+            Map.entry(TYCROC_PLAAT, List.of("Eriotstarbelised plaadid", "Tsementlaastplaadid")),
+            Map.entry(POORBETOON_BAUROC, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Ehitusplokid")),
+            Map.entry(FIBO, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Ehitusplokid")),
+            Map.entry(OONESPLOKK, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Ehitusplokid")),
+            Map.entry(SILIKAATPLOKK, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Ehitusplokid")),
+            Map.entry(LAKKAPLOKK, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Ehitusplokid")),
+            Map.entry(KERATERM, List.of("Ehitusplokid")),
+            Map.entry(VUNDAMENDIPLOKK, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Ehitusplokid")),
+            Map.entry(TELLIS, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Tellised")),
+            Map.entry(SILLUSED, List.of()),
+            Map.entry(TANAVAKIVI, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Tänavaplaadid")),
+            Map.entry(KONNITEPLAAT, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Tänavaplaadid")),
+            Map.entry(AAREKIVID, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Tänavaplaadid")),
+            Map.entry(VIHMAVEERENN, List.of("Tellised, tänavaplaadid, ehitusplokid jm", "Tänavaplaadid")),
+            Map.entry(KORSTNAD, List.of("Korstnad")),
+            Map.entry(LOODUSKIVID, List.of("Naturaalsed kiviplaadid")),
+            Map.entry(KIVIVILL, List.of("Kivivill")),
+            Map.entry(KLAASVILL, List.of("Klaasvill")),
+            Map.entry(TSELLUVILL, List.of("Ökovill")),
+            Map.entry(EPS, List.of("EPS", "Vahtplast isolatsioon")),
+            Map.entry(PIR, List.of("Polüstüreen", "Polüuretaanplaadid")),
+            Map.entry(XPS, List.of("XPS", "Polüstüreen")),
+            Map.entry(TUULETOKKEPLAAT, List.of("Isolatsiooniplaadid")),
+            Map.entry(PRUSSID, List.of("Puidust vaiad, prussid", "Hööveldamata puitprussid")),
+            Map.entry(LAUAD, List.of("Puidust vaiad, prussid", "Puidust kahekordse lõikega lauad")),
+            Map.entry(KALIBREERITUD_PRUSSID, List.of("Puidust vaiad, prussid")),
+            Map.entry(KALIBREERITUD_LAUAD, List.of("Puidust vaiad, prussid")),
+            Map.entry(HOOVELPRUSSID, List.of("Puidust vaiad, prussid")),
+            Map.entry(HOOVELLAUAD, List.of("Puidust vaiad, prussid")),
+            Map.entry(SERVAMATA, List.of("Puidust vaiad, prussid")),
+            Map.entry(LIIMPUIT, List.of("Liimpuitplaadid")),
+            Map.entry(PORANDALAUAD, List.of("Ehitusplaadid, aknalauad, lauaplaadid", "Põrandaviimistlusmaterjalid")),
+            Map.entry(TERRASSILAUAD, List.of("Terrassilauad ja tarvikud", "Terrassilauad ja tarvikud")),
+            Map.entry(SISEVOODRILAUAD, List.of("Voodrilauad", "Sisevoodrilauad")),
+            Map.entry(PAHTEL, List.of("Pahtel", "Kuivpahtel")),
+            Map.entry(KROHV, List.of("Kuivad krohvisegud", "Krohvisegud")),
+            Map.entry(MUURISEGU, List.of("Müürisegud")),
+            Map.entry(PLAATIMISSEGU, List.of("Plaadi-ja muu liim")),
+            Map.entry(VUUGISEGUD, List.of("Vuugisegud")),
+            Map.entry(AHJUSEGUD, List.of("Puistematerjal")),
+            Map.entry(TSEMENT, List.of("Tsement ja paigaldussegud")),
+            Map.entry(BETOON, List.of("Kuivbetoon")),
+            Map.entry(LIIM, List.of("Plaadi-ja muu liim", "Plaadiliim")),
+            Map.entry(PORANDATASANDUS, List.of("Tasandussegud")),
+            Map.entry(SEGUD_TARVIKUD, List.of("Ehitusmaterjalide tarvikud")),
+            Map.entry(SIDEAINED, List.of("Killustik, kruus, liiv, savi")),
+            Map.entry(MUUD_SEGUD, List.of("Tsement ja paigaldussegud")),
+            Map.entry(PUITVOODRILAUAD, List.of("Voodrilauad", "Sisevoodrilauad")),
+            Map.entry(TSEMENTVOODRILAUAD, List.of("Fassaadiplaadid")),
+            Map.entry(PLASTVOODER, List.of("Plastist välisvoodrilauad")),
+            Map.entry(FASSAAD_PLAADID, List.of("Voodrilauad, plaadid")),
+            Map.entry(PROFIILID, List.of()),
+            Map.entry(TARVIKUD, List.of())
+    );
+}

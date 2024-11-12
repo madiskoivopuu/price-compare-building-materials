@@ -154,7 +154,7 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
     }
 
     @Override
-    public ProductsDto searchForProducts(String query, Category category, Subcategory subcategory) {
+    public ProductsDto searchForProducts(String query, Subcategory subcategory) {
         List<ProductDto> products = performEspakSearch(query, subcategory);
         products = fetchCoreInfoFields(products);
 

@@ -47,7 +47,7 @@ public class GetEspakProductsServiceImplTest {
                 .thenReturn(makeFutureForHTML("src/test/resources/espak/product-kruvikeeraja-otsak-t4057mm-flextorq-5tk-dt7399t.txt"));
 
         GetEspakProductsServiceImpl getEspakProductsService = new GetEspakProductsServiceImpl(apis);
-        ProductsDto products = getEspakProductsService.searchForProducts(keyword, null, null);
+        ProductsDto products = getEspakProductsService.searchForProducts(keyword, null);
 
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
         assertEquals(EXPECTED_NUM_RESULTS, products.getProducts().size());

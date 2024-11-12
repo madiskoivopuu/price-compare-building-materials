@@ -51,7 +51,7 @@ public class GetDecoraProductsServiceImplTest {
 
         // actual testing
         GetDecoraProductsServiceImpl service = new GetDecoraProductsServiceImpl(apis);
-        ProductsDto products = service.searchForProducts(query, null, null);
+        ProductsDto products = service.searchForProducts(query, null);
 
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
         assertEquals(EXPECTED_NUM_RESULTS, products.getProducts().size());
@@ -107,7 +107,7 @@ public class GetDecoraProductsServiceImplTest {
 
         // actual testing
         GetDecoraProductsServiceImpl service = new GetDecoraProductsServiceImpl(apis);
-        ProductsDto products = service.searchForProducts("kipsplaat", null, null);
+        ProductsDto products = service.searchForProducts("kipsplaat", null);
 
         for(ProductDto product : products.getProducts()) {
             for(StockDto stock : product.getStock().getLocations()) {
