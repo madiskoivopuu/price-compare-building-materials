@@ -8,6 +8,10 @@ module.exports = {
       'sans': ['Inter']
     },
     extend: {},
+    screens: {
+      'md': '986px',
+      'sm': '460px'
+    }
   },
   plugins: [],
 }
