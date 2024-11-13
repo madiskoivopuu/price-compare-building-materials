@@ -44,7 +44,7 @@ function LocationFilter({ selectedLocations, setSelectedLocations }) {
     }, []);
 
     return (
-        <div className='mt-2 w-1/3' ref={dropdownRef}>
+        <div className='mt-2 md:w-1/3 w-full' ref={dropdownRef}>
             {/* Label for the filter */}
             <label className='block mb-1 font-medium'>Vali asukoht</label>
 
