@@ -25,6 +25,7 @@ public class KRautaAPIs {
                 "&offset=%d" +
                 "&facet_filters.categories1=Ehitus+ja+remont" +
                 "&facet_filters.categories1=Viimistlusmaterjalid" +
+                "&facet_filters.categories1=Santehnika+ja+kuttesusteemid" +
                 "&limit=%d", QUERY_KEY_FETCH_PRODUCTS, URLEncoder.encode(query, StandardCharsets.UTF_8), offset, SEARCH_API_PAGE_SIZE));
     }
 

@@ -168,31 +168,13 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
                 .build();
     }
 
-    /**
-     * Performs additional verification to make sure the right products are displayed for an ematerjal.ee subcategory
-     * @param subcategory Ematerjal.ee subcategory
-     * @param products Products parsed so far
-     * @return An updated list of products which passed the verification test
-     */
-    private List<ProductParseDto> performAdditionalVerification(Subcategory subcategory, List<ProductParseDto> products) {
-        List<ProductParseDto> newProducts = new ArrayList<>();
-        for(ProductParseDto product : products) {
-            if(EmaterjalToDecoraCategoryMapping.additionalVerification(subcategory, product))
-                newProducts.add(product);
-        }
-
-        return newProducts;
-    }
-
     @Override
     public ProductsDto searchForProducts(String query, Subcategory subcategory) {
         List<ProductParseDto> products = performDecoraSearch(query, subcategory);
         products = fetchLocationInfo(products);
-        products = performAdditionalVerification(subcategory, products);
 
         return ProductsDto.builder()
                 .products(products.stream().map(ProductParseDto::getProduct).toList())
                 .build();
     }
-
 }

@@ -1,11 +1,10 @@
 package priceCompare.backend.stores.espak.service;
 
-import priceCompare.backend.enums.Subcategory;
+import static priceCompare.backend.enums.Subcategory.*;
 
+import priceCompare.backend.enums.Subcategory;
 import java.util.List;
 import java.util.Map;
-
-import static priceCompare.backend.enums.Subcategory.*;
 
 public class EmaterjalToEspakCategoryMapping {
     // list of product_cat-* CSS classes that represent the category in the product HTML
@@ -22,18 +21,17 @@ public class EmaterjalToEspakCategoryMapping {
             Map.entry(POORBETOON_BAUROC, List.of("gaasbetoonplokid")),
             Map.entry(FIBO, List.of("keramsiitplokid", "keramsiitplokid-fibo")),
             Map.entry(OONESPLOKK, List.of()),
-            Map.entry(TELLIS, List.of("tellised")),
-            Map.entry(SILLUSED, List.of("sillused")),
             Map.entry(SILIKAATPLOKK, List.of()),
             Map.entry(LAKKAPLOKK, List.of()),
             Map.entry(KERATERM, List.of()),
             Map.entry(VUNDAMENDIPLOKK, List.of()),
+            Map.entry(TELLIS, List.of("tellised")),
+            Map.entry(SILLUSED, List.of("sillused")),
             Map.entry(TANAVAKIVI, List.of("sillutiskivid")),
             Map.entry(KONNITEPLAAT, List.of("sillutiskivid")),
             Map.entry(AAREKIVID, List.of("aarekivi")),
             Map.entry(VIHMAVEERENN, List.of()),
             Map.entry(KORSTNAD, List.of()),
-            Map.entry(LOODUSKIVID, List.of()),
             Map.entry(KIVIVILL, List.of("kivivill")),
             Map.entry(KLAASVILL, List.of("klaasvill")),
             Map.entry(TSELLUVILL, List.of()),
@@ -46,6 +44,7 @@ public class EmaterjalToEspakCategoryMapping {
             Map.entry(KALIBREERITUD_PRUSSID, List.of()),
             Map.entry(KALIBREERITUD_LAUAD, List.of()),
             Map.entry(HOOVELLAUAD, List.of()),
+            Map.entry(SERVAMATA, List.of()),
             Map.entry(LIIMPUIT, List.of()),
             Map.entry(PORANDALAUAD, List.of()),
             Map.entry(TERRASSILAUAD, List.of()),
@@ -60,14 +59,28 @@ public class EmaterjalToEspakCategoryMapping {
             Map.entry(BETOON, List.of("betoon", "remontsegud")),
             Map.entry(LIIM, List.of()),
             Map.entry(PORANDATASANDUS, List.of("porandasegud")),
-            Map.entry(SEGUD_TARVIKUD, List.of("porandasegud")),
+            Map.entry(SEGUD_TARVIKUD, List.of()),
             Map.entry(SIDEAINED, List.of("sideained")),
-            Map.entry(MUUD_SEGUD, List.of()),
             Map.entry(PUITVOODRILAUAD, List.of()),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of()),
             Map.entry(PROFIILID, List.of()),
-            Map.entry(LISATARVIKUD, List.of("fassaadi-lisatarvikud"))
+            Map.entry(FASSAAD_TARVIKUD, List.of("fassaadi-lisatarvikud")),
+            Map.entry(KIVI, List.of("kivikatused")),
+            Map.entry(TERAS, List.of()),
+            Map.entry(ETERNIIT, List.of("katuse-tsementplaadid")),
+            Map.entry(BITUUMEN, List.of("bituumenkatused")),
+            Map.entry(PVC_PC, List.of()),
+            Map.entry(VIHMAVEESUSTEEMID, List.of("vihmaveesusteemid")),
+            Map.entry(KATUSETARVIKUD, List.of("katuste-lisatarvikud")),
+            Map.entry(EHITUSPAPP, List.of()),
+            Map.entry(KANGAD, List.of("ehituspaberid-ja-kiled")),
+            Map.entry(KILED, List.of()),
+            Map.entry(AURUTOKE, List.of("ehituspaberid-ja-kiled")),
+            Map.entry(GEOTEKSTIIL, List.of()),
+            Map.entry(KATUSE_ALUSKATE, List.of("katuste-lisatarvikud")),
+            Map.entry(ARMATUUR, List.of("ehitusmetall-ehitusmetall")),
+            Map.entry(PLEKKPROFIILID, List.of("metallkarkass"))
     );
 }
