@@ -94,8 +94,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image for merged release
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ steps.date.outputs.date }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-${{ steps.date.outputs.date }} .
         working-directory: ./backend
 
       - name: Push Docker image for merged release
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ steps.date.outputs.date }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-${{ steps.date.outputs.date }}
