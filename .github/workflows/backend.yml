@@ -76,14 +76,14 @@ jobs:
       run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:latest
 
   merge-release:
-    if: github.event.pull_request.merged == true  # only runs if the pull request is merged
+    if: github.event.pull_request.merged == true || github.event_name == 'push' && github.ref == 'refs/heads/main'  # only runs on push events to main
     runs-on: ubuntu-latest
     needs: build
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch full history for frontend
+      - name: Fetch full history for backend
         run: git fetch --prune --unshallow
 
       - name: Read and increment current version
@@ -92,14 +92,13 @@ jobs:
         id: read_version_backend
         run: |
           if [ ! -f backend/VERSION ]; then
-            echo "1" > backend/VERSION  # Initialize version if it doesn't exist
+            echo "1" > backend/VERSION
           fi
           current_version=$(cat backend/VERSION)
           next_version=$((current_version + 1))
           echo "Next version is $next_version"
           echo $next_version > backend/VERSION
-          echo "::set-output name=version::$next_version"
-
+          echo "version=$next_version" >> $GITHUB_ENV  # Update to use GITHUB_ENV
 
       - name: Commit updated version
         env:
@@ -108,7 +107,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add backend/VERSION
-          git commit -m "Bump version to v${{ steps.read_version_backend.outputs.version }}"
+          git commit -m "Bump version to v${{ env.version }}"
           git push origin main
 
       - name: Log in to Docker Hub
@@ -118,8 +117,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image for merged release
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ steps.read_version_backend.outputs.version }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ env.version }} .
         working-directory: ./backend
 
       - name: Push Docker image for merged release
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ steps.read_version_backend.outputs.version }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ env.version }}

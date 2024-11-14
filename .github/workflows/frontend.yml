@@ -83,7 +83,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:latest
 
   merge-release:
-    if: github.event.pull_request.merged == true  # only runs if the pull request is merged
+    if: github.event.pull_request.merged == true || github.event_name == 'push' && github.ref == 'refs/heads/main'  # only runs on push events to main
     runs-on: ubuntu-latest
     needs: build
 
