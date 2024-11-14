@@ -83,32 +83,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch full history for backend
-        run: git fetch --prune --unshallow
-
-      - name: Read and increment current version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: read_version_backend
-        run: |
-          if [ ! -f backend/VERSION ]; then
-            echo "1" > backend/VERSION
-          fi
-          current_version=$(cat backend/VERSION)
-          next_version=$((current_version + 1))
-          echo "Next version is $next_version"
-          echo $next_version > backend/VERSION
-          echo "version=$next_version" >> $GITHUB_ENV  # Update to use GITHUB_ENV
-
-      - name: Commit updated version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add backend/VERSION
-          git commit -m "Bump version to v${{ env.version }}"
-          git push origin main
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%d-%m-%Y')"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -117,8 +94,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image for merged release
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ env.version }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ steps.date.outputs.date }} .
         working-directory: ./backend
 
       - name: Push Docker image for merged release
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ env.version }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-backend:release-v${{ steps.date.outputs.date }}
