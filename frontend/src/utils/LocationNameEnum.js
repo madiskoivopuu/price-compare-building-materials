@@ -24,5 +24,5 @@ const LocationNameEnum = {
     PAIDE: "Paide",
     POLTSAMAA: "Põltsamaa"
 };
-
+//test comment
 export default LocationNameEnum;
