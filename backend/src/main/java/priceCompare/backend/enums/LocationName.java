@@ -31,7 +31,7 @@ public enum LocationName {
     LAAGRI("Laagri");
 
     private final String displayName;
-    //test comment 5
+    //test comment 6
     LocationName(String displayName) {
         this.displayName = displayName;
     }
