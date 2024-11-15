@@ -114,9 +114,10 @@ jobs:
 
       - name: Deploy Docker image to EC2
         run: |
-            ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_INSTANCE_IP }} << 'EOF'
-            docker pull ematerjalee/price-compare-frontend:latest
-            docker stop $(docker ps -q --filter "ancestor=$(docker images --format '{{.Repository}}:{{.Tag}}' | grep frontend)") || true
-            docker run -d -p 3000:80 ematerjalee/price-compare-frontend:latest
-            docker system prune -a -f
-            EOF
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_INSTANCE_IP }} << 'EOF'
+          docker pull ematerjalee/price-compare-frontend:latest
+          docker stop price-compare-frontend || true
+          docker rm price-compare-frontend || true
+          docker run -d -p 3000:80 --name price-compare-frontend ematerjalee/price-compare-frontend:latest
+          docker system prune -a -f
+          EOF
