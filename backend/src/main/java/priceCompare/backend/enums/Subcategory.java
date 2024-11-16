@@ -1,5 +1,8 @@
 package priceCompare.backend.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Subcategory {
     KIPSPLAAT("Kipsplaat"),
     OSB_PLAAT("OSB-plaat"),
@@ -81,10 +84,6 @@ public enum Subcategory {
 
     Subcategory(String displayName) {
         this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
     }
 
     public static Subcategory fromDisplayName(String displayName) {
