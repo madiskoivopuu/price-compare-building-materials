@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import priceCompare.backend.dto.CategoriesDto;
 import priceCompare.backend.dto.ProductsDto;
-import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.CategoryServiceImpl;
 import priceCompare.backend.service.FindProductsServiceImpl;
@@ -35,8 +34,9 @@ public class Controller {
     @ResponseStatus(OK)
     public ResponseEntity<ProductsDto> searchProducts(
             @RequestParam() String keyword,
-            @RequestParam(required = false) Subcategory subcategory) {
+            @RequestParam(required = false) String subcategoryDisplayname) {
 
+        Subcategory subcategory = Subcategory.fromDisplayName(subcategoryDisplayname);
         ProductsDto products = findProductsService.findProducts(keyword, subcategory);
 
         return ResponseEntity.ok(products);
