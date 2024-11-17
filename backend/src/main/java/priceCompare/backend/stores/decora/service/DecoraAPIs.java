@@ -53,6 +53,8 @@ public class DecoraAPIs {
             if(!categoryMappings.isEmpty()) {
                 String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));
                 categoryFilter = String.format(categoryFilterJson, categories);
+            } else {
+                categoryFilter = String.format(categoryFilterJson, "\"\""); // empty string results no products being returned, since no category matches empty string
             }
 
         }
@@ -94,8 +96,8 @@ public class DecoraAPIs {
                             }
                           ]
                         }
+                        %s
                       }
-                      %s
                     }
                   ]
                 }
