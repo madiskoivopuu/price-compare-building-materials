@@ -3,7 +3,7 @@ import SearchResult from './SearchResult';
 import SearchHeader from './SearchHeader';
 import Filters from './Filters';
 
-function Hero() {
+function Hero({ selectedCategory }) {
     const [items, setItems] = useState({ products: [] });
     const [sortedProducts, setSortedProducts] = useState([]);
     const [q, setQ] = useState('');
@@ -12,6 +12,11 @@ function Hero() {
     const [selectedLocations, setSelectedLocations] = useState([]);
     const productsPerPage = 25; // currently a constant
     const [isLoading, setIsLoading] = useState(false);
+
+    const queryBuilder = (val) => {
+        if (selectedCategory) return val.concat('&subcategory=', selectedCategory.subcategory)
+        else return val
+    }
 
     useEffect(() => {
         if (q) {
@@ -34,6 +39,13 @@ function Hero() {
         }
     }, [q]);
 
+    useEffect(() => {
+        if (selectedCategory) { 
+            let query = selectedCategory.subcategory.concat('&subcategory=', selectedCategory.subcategory)
+            setQ(query)
+        } // Update query upon category selection
+    }, [selectedCategory])
+
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -42,12 +54,12 @@ function Hero() {
         <div className='w-full md:w-3/4 h-max md:p-10 p-4'>
             <form onSubmit={(e) => {
                 e.preventDefault();
-                setQ(inputValue);
+                setQ(queryBuilder(inputValue));
             }} className='flex drop-shadow-md rounded mb-4 bg-white'>
                 <input
                     className='w-full h-14 pl-2 rounded'
                     type='text'
-                    placeholder='Otsi toodet'
+                    placeholder={`Otsi toodet ${selectedCategory ? 'kategooriast '.concat(selectedCategory.subcategory) : ''}`}
                     onChange={(e) => setInputValue(e.target.value)}
                 />
                 <button type='submit' className='mx-2'>
@@ -62,6 +74,7 @@ function Hero() {
             <Filters selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />
 
             <SearchHeader
+                category={selectedCategory}
                 isLoading={isLoading}
                 totalProducts={items.products.length}
                 currentPage={currentPage}

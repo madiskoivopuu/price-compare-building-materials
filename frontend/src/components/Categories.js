@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import Category from "./Category";
 
-function Categories({isMobileMenuExtended}) {
+function Categories({isMobileMenuExtended, categoryChange}) {
+    
     const [categories, setCategories] = useState([])
+    const [selectedSubcategory, setSelectedSubcategory] = useState(null)
+    const [selectedCat, setSelectedCat] = useState(null)
+
+    
+
+    const subcategoryChange = (cat) =>  { 
+        setSelectedSubcategory(cat)
+    }
+
+    useEffect(() => {
+        if (selectedSubcategory) {
+            categoryChange({ category: 'cat', subcategory: selectedSubcategory });
+        }
+    }, [selectedSubcategory, categoryChange]);
+
 
     useEffect(() => {
         fetch('http://16.16.186.149:8080/request/categories')  // This is for testing environment
@@ -24,9 +40,8 @@ function Categories({isMobileMenuExtended}) {
             <h1 className="font-bold">Kategooriad</h1>
             <ul className="p-2">
                 {categories.map((category, index) => (
-                    <li key={index}>
-                        {}
-                        <Category category={category} />
+                    <li key={index} onClick={() => {setSelectedCat(index)}}>
+                        <Category category={category} subcategoryChange={subcategoryChange} active={index === selectedCat}/>
                     </li>
                 ))}
             </ul>
