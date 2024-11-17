@@ -70,7 +70,7 @@ public enum Subcategory {
     EHITUSPAPP("Ehituspapp"),
     KANGAD("Kangad"),
     KILED("Kiled"),
-    AURUTOKE("Aurustõke"),
+    AURUTOKE("Aurutõke"),
     GEOTEKSTIIL("Geotekstiil"),
     KATUSE_ALUSKATE("Katuse aluskate"),
     ARMATUUR("Armatuur"),
