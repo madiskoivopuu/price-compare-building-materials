@@ -60,7 +60,7 @@ public class EspakAPIs {
                 );
                 facetFilter.append("\"]");
             } else {
-                facetFilter.append(", taxonomies.product_cat:---");
+                facetFilter.append(", \"taxonomies.product_cat:---\"");
             }
         }
 
