@@ -8,6 +8,6 @@ public class LocationStockInformationFetcherPuumarket {
     }
 
     public StockInLocationsDto parseStockInfo(Element htmlStockEl) {
-
+        return null;
     }
 }
