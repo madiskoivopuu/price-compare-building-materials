@@ -67,7 +67,7 @@ public enum Subcategory {
     PVC_PC("PVC/PC"),
     VIHMAVEESUSTEEMID("Vihmaveesüsteemid"),
     KATUSETARVIKUD("Tarvikud"),
-    EHITUSPAPP("Ehituspapp"),
+    EHITUSPABER("Ehituspaber"),
     KANGAD("Kangad"),
     KILED("Kiled"),
     AURUTOKE("Aurutõke"),

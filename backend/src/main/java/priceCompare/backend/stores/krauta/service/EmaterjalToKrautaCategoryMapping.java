@@ -74,7 +74,7 @@ public class EmaterjalToKrautaCategoryMapping {
             Map.entry(PVC_PC, List.of("PVC-plaadid")),
             Map.entry(VIHMAVEESUSTEEMID, List.of("Vihmaveesüsteemi tarvikud")),
             Map.entry(KATUSETARVIKUD, List.of("Katusekatted")),
-            Map.entry(EHITUSPAPP, List.of("Isolatsiooniplaadid ja islatsioonifooliumid")),
+            Map.entry(EHITUSPABER, List.of("Isolatsiooniplaadid ja islatsioonifooliumid")),
             Map.entry(KANGAD, List.of("Kiled, kaitsekangad")),
             Map.entry(KILED, List.of("Kiled, kaitsekangad")),
             Map.entry(AURUTOKE, List.of("Isolatsiooniplaadid ja islatsioonifooliumid")),

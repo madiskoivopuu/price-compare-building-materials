@@ -74,7 +74,7 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(PVC_PC, List.of("PVC katusematerjalid")),
             Map.entry(VIHMAVEESUSTEEMID, List.of("Vihmaveesüsteemid")),
             Map.entry(KATUSETARVIKUD, List.of("Katusematerjalid ja tarvikud")),
-            Map.entry(EHITUSPAPP, List.of("Ehituspapid ja -paberid")),
+            Map.entry(EHITUSPABER, List.of("Ehituspapid ja -paberid")),
             Map.entry(KANGAD, List.of("Tuuletõkke kangad")),
             Map.entry(KILED, List.of("Kattematerjalid")),
             Map.entry(AURUTOKE, List.of("Aurutõkked")),

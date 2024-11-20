@@ -74,7 +74,7 @@ public class EmaterjalToBauhofCategoryMapping {
             Map.entry(PVC_PC, List.of("Plastikkatused")),
             Map.entry(VIHMAVEESUSTEEMID, List.of("Vihmaveesüsteemid")),
             Map.entry(KATUSETARVIKUD, List.of("Katusekatted ja lisatarvikud")),
-            Map.entry(EHITUSPAPP, List.of("Ehituspaberid ja kiled")),
+            Map.entry(EHITUSPABER, List.of("Ehituspaberid ja kiled")),
             Map.entry(KANGAD, List.of("Ehituspaberid ja kiled")),
             Map.entry(KILED, List.of("Ehituspaberid ja kiled")),
             Map.entry(AURUTOKE, List.of("Ehituspaberid ja kiled")),

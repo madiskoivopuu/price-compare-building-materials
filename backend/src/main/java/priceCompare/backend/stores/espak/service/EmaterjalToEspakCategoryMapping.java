@@ -74,7 +74,7 @@ public class EmaterjalToEspakCategoryMapping {
             Map.entry(PVC_PC, List.of()),
             Map.entry(VIHMAVEESUSTEEMID, List.of("vihmaveesusteemid")),
             Map.entry(KATUSETARVIKUD, List.of("katuste-lisatarvikud")),
-            Map.entry(EHITUSPAPP, List.of()),
+            Map.entry(EHITUSPABER, List.of()),
             Map.entry(KANGAD, List.of("ehituspaberid-ja-kiled")),
             Map.entry(KILED, List.of()),
             Map.entry(AURUTOKE, List.of("ehituspaberid-ja-kiled")),

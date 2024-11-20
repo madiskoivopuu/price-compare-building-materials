@@ -85,7 +85,7 @@ public enum Category {
             Subcategory.FASSAAD_TARVIKUD,
     }),
     KATTEMATERJALID("Kattematerjalid", new Subcategory[]{
-            Subcategory.EHITUSPAPP,
+            Subcategory.EHITUSPABER,
             Subcategory.KANGAD,
             Subcategory.KILED,
             Subcategory.AURUTOKE,
