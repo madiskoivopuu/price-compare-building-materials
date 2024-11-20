@@ -26,8 +26,8 @@ public enum PuumarketStoreLocation {
             .address("Lina 24")
             .build()),
     TARTU("Tartu", LocationDto.builder()
-            .locationName(LocationName.PARNU)
-            .address("Lina 24")
+            .locationName(LocationName.TARTU)
+            .address("Ringtee 37b")
             .build())
     ;
 
