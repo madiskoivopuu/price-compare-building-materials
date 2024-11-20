@@ -3,13 +3,12 @@ package priceCompare.backend.stores.puumarket.service;
 import lombok.Getter;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.enums.LocationName;
-import priceCompare.backend.stores.bauhof.service.BauhofStoreLocation;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public enum PuumaterjalStoreLocation {
+public enum PuumarketStoreLocation {
     TALLINN_1("Mustamäe", LocationDto.builder()
             .locationName(LocationName.TALLINN)
             .address("Laki 3a")
@@ -33,28 +32,28 @@ public enum PuumaterjalStoreLocation {
     ;
 
 
-    private static final Map<String, PuumaterjalStoreLocation> SOURCE_NAME_MAP = new HashMap<>();
+    private static final Map<String, PuumarketStoreLocation> SOURCE_NAME_MAP = new HashMap<>();
 
     static {
-        for (PuumaterjalStoreLocation location : PuumaterjalStoreLocation.values()) {
+        for (PuumarketStoreLocation location : PuumarketStoreLocation.values()) {
             SOURCE_NAME_MAP.put(location.sourceName, location);
         }
     }
 
-    private final String sourceName;
+    private final String sourceName; // location name as shown on the website
     private final LocationDto location;
 
-    PuumaterjalStoreLocation(String sourceName, LocationDto location) {
+    PuumarketStoreLocation(String sourceName, LocationDto location) {
         this.sourceName = sourceName;
         this.location = location;
     }
 
-    public static PuumaterjalStoreLocation fromSourceName(String sourceName) {
+    public static PuumarketStoreLocation fromSourceName(String sourceName) {
         return SOURCE_NAME_MAP.get(sourceName);
     }
 
     public static LocationDto locationFromSourceName(String sourceName) {
-        PuumaterjalStoreLocation locationEnum = fromSourceName(sourceName);
+        PuumarketStoreLocation locationEnum = fromSourceName(sourceName);
         if (locationEnum != null) {
             return locationEnum.getLocation();
         }
