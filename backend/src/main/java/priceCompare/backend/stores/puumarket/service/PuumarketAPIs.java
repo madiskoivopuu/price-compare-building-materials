@@ -31,8 +31,10 @@ public class PuumarketAPIs {
     }
 
     private List<Document> fetchCategoryPages(Subcategory subcategory) {
+        List<Document> categoryPages = new ArrayList<>();
+
         List<String> mappedUrls = EmaterjalToPuumarketCategoryMapping.categoryMap.getOrDefault(subcategory, List.of());
-        if(mappedUrls.isEmpty()) return null;
+        if(mappedUrls.isEmpty()) return categoryPages;
 
         List<CompletableFuture<Document>> futures = new ArrayList<>();
         for(String categoryUrl : mappedUrls) {
@@ -43,7 +45,6 @@ public class PuumarketAPIs {
             );
         }
 
-        List<Document> categoryPages = new ArrayList<>();
         for(CompletableFuture<Document> future : futures) {
             try {
                 Document doc = future.join();
