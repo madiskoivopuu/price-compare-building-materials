@@ -52,7 +52,7 @@ public class LocationStockInformationFetcherPuumarket {
             );
         }
 
-        Elements stockInLocationsEls = htmlProductEl.select("li.d-flex:not(.stocks-footer)");
+        Elements stockInLocationsEls = htmlProductEl.select("li.d-flex.m-0");
         for(Element stockInLocationEl : stockInLocationsEls) {
             StockDto parsedStock = parseStock(stockInLocationEl);
             if(parsedStock != null)
