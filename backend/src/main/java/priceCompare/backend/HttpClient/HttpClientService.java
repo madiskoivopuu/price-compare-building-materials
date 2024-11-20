@@ -43,6 +43,25 @@ public class HttpClientService {
         }
     }
 
+    public HttpResponse<byte[]> GetRawBytes(URI url) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(url)
+                .header("Content-Type", "application/json")
+                .GET()
+                .build();
+        try {
+            HttpResponse<byte[]> response = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
+            if (response.statusCode() != 200) {
+                System.err.printf("Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
+                return null;
+            }
+            return response;
+        } catch (IOException | InterruptedException e) {
+            System.err.printf("Error fetching data from URL: %s, Exception: %s%n", url, e.getMessage());
+            return null;
+        }
+    }
+
     public String GetString(URI url) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
