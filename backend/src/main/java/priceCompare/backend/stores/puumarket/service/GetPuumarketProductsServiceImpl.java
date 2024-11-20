@@ -29,25 +29,27 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
         List<ProductDto> products = new ArrayList<>();
 
         for(Document searchResponse : apis.performSearchOrCategoryPageFetch(query, subcategory)) {
-            for(Element productHtml : searchResponse.select(".grid > div.item")) {
+            for(Element productEl : searchResponse.select(".grid > div.item")) {
                 // filter out non-products
-                String productUrl = productHtml.select(".product-title > a").attr("href");
+                String productUrl = productEl.select(".product-title > a").attr("href");
                 if(!productUrl.contains("/toode/")) continue;
 
-                String productName = productHtml.select(".product-title > a").text();
+                String productName = productEl.select(".product-title > a").text();
                 if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
 
                 try {
                     ProductDto product = ProductDto.builder()
                             .store(Store.PUUMARKET)
                             .name(productName)
-                            .price(Double.parseDouble(productHtml.select(".amount > bdi").text().replace("€", "")))
-                            .unit(Unit.fromDisplayName(productHtml.select(".product-price > .text-primary > .badge").text()))
+                            .price(Double.parseDouble(productEl.select(".amount > bdi").text().replace("€", "")))
+                            .unit(Unit.fromDisplayName(productEl.select(".product-price > .text-primary > .badge").text()))
+                            .stock(stockFetcher.parseStockInfo(productEl))
                             .linkToProduct(productUrl)
-                            .linkToPicture(productHtml.select("img").attr("src"))
+                            .linkToPicture(productEl.select("img").attr("src"))
                             .build();
                     products.add(product);
                 } catch (IllegalArgumentException e) {
+                    e.printStackTrace();
                     System.err.println("Puumarket products service: " + e.getMessage());
                     System.err.println(searchResponse.select(".product-title > a").attr("href"));
                 }
