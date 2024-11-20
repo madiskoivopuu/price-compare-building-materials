@@ -42,17 +42,21 @@ public class LocationStockInformationFetcherPuumarket {
 
     public StockInLocationsDto parseStockInfo(Element htmlProductEl) {
         Map<LocationDto, StockDto> stockForLoc = new HashMap<>();
+        Elements stockInLocationsEls = htmlProductEl.select("li.d-flex.m-0");
 
         // add all cities by default, because product element might not include all available locations
         for(PuumarketStoreLocation storeLoc : PuumarketStoreLocation.values()) {
             stockForLoc.put(storeLoc.getLocation(), StockDto.builder()
                             .location(storeLoc.getLocation())
-                            .quantityText("0 tk")
+                            .quantityText(
+                                    storeLoc.equals(PuumarketStoreLocation.TALLINN_1_VALISLADU) && !htmlProductEl.text().toLowerCase().contains("lõpumüügi")
+                                            ? "Tellitav"
+                                            : "0 tk"
+                            )
                             .build()
             );
         }
 
-        Elements stockInLocationsEls = htmlProductEl.select("li.d-flex.m-0");
         for(Element stockInLocationEl : stockInLocationsEls) {
             StockDto parsedStock = parseStock(stockInLocationEl);
             if(parsedStock != null)
