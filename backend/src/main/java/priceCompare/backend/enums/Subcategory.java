@@ -73,6 +73,7 @@ public enum Subcategory {
     AURUTOKE("Aurutõke"),
     GEOTEKSTIIL("Geotekstiil"),
     KATUSE_ALUSKATE("Katuse aluskate"),
+    VUNDAMENDIKATE("Vundamendikate"),
     ARMATUUR("Armatuur"),
     PLEKKPROFIILID("Plekkprofiilid");
 
