@@ -44,7 +44,7 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
                             .price(Double.parseDouble(productHtml.select(".amount > bdi").text().replace("€", "")))
                             .unit(Unit.fromDisplayName(productHtml.select(".product-price > .text-primary > .badge").text()))
                             .linkToProduct(productUrl)
-                            .linkToPicture(productHtml.select("img").attr("href"))
+                            .linkToPicture(productHtml.select("img").attr("src"))
                             .build();
                     products.add(product);
                 } catch (IllegalArgumentException e) {
@@ -61,7 +61,7 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
 
     @Override
     public ProductsDto searchForProducts(String query, Subcategory subcategory) {
-        if((query == null || query.isEmpty()) && subcategory == null)
+        if((query == null || query.length() < 2) && subcategory == null)
             return ProductsDto.builder().build();
 
         return performPuumaterjalSearch(query, subcategory);
