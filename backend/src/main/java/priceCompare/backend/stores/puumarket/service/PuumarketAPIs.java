@@ -3,6 +3,7 @@ package priceCompare.backend.stores.puumarket.service;
 import ch.qos.logback.core.pattern.parser.Parser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
+@Service
 public class PuumarketAPIs {
     private final String SEARCH_URL = "https://puumarket.ee/";
 

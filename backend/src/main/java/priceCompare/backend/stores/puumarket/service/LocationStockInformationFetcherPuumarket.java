@@ -2,6 +2,7 @@ package priceCompare.backend.stores.puumarket.service;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.StockDto;
 import priceCompare.backend.dto.StockInLocationsDto;
@@ -9,9 +10,9 @@ import priceCompare.backend.dto.StockInLocationsDto;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class LocationStockInformationFetcherPuumarket {
-    public LocationStockInformationFetcherPuumarket() {
-    }
+    public LocationStockInformationFetcherPuumarket() {}
 
     private StockDto parseStock(Element htmlCityStockEl) {
         Elements locAndStock = htmlCityStockEl.getElementsByTag("span");
