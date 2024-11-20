@@ -41,7 +41,7 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
                     ProductDto product = ProductDto.builder()
                             .store(Store.PUUMARKET)
                             .name(productName)
-                            .price(Double.parseDouble(productEl.select(".amount > bdi").text().replace("€", "")))
+                            .price(Double.parseDouble(productEl.select(".text-primary > .amount > bdi").text().replace("€", "")))
                             .unit(Unit.fromDisplayName(productEl.select(".product-price > .text-primary > .badge").text()))
                             .stock(stockFetcher.parseStockInfo(productEl))
                             .linkToProduct(productUrl)
