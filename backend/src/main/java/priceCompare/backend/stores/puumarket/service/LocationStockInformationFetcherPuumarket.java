@@ -49,7 +49,7 @@ public class LocationStockInformationFetcherPuumarket {
             stockForLoc.put(storeLoc.getLocation(), StockDto.builder()
                             .location(storeLoc.getLocation())
                             .quantityText(
-                                    storeLoc.equals(PuumarketStoreLocation.TALLINN_1_VALISLADU) && !htmlProductEl.text().toLowerCase().contains("lõpumüügi")
+                                    storeLoc.equals(PuumarketStoreLocation.TALLINN_1_VALISLADU) && !htmlProductEl.text().toLowerCase().contains("saadaval ainult laojäägiga esinduses")
                                             ? "Tellitav"
                                             : "0 tk"
                             )
