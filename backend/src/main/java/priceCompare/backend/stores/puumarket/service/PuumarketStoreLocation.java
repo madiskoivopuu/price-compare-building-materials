@@ -13,6 +13,10 @@ public enum PuumarketStoreLocation {
             .locationName(LocationName.TALLINN)
             .address("Laki 3a")
             .build()),
+    TALLINN_1_VALISLADU("Välisladu", LocationDto.builder()
+            .locationName(LocationName.TALLINN)
+            .address("Laki 3a (välisladu)")
+            .build()),
     TALLINN_2("Männiku", LocationDto.builder()
             .locationName(LocationName.TALLINN)
             .address("Väike-Männiku 11")

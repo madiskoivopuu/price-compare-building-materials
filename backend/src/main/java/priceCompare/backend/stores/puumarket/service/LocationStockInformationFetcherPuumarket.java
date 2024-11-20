@@ -21,7 +21,7 @@ public class LocationStockInformationFetcherPuumarket {
 
         LocationDto storeLoc = PuumarketStoreLocation.locationFromSourceName(locationDisplayName);
         if(storeLoc == null) {
-            System.err.printf("Puumarket stock fetcher: error mapping store name %s to a Puumarket store location\n", locationDisplayName);
+            System.err.printf("Puumarket stock fetcher: failed mapping store name %s to a Puumarket store location\n", locationDisplayName);
             return null;
         }
 
