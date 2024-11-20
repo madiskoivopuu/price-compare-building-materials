@@ -94,7 +94,7 @@ public class FindProductsServiceImplTest {
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
-        assertEquals(3, result.getProducts().size());
+        assertEquals(4, result.getProducts().size());
         assertTrue(result.getProducts().contains(product1));
     }
 
