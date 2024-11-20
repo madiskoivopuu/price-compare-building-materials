@@ -56,7 +56,7 @@ public class EmaterjalToBauhofCategoryMapping {
             Map.entry(VUUGISEGUD, List.of()),
             Map.entry(AHJUSEGUD, List.of("Põrandasegud")),
             Map.entry(TSEMENT, List.of("Ehitussegud", "Põrandasegud")),
-            Map.entry(BETOON, List.of("Ehitussegud")),
+            Map.entry(KUIVBETOON, List.of("Ehitussegud")),
             Map.entry(LIIM, List.of("Ehitussegud")),
             Map.entry(PORANDATASANDUS, List.of("Põrandasegud")),
             Map.entry(SEGUD_TARVIKUD, List.of("Krohvi lisatarvikud")),

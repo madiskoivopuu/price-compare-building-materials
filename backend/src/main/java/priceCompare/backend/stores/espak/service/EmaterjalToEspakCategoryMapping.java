@@ -56,7 +56,7 @@ public class EmaterjalToEspakCategoryMapping {
             Map.entry(VUUGISEGUD, List.of("plaatimissegud")),
             Map.entry(AHJUSEGUD, List.of("ahjusegud")),
             Map.entry(TSEMENT, List.of("tsement", "remontsegud")),
-            Map.entry(BETOON, List.of("betoon", "remontsegud")),
+            Map.entry(KUIVBETOON, List.of("betoon", "remontsegud")),
             Map.entry(LIIM, List.of()),
             Map.entry(PORANDATASANDUS, List.of("porandasegud")),
             Map.entry(SEGUD_TARVIKUD, List.of()),

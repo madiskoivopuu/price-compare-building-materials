@@ -56,7 +56,7 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(VUUGISEGUD, List.of("Vuugisegud")),
             Map.entry(AHJUSEGUD, List.of("Ahjusegud")),
             Map.entry(TSEMENT, List.of("Müürisegud ja betoonid")),
-            Map.entry(BETOON, List.of("Müürisegud ja betoonid")),
+            Map.entry(KUIVBETOON, List.of("Müürisegud ja betoonid")),
             Map.entry(LIIM, List.of("Müürisegud ja betoonid", "Fassaadisegud ja tarvikud")),
             Map.entry(PORANDATASANDUS, List.of("Põrandasegud ja tarvikud")),
             Map.entry(SEGUD_TARVIKUD, List.of("Fassaadisegud ja tarvikud")),

@@ -49,7 +49,7 @@ public enum Subcategory {
     VUUGISEGUD("Vuugisegud"),
     AHJUSEGUD("Ahjusegud"),
     TSEMENT("Tsement"),
-    BETOON("Betoon"),
+    KUIVBETOON("Kuivbetoon"),
     LIIM("Liim"),
     PORANDATASANDUS("Põrandatasandus"),
     SEGUD_TARVIKUD("Tarvikud"),

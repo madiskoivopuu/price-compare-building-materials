@@ -56,7 +56,7 @@ public class EmaterjalToKrautaCategoryMapping {
             Map.entry(VUUGISEGUD, List.of("Vuugisegud")),
             Map.entry(AHJUSEGUD, List.of("Puistematerjal")),
             Map.entry(TSEMENT, List.of("Tsement ja paigaldussegud")),
-            Map.entry(BETOON, List.of("Kuivbetoon")),
+            Map.entry(KUIVBETOON, List.of("Kuivbetoon")),
             Map.entry(LIIM, List.of("Plaadi-ja muu liim")),
             Map.entry(PORANDATASANDUS, List.of("Tasandussegud")),
             Map.entry(SEGUD_TARVIKUD, List.of("Ehitusmaterjalide tarvikud")),

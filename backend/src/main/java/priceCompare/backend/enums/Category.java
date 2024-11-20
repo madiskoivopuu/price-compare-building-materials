@@ -61,7 +61,7 @@ public enum Category {
             Subcategory.VUUGISEGUD,
             Subcategory.AHJUSEGUD,
             Subcategory.TSEMENT,
-            Subcategory.BETOON,
+            Subcategory.KUIVBETOON,
             Subcategory.LIIM,
             Subcategory.PORANDATASANDUS,
             Subcategory.SEGUD_TARVIKUD,
