@@ -5,7 +5,8 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
         "BAUHOF": "bauhof.png",
         "KRAUTA": "krauta.jpg",
         "ESPAK": "espak.jpg",
-        "DECORA": "decora.png"
+        "DECORA": "decora.png",
+        "PUUMARKET": "puumarket.png"
     };
 
 
@@ -49,7 +50,14 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
             <div className='flex justify-start items-center h-full'>
                 {/* IMAGE */}
                 <div className={`w-16 h-16 sm:w-20 sm:h-20 p-1 flex-none ${isShowingInfo ? 'hidden' : ''}`}>
-                    <img alt={name} src={linkToPicture} className='object-contain w-full h-full' />
+                    <img alt={name}
+                         src={linkToPicture}
+                         className='object-contain w-full h-full'
+                         onError={(e) => {
+                             e.target.onerror = null
+                             e.target.src = 'product-placeholder.png'
+                         }}
+                    />
                 </div>
             </div>
             {/* TEXT */}

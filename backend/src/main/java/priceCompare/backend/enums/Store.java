@@ -6,7 +6,8 @@ public enum Store {
     KRAUTA("krauta"),
     BAUHOF("bauhof"),
     ESPAK("espak"),
-    DECORA("decora");
+    DECORA("decora"),
+    PUUMARKET("puumarket");
 
     protected final String storeName;
 

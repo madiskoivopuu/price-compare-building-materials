@@ -1,0 +1,86 @@
+<div class="item " style="">
+  <div class="card product-card border flip-card h-100">
+    <div class="card-img position-relative">
+      <span class="btn btn-stock floating flipper btn-sm in-stock" data-toggle="tooltip" data-placement="right" role="button" aria-label="Tootevalikus" title="" data-original-title="Tootevalikus">
+        <i class="icon-stock text-accent"></i>
+      </span>
+      <a href="https://puumarket.ee/toode/hoovellaud-sh-18x120x3000mm/" class="flip-card-inner d-print-none">
+        <div class="flip-card-back d-flex flex-column align-items-start pt-5 .justify-content-center .border-bottom rounded shadow">
+          <ul class="list-unstyled m-0 font-size-sm text-left w-100 p-2 compact-rows">
+            <li class="stocks-header">Kuvatud on reaalne saadavus kauplustes ja see võib jooksvalt muutuda. <br>
+              <br> Lõpumüügi- ja soodustooted on saadaval vaid osakonnast, kus on näidatud toote laoseis. Nende toodete teistesse osakondadesse transportimine toimub eraldi tasu eest. <br>
+              <br>
+            </li>
+            <li class="d-flex justify-content-between m-0">
+              <span>
+                <i class="icon-stock text-accent"></i>
+                <strong>Mustamäe</strong>
+              </span>
+              <span>1143 jm</span>
+            </li>
+            <li class="d-flex justify-content-between m-0">
+              <span>
+                <i class="icon-stock text-accent"></i>
+                <strong>Männiku</strong>
+              </span>
+              <span>183 jm</span>
+            </li>
+            <li class="d-flex justify-content-between m-0">
+              <span>
+                <i class="icon-stock text-accent"></i>
+                <strong>Rakvere</strong>
+              </span>
+              <span>360 jm</span>
+            </li>
+            <li class="d-flex justify-content-between m-0">
+              <span>
+                <i class="icon-stock text-accent"></i>
+                <strong>Pärnu</strong>
+              </span>
+              <span>1740 jm</span>
+            </li>
+            <li class="d-flex justify-content-between m-0">
+              <span>
+                <i class="icon-stock text-accent"></i>
+                <strong>Tartu</strong>
+              </span>
+              <span>228 jm</span>
+            </li>
+            <li class="stocks-footer d-flex justify-content-between border-top mt-2 pt-2">
+              <strong>Tarne</strong>
+              <span class="text-right">2-5 tööpäeva</span>
+            </li>
+          </ul>
+        </div>
+      </a>
+      <a href="https://puumarket.ee/toode/hoovellaud-sh-18x120x3000mm/">
+        <img src="https://cdn.puumarket.ee/upload/256/101527-256x256.webp" alt="Höövellaud SH 18x120x3000mm" width="256" height="256" class="card-img-top" loading="lazy">
+      </a>
+    </div>
+    <div class="card-body d-flex flex-column justify-content-between rounded p-2 text-left">
+      <h3 class="product-title font-size-sm">
+        <a href="https://puumarket.ee/toode/hoovellaud-sh-18x120x3000mm/">Höövellaud SH 18x120x3000mm</a>
+        <span class="sku badge badge-secondary">101527</span>
+      </h3>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="product-price">
+          <span class="text-primary">
+            <span class="woocommerce-Price-amount amount">
+              <bdi>
+                <span class="woocommerce-Price-currencySymbol">€</span>1.85 </bdi>
+            </span>
+            <span class="badge badge-secondary">jm</span>
+          </span>
+        </div>
+        <form class="cart">
+          <input type="hidden" name="quantity" value="3">
+          <input type="hidden" name="product_id" value="17077322">
+          <span class="added_to_cart"></span>
+          <button title="" role="button" data-toggle="tooltip" data-placement="left" name="add-to-cart" class="btn btn-outline-primary btn-sm .btn-shadow .btn-block add_to_cart_button ajax_add_to_cart" data-product_id="17077322" data-quantity="3" type="button" data-original-title="Lisa päringusse">
+            <i class="icon-cart font-size-sm .mr-2"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

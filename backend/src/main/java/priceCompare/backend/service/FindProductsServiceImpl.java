@@ -9,6 +9,7 @@ import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
 import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
+import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,9 @@ public class FindProductsServiceImpl implements FindProductService {
 
     @Autowired
     private GetDecoraProductsServiceImpl getDecoraProductsService;
+
+    @Autowired
+    private GetPuumarketProductsServiceImpl getPuumarketProductsService;
 
     @Override
     public ProductsDto findProducts(String keyword, Subcategory subcategory) {
@@ -56,6 +60,12 @@ public class FindProductsServiceImpl implements FindProductService {
         endTime = System.currentTimeMillis();
         duration = (endTime - startTime) / 1000;
         System.out.println("decora - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getPuumarketProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("puumarket - Time taken: " + duration + " seconds");
         return products;
     }
 

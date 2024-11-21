@@ -49,7 +49,7 @@ public enum Subcategory {
     VUUGISEGUD("Vuugisegud"),
     AHJUSEGUD("Ahjusegud"),
     TSEMENT("Tsement"),
-    BETOON("Betoon"),
+    KUIVBETOON("Kuivbetoon"),
     LIIM("Liim"),
     PORANDATASANDUS("Põrandatasandus"),
     SEGUD_TARVIKUD("Tarvikud"),
@@ -67,12 +67,13 @@ public enum Subcategory {
     PVC_PC("PVC/PC"),
     VIHMAVEESUSTEEMID("Vihmaveesüsteemid"),
     KATUSETARVIKUD("Tarvikud"),
-    EHITUSPAPP("Ehituspapp"),
+    EHITUSPABER("Ehituspaber"),
     KANGAD("Kangad"),
     KILED("Kiled"),
     AURUTOKE("Aurutõke"),
     GEOTEKSTIIL("Geotekstiil"),
     KATUSE_ALUSKATE("Katuse aluskate"),
+    VUNDAMENDIKATE("Vundamendikate"),
     ARMATUUR("Armatuur"),
     PLEKKPROFIILID("Plekkprofiilid");
 

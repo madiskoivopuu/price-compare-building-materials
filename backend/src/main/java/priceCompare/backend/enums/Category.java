@@ -61,7 +61,7 @@ public enum Category {
             Subcategory.VUUGISEGUD,
             Subcategory.AHJUSEGUD,
             Subcategory.TSEMENT,
-            Subcategory.BETOON,
+            Subcategory.KUIVBETOON,
             Subcategory.LIIM,
             Subcategory.PORANDATASANDUS,
             Subcategory.SEGUD_TARVIKUD,
@@ -85,7 +85,7 @@ public enum Category {
             Subcategory.FASSAAD_TARVIKUD,
     }),
     KATTEMATERJALID("Kattematerjalid", new Subcategory[]{
-            Subcategory.EHITUSPAPP,
+            Subcategory.EHITUSPABER,
             Subcategory.KANGAD,
             Subcategory.KILED,
             Subcategory.AURUTOKE,

@@ -16,6 +16,7 @@ import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
 import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
+import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -35,6 +36,9 @@ public class FindProductsServiceImplTest {
     @Mock
     private GetDecoraProductsServiceImpl getDecoraProductsService;
 
+    @Mock
+    private GetPuumarketProductsServiceImpl getPuumarketProductsService;
+
     @InjectMocks
     private FindProductsServiceImpl findProductsService;
 
@@ -44,25 +48,29 @@ public class FindProductsServiceImplTest {
         ProductDto product2 = ProductDto.builder().name("Product 2").price(20.0).build();
         ProductDto product3 = ProductDto.builder().name("Product 3").price(0.9).build();
         ProductDto product4 = ProductDto.builder().name("Product 4").price(1.9).build();
+        ProductDto product5 = ProductDto.builder().name("Product 4").price(1.9).build();
         ProductsDto bauhofProducts = ProductsDto.builder().products(Arrays.asList(product1)).build();
         ProductsDto kRautaProducts = ProductsDto.builder().products(Arrays.asList(product2)).build();
         ProductsDto espakProducts = ProductsDto.builder().products(Arrays.asList(product3)).build();
         ProductsDto decoraProducts = ProductsDto.builder().products(Arrays.asList(product4)).build();
+        ProductsDto puumarketProducts = ProductsDto.builder().products(Arrays.asList(product5)).build();
 
 
         when(getBauhofProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
         when(getKRautaProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
         when(getEspakProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(espakProducts);
         when(getDecoraProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(decoraProducts);
+        when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(puumarketProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
-        assertEquals(4, result.getProducts().size());
+        assertEquals(5, result.getProducts().size());
         assertTrue(result.getProducts().contains(product1));
         assertTrue(result.getProducts().contains(product2));
         assertTrue(result.getProducts().contains(product3));
         assertTrue(result.getProducts().contains(product4));
+        assertTrue(result.getProducts().contains(product5));
     }
 
     @Test
@@ -70,20 +78,23 @@ public class FindProductsServiceImplTest {
         ProductDto product1 = ProductDto.builder().name("Product 1").price(10.0).build();
         ProductDto product2 = ProductDto.builder().name("Product 2").price(11.9).build();
         ProductDto product4 = ProductDto.builder().name("Product 4").price(1.9).build();
+        ProductDto product5 = ProductDto.builder().name("Product 4").price(1.9).build();
         ProductsDto bauhofProducts = ProductsDto.builder().products(Arrays.asList(product1)).build();
         ProductsDto kRautaProducts = ProductsDto.builder().products(Collections.emptyList()).build();
         ProductsDto espakProducts = ProductsDto.builder().products(Arrays.asList(product2)).build();
         ProductsDto decoraProducts = ProductsDto.builder().products(Arrays.asList(product4)).build();
+        ProductsDto puumarketProducts = ProductsDto.builder().products(Arrays.asList(product5)).build();
 
         when(getBauhofProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
         when(getKRautaProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
         when(getEspakProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(espakProducts);
         when(getDecoraProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(decoraProducts);
+        when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(puumarketProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
-        assertEquals(3, result.getProducts().size());
+        assertEquals(4, result.getProducts().size());
         assertTrue(result.getProducts().contains(product1));
     }
 
@@ -95,6 +106,7 @@ public class FindProductsServiceImplTest {
         when(getKRautaProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
         when(getEspakProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
         when(getDecoraProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
+        when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
@@ -107,11 +119,14 @@ public class FindProductsServiceImplTest {
         ProductsDto bauhofProducts = ProductsDto.builder().products(Collections.emptyList()).build();
         ProductsDto emptyProducts = ProductsDto.builder().products(Collections.emptyList()).build();
         ProductsDto decoraProducts = ProductsDto.builder().products(Collections.emptyList()).build();
+        ProductsDto puumarketProducts = ProductsDto.builder().products(Collections.emptyList()).build();
+
 
         when(getBauhofProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
         when(getKRautaProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(null);
         when(getEspakProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
         when(getDecoraProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(decoraProducts);
+        when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(puumarketProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 

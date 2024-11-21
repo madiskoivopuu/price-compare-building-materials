@@ -19,6 +19,7 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.CategoryServiceImpl;
 import priceCompare.backend.service.FindProductsServiceImpl;
+import priceCompare.backend.service.ProxyImageLoadingService;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ class ControllerTest {
 
     @MockBean
     private FindProductsServiceImpl findProductsService;
+
+    @MockBean
+    private ProxyImageLoadingService proxyImageLoadingService;
 
     @Test
     void testGetCategories() throws Exception {
