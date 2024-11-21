@@ -34,6 +34,10 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
         if (subcategory == null && (query == null || query.isEmpty())) {
             return ProductsDto.builder().build();
         }
+
+        if(subcategory != null && query.isEmpty())
+            query = "a";
+
         return fetchProductsListFromKRauta(query, subcategory);
     }
 
