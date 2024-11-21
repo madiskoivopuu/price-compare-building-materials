@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class EspakAPIsTest {
     @Test
     public void testFiltersFormattedCorrectly_NoCategories() {
-        final String expected = "[\"stock_status:in-stock\", \"taxonomies.product_cat:---\"]";
+        final String expected = String.format("[\"stock_status:in-stock\", \"taxonomies.product_cat:%s\"]", EspakAPIs.NO_CATEGORY);
 
         EspakAPIs apis = new EspakAPIs(new HttpClientService());
         String res = apis.formatFacetFilters(Subcategory.LAKKAPLOKK);

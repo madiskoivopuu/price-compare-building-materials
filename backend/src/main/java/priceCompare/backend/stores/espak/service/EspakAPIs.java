@@ -26,6 +26,7 @@ public class EspakAPIs {
         this.httpClientService = httpClientService;
     }
 
+    public final String NO_CATEGORY = "olematukategooria";
     private final String SEARCH_API_URL = "https://utkuha7jt0-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.10.5)%3B%20Browser%20(lite)%3B%20autocomplete-core%20(1.17.7)%3B%20autocomplete-js%20(1.17.7)&x-algolia-api-key=b9c55a35ad2799389ce3d4584a5f9def&x-algolia-application-id=UTKUHA7JT0";
     private final String SEARCH_API_REQUEST = """
             {
@@ -60,7 +61,7 @@ public class EspakAPIs {
                 );
                 facetFilter.append("\"]");
             } else {
-                facetFilter.append(", \"taxonomies.product_cat:olematukategooria\""); // no products will be returned since this category does not existt
+                facetFilter.append(String.format(", \"taxonomies.product_cat:%s\"", NO_CATEGORY)); // no products will be returned since this category does not existt
             }
         }
 
