@@ -33,6 +33,7 @@ class LocationStockInformationFetcherBauhofTest {
                 "{ \"data\": { " +
                         "\"products\": { " +
                         "\"items\": [ { " +
+                        "\"unit_id\": \"tk\", " +
                         "\"availability_in_stores\": [ " +
                         "{ \"qty\": 154, \"source_name\": \"Haapsalu Bauhof\", \"status\": 1 }, " +
                         "{ \"qty\": 168, \"source_name\": \"Jõhvi Bauhof\", \"status\": 1 }, " +
