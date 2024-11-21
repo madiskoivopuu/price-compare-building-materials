@@ -41,8 +41,7 @@ function Hero({ selectedCategory }) {
 
     useEffect(() => {
         if (selectedCategory) { 
-            let query = selectedCategory.subcategory.concat('&subcategory=', selectedCategory.subcategory)
-            setQ(query)
+            setQ(`&subcategory=${selectedCategory.subcategory}`);
         } // Update query upon category selection
     }, [selectedCategory])
 

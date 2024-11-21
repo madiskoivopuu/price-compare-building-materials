@@ -9,16 +9,12 @@ function Categories({isMobileMenuExtended, categoryChange}) {
 
     
 
-    const subcategoryChange = (cat) =>  { 
-        setSelectedSubcategory(cat)
-    }
-
-    useEffect(() => {
-        if (selectedSubcategory) {
-            categoryChange({ category: 'cat', subcategory: selectedSubcategory });
+    const subcategoryChange = (subCat) =>  { 
+        setSelectedSubcategory(subCat)
+        if(subCat) {
+            categoryChange({ category: 'cat', subcategory: subCat });
         }
-    }, [selectedSubcategory, categoryChange]);
-
+    }
 
     useEffect(() => {
         fetch('http://16.16.186.149:8080/request/categories')  // This is for testing environment
@@ -26,7 +22,6 @@ function Categories({isMobileMenuExtended, categoryChange}) {
             .then(response => response.json())
             .then(data => {
                 setCategories(data.categories);
-                console.log(data)
             })
             .catch(error => {
                 console.error('Error fetching categories:', error);
