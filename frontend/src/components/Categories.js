@@ -7,9 +7,11 @@ function Categories({isMobileMenuExtended, categoryChange}) {
     const [selectedSubcategory, setSelectedSubcategory] = useState(null)
     const [selectedCat, setSelectedCat] = useState(null)
 
-    
+    const donothing = (item) => {};
 
     const subcategoryChange = (subCat) =>  { 
+        donothing(selectedSubcategory);
+        
         setSelectedSubcategory(subCat)
         if(subCat) {
             categoryChange({ category: 'cat', subcategory: subCat });
