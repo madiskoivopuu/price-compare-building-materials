@@ -30,7 +30,7 @@ public enum Subcategory {
     EPS("EPS"),
     PIR("PIR"),
     XPS("XPS"),
-    TUULETOKKEPLAAT("Tuuletõkeplaat"),
+    TUULETOKKEPLAAT("Tuuletõkkeplaat"),
     PRUSSID("Prussid"),
     LAUAD("Lauad"),
     KALIBREERITUD_PRUSSID("Kalibreeritud prussid"),

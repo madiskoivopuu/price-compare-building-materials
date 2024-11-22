@@ -46,6 +46,7 @@ public class LocationStockInformationFetcherBauhof {
 
             for (JsonNode itemNode : itemsNode) {
                 JsonNode availabilityNode = itemNode.path("availability_in_stores");
+                String unit = itemNode.path("unit_id").asText();
                 for (JsonNode storeNode : availabilityNode) {
                     String quantity = storeNode.path("qty").asText();
                     String sourceName = storeNode.path("source_name").asText();
@@ -55,7 +56,7 @@ public class LocationStockInformationFetcherBauhof {
 
                     StockDto stock = StockDto.builder()
                             .location(location)
-                            .quantityText(String.format("%s tk", quantity))
+                            .quantityText(String.format("%s %s", quantity, unit))
                             .build();
 
                     stockList.add(stock);
