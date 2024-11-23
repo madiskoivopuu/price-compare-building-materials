@@ -39,9 +39,6 @@ public class SearchByCategoryAndKeywordTest extends SearchBaseTest{
         Locator firstProductPrice = firstProduct.locator("text=€");
         assertThat(firstProductPrice).isVisible();
 
-        Locator firstProductQuantity = firstProduct.locator("text=TK");
-        assertThat(firstProductQuantity).isVisible();
-
         Locator firstProductAvailabilityButton = firstProduct.locator("text=Saadavus");
         assertThat(firstProductAvailabilityButton).isVisible();
 

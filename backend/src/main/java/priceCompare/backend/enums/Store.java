@@ -7,7 +7,8 @@ public enum Store {
     BAUHOF("bauhof"),
     ESPAK("espak"),
     DECORA("decora"),
-    PUUMARKET("puumarket");
+    PUUMARKET("puumarket"),
+    EHITUSEABC("ehituseabc");
 
     protected final String storeName;
 

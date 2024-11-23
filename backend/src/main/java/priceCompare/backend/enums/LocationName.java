@@ -28,10 +28,11 @@ public enum LocationName {
     RAPINA("Räpina"),
     PAIDE("Paide"),
     POLTSAMAA("Põltsamaa"),
-    LAAGRI("Laagri");
+    LAAGRI("Laagri"),
+    LOKSA("Loksa");
 
     private final String displayName;
-    //test comment 6
+
     LocationName(String displayName) {
         this.displayName = displayName;
     }

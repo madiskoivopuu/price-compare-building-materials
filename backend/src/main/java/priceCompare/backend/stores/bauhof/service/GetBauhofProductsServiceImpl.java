@@ -29,7 +29,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
     private static final String API_KEY = "---protected---";
     private static final String BAUHOF_PRODUCT_URL_BEGINNING = "https://www.bauhof.ee/et/p/";
     private static final int SEARCH_API_PAGE_SIZE = 64;
-    private static final int FETCH_MAX_NUM_PRODUCTS = 1024;
+    private static final int FETCH_MAX_NUM_PRODUCTS = 128;
 
     private final HttpClientService httpClientService;
     private final LocationStockInformationFetcherBauhof locationStockInformationFetcher;
@@ -41,6 +41,11 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
 
     @Override
     public ProductsDto searchForProducts(String query, Subcategory subcategory) {
+
+        if (query == null || query.isEmpty()) {
+            return null;//quick fix until we find better solution for bauhof search without keyword
+        }
+
         List<ProductDto> products = new ArrayList<>();
         int offset = 0;
         int numProductsTotal = 0;

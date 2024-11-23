@@ -19,7 +19,7 @@ import java.util.List;
 
 @Service
 public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
-    public static final int FETCH_MAX_NUM_PRODUCTS = 1024;
+    public static final int FETCH_MAX_NUM_PRODUCTS = 128;
     private final KRautaAPIs apis;
 
     private final LocationStockInformationFetcherKrauta locationStockInformationFetcherKrauta;
@@ -36,7 +36,7 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
         }
 
         if(subcategory != null && query.isEmpty())
-            query = "a";
+            return null;
 
         return fetchProductsListFromKRauta(query, subcategory);
     }

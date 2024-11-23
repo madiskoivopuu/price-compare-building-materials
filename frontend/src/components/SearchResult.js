@@ -6,7 +6,8 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
         "KRAUTA": "krauta.jpg",
         "ESPAK": "espak.jpg",
         "DECORA": "decora.png",
-        "PUUMARKET": "puumarket.png"
+        "PUUMARKET": "puumarket.png",
+        "EHITUSEABC": 'ehituseAbc.png'
     };
 
 

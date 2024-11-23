@@ -94,13 +94,14 @@ public class HttpClientService {
     public JSONObject PostWithBody(URI url, String body) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
-                .header("Content-Type", "application/json")
+                .header("Content-Type", "application/json;charset=UTF-8")
                 .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
                 System.err.printf("Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
+                System.err.printf(response.body());
                 return null;
             }
             return new JSONObject(response.body());
