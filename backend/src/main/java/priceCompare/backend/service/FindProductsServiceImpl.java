@@ -60,6 +60,7 @@ public class FindProductsServiceImpl implements FindProductService {
         futures.add(fetchAndAddProducts(products, getPuumarketProductsService, keyword, subcategory, "puumarket"));
         futures.add(fetchAndAddProducts(products, getEhituseAbcProductsService, keyword, subcategory, "EhituseABC"));
         futures.add(fetchAndAddProducts(products, getEhomerProductsService, keyword, subcategory, "Ehomer"));
+        futures.add(fetchAndAddProducts(products, getBauhausProductsService, keyword, subcategory, "bauhaus"));
 
         // Wait for all futures to complete
         CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
