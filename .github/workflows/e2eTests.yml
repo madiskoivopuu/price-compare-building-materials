@@ -1,0 +1,45 @@
+name: e2eTests CI Pipeline
+
+on:
+  push:
+    paths:
+      - "e2eTests/**"
+    branches: [ "main" ]
+  pull_request:
+    paths:
+      - "e2eTests/**"
+    branches:
+      - main
+# github actions
+permissions:
+  contents: write
+  packages: write
+  actions: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: gradle
+
+      # Configure Gradle for optimal use in GitHub Actions, including caching of downloaded dependencies.
+      # See: https://github.com/gradle/actions/blob/main/setup-gradle/README.md
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+
+      - name: Give execute permissions to gradlew bin
+        run: chmod +x gradlew
+        working-directory: ./e2eTests
+
+      - name: Build Backend with Gradle Wrapper
+        run: ./gradlew test
+        working-directory: ./e2eTests

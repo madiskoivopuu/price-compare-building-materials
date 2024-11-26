@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "qTime": 139,
+    "responseCode": 200
+  },
+  "queryResults": [
+    {
+      "id": "productList",
+      "meta": {
+        "qTime": 68,
+        "noOfResults": 100,
+        "totalResultsFound": 2,
+        "typeOfSearch": "AND",
+        "offset": 0,
+        "debuggingInformation": {},
+        "notificationCode": 1,
+        "searchedTerm": "kipsplaat",
+        "apiKey": "klevu-159479682665411675",
+        "isPersonalised": false
+      },
+      "records": [
+        {
+          "discount": "",
+          "hideGroupPrices": "",
+          "itemGroupId": "",
+          "freeShipping": "",
+          "storeBaseCurrency": "EUR",
+          "price": "18.7",
+          "toPrice": "",
+          "imageUrl": "https://media.decora.ee/klevu_images/200X200/3/2/f/0/32f0f938feaaea6d3b15c6150e68a97ed22d638b_4429679.jpg",
+          "construction": "Niiskuskindel",
+          "inStock": "yes",
+          "currency": "EUR",
+          "id": "119653",
+          "use_directo_stock": "Yes",
+          "imageHover": "",
+          "sku": "156",
+          "basePrice": "13.464",
+          "startPrice": "13.464",
+          "image": "https://media.decora.ee/klevu_images/200X200/3/2/f/0/32f0f938feaaea6d3b15c6150e68a97ed22d638b_4429679.jpg",
+          "deliveryInfo": "",
+          "product_discount": "No",
+          "hideAddToCart": "",
+          "salePrice": "13.464",
+          "swatchesInfo": "",
+          "weight": "60.000000",
+          "klevu_category": "KLEVU_PRODUCT;;Ehitusmaterjalid;Ehitusplaadid;Kipsplaadid  @ku@kuCategory@ku@",
+          "totalVariants": 0,
+          "brand_name": "Gyproc",
+          "groupPrices": "",
+          "url": "https://www.decora.ee/5952-kipsplaat-gkbi-niiskuskindlam-125x1200x2600",
+          "unit": "plaat",
+          "name": "Kipsplaat GKBI niiskuskindlam 12,5x1200x2600",
+          "shortDesc": "Niiskuskindlamad kipsplaat GKBI Kasutatakse lühiajaliselt suurema õhuniiskusega ruumides, vannitubade ja dushiruumide seinte ning lagede ehituseks.",
+          "category": "Kipsplaadid",
+          "typeOfRecord": "KLEVU_PRODUCT"
+        }
+      ]
+    }
+  ]
+}

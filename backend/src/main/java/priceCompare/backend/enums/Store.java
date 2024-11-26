@@ -1,12 +1,15 @@
 package priceCompare.backend.enums;
 import lombok.Getter;
-import priceCompare.backend.dto.LocationsDto;
 
 @Getter
 public enum Store {
     KRAUTA("krauta"),
     BAUHOF("bauhof"),
-    ESPAK("espak");
+    ESPAK("espak"),
+    DECORA("decora"),
+    PUUMARKET("puumarket"),
+    EHITUSEABC("ehituseabc"),
+    EHOMER("ehomer");
 
     protected final String storeName;
 

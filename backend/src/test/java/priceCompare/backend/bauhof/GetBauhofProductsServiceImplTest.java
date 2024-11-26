@@ -7,11 +7,11 @@ import static org.mockito.Mockito.times;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
+import priceCompare.backend.stores.bauhof.service.LocationStockInformationFetcherBauhof;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,13 +21,12 @@ import java.nio.file.Path;
 @SpringBootTest
 public class GetBauhofProductsServiceImplTest {
     @Test
-    public void testGetBauhofProducts() {
+    public void testSearchForProducts() {
         String keyword = "kipsplaat";
 
-        GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(new HttpClientService());
-        ProductsDto products = getBauhofProductsService.getBauhofProducts(keyword, null, null);
-
-        System.out.println(products.getProducts());
+        GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(new HttpClientService(),
+                new LocationStockInformationFetcherBauhof(new HttpClientService()));
+        ProductsDto products = getBauhofProductsService.searchForProducts(keyword, null);
 
         assertNotNull(products, "ProductsDto should not be null");
         assertNotNull(products.getProducts(), "Product list should not be null");
@@ -48,8 +47,9 @@ public class GetBauhofProductsServiceImplTest {
         when(httpClientService.PostWithBody(Mockito.any(), Mockito.contains("\"offset\":64")))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/bauhof_search_api_response_kips_2.txt"))));
 
-        GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(httpClientService);
-        ProductsDto products = getBauhofProductsService.getBauhofProducts(keyword, null, null);
+        GetBauhofProductsServiceImpl getBauhofProductsService = new GetBauhofProductsServiceImpl(httpClientService,
+                new LocationStockInformationFetcherBauhof(new HttpClientService()));
+        ProductsDto products = getBauhofProductsService.searchForProducts(keyword, null);
 
         assertEquals(numProductsInStock, products.getProducts().size(), "Bauhof products service did not properly fetch the products that are in stock");
         verify(httpClientService, times(2).description("Bauhof products service should have fetched products 2 times from the APIs")).PostWithBody(Mockito.any(), Mockito.any());

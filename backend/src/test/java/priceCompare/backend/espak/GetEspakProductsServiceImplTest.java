@@ -1,10 +1,14 @@
 package priceCompare.backend.espak;
 
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.stores.espak.service.EspakAPIs;
 import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 
 import java.io.IOException;
@@ -20,17 +24,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class GetEspakProductsServiceImplTest {
-    private void mockResponseForGetStringAsync(HttpClientService httpClientService, String url, int responseCode, String responseBodyPath) throws IOException {
-        CompletableFuture<HttpResponse<String>> future = new CompletableFuture<>();
+    private CompletableFuture<Document> makeFutureForHTML(String htmlDocumentPath) throws IOException {
+        CompletableFuture<Document> future = new CompletableFuture<>();
+        Document doc = Jsoup.parse(Files.readString(Path.of(htmlDocumentPath)));
 
-        HttpResponse<String> response = mock(HttpResponse.class);
-        when(response.statusCode()).thenReturn(responseCode);
-        when(response.body()).thenReturn(Files.readString(Path.of(responseBodyPath)));
-
-        future.complete(response);
-
-        when(httpClientService.GetStringAsync(Mockito.eq(URI.create(url))))
-                .thenReturn(future);
+        future.complete(doc);
+        return future;
     }
 
     @Test
@@ -38,18 +37,17 @@ public class GetEspakProductsServiceImplTest {
         final int EXPECTED_NUM_RESULTS = 2;
         final String keyword = "kruvikeeraja";
 
-        HttpClientService httpClientService = mock(HttpClientService.class);
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/page/1/?s=kruvikeeraja&post_type=product", 200, "src/test/resources/espak/kruvikeeraja_search_api_response_1.txt");
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/page/2/?s=kruvikeeraja&post_type=product", 404, "src/test/resources/espak/kruvikeeraja_search_api_response_2.txt");
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/page/3/?s=kruvikeeraja&post_type=product", 404, "src/test/resources/espak/kruvikeeraja_search_api_response_2.txt");
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/page/4/?s=kruvikeeraja&post_type=product", 404, "src/test/resources/espak/kruvikeeraja_search_api_response_2.txt");
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/page/5/?s=kruvikeeraja&post_type=product", 404, "src/test/resources/espak/kruvikeeraja_search_api_response_2.txt");
+        EspakAPIs apis = mock(EspakAPIs.class);
+        when(apis.fetchPageFromSearchAPI(Mockito.eq(keyword), Mockito.eq(null), Mockito.eq(0)))
+                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/espak/kruvikeeraja_search_api_response_1.txt"))));
 
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/toode/otsik-lindikruvikeerajale-dewalt-ph2-pr2-156-mm-5tk/", 200, "src/test/resources/espak/product-otsik-lindikruvikeerajale-dewalt-ph2-pr2-156-mm-5tk.txt");
-        mockResponseForGetStringAsync(httpClientService, "https://espak.ee/epood/toode/kruvikeeraja-hoidik-v2-intar/", 200, "src/test/resources/espak/product-kruvikeeraja-hoidik-v2-intar.txt");
+        when(apis.fetchProductPage(Mockito.eq("https://espak.ee/epood/toode/kruvikeeraja-otsak-t2057mm-flextorq-2tk-dt70533t/")))
+                .thenReturn(makeFutureForHTML("src/test/resources/espak/product-kruvikeeraja-otsak-t2057mm-flextorq-2tk-dt70533t.txt"));
+        when(apis.fetchProductPage(Mockito.eq("https://espak.ee/epood/toode/kruvikeeraja-otsak-t4057mm-flextorq-5tk-dt7399t/")))
+                .thenReturn(makeFutureForHTML("src/test/resources/espak/product-kruvikeeraja-otsak-t4057mm-flextorq-5tk-dt7399t.txt"));
 
-        GetEspakProductsServiceImpl getEspakProductsService = new GetEspakProductsServiceImpl(httpClientService);
-        ProductsDto products = getEspakProductsService.searchForProducts(keyword, null, null);
+        GetEspakProductsServiceImpl getEspakProductsService = new GetEspakProductsServiceImpl(apis);
+        ProductsDto products = getEspakProductsService.searchForProducts(keyword, null);
 
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
         assertEquals(EXPECTED_NUM_RESULTS, products.getProducts().size());
@@ -58,7 +56,7 @@ public class GetEspakProductsServiceImplTest {
             assertNotNull(product.getName(), "Product name should not be null");
             assertNotNull(product.getPrice(), "Product should have a price");
             assertNotNull(product.getUnit(), "Product should have a unit");
-            assertNotNull(product.getLocation(), "Product should have locations attached to it");
+            assertNotNull(product.getStock(), "Product should have stock attached to it");
             assertNotNull(product.getLinkToProduct(), "Product should have link to the store");
             assertNotNull(product.getLinkToPicture(), "Product should have link to the image");
         }

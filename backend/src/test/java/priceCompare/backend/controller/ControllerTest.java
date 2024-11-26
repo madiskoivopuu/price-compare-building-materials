@@ -19,6 +19,7 @@ import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.CategoryServiceImpl;
 import priceCompare.backend.service.FindProductsServiceImpl;
+import priceCompare.backend.service.ProxyImageLoadingService;
 
 import java.util.List;
 
@@ -33,6 +34,9 @@ class ControllerTest {
 
     @MockBean
     private FindProductsServiceImpl findProductsService;
+
+    @MockBean
+    private ProxyImageLoadingService proxyImageLoadingService;
 
     @Test
     void testGetCategories() throws Exception {
@@ -73,7 +77,7 @@ class ControllerTest {
                 .products(List.of(mockProduct1, mockProduct2))
                 .build();
 
-        when(findProductsService.findProducts(any(String.class), any(Category.class), any(Subcategory.class)))
+        when(findProductsService.findProducts(any(String.class), any(Subcategory.class)))
                 .thenReturn(mockProductsDto);
 
         mockMvc.perform(get("/request/search")

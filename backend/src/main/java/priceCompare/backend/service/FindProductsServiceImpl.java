@@ -1,24 +1,22 @@
 package priceCompare.backend.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
+import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
+import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
+import priceCompare.backend.stores.ehomer.service.GetEhomerProductsServiceImpl;
 import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
+import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 
 @Service
 public class FindProductsServiceImpl implements FindProductService {
-    private static final Logger logger = LoggerFactory.getLogger(FindProductsServiceImpl.class);
 
     @Autowired
     private GetBauhofProductsServiceImpl getBauhofProductsService;
@@ -29,44 +27,65 @@ public class FindProductsServiceImpl implements FindProductService {
     @Autowired
     private GetEspakProductsServiceImpl getEspakProductsService;
 
+    @Autowired
+    private GetDecoraProductsServiceImpl getDecoraProductsService;
+
+    @Autowired
+    private GetPuumarketProductsServiceImpl getPuumarketProductsService;
+
+    @Autowired
+    private GetEhituseAbcProductsServiceImpl getEhituseAbcProductsService;
+
+    @Autowired
+    private GetEhomerProductsServiceImpl getEhomerProductsService;
+
     @Override
-    public ProductsDto findProducts(String keyword, Category category, Subcategory subcategory) {
-        // Record the start time
-        long startTime = System.currentTimeMillis();
-        logger.info("Starting concurrent product fetch for Bauhof, Krauta, and Espak services");
-
-        // Start fetching products concurrently for Bauhof, Krauta, and Espak
-        CompletableFuture<ProductsDto> bauhofFuture = CompletableFuture.supplyAsync(() ->
-                getBauhofProductsService.getBauhofProducts(keyword, category, subcategory)
-        );
-        CompletableFuture<ProductsDto> krautaFuture = CompletableFuture.supplyAsync(() ->
-                getKRautaProductsService.getKRautaProducts(keyword, category, subcategory)
-        );
-        CompletableFuture<ProductsDto> espakFuture = CompletableFuture.supplyAsync(() ->
-                getEspakProductsService.searchForProducts(keyword, category, subcategory)
-        );
-
+    public ProductsDto findProducts(String keyword, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
 
-        // Wait for all services to complete and combine results
-        CompletableFuture<Void> allFutures = CompletableFuture.allOf(bauhofFuture, krautaFuture, espakFuture);
+        long startTime, endTime, duration;
 
-        allFutures.thenRun(() -> {
-            List<ProductsDto> fetchedProducts = Stream.of(bauhofFuture, krautaFuture, espakFuture)
-                    .map(CompletableFuture::join) // Wait for each future to complete
-                    .toList();
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getBauhofProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("bauhof - Time taken: " + duration + " seconds");
 
-            for (ProductsDto fetchedProduct : fetchedProducts) {
-                AddFetchedProductsToList(products, fetchedProduct);
-            }
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getKRautaProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("krauta - Time taken: " + duration + " seconds");
 
-            // Log the total time taken
-            long endTime = System.currentTimeMillis();
-            long duration = endTime - startTime;
-            logger.info("Concurrent fetch for Bauhof, Krauta, and Espak complete in {} ms. Total products found: {}",
-                    duration, products.getProducts().size());
-        }).join(); // Wait for all futures to complete
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getEspakProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("espak - Time taken: " + duration + " seconds");
 
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getDecoraProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("decora - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getPuumarketProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("puumarket - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getEhituseAbcProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("EhituseABC - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getEhomerProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("Ehomer - Time taken: " + duration + " seconds");
         return products;
     }
 
@@ -76,4 +95,5 @@ public class FindProductsServiceImpl implements FindProductService {
         }
         return products;
     }
+
 }

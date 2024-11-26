@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Category({ category }) {
-    const [isExpanded, setIsExpanded] = useState(false);
+function Category({ category, subcategoryChange, active }) {
+    const [selectedSubcat, setSelectedSubcat] = useState(null)
+    const [isExpanded, setIsExpanded] = useState(false)
 
-    // Toggle the subcategory list when clicked
     const toggleExpand = () => {
-        setIsExpanded(!isExpanded);
-    };
+        setIsExpanded(!isExpanded)
+    }
+    
+    useEffect(() => {if (!active) {
+        setIsExpanded(false)
+        setSelectedSubcat(null)
+    }}, [active])
 
     return (
         <div>
@@ -28,8 +33,14 @@ function Category({ category }) {
             {isExpanded && (
                 <ul className="pl-4 mt-2 space-y-1">
                     {category.subcategories.map((subcategory, index) => (
-                        <li key={index} className="hover:underline hover:cursor-pointer truncate">
-                            {subcategory}
+                        <li key={index} className="hover:underline hover:cursor-pointer truncate" onClick={() => {setSelectedSubcat(index); subcategoryChange(subcategory)}}>
+                            {
+                            selectedSubcat === index
+                            ?
+                            <strong>{subcategory}</strong>
+                            :
+                            subcategory 
+                            }
                         </li>
                     ))}
                 </ul>

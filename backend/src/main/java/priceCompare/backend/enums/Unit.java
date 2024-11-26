@@ -8,15 +8,21 @@ import java.util.List;
 @JsonIgnoreProperties({"aliases"})
 @Getter
 public enum Unit {
+    ALUS("alus", List.of()),
+    JM("jm", List.of()),
+    LEHT("leht", List.of()),
     PAKK("pakk", List.of("pk")),
     PAAR("paar", List.of()),
+    PLAAT("plaat", List.of()),
+    KARP("karp", List.of()),
     PURK("purk", List.of()),
-    M2("m2", List.of()),
+    M2("m2", List.of("m²")),
     M("m", List.of()),
     TK("tk", List.of("tükk")),
+    TONN("tonn", List.of("t")),
     RULL("rull", List.of()),
     KOTT("kott", List.of()),
-    KOMPL("kompl", List.of("kmpl"));
+    KOMPL("kompl", List.of("kmpl", "kpl"));
 
     private final String displayName;
     private final List<String> aliases;

@@ -83,40 +83,16 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:latest
 
   merge-release:
-    if: github.event.pull_request.merged == true  # only runs if the pull request is merged
+    if: github.event.pull_request.merged == true || github.event_name == 'push' && github.ref == 'refs/heads/main'  # only runs on push events to main
     runs-on: ubuntu-latest
     needs: build
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Fetch full history for frontend
-        run: git fetch --prune --unshallow
-
-      - name: Read and increment current version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        id: read_version_frontend
-        run: |
-          if [ ! -f frontend/VERSION ]; then
-            echo "1" > frontend/VERSION  # Initialize version if it doesn't exist
-          fi
-          current_version=$(cat frontend/VERSION)
-          next_version=$((current_version + 1))
-          echo "Next version is $next_version"
-          echo $next_version > frontend/VERSION
-          echo "::set-output name=version::$next_version"
-
-
-      - name: Commit updated version
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add frontend/VERSION
-          git commit -m "Bump version to v${{ steps.read_version_frontend.outputs.version }}"
-          git push origin main
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%d-%m-%Y')"
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -125,8 +101,23 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image for merged release
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:release-v${{ steps.read_version_frontend.outputs.version }} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:release-${{ steps.date.outputs.date }} .
         working-directory: ./frontend
 
       - name: Push Docker image for merged release
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:release-v${{ steps.read_version_frontend.outputs.version }}
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/price-compare-frontend:release-${{ steps.date.outputs.date }}
+
+      - name: Install SSH Key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy Docker image to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_INSTANCE_IP }} << 'EOF'
+          docker pull ematerjalee/price-compare-frontend:latest
+          docker stop price-compare-frontend || true
+          docker rm price-compare-frontend || true
+          docker run -d -p 3000:80 --name price-compare-frontend ematerjalee/price-compare-frontend:latest
+          docker system prune -a -f
+          EOF

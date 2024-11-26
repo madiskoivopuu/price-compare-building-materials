@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "qTime": 63,
+    "responseCode": 200
+  },
+  "queryResults": [
+    {
+      "id": "productList",
+      "meta": {
+        "qTime": 60,
+        "noOfResults": 2,
+        "totalResultsFound": 23,
+        "typeOfSearch": "AND",
+        "offset": 0,
+        "debuggingInformation": {},
+        "notificationCode": 1,
+        "searchedTerm": "kipsplaat",
+        "apiKey": "klevu-168180264665813326",
+        "isPersonalised": false
+      },
+      "records": [
+        {
+          "additionalDataToReturn": "{\"priceUnit\":\"leht\"}",
+          "discount": "0.0",
+          "hideGroupPrices": "",
+          "itemGroupId": "p13047",
+          "freeShipping": "",
+          "storeBaseCurrency": "EUR",
+          "price": "9.90",
+          "toPrice": "",
+          "imageUrl": "https://www.ehituseabc.ee/images/thumbs/012/0126009_kipsplaat-knauf-gkb13-2200-x-1200_415.jpeg",
+          "currency": "EUR",
+          "inStock": "yes",
+          "id": "p13047",
+          "imageHover": "",
+          "sku": "A001929",
+          "brand": "Knauf",
+          "basePrice": "9.9",
+          "startPrice": "",
+          "image": "https://www.ehituseabc.ee/images/thumbs/012/0126009_kipsplaat-knauf-gkb13-2200-x-1200_415.jpeg",
+          "deliveryInfo": "",
+          "hideAddToCart": "",
+          "salePrice": "9.9",
+          "swatchesInfo": "",
+          "weight": "",
+          "klevu_category": "KLEVU_PRODUCT;;Ehitusmaterjalid;Kergkonstruktsioon, ehitusplaadid;Standard kipsplaat;;Default;Registered;Business;BusinessD748ED59EC28C60945BB58C132BE22D631F1336A;Business15ACC470120C1B8A0035F925DAEBDC0873FE87A0;BusinessF8B06C077BF667EC9DA214AE90573375871D2CF6;BusinessC745564A13BF8A382E3C8CBCEC85683181AEC379;Business75DEC543F63E608CF4AA00D54C5D54D36B1AC2F5;Business5CAD64E8A35648161193E423838D8A10B998A2CB;BusinessE379794AB67F157517806733993317AD0B819F27;BusinessBEAFD626E55ACEBB77B6C8F00016F578B2C6DC42;Business42073D1C96DABE54CD94753E05E988F99CF8759A;Business96B27E6ADB899B1B93865EFFA7E1398685E4E2E4;Business8355A32D54B3F68E88F0A4CF731205E64ABB5BAD;Business5166E07A2BC400C0DE63857DC6AB7BD6673EE9CE;Business95B745DE79CA8156C890DEF82B0CA40D60CCFAF5;  @ku@kuCategory@ku@",
+          "totalVariants": 0,
+          "groupPrices": "",
+          "isCustomOptionsAvailable": "",
+          "url": "https://www.ehituseabc.ee/ee/kipsplaat-knauf-gkb13-2200x1200",
+          "tags": "",
+          "additionaDataToReturn": "",
+          "name": "KIPSPLAAT KNAUF GKB13 2200X1200",
+          "shortDesc": "",
+          "category": "Standard kipsplaat",
+          "typeOfRecord": "KLEVU_PRODUCT"
+        },
+        {
+          "additionalDataToReturn": "{\"priceUnit\":\"leht\"}",
+          "discount": "0.0",
+          "hideGroupPrices": "",
+          "itemGroupId": "p13041",
+          "freeShipping": "",
+          "storeBaseCurrency": "EUR",
+          "price": "10.90",
+          "toPrice": "",
+          "imageUrl": "https://www.ehituseabc.ee/images/thumbs/012/0126003_kipsplaat-knauf-gkb13-2500-x-1200_415.jpeg",
+          "currency": "EUR",
+          "inStock": "yes",
+          "id": "p13041",
+          "imageHover": "",
+          "sku": "A001878",
+          "brand": "Knauf",
+          "basePrice": "10.9",
+          "startPrice": "",
+          "image": "https://www.ehituseabc.ee/images/thumbs/012/0126003_kipsplaat-knauf-gkb13-2500-x-1200_415.jpeg",
+          "deliveryInfo": "",
+          "hideAddToCart": "",
+          "salePrice": "10.9",
+          "swatchesInfo": "",
+          "weight": "",
+          "klevu_category": "KLEVU_PRODUCT;;Ehitusmaterjalid;Kergkonstruktsioon, ehitusplaadid;Standard kipsplaat;;Default;Registered;Business;BusinessD748ED59EC28C60945BB58C132BE22D631F1336A;Business15ACC470120C1B8A0035F925DAEBDC0873FE87A0;BusinessF8B06C077BF667EC9DA214AE90573375871D2CF6;BusinessC745564A13BF8A382E3C8CBCEC85683181AEC379;Business75DEC543F63E608CF4AA00D54C5D54D36B1AC2F5;Business5CAD64E8A35648161193E423838D8A10B998A2CB;BusinessE379794AB67F157517806733993317AD0B819F27;BusinessBEAFD626E55ACEBB77B6C8F00016F578B2C6DC42;Business42073D1C96DABE54CD94753E05E988F99CF8759A;Business96B27E6ADB899B1B93865EFFA7E1398685E4E2E4;Business8355A32D54B3F68E88F0A4CF731205E64ABB5BAD;Business5166E07A2BC400C0DE63857DC6AB7BD6673EE9CE;Business95B745DE79CA8156C890DEF82B0CA40D60CCFAF5;  @ku@kuCategory@ku@",
+          "totalVariants": 0,
+          "groupPrices": "",
+          "isCustomOptionsAvailable": "",
+          "url": "https://www.ehituseabc.ee/ee/kipsplaat-knauf-gkb13-2500x1200",
+          "tags": "",
+          "additionaDataToReturn": "",
+          "name": "KIPSPLAAT KNAUF GKB13 2500X1200",
+          "shortDesc": "",
+          "category": "Standard kipsplaat",
+          "typeOfRecord": "KLEVU_PRODUCT"
+        }
+      ],
+      "filters": [
+        {
+          "key": "category",
+          "label": "category",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 9,
+              "name": "Standard kipsplaat",
+              "value": "Standard kipsplaat",
+              "selected": true
+            },
+            {
+              "count": 5,
+              "name": "Kõva kipsplaat",
+              "value": "Kõva kipsplaat",
+              "selected": true
+            },
+            {
+              "count": 5,
+              "name": "Üldehitusmaterjalid",
+              "value": "Üldehitusmaterjalid",
+              "selected": false
+            },
+            {
+              "count": 4,
+              "name": "Tuletõkke kipsplaat",
+              "value": "Tuletõkke kipsplaat",
+              "selected": true
+            },
+            {
+              "count": 3,
+              "name": "Niiskuskindlam kipsplaat",
+              "value": "Niiskuskindlam kipsplaat",
+              "selected": true
+            },
+            {
+              "count": 3,
+              "name": "Ripplaed",
+              "value": "Ripplaed",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Muu kipsplaat",
+              "value": "Muu kipsplaat",
+              "selected": true
+            },
+            {
+              "count": 2,
+              "name": "Tuuletõkke kipsplaat",
+              "value": "Tuuletõkke kipsplaat",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Üldehitus",
+              "value": "Üldehitus",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "klevu_price",
+          "label": "klevu_price",
+          "type": "SLIDER",
+          "min": "9.9",
+          "max": "29",
+          "start": null,
+          "end": null
+        }
+      ]
+    }
+  ]
+}
