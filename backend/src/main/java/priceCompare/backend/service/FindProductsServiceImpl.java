@@ -3,8 +3,8 @@ package priceCompare.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductsDto;
-import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
+import priceCompare.backend.stores.GetStoreProductsService;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
 import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
@@ -14,9 +14,9 @@ import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
 import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-import java.util.List;
 
 @Service
 public class FindProductsServiceImpl implements FindProductService {
@@ -70,28 +70,10 @@ public class FindProductsServiceImpl implements FindProductService {
         return products;
     }
 
-    private CompletableFuture<Void> fetchAndAddProducts(ProductsDto products, Object service, String keyword, Subcategory subcategory, String storeName) {
+    private CompletableFuture<Void> fetchAndAddProducts(ProductsDto products, GetStoreProductsService service, String keyword, Subcategory subcategory, String storeName) {
         return CompletableFuture.runAsync(() -> {
             long startTime = System.currentTimeMillis();
-            ProductsDto fetchedProducts = null;
-
-            // Dynamically call the searchForProducts method on the service
-            if (service instanceof GetBauhofProductsServiceImpl) {
-                fetchedProducts = ((GetBauhofProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            } else if (service instanceof GetKRautaProductsServiceImpl) {
-                fetchedProducts = ((GetKRautaProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            } else if (service instanceof GetEspakProductsServiceImpl) {
-                fetchedProducts = ((GetEspakProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            } else if (service instanceof GetDecoraProductsServiceImpl) {
-                fetchedProducts = ((GetDecoraProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            } else if (service instanceof GetPuumarketProductsServiceImpl) {
-                fetchedProducts = ((GetPuumarketProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            } else if (service instanceof GetEhituseAbcProductsServiceImpl) {
-                fetchedProducts = ((GetEhituseAbcProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            } else if (service instanceof GetEhomerProductsServiceImpl) {
-                fetchedProducts = ((GetEhomerProductsServiceImpl) service).searchForProducts(keyword, subcategory);
-            }
-
+            ProductsDto fetchedProducts = service.searchForProducts(keyword, subcategory);
             long endTime = System.currentTimeMillis();
             long duration = (endTime - startTime) / 1000;
             System.out.println(storeName + " - Time taken: " + duration + " seconds");
