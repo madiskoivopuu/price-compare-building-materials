@@ -15,6 +15,10 @@ import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.ehomer.service.GetEhomerProductsServiceImpl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 class GetEhomerProductsServiceImplTest {
 
     @Mock
@@ -23,37 +27,18 @@ class GetEhomerProductsServiceImplTest {
     @InjectMocks
     private GetEhomerProductsServiceImpl getEhomerProductsService;
 
-    private static final String SAMPLE_JSON_RESPONSE = """
-        {
-            "result": [
-                {
-                    "name": "Product 1",
-                    "salePrice": 19.99,
-                    "url": "https://example.com/product1",
-                    "image": "https://example.com/image1.jpg"
-                },
-                {
-                    "name": "Product 2",
-                    "salePrice": 29.99,
-                    "url": "https://example.com/product2",
-                    "image": "https://example.com/image2.jpg"
-                }
-            ]
-        }
-    """;
-
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    void testSearchForProductsWithKeywordAndCategoryShouldReturnTwoProducts() {
+    void testSearchForProductsWithKeywordAndCategoryShouldReturnTwoProducts() throws IOException {
         String keyword = "Product";
         Subcategory subcategory = Subcategory.KILED;
-        JSONObject mockedResponse = new JSONObject(SAMPLE_JSON_RESPONSE);
 
-        when(httpClientService.GetJson(any())).thenReturn(mockedResponse);
+        when(httpClientService.GetJson(any()))
+                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));
 
         ProductsDto result = getEhomerProductsService.searchForProducts(keyword, subcategory);
 
@@ -74,12 +59,11 @@ class GetEhomerProductsServiceImplTest {
     }
 
     @Test
-    void testSearchForProductsWithKeywordOnlyShouldReturnTwoProducts() {
+    void testSearchForProductsWithKeywordOnlyShouldReturnTwoProducts() throws IOException {
         String keyword = "Product";
-        JSONObject mockedResponse = new JSONObject(SAMPLE_JSON_RESPONSE);
 
-        when(httpClientService.GetJson(any())).thenReturn(mockedResponse);
-
+        when(httpClientService.GetJson(any()))
+                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));
         ProductsDto result = getEhomerProductsService.searchForProducts(keyword, null);
 
         assertNotNull(result);
@@ -87,12 +71,11 @@ class GetEhomerProductsServiceImplTest {
     }
 
     @Test
-    void testSearchForProductsWithCategoryOnlyShouldReturnTwoProducts() {
+    void testSearchForProductsWithCategoryOnlyShouldReturnTwoProducts() throws IOException {
         Subcategory subcategory = Subcategory.KILED;
-        JSONObject mockedResponse = new JSONObject(SAMPLE_JSON_RESPONSE);
 
-        when(httpClientService.GetJson(any())).thenReturn(mockedResponse);
-
+        when(httpClientService.GetJson(any()))
+                .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));
         ProductsDto result = getEhomerProductsService.searchForProducts(null, subcategory);
 
         assertNotNull(result);

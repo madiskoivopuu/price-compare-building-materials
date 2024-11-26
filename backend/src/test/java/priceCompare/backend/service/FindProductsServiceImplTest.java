@@ -11,6 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
+import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsServiceImpl;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
 import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
@@ -46,6 +47,9 @@ public class FindProductsServiceImplTest {
     @Mock
     private GetEhomerProductsServiceImpl getEhomerProductsService;
 
+    @Mock
+    private GetBauhausProductsServiceImpl getBauhausProductsService;
+
     @InjectMocks
     private FindProductsServiceImpl findProductsService;
 
@@ -58,6 +62,7 @@ public class FindProductsServiceImplTest {
         ProductDto product5 = ProductDto.builder().name("Product 5").price(1.9).build();
         ProductDto product6 = ProductDto.builder().name("Product 6").price(1.9).build();
         ProductDto product7 = ProductDto.builder().name("Product 7").price(1.9).build();
+        ProductDto product8 = ProductDto.builder().name("Product 8").price(1.9).build();
         ProductsDto bauhofProducts = ProductsDto.builder().products(Arrays.asList(product1)).build();
         ProductsDto kRautaProducts = ProductsDto.builder().products(Arrays.asList(product2)).build();
         ProductsDto espakProducts = ProductsDto.builder().products(Arrays.asList(product3)).build();
@@ -65,6 +70,7 @@ public class FindProductsServiceImplTest {
         ProductsDto puumarketProducts = ProductsDto.builder().products(Arrays.asList(product5)).build();
         ProductsDto ehituseAbcProducts = ProductsDto.builder().products(Arrays.asList(product6)).build();
         ProductsDto ehomerProducts = ProductsDto.builder().products(Arrays.asList(product7)).build();
+        ProductsDto bauhausProducts = ProductsDto.builder().products(Arrays.asList(product8)).build();
 
 
         when(getBauhofProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
@@ -74,17 +80,20 @@ public class FindProductsServiceImplTest {
         when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(puumarketProducts);
         when(getEhituseAbcProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(ehituseAbcProducts);
         when(getEhomerProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(ehomerProducts);
+        when(getBauhausProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhausProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
-        assertEquals(7, result.getProducts().size());
+        assertEquals(8, result.getProducts().size());
         assertTrue(result.getProducts().contains(product1));
         assertTrue(result.getProducts().contains(product2));
         assertTrue(result.getProducts().contains(product3));
         assertTrue(result.getProducts().contains(product4));
         assertTrue(result.getProducts().contains(product5));
         assertTrue(result.getProducts().contains(product6));
+        assertTrue(result.getProducts().contains(product7));
+        assertTrue(result.getProducts().contains(product8));
     }
 
     @Test
@@ -96,12 +105,14 @@ public class FindProductsServiceImplTest {
         ProductDto product5 = ProductDto.builder().name("Product 5").price(1.9).build();
         ProductDto product6 = ProductDto.builder().name("Product 6").price(1.9).build();
         ProductDto product7 = ProductDto.builder().name("Product 7").price(1.9).build();
+        ProductDto product8 = ProductDto.builder().name("Product 8").price(1.9).build();
         ProductsDto kRautaProducts = ProductsDto.builder().products(Arrays.asList(product2)).build();
         ProductsDto espakProducts = ProductsDto.builder().products(Arrays.asList(product3)).build();
         ProductsDto decoraProducts = ProductsDto.builder().products(Arrays.asList(product4)).build();
         ProductsDto puumarketProducts = ProductsDto.builder().products(Arrays.asList(product5)).build();
         ProductsDto ehituseAbcProducts = ProductsDto.builder().products(Arrays.asList(product6)).build();
         ProductsDto ehomerProducts = ProductsDto.builder().products(Arrays.asList(product7)).build();
+        ProductsDto bauhausProducts = ProductsDto.builder().products(Arrays.asList(product8)).build();
 
         when(getBauhofProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(null);
         when(getKRautaProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(kRautaProducts);
@@ -110,11 +121,12 @@ public class FindProductsServiceImplTest {
         when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(puumarketProducts);
         when(getEhituseAbcProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(ehituseAbcProducts);
         when(getEhomerProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(ehomerProducts);
+        when(getBauhausProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhausProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
         assertNotNull(result);
-        assertEquals(6, result.getProducts().size());
+        assertEquals(7, result.getProducts().size());
         assertFalse(result.getProducts().contains(product1));
     }
 
@@ -129,6 +141,7 @@ public class FindProductsServiceImplTest {
         when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
         when(getEhituseAbcProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
         when(getEhomerProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
+        when(getBauhausProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(emptyProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 
@@ -144,6 +157,7 @@ public class FindProductsServiceImplTest {
         ProductsDto puumarketProducts = ProductsDto.builder().products(Collections.emptyList()).build();
         ProductsDto ehituseAbcProducts = ProductsDto.builder().products(Collections.emptyList()).build();
         ProductsDto ehomerProducts = ProductsDto.builder().products(Collections.emptyList()).build();
+        ProductsDto bauhausProducts = ProductsDto.builder().products(Collections.emptyList()).build();
 
 
         when(getBauhofProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhofProducts);
@@ -153,6 +167,7 @@ public class FindProductsServiceImplTest {
         when(getPuumarketProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(puumarketProducts);
         when(getEhituseAbcProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(ehituseAbcProducts);
         when(getEhomerProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(ehomerProducts);
+        when(getEhomerProductsService.searchForProducts("kipsplaat", Subcategory.KIPSPLAAT)).thenReturn(bauhausProducts);
 
         ProductsDto result = findProductsService.findProducts("kipsplaat", Subcategory.KIPSPLAAT);
 

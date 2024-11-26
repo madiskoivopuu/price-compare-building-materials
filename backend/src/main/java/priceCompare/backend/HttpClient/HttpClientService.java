@@ -91,6 +91,16 @@ public class HttpClientService {
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
     }
 
+    public CompletableFuture<HttpResponse<String>> PostStringAsync(URI url, String body) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(url)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(body))
+                .build();
+
+        return client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+    }
+
     public JSONObject PostWithBody(URI url, String body) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
