@@ -41,7 +41,8 @@ function Hero({ selectedCategory }) {
 
     useEffect(() => {
         if (selectedCategory) { 
-            setQ(`&subcategory=${selectedCategory.subcategory}`);
+            setQ(`&subcategory=${selectedCategory.subcategory}`)
+            setInputValue('')
         } // Update query upon category selection
     }, [selectedCategory])
 
@@ -60,6 +61,7 @@ function Hero({ selectedCategory }) {
                     type='text'
                     placeholder={`Otsi toodet ${selectedCategory ? 'kategooriast '.concat(selectedCategory.subcategory) : ''}`}
                     onChange={(e) => setInputValue(e.target.value)}
+                    value={inputValue}
                 />
                 <button type='submit' className='mx-2'>
                     <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

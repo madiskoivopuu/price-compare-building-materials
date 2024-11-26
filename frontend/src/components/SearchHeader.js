@@ -17,7 +17,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={i}
                         onClick={() => handlePageChange(i)}
-                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center ${i === currentPage ? 'bg-gray-300' : ''}`}
+                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center border-1 border-gray-700 ${i === currentPage ? 'border' : ''}`}
                     >
                         {i}
                     </button>
@@ -99,7 +99,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     </span>
                 </button>
                 {!isLoading && (
-                    <div className='flex'>{renderPageNumbers()}</div>
+                    <div className='flex gap-2'>{renderPageNumbers()}</div>
                 )}
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
