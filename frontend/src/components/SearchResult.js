@@ -7,7 +7,9 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
         "ESPAK": "espak.jpg",
         "DECORA": "decora.png",
         "PUUMARKET": "puumarket.png",
-        "EHITUSEABC": 'ehituseAbc.png'
+        "EHITUSEABC": 'ehituseAbc.png',
+        "EHOMER": "ehomer.png",
+        "BAUHAUS": "bauhaus.png"
     };
 
 

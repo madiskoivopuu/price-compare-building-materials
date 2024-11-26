@@ -29,7 +29,8 @@ public enum LocationName {
     PAIDE("Paide"),
     POLTSAMAA("Põltsamaa"),
     LAAGRI("Laagri"),
-    LOKSA("Loksa");
+    LOKSA("Loksa"),
+    EPOOD("Epood");
 
     private final String displayName;
 

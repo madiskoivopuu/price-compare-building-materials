@@ -1,0 +1,180 @@
+package priceCompare.backend.stores.bauhaus.service;
+
+import priceCompare.backend.enums.Subcategory;
+
+import java.util.List;
+import java.util.Map;
+
+import static priceCompare.backend.enums.Subcategory.*;
+
+public class EmaterjalToBauhausCategoryMapping {
+    public static final Map<Subcategory, List<String>> categoryMap = Map.<Subcategory, List<String>>ofEntries(
+            Map.entry(KIPSPLAAT, List.of("Kipsplaadid ja paigaldustarvikud", "Niiskus- ja tulekindlad plaadid ning tarvikud")),
+            Map.entry(OSB_PLAAT, List.of("OSB-plaadid, puitkiud- ja puitlaastplaadid")),
+            Map.entry(VINEER, List.of("Vineerid", "Niiskus- ja tulekindlad plaadid ning tarvikud")),
+            Map.entry(TSEMENTKIUDPLAAT, List.of()),
+            Map.entry(PUITKIUDPLAAT, List.of("OSB-plaadid, puitkiud- ja puitlaastplaadid")),
+            Map.entry(PUITLAASTPLAAT, List.of(" OSB-plaadid, puitkiud- ja puitlaastplaadid")),
+            Map.entry(KIPSKIUDPLAAT, List.of()),
+            Map.entry(WEDI_PLAAT, List.of()),
+            Map.entry(TYCROC_PLAAT, List.of("Niiskus- ja tulekindlad plaadid ning tarvikud")),
+
+            Map.entry(POORBETOON_BAUROC, List.of("Plokid, sillused, tellised ja tarvikud")),
+            Map.entry(FIBO, List.of("Plokid, sillused, tellised ja tarvikud")),
+            Map.entry(OONESPLOKK, List.of()),
+            Map.entry(SILIKAATPLOKK, List.of()),
+            Map.entry(LAKKAPLOKK, List.of()),
+            Map.entry(KERATERM, List.of()),
+            Map.entry(VUNDAMENDIPLOKK, List.of()),
+            Map.entry(TELLIS, List.of()),
+            Map.entry(SILLUSED, List.of()),
+            Map.entry(TANAVAKIVI, List.of()),
+            Map.entry(KONNITEPLAAT, List.of()),
+            Map.entry(AAREKIVID, List.of()),
+            Map.entry(VIHMAVEERENN, List.of()),
+            Map.entry(KORSTNAD, List.of("Plokid, sillused, tellised ja tarvikud")),
+
+            Map.entry(KIVIVILL, List.of("Isolatsioonimaterjalid")),
+            Map.entry(KLAASVILL, List.of("Isolatsioonimaterjalid")),
+            Map.entry(TSELLUVILL, List.of()),
+            Map.entry(EPS,  List.of("Isolatsioonimaterjalid")),
+            Map.entry(PIR, List.of("Isolatsioonimaterjalid")),
+            Map.entry(XPS, List.of("Isolatsioonimaterjalid")),
+            Map.entry(TUULETOKKEPLAAT, List.of("Tuuletõkkeplaadid")),
+
+            Map.entry(PRUSSID, List.of("Prussid", "Saematerjalid")),
+            Map.entry(LAUAD, List.of("Saematerjalid")),
+            Map.entry(KALIBREERITUD_PRUSSID, List.of()),
+            Map.entry(KALIBREERITUD_LAUAD, List.of()),
+            Map.entry(HOOVELPRUSSID, List.of("Talad")),
+            Map.entry(HOOVELLAUAD, List.of("Talad")),
+            Map.entry(SERVAMATA, List.of()),
+            Map.entry(LIIMPUIT, List.of()),
+            Map.entry(PORANDALAUAD, List.of()),
+            Map.entry(TERRASSILAUAD, List.of("Terrassilauad")),
+            Map.entry(SISEVOODRILAUAD, List.of("Sisevoodrilauad")),
+
+            Map.entry(PAHTEL, List.of("Pahtlid")),
+            Map.entry(KROHV, List.of("Krohvid ja müürisegud")),
+            Map.entry(MUURISEGU, List.of("Krohvid ja müürisegud")),
+            Map.entry(PLAATIMISSEGU, List.of("Plaatimis- ja vuukimissegud")),
+            Map.entry(VUUGISEGUD, List.of("Plaatimis- ja vuukimissegud")),
+            Map.entry(AHJUSEGUD, List.of("Krohvid ja müürisegud")),
+            Map.entry(TSEMENT, List.of("Betoonid ja mördid")),
+            Map.entry(KUIVBETOON, List.of("Betoonid ja mördid")),
+            Map.entry(LIIM, List.of("Betoonid ja mördid")),
+            Map.entry(PORANDATASANDUS, List.of("Betoonid ja mördid")),
+            Map.entry(SEGUD_TARVIKUD, List.of("Krohvid ja müürisegud")),
+            Map.entry(SIDEAINED, List.of()),
+
+            Map.entry(PUITVOODRILAUAD, List.of("Välisvooderdus")),
+            Map.entry(TSEMENTVOODRILAUAD, List.of()),
+            Map.entry(PLASTVOODER, List.of()),
+            Map.entry(FASSAAD_PLAADID, List.of("Sokliplaadid ja tarvikud")),
+            Map.entry(PROFIILID, List.of()),
+            Map.entry(FASSAAD_TARVIKUD, List.of("Sokliplaadid ja tarvikud")),
+
+            Map.entry(KIVI, List.of()),
+            Map.entry(TERAS, List.of("Katusematerjalid")),
+            Map.entry(ETERNIIT, List.of()),
+            Map.entry(BITUUMEN, List.of("Katusematerjalid")),
+            Map.entry(PVC_PC, List.of("Läbipaistvad katuseplaadid")),
+            Map.entry(VIHMAVEESUSTEEMID, List.of("Vihmaveesüsteemid")),
+            Map.entry(KATUSETARVIKUD, List.of("Katuse turvatooted", "Aluskatted ja tarvikud")),
+
+            Map.entry(EHITUSPABER, List.of()),
+            Map.entry(KANGAD, List.of()),
+            Map.entry(KILED, List.of("Aluskatted ja ehituspaberid")),
+            Map.entry(AURUTOKE, List.of("Aluskatted ja ehituspaberid")),
+            Map.entry(GEOTEKSTIIL, List.of()),
+            Map.entry(KATUSE_ALUSKATE, List.of("Aluskatted ja tarvikud")),
+
+            Map.entry(ARMATUUR, List.of("Terastooted")),
+            Map.entry(PLEKKPROFIILID, List.of())
+    );
+
+    public static final Map<Subcategory, String> categoryRootMap = Map.<Subcategory, String>ofEntries(
+            Map.entry(KIPSPLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            Map.entry(OSB_PLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            Map.entry(VINEER, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            //Map.entry(TSEMENTKIUDPLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            Map.entry(PUITKIUDPLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            Map.entry(PUITLAASTPLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            //Map.entry(KIPSKIUDPLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            //Map.entry(WEDI_PLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            Map.entry(TYCROC_PLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+
+            Map.entry(POORBETOON_BAUROC, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            Map.entry(FIBO, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            //Map.entry(OONESPLOKK, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            //Map.entry(SILIKAATPLOKK, null),
+            //Map.entry(LAKKAPLOKK, null),
+            //Map.entry(KERATERM, null),
+            //Map.entry(VUNDAMENDIPLOKK, null),
+            //Map.entry(TELLIS, "Ehitusmaterjalid;Ehituskivid, ehitusplokid, sillused;"),
+            //Map.entry(SILLUSED, "Ehitusmaterjalid;Ehituskivid, ehitusplokid, sillused;"),
+            //Map.entry(TANAVAKIVI, "Ehitusmaterjalid;Ehituskivid, ehitusplokid, sillused;"),
+            //Map.entry(KONNITEPLAAT, "Ehitusmaterjalid;Ehituskivid, ehitusplokid, sillused;"),
+            //Map.entry(AAREKIVID, "Ehitusmaterjalid;Ehituskivid, ehitusplokid, sillused;"),
+            //Map.entry(VIHMAVEERENN, "Ehitusmaterjalid;Vihmaveesüsteemid ja sadeveesüsteemid;"),
+            Map.entry(KORSTNAD, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+
+            Map.entry(KIVIVILL, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            Map.entry(KLAASVILL, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            //Map.entry(TSELLUVILL, null),
+            Map.entry(EPS, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            Map.entry(PIR, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            Map.entry(XPS, "Tootevalik;Ehitus ja remont;Ehitustarvikud;"),
+            Map.entry(TUULETOKKEPLAAT, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+
+            Map.entry(PRUSSID, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            Map.entry(LAUAD, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            //Map.entry(KALIBREERITUD_PRUSSID, null),
+            //Map.entry(KALIBREERITUD_LAUAD, null),
+            Map.entry(HOOVELPRUSSID, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            Map.entry(HOOVELLAUAD, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            //Map.entry(SERVAMATA, null),
+            //Map.entry(LIIMPUIT, null),
+            //Map.entry(PORANDALAUAD, null),
+            Map.entry(TERRASSILAUAD, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            Map.entry(SISEVOODRILAUAD, "Tootevalik;Ehitus ja remont;Sisevoodrilauad ja paneelid;"),
+
+            Map.entry(PAHTEL, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(KROHV, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(MUURISEGU, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(PLAATIMISSEGU, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(VUUGISEGUD, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(AHJUSEGUD, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(TSEMENT, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(KUIVBETOON, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(LIIM, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(PORANDATASANDUS, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            Map.entry(SEGUD_TARVIKUD, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+            //Map.entry(SIDEAINED, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
+
+            Map.entry(PUITVOODRILAUAD, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            //Map.entry(TSEMENTVOODRILAUAD, null),
+            //Map.entry(PLASTVOODER, null),
+            Map.entry(FASSAAD_PLAADID, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            //Map.entry(PROFIILID, null),
+            Map.entry(FASSAAD_TARVIKUD, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+
+            //Map.entry(KIVI, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),
+            Map.entry(TERAS, "Tootevalik;Ehitus ja remont;Katusekatted;"),
+            //Map.entry(ETERNIIT, "Ehitusmaterjalid;Katusematerjalid, tarvikud;"),
+            Map.entry(BITUUMEN, "Tootevalik;Ehitus ja remont;Katusekatted;"),
+            Map.entry(PVC_PC, "Tootevalik;Ehitus ja remont;Katusekatted;"),
+            Map.entry(VIHMAVEESUSTEEMID, "Tootevalik;Ehitus ja remont;Katusekatted;"),
+            Map.entry(KATUSETARVIKUD, "Tootevalik;Ehitus ja remont;Katusekatted;"),
+
+            //Map.entry(EHITUSPABER, "Ehitusmaterjalid;Hüdroisolatsioon;"),
+            //Map.entry(KANGAD, null),
+            Map.entry(KILED, "Tootevalik;Ehitus ja remont;Aluskatted ja ehituspaberid;"),
+            Map.entry(AURUTOKE, "Tootevalik;Ehitus ja remont;Aluskatted ja ehituspaberid;"),
+            //Map.entry(GEOTEKSTIIL, "Ehitusmaterjalid;Hüdroisolatsioon;"),
+            Map.entry(KATUSE_ALUSKATE, "Tootevalik;Ehitus ja remont;Katusekatted;"),
+
+            Map.entry(ARMATUUR, "Tootevalik;Ehitus ja remont;Ehitustarvikud;")
+            //Map.entry(PLEKKPROFIILID, "Ehitusmaterjalid;Kergkonstruktsioon, ehitusplaadid;")
+    );
+}

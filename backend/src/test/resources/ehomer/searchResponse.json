@@ -1,0 +1,16 @@
+{
+  "result": [
+    {
+      "name": "Product 1",
+      "salePrice": 19.99,
+      "url": "https://example.com/product1",
+      "image": "https://example.com/image1.jpg"
+    },
+    {
+      "name": "Product 2",
+      "salePrice": 29.99,
+      "url": "https://example.com/product2",
+      "image": "https://example.com/image2.jpg"
+    }
+  ]
+}

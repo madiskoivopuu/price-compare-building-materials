@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
+import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsServiceImpl;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
 import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
+import priceCompare.backend.stores.ehomer.service.GetEhomerProductsServiceImpl;
 import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
 import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
@@ -34,6 +36,12 @@ public class FindProductsServiceImpl implements FindProductService {
 
     @Autowired
     private GetEhituseAbcProductsServiceImpl getEhituseAbcProductsService;
+
+    @Autowired
+    private GetEhomerProductsServiceImpl getEhomerProductsService;
+
+    @Autowired
+    private GetBauhausProductsServiceImpl getBauhausProductsService;
 
     @Override
     public ProductsDto findProducts(String keyword, Subcategory subcategory) {
@@ -76,6 +84,18 @@ public class FindProductsServiceImpl implements FindProductService {
         endTime = System.currentTimeMillis();
         duration = (endTime - startTime) / 1000;
         System.out.println("EhituseABC - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getEhomerProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("Ehomer - Time taken: " + duration + " seconds");
+
+        startTime = System.currentTimeMillis();
+        AddFetchedProductsToList(products, getBauhausProductsService.searchForProducts(keyword, subcategory));
+        endTime = System.currentTimeMillis();
+        duration = (endTime - startTime) / 1000;
+        System.out.println("Bauhaus - Time taken: " + duration + " seconds");
         return products;
     }
 
