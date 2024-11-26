@@ -9,6 +9,7 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
         "PUUMARKET": "puumarket.png",
         "EHITUSEABC": 'ehituseAbc.png',
         "EHOMER": "ehomer.png",
+        "BAUHAUS": "bauhaus.png"
     };
 
 

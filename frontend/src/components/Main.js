@@ -8,8 +8,8 @@ function Main({ isMobileMenuExtended }) {
 
   return (
     <div className={`w-full h-max flex  bg-gray-100`}>
-        <Categories isMobileMenuExtended={isMobileMenuExtended} categoryChange={categoryChange} />
-        <Hero selectedCategory={selectedCategory} />
+        <Categories isMobileMenuExtended={isMobileMenuExtended} categoryChange={categoryChange} selectedCategory={selectedCategory} />
+        <Hero selectedCategory={selectedCategory} categoryChange={categoryChange} />
     </div>
   )
 }

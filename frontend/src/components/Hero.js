@@ -3,7 +3,7 @@ import SearchResult from './SearchResult';
 import SearchHeader from './SearchHeader';
 import Filters from './Filters';
 
-function Hero({ selectedCategory }) {
+function Hero({ selectedCategory, categoryChange }) {
     const [items, setItems] = useState({ products: [] });
     const [sortedProducts, setSortedProducts] = useState([]);
     const [q, setQ] = useState('');
@@ -20,6 +20,7 @@ function Hero({ selectedCategory }) {
 
     useEffect(() => {
         if (q) {
+            console.log(q)
             setIsLoading(true);
             fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
             //fetch(`http://localhost:8080/request/search?keyword=${q}`)
@@ -52,6 +53,7 @@ function Hero({ selectedCategory }) {
 
     return (
         <div className='w-full md:w-3/4 h-max md:p-10 p-4'>
+            <p className='mb-2 text-sm'>{`${selectedCategory ? 'Valitud kategooria: '.concat(selectedCategory.category).concat(' / ').concat(selectedCategory.subcategory) : ''} `}<span className='underline text-red-600 hover:cursor-pointer' onClick={() => {categoryChange(null)}}>{`${selectedCategory ? 'Eemalda' : ''}`}</span></p>
             <form onSubmit={(e) => {
                 e.preventDefault();
                 setQ(queryBuilder(inputValue));

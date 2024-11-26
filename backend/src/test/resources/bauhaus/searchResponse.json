@@ -1,0 +1,904 @@
+{
+  "meta": {
+    "qTime": 238,
+    "responseCode": 200
+  },
+  "queryResults": [
+    {
+      "id": "productList",
+      "meta": {
+        "qTime": 175,
+        "noOfResults": 20,
+        "totalResultsFound": 78,
+        "typeOfSearch": "AND",
+        "offset": 0,
+        "debuggingInformation": {},
+        "notificationCode": 1,
+        "searchedTerm": "kipsplaat",
+        "apiKey": "klevu-169590957278116052",
+        "isPersonalised": false
+      },
+      "records": [
+        {
+          "additionalDataToReturn": "{\"has_tier_prices\":0,\"product_type\":\"simple\",\"brand\":\"https:\\/\\/www.bauhaus.ee\\/media\\/wysiwyg\\/brand\\/24379.png\",\"brand_name\":\"Knauf\",\"energy_logo\":\"\",\"checkmark_webshop\":true,\"checkmark_store\":true,\"productImpression\":{\"name\":\"Standardkipsplaat Knauf GKB\\/A 12,5 x 1200 x 2600 mm, 3,12 m\\u00b2\",\"id\":\"60149305\",\"productType\":\"simple\",\"category\":\"Ehitus ja remont > Ehitusplaadid > Kipsplaadid ja paigaldustarvikud\",\"tax\":\"1.71\",\"price\":\"7.79\",\"dimension3\":196,\"dimension9\":160,\"dimension8\":196,\"list\":\"Klevu Search Results\"},\"badges\":[{\"badge_id\":\"1993\",\"category_value\":\"\",\"product_id\":\"367621\",\"category_position\":\"top-left\",\"category_position_style\":\"\",\"category_image\":\"Uus_v_iksem_hind._badge_1.png\",\"category_font_style\":\"\",\"sort_order\":\"2\",\"category_image_width\":\"236\",\"category_image_height\":\"236\",\"mode\":\"category\"}]}",
+          "ir_item_ovet_ikkunallinen": "No",
+          "ir_item_akustiikka_puu_m_d_f_kosteudenkestava": "No",
+          "discount": "",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_suu_1": "No",
+          "ir_item_taiteovet_ikkunallinen": "No",
+          "freeShipping": "",
+          "storeBaseCurrency": "EUR",
+          "ir_item_lattian_alusmateriaali_lattialammitys": "No",
+          "price": "3.04",
+          "ir_item_set": "No",
+          "ir_item_parkettilattiat_reunaviiste": "No",
+          "ir_item_levyt_reunanauha": "No",
+          "inStock": "yes",
+          "id": "367621",
+          "ir_item_taiteovet_jatkettava": "No",
+          "imageHover": "",
+          "sku": "60149305",
+          "brand": "Knauf",
+          "basePrice": "3.04",
+          "warehouse_in_stock": "yes",
+          "image": "https://www.bauhaus.ee/needtochange/media/klevu_images/300X300/6/0/60149299-kipsplaat-gkb-tootepilt_1.jpg",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_tar_1": "No",
+          "hideAddToCart": "",
+          "ir_item_laminaatti_kortti_vinyyli_korkki_askelaanieriste": "No",
+          "weight": "26700.000000",
+          "klevu_category": "KLEVU_PRODUCT;;Tootevalik;Ehitus ja remont;Ehitusplaadid;Kipsplaadid ja paigaldustarvikud  @ku@kuCategory@ku@",
+          "groupPrices": "",
+          "isCustomOptionsAvailable": "no",
+          "kampanja": "Uus väiksem hind",
+          "ir_item_laminaatti_kortti_vinyyli_korkki_reunaviiste": "No",
+          "webshop": "Yes",
+          "normal_price": "9.5",
+          "ir_item_boordit_koristelaatat_ja_muut_laatat_lasitus": "No",
+          "name": "Standardkipsplaat Knauf GKB/A 12,5 x 1200 x 2600 mm, 3,12 m²",
+          "shortDesc": "Heledat värvi kartongkattega ehitusplaat sisetöödel seinte ja laepindade katmiseks või müüritisele kinnituskipsi Perlfix abil kinnitamiseks nn kuivkrohvplaadina.",
+          "store_only": "No",
+          "desc": "standardkipsplaat-knauf-gkb-a-12-5-x-1200-x-2600-mm-3-12-m.html Standardkipsplaat Knauf GKB A 12 5 x 1200 x 2600 mm 3 12 m² 367621 60149305",
+          "is_directdelivery": "No",
+          "ir_item_sisustuslistat_ovisetit": "No",
+          "ir_item_ovet_karmit_kynnykset_puuvalmis": "No",
+          "availability": "yes",
+          "hideGroupPrices": "",
+          "itemGroupId": "",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_pum_1": "No",
+          "toPrice": "3.04",
+          "imageUrl": "https://www.bauhaus.ee/needtochange/media/klevu_images/300X300/6/0/60149299-kipsplaat-gkb-tootepilt_1.jpg",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_tal_1": "No",
+          "currency": "EUR",
+          "clickcollect": "Yes",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_pik_1": "No",
+          "startPrice": "3.04",
+          "deliveryInfo": "",
+          "ir_item_kierreportaat_porrasrungot_porraspaketti": "No",
+          "salePrice": "3.04",
+          "swatchesInfo": "",
+          "totalVariants": 0,
+          "ir_item_ullakkoportaat_eristetty": "No",
+          "ir_item_kaiteet_kasijohteet_kaidepaketti": "No",
+          "url": "https://www.bauhaus.ee/standardkipsplaat-knauf-gkb-a-12-5-x-1200-x-2600-mm-3-12-m.html",
+          "badges": "",
+          "ir_item_boordit_koristelaatat_ja_muut_laatat_pakkasenkesto": "No",
+          "ir_item_sisustuslistat_piilokiinnitys": "No",
+          "source_instock": "[Rocca al Mare, Lasnamäe, Webshop]",
+          "category_path": "",
+          "ifactor_unit": "m²",
+          "ir_item_sisustuslistat_tiiviste": "No",
+          "ifactor_price": "3.04",
+          "ifactor": "3.12",
+          "category": "Kipsplaadid ja paigaldustarvikud",
+          "typeOfRecord": "KLEVU_PRODUCT"
+        },
+        {
+          "additionalDataToReturn": "{\"has_tier_prices\":0,\"product_type\":\"simple\",\"brand\":\"https:\\/\\/www.bauhaus.ee\\/media\\/wysiwyg\\/brand\\/24379.png\",\"brand_name\":\"Knauf\",\"energy_logo\":\"\",\"checkmark_webshop\":true,\"checkmark_store\":true,\"productImpression\":{\"name\":\"Standardkipsplaat Knauf GKB\\/A 12,5 x 1200 x 2500 mm, 3 m\\u00b2\",\"id\":\"61342213\",\"productType\":\"simple\",\"category\":\"Ehitus ja remont > Ehitusplaadid > Kipsplaadid ja paigaldustarvikud\",\"tax\":\"1.65\",\"price\":\"7.49\",\"dimension3\":200,\"dimension9\":150,\"dimension8\":200,\"list\":\"Klevu Search Results\"},\"badges\":[{\"badge_id\":\"1993\",\"category_value\":\"\",\"product_id\":\"368967\",\"category_position\":\"top-left\",\"category_position_style\":\"\",\"category_image\":\"Uus_v_iksem_hind._badge_1.png\",\"category_font_style\":\"\",\"sort_order\":\"2\",\"category_image_width\":\"236\",\"category_image_height\":\"236\",\"mode\":\"category\"}]}",
+          "ir_item_ovet_ikkunallinen": "No",
+          "ir_item_akustiikka_puu_m_d_f_kosteudenkestava": "No",
+          "discount": "",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_suu_1": "No",
+          "ir_item_taiteovet_ikkunallinen": "No",
+          "freeShipping": "",
+          "storeBaseCurrency": "EUR",
+          "ir_item_lattian_alusmateriaali_lattialammitys": "No",
+          "price": "3.05",
+          "ir_item_set": "No",
+          "ir_item_parkettilattiat_reunaviiste": "No",
+          "ir_item_levyt_reunanauha": "No",
+          "inStock": "yes",
+          "id": "368967",
+          "ir_item_taiteovet_jatkettava": "No",
+          "imageHover": "",
+          "sku": "61342213",
+          "brand": "Knauf",
+          "basePrice": "3.05",
+          "warehouse_in_stock": "yes",
+          "image": "https://www.bauhaus.ee/needtochange/media/klevu_images/300X300/6/0/60149299-kipsplaat-gkb-tootepilt_3.jpg",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_tar_1": "No",
+          "hideAddToCart": "",
+          "ir_item_laminaatti_kortti_vinyyli_korkki_askelaanieriste": "No",
+          "weight": "25700.000000",
+          "klevu_category": "KLEVU_PRODUCT;;Tootevalik;Ehitus ja remont;Ehitusplaadid;Kipsplaadid ja paigaldustarvikud  @ku@kuCategory@ku@",
+          "groupPrices": "",
+          "isCustomOptionsAvailable": "no",
+          "kampanja": "Uus väiksem hind",
+          "ir_item_laminaatti_kortti_vinyyli_korkki_reunaviiste": "No",
+          "webshop": "Yes",
+          "normal_price": "9.14",
+          "ir_item_boordit_koristelaatat_ja_muut_laatat_lasitus": "No",
+          "name": "Standardkipsplaat Knauf GKB/A 12,5 x 1200 x 2500 mm, 3 m²",
+          "shortDesc": "Heledat värvi kartongkattega ehitusplaat sisetöödel seinte ja laepindade katmiseks või müüritisele kinnituskipsi Perlfix abil kinnitamiseks nn kuivkrohvplaadina.",
+          "store_only": "No",
+          "desc": "standardkipsplaat-knauf-gkb-a-12-5-x-1200-x-2500-mm-3-m.html Standardkipsplaat Knauf GKB A 12 5 x 1200 x 2500 mm 3 m² 368967 61342213",
+          "is_directdelivery": "No",
+          "ir_item_sisustuslistat_ovisetit": "No",
+          "ir_item_ovet_karmit_kynnykset_puuvalmis": "No",
+          "availability": "yes",
+          "hideGroupPrices": "",
+          "itemGroupId": "",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_pum_1": "No",
+          "toPrice": "3.05",
+          "imageUrl": "https://www.bauhaus.ee/needtochange/media/klevu_images/300X300/6/0/60149299-kipsplaat-gkb-tootepilt_3.jpg",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_tal_1": "No",
+          "currency": "EUR",
+          "clickcollect": "Yes",
+          "ir_item_lisatiedot_betonit_sementit_rappaus_tarviikket_pik_1": "No",
+          "startPrice": "3.05",
+          "deliveryInfo": "",
+          "ir_item_kierreportaat_porrasrungot_porraspaketti": "No",
+          "salePrice": "3.05",
+          "swatchesInfo": "",
+          "totalVariants": 0,
+          "ir_item_ullakkoportaat_eristetty": "No",
+          "ir_item_kaiteet_kasijohteet_kaidepaketti": "No",
+          "url": "https://www.bauhaus.ee/standardkipsplaat-knauf-gkb-a-12-5-x-1200-x-2500-mm-3-m.html",
+          "badges": "",
+          "ir_item_boordit_koristelaatat_ja_muut_laatat_pakkasenkesto": "No",
+          "ir_item_sisustuslistat_piilokiinnitys": "No",
+          "source_instock": "[Rocca al Mare, Lasnamäe, Webshop]",
+          "category_path": "",
+          "ifactor_unit": "m²",
+          "ir_item_sisustuslistat_tiiviste": "No",
+          "ifactor_price": "3.05",
+          "ifactor": "3",
+          "category": "Kipsplaadid ja paigaldustarvikud",
+          "typeOfRecord": "KLEVU_PRODUCT"
+        }
+      ],
+      "filters": [
+        {
+          "key": "brand",
+          "label": "BRÄND",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 29,
+              "name": "Eskaro",
+              "value": "Eskaro",
+              "selected": false
+            },
+            {
+              "count": 16,
+              "name": "Fein",
+              "value": "Fein",
+              "selected": false
+            },
+            {
+              "count": 10,
+              "name": "Knauf",
+              "value": "Knauf",
+              "selected": false
+            },
+            {
+              "count": 7,
+              "name": "Tikkurila",
+              "value": "Tikkurila",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "D-C-Fix",
+              "value": "D-C-Fix",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "Vivacolor",
+              "value": "Vivacolor",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Kiilto Pro",
+              "value": "Kiilto Pro",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Bosch",
+              "value": "Bosch",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Mako",
+              "value": "Mako",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Penosil",
+              "value": "Penosil",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Tesa",
+              "value": "Tesa",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "category",
+          "label": "category",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 21,
+              "name": "Seinavärvid",
+              "value": "Seinavärvid",
+              "selected": false
+            },
+            {
+              "count": 16,
+              "name": "Saagimistarvikud",
+              "value": "Saagimistarvikud",
+              "selected": false
+            },
+            {
+              "count": 14,
+              "name": "Laevärvid ja kruntvärvid",
+              "value": "Laevärvid ja kruntvärvid",
+              "selected": false
+            },
+            {
+              "count": 9,
+              "name": "Kipsplaadid ja paigaldustarvikud",
+              "value": "Kipsplaadid ja paigaldustarvikud",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "Niiskuskindlad seinakatted",
+              "value": "Niiskuskindlad seinakatted",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "Liimid ja tapeediliimid",
+              "value": "Liimid ja tapeediliimid",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "Pahtlid",
+              "value": "Pahtlid",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "Teibid",
+              "value": "Teibid",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Efekt- ja dekoratiivvärvid",
+              "value": "Efekt- ja dekoratiivvärvid",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Eeltöötlusained",
+              "value": "Eeltöötlusained",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Laua- ja ketassaed",
+              "value": "Laua- ja ketassaed",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_vari_general",
+          "label": "Värvus",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 31,
+              "name": "Valge",
+              "value": "Valge",
+              "selected": false
+            },
+            {
+              "count": 7,
+              "name": "Värvitu",
+              "value": "Värvitu",
+              "selected": false
+            },
+            {
+              "count": 4,
+              "name": "Naturaalne valge",
+              "value": "Naturaalne valge",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Hall",
+              "value": "Hall",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Beige",
+              "value": "Beige",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Hõbedane",
+              "value": "Hõbedane",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Kollane",
+              "value": "Kollane",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Kuldne",
+              "value": "Kuldne",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Värviline",
+              "value": "Värviline",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalit_efektituotteet",
+          "label": "Efekttooted",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 33,
+              "name": "No",
+              "value": "No",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "Yes",
+              "value": "Yes",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalit_kayttokohde",
+          "label": "Kasutuskoht",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 8,
+              "name": "Seinad",
+              "value": "Seinad",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "Laed",
+              "value": "Laed",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Mööbel ja liistud",
+              "value": "Mööbel ja liistud",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalit_kiiltoaste",
+          "label": "Läikeaste",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 11,
+              "name": "Täismatt",
+              "value": "Täismatt",
+              "selected": false
+            },
+            {
+              "count": 4,
+              "name": "Poolmatt",
+              "value": "Poolmatt",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "Matt",
+              "value": "Matt",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Poolläikiv",
+              "value": "Poolläikiv",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalit_lakat_purkkikoko",
+          "label": "Purgi suurus",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 6,
+              "name": "2,7 l",
+              "value": "2,7 l",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "0,9 l",
+              "value": "0,9 l",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "9 l",
+              "value": "9 l",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "9,5 l",
+              "value": "9,5 l",
+              "selected": false
+            },
+            {
+              "count": 4,
+              "name": "2,85 l",
+              "value": "2,85 l",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "0,95l",
+              "value": "0,95l",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "19 l",
+              "value": "19 l",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "4,75 l",
+              "value": "4,75 l",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "0,225 l",
+              "value": "0,225 l",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "0,5 l",
+              "value": "0,5 l",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalit_riittoisuus",
+          "label": "Katvus m²/l",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 7,
+              "name": "6-10 m²/l",
+              "value": "6-10 m²/l",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "5-11 m²/l",
+              "value": "5-11 m²/l",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "6-8 m²/l",
+              "value": "6-8 m²/l",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "7-10 m²/l, olenevalt aluspinnast",
+              "value": "7-10 m²/l, olenevalt aluspinnast",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "8-12 m²/l",
+              "value": "8-12 m²/l",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "8-14 m²/l",
+              "value": "8-14 m²/l",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Mitteimavatel pindadel 9-11 m²/lImavatel pindadel 5-7 m²/l",
+              "value": "Mitteimavatel pindadel 9-11 m²/lImavatel pindadel 5-7 m²/l",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "u 1,5 m²/l (kolmekordsel pealekandmisel)",
+              "value": "u 1,5 m²/l (kolmekordsel pealekandmisel)",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalit_kuivumisaika",
+          "label": "Kuivamisaeg",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 2,
+              "name": "0,5 tundi– tolmukuiv2-4 tundi– ülevärvitav",
+              "value": "0,5 tundi– tolmukuiv2-4 tundi– ülevärvitav",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "1 h möödudes puutekuiv, 6-8 tunni pärast ülevärvitav",
+              "value": "1 h möödudes puutekuiv, 6-8 tunni pärast ülevärvitav",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Ülevärvitav 2-2,5 h möödudes, kuiv 12 h pärast",
+              "value": "Ülevärvitav 2-2,5 h möödudes, kuiv 12 h pärast",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "ülevärvitav 2 - 2,5 h möödudes, kuiv 12 h pärast",
+              "value": "ülevärvitav 2 - 2,5 h möödudes, kuiv 12 h pärast",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "24 h",
+              "value": "24 h",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "ülevärvimiseks 1-2 tundi temperatuuril 20º C ning suhtelisel õhuniiskusel 65%",
+              "value": "ülevärvimiseks 1-2 tundi temperatuuril 20º C ning suhtelisel õhuniiskusel 65%",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_maalitja_lakat_soveltuvuus",
+          "label": "Sobivus",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 5,
+              "name": "Betoonpind",
+              "value": "Betoonpind",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "Kipsplaadi pind",
+              "value": "Kipsplaadi pind",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "Puitlaastplaadi pind",
+              "value": "Puitlaastplaadi pind",
+              "selected": false
+            },
+            {
+              "count": 4,
+              "name": "Soome papp",
+              "value": "Soome papp",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Krohvitudpind",
+              "value": "Krohvitudpind",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Metall",
+              "value": "Metall",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Puidust pind",
+              "value": "Puidust pind",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Puitlauad",
+              "value": "Puitlauad",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Telliskivi",
+              "value": "Telliskivi",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Tasanduspind",
+              "value": "Tasanduspind",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_savytettavat",
+          "label": "Toonitavad ja toonitud",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 16,
+              "name": "Toonitav",
+              "value": "Toonitav",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "Toonitud",
+              "value": "Toonitud",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_liimat_teipit_soveltuvuus",
+          "label": "Sobivus",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 5,
+              "name": "Kipsplaat",
+              "value": "Kipsplaat",
+              "selected": false
+            },
+            {
+              "count": 2,
+              "name": "Krohv",
+              "value": "Krohv",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Alumiinium",
+              "value": "Alumiinium",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Betoon",
+              "value": "Betoon",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Keraamilisedplaadid",
+              "value": "Keraamilisedplaadid",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Kivi",
+              "value": "Kivi",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Klaas ja peegel",
+              "value": "Klaas ja peegel",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Lakitud/ Värvitud pinnad",
+              "value": "Lakitud/ Värvitud pinnad",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Metall",
+              "value": "Metall",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Nahk",
+              "value": "Nahk",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Plastik ja klaaskiud",
+              "value": "Plastik ja klaaskiud",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Polüstüreen",
+              "value": "Polüstüreen",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Puit",
+              "value": "Puit",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Puitlaastplaat",
+              "value": "Puitlaastplaat",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Tekstiil",
+              "value": "Tekstiil",
+              "selected": false
+            },
+            {
+              "count": 1,
+              "name": "Telliskivi",
+              "value": "Telliskivi",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_liimat_teipit_tiivisteet_kayttokohde",
+          "label": "Kasutuskoht",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 6,
+              "name": "Sisetingimustes",
+              "value": "Sisetingimustes",
+              "selected": false
+            },
+            {
+              "count": 3,
+              "name": "Välistingimustes",
+              "value": "Välistingimustes",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "ir_item_kappalemaara",
+          "label": "Tükkide arv",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 6,
+              "name": "3",
+              "value": "3",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "1",
+              "value": "1",
+              "selected": false
+            },
+            {
+              "count": 5,
+              "name": "5",
+              "value": "5",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "source_instock",
+          "label": "source_instock",
+          "type": "OPTIONS",
+          "options": [
+            {
+              "count": 60,
+              "name": "Rocca al Mare",
+              "value": "Rocca al Mare",
+              "selected": false
+            },
+            {
+              "count": 55,
+              "name": "Lasnamäe",
+              "value": "Lasnamäe",
+              "selected": false
+            },
+            {
+              "count": 54,
+              "name": "Webshop",
+              "value": "Webshop",
+              "selected": false
+            }
+          ]
+        },
+        {
+          "key": "klevu_price",
+          "label": "klevu_price",
+          "type": "SLIDER",
+          "min": "3.04",
+          "max": "129",
+          "start": null,
+          "end": null
+        }
+      ]
+    },
+    {
+      "id": "contentList",
+      "meta": {
+        "qTime": 233,
+        "noOfResults": 20,
+        "totalResultsFound": 0,
+        "typeOfSearch": "FUZZY_OR",
+        "offset": 0,
+        "debuggingInformation": {},
+        "notificationCode": 1,
+        "searchedTerm": "kipsplaat",
+        "apiKey": "klevu-169590957278116052",
+        "isPersonalised": false
+      },
+      "records": [],
+      "filters": []
+    }
+  ]
+}

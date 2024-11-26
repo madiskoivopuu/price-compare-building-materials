@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Category from "./Category";
 
-function Categories({isMobileMenuExtended, categoryChange}) {
+function Categories({isMobileMenuExtended, categoryChange, selectedCategory}) {
     
     const [categories, setCategories] = useState([])
     const [selectedSubcategory, setSelectedSubcategory] = useState(null)
     const [selectedCat, setSelectedCat] = useState(null)
+    const [selectedCatName, setSelectedCatName] = useState('')
 
     const donothing = (item) => {};
 
@@ -14,7 +15,7 @@ function Categories({isMobileMenuExtended, categoryChange}) {
         
         setSelectedSubcategory(subCat)
         if(subCat) {
-            categoryChange({ category: 'cat', subcategory: subCat });
+            categoryChange({ category: selectedCatName, subcategory: subCat });
         }
     }
 
@@ -37,8 +38,8 @@ function Categories({isMobileMenuExtended, categoryChange}) {
             <h1 className="font-bold">Kategooriad</h1>
             <ul className="p-2">
                 {categories.map((category, index) => (
-                    <li key={index} onClick={() => {setSelectedCat(index)}}>
-                        <Category category={category} subcategoryChange={subcategoryChange} active={index === selectedCat}/>
+                    <li key={index} onClick={() => {setSelectedCat(index); setSelectedCatName(category.name)}}>
+                        <Category category={category} subcategoryChange={subcategoryChange} active={selectedCategory ? index === selectedCat : false}/>
                     </li>
                 ))}
             </ul>

@@ -9,7 +9,8 @@ public enum Store {
     DECORA("decora"),
     PUUMARKET("puumarket"),
     EHITUSEABC("ehituseabc"),
-    EHOMER("ehomer");
+    EHOMER("ehomer"),
+    BAUHAUS("bauhaus");
 
     protected final String storeName;
 
