@@ -12,6 +12,7 @@ import java.util.Objects;
 public class LocationDto {
     LocationName locationName;
     String address;
+    String googleMapsLink;
 
     @Override
     public boolean equals(Object o) {
