@@ -3,8 +3,8 @@ package priceCompare.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductsDto;
-import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
+import priceCompare.backend.stores.GetStoreProductsService;
 import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsServiceImpl;
 import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
 import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
@@ -15,6 +15,9 @@ import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
 import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Service
 public class FindProductsServiceImpl implements FindProductService {
@@ -47,56 +50,44 @@ public class FindProductsServiceImpl implements FindProductService {
     public ProductsDto findProducts(String keyword, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
 
-        long startTime, endTime, duration;
+        // Create a list of CompletableFutures for asynchronous execution
+        List<CompletableFuture<Void>> futures = new ArrayList<>();
 
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getBauhofProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("bauhof - Time taken: " + duration + " seconds");
+        futures.add(fetchAndAddProducts(products, getBauhofProductsService, keyword, subcategory, "bauhof"));
+        futures.add(fetchAndAddProducts(products, getKRautaProductsService, keyword, subcategory, "krauta"));
+        futures.add(fetchAndAddProducts(products, getEspakProductsService, keyword, subcategory, "espak"));
+        futures.add(fetchAndAddProducts(products, getDecoraProductsService, keyword, subcategory, "decora"));
+        futures.add(fetchAndAddProducts(products, getPuumarketProductsService, keyword, subcategory, "puumarket"));
+        futures.add(fetchAndAddProducts(products, getEhituseAbcProductsService, keyword, subcategory, "EhituseABC"));
+        futures.add(fetchAndAddProducts(products, getEhomerProductsService, keyword, subcategory, "Ehomer"));
+        futures.add(fetchAndAddProducts(products, getBauhausProductsService, keyword, subcategory, "bauhaus"));
 
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getKRautaProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("krauta - Time taken: " + duration + " seconds");
+        // Wait for all futures to complete
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
 
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getEspakProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("espak - Time taken: " + duration + " seconds");
+        try {
+            allOf.get(); // Blocks until all are complete
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error occurred while fetching products", e);
+        }
 
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getDecoraProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("decora - Time taken: " + duration + " seconds");
-
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getPuumarketProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("puumarket - Time taken: " + duration + " seconds");
-
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getEhituseAbcProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("EhituseABC - Time taken: " + duration + " seconds");
-
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getEhomerProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("Ehomer - Time taken: " + duration + " seconds");
-
-        startTime = System.currentTimeMillis();
-        AddFetchedProductsToList(products, getBauhausProductsService.searchForProducts(keyword, subcategory));
-        endTime = System.currentTimeMillis();
-        duration = (endTime - startTime) / 1000;
-        System.out.println("Bauhaus - Time taken: " + duration + " seconds");
         return products;
+    }
+
+    private CompletableFuture<Void> fetchAndAddProducts(ProductsDto products, GetStoreProductsService service, String keyword, Subcategory subcategory, String storeName) {
+        return CompletableFuture.runAsync(() -> {
+            long startTime = System.currentTimeMillis();
+            ProductsDto fetchedProducts = service.searchForProducts(keyword, subcategory);
+            long endTime = System.currentTimeMillis();
+            long duration = (endTime - startTime) / 1000;
+            System.out.println(storeName + " - Time taken: " + duration + " seconds");
+
+            // Add fetched products to the main product list
+            synchronized (products) {
+                AddFetchedProductsToList(products, fetchedProducts);
+            }
+        });
     }
 
     private ProductsDto AddFetchedProductsToList(ProductsDto products, ProductsDto productsToBeAdded) {
@@ -105,5 +96,4 @@ public class FindProductsServiceImpl implements FindProductService {
         }
         return products;
     }
-
 }
