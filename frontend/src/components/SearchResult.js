@@ -99,7 +99,7 @@ function SearchResult({ name, linkToPicture, linkToProduct, price, unit, store, 
                                                     : location.location?.locationName || 'Pole saadaval'}
                                                 {location.location?.address ? (
                                                     <a
-                                                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.location.address)}`}
+                                                        href={location.location.googleMapsLink}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="text-blue-600 underline"
