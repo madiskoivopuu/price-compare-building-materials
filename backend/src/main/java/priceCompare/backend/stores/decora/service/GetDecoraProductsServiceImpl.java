@@ -24,7 +24,7 @@ import java.util.concurrent.CompletionException;
 @Service
 public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
 
-    private final int FETCH_MAX_NUM_PRODUCTS = 1024;
+    private final int FETCH_MAX_NUM_PRODUCTS = 256;
     private static final int LOCATION_FETCH_BATCH_SIZE = 20;
     private final DecoraAPIs apis;
 

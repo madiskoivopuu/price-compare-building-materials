@@ -2,39 +2,63 @@ package priceCompare.backend.stores.bauhof.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.Lists;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.LocationDto;
+import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.StockDto;
 import priceCompare.backend.dto.StockInLocationsDto;
+import priceCompare.backend.stores.dto.ProductParseDto;
 
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import java.util.stream.Collectors;
 
 @Service
 public class LocationStockInformationFetcherBauhof {
-    private static final String BAUHOF_STOCK_API_URL = "https://www.bauhof.ee/api/magento/customQuery?locale=et";
-    private final HttpClientService httpClientService;
 
-    public LocationStockInformationFetcherBauhof(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
+    private static final int LOCATION_FETCH_BATCH_SIZE = 20;
+    final BauhofApis apis;
 
-    public StockInLocationsDto getLocationAndStockInformation(String sku) {
-        String requestBody = buildRequestPayload(sku);
-        JSONObject response = httpClientService.PostWithBody(URI.create(BAUHOF_STOCK_API_URL), requestBody);
-        return parseResponse(response);
-    }
+    public LocationStockInformationFetcherBauhof(BauhofApis apis) {
+        this.apis = apis;}
 
-    public String buildRequestPayload(String sku) {
-        return String.format(
-                "[{\"query\":\"#graphql\\n  #graphql\\n#graphql\\nfragment ProductShortProj on ProductInterface {\\n    id\\n    uid\\n    sku\\n    name\\n    stock_status\\n    only_x_left_in_stock\\n    transport\\n    unit_id\\n    brand_name\\n    product_brand\\n    thumbnail {\\n        url\\n        position\\n        disabled\\n        label\\n    }\\n    url_key\\n    url_rewrites {\\n        url\\n    }\\n    deliveryInformation {\\n        name\\n        min_price\\n        from\\n    }\\n    price_range {\\n        maximum_price {\\n            final_price {\\n                currency\\n                value\\n            }\\n            regular_price {\\n                currency\\n                value\\n            }\\n        }\\n        minimum_price {\\n            final_price {\\n                currency\\n                value\\n            }\\n            regular_price {\\n                currency\\n                value\\n            }\\n        }\\n    }\\n    available_price_tiers {\\n        discount {\\n            amount_off\\n            percent_off\\n        }\\n        final_price {\\n            currency\\n            value\\n        }\\n        quantity\\n        price_group_type\\n        price_valid_until\\n        cust_group\\n    }\\n    price_customer {\\n        discount {\\n            amount_off\\n            percent_off\\n        }\\n        final_price {\\n            value\\n            currency\\n        }\\n    }\\n    advanced_inventory {\\n        is_qty_decimal\\n        qty_incrments\\n        min_sale_qty\\n        max_sale_qty\\n    }\\n    __typename\\n}\\n\\nfragment ProductDetailsSensitiveDataProj on ProductInterface {\\n    ...ProductShortProj\\n    transport\\n    foreign_assortment\\n    availability_in_stores {\\n        qty\\n        source_name\\n        source_code\\n        status\\n    }\\n}\\n\\n  query productDetails(\\n      $search: String = \\\"\\\",\\n      $filter: ProductAttributeFilterInput,\\n      $pageSize: Int = 10,\\n      $currentPage: Int = 1,\\n      $sort: ProductAttributeSortInput\\n  )\\n  {\\n      products(search: $search, filter: $filter, sort: $sort, pageSize: $pageSize, currentPage: $currentPage) {\\n          items {\\n              ...ProductDetailsSensitiveDataProj\\n          }\\n      }\\n  }\\n  \",\"queryVariables\":{\"queryType\":\"DETAIL\",\"filter\":{\"sku\":{\"eq\":\"%s\"}}},\"fetchPolicy\":\"no-cache\"}]",
-                sku
-        );
+    public List<ProductParseDto> fetchLocationInfo(List<ProductParseDto> products) {
+        List<ProductParseDto> newProducts = new ArrayList<>();
+        List<List<ProductParseDto>> batches = Lists.partition(products, LOCATION_FETCH_BATCH_SIZE);
+
+        for(List<ProductParseDto> batch : batches) {
+            List<CompletableFuture<JSONObject>> futures = new ArrayList<>();
+            for(ProductParseDto productParseInfo : batch) {
+                futures.add(
+                        apis.fetchLocationInfoForProduct(productParseInfo.getSku())
+                );
+            }
+
+            for(int i = 0; i < futures.size(); i++) {
+                CompletableFuture<JSONObject> future = futures.get(i);
+                ProductParseDto productParseInfo = batch.get(i);
+
+                try {
+                    ProductDto product = productParseInfo.getProduct();
+                    product = product.toBuilder()
+                            .stock(parseResponse(future.join()))
+                            .build();
+                    productParseInfo.setProduct(product);
+                } catch(CompletionException e) {
+                    System.err.printf("Bauhof products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
+                } finally {
+                    newProducts.add(productParseInfo);
+                }
+            }
+        }
+        return newProducts;
     }
 
     public StockInLocationsDto parseResponse(JSONObject response) {

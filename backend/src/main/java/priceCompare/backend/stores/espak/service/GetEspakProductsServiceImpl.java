@@ -26,7 +26,7 @@ import java.util.concurrent.CompletionException;
 
 @Service
 public class GetEspakProductsServiceImpl implements GetStoreProductsService {
-    public static final int FETCH_MAX_NUM_PRODUCTS = 1024;
+    public static final int FETCH_MAX_NUM_PRODUCTS = 128;
     private static final int PRODUCT_BATCH_SIZE = 20;
     private final EspakAPIs apis;
 

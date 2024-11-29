@@ -103,7 +103,7 @@ public class DecoraAPIs {
                 }
                 """, UserInputEscaper.escapeForJson(query), SEARCH_API_PAGE_SIZE, offset, categoryFilter);
 
-        return httpClientService.PostWithBody(URI.create("https://decoracsv2.ksearchnet.com/cs/v2/search"), body);
+        return httpClientService.PostWithBodyAndReturnJson(URI.create("https://decoracsv2.ksearchnet.com/cs/v2/search"), body);
     }
 
     /**
@@ -113,7 +113,7 @@ public class DecoraAPIs {
      */
     public CompletableFuture<Document> fetchLocationInfoForProduct(String sku) {
         URI locationUri = URI.create(String.format("https://www.decora.ee/stockavailability/load/stock/?product_sku=%s&_=%d", sku, System.currentTimeMillis()));
-        return httpClientService.GetStringAsync(locationUri)
+        return httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(locationUri)
                 .thenApply(HttpResponse::body)
                 .thenApply(JSONObject::new)
                 .thenApply(obj -> obj.getString("html"))

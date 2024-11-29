@@ -1,16 +1,13 @@
 package priceCompare.backend.service;
 
 import org.springframework.core.io.InputStreamResource;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.util.ArrayUtils;
 import priceCompare.backend.HttpClient.HttpClientService;
 
 import java.io.ByteArrayInputStream;
 import java.net.URI;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Service
@@ -36,7 +33,7 @@ public class ProxyImageLoadingService {
         if(!isUrlAllowed(url))
             return ResponseEntity.status(403).build();
 
-        HttpResponse<byte[]> resp = httpClientService.GetRawBytes(URI.create(url));
+        HttpResponse<byte[]> resp = httpClientService.GetAndReturnRawBytes(URI.create(url));
         if(resp == null) {
             return ResponseEntity.internalServerError().build();
         }

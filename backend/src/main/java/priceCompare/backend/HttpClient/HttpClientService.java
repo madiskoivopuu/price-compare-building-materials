@@ -7,7 +7,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class HttpClientService {
                 .build();
     }
     
-    public JSONObject GetJson(URI url) {
+    public JSONObject GetAndReturnJson(URI url) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .header("Content-Type", "application/json")
@@ -43,7 +42,7 @@ public class HttpClientService {
         }
     }
 
-    public HttpResponse<byte[]> GetRawBytes(URI url) {
+    public HttpResponse<byte[]> GetAndReturnRawBytes(URI url) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .header("Content-Type", "application/json")
@@ -62,7 +61,7 @@ public class HttpClientService {
         }
     }
 
-    public String GetString(URI url) {
+    public String GetAndReturnString(URI url) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .header("Content-Type", "application/json")
@@ -81,7 +80,7 @@ public class HttpClientService {
         }
     }
 
-    public CompletableFuture<HttpResponse<String>> GetStringAsync(URI url) {
+    public CompletableFuture<HttpResponse<String>> GetAsyncAndReturnCompletableFutureHttpResponse(URI url) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .header("Content-Type", "application/json")
@@ -91,7 +90,7 @@ public class HttpClientService {
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public CompletableFuture<HttpResponse<String>> PostStringAsync(URI url, String body) {
+    public CompletableFuture<HttpResponse<String>> PostWithBodyAsyncAndReturnCompletableFutureHttpResponse(URI url, String body) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .header("Content-Type", "application/json")
@@ -101,7 +100,7 @@ public class HttpClientService {
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public JSONObject PostWithBody(URI url, String body) {
+    public JSONObject PostWithBodyAndReturnJson(URI url, String body) {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(url)
                 .header("Content-Type", "application/json;charset=UTF-8")

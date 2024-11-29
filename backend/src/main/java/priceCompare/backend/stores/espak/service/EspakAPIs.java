@@ -1,14 +1,11 @@
 package priceCompare.backend.stores.espak.service;
 
-import com.fasterxml.jackson.core.io.JsonStringEncoder;
-import com.fasterxml.jackson.core.util.BufferRecyclers;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.stores.decora.service.EmaterjalToDecoraCategoryMapping;
 import priceCompare.backend.utils.UserInputEscaper;
 
 import java.net.URI;
@@ -80,7 +77,7 @@ public class EspakAPIs {
         String facetFilters = formatFacetFilters(subcategory);
         String reqBody = String.format(SEARCH_API_REQUEST, UserInputEscaper.escapeForJson(query), page, URLEncoder.encode(facetFilters, StandardCharsets.UTF_8));
 
-        return httpClientService.PostWithBody(URI.create(SEARCH_API_URL), reqBody);
+        return httpClientService.PostWithBodyAndReturnJson(URI.create(SEARCH_API_URL), reqBody);
     }
 
     /**
@@ -89,7 +86,7 @@ public class EspakAPIs {
      * @return A future which will return the parsed HTML document with product info
      */
     public CompletableFuture<Document> fetchProductPage(String productLink) {
-        return httpClientService.GetStringAsync(URI.create(productLink))
+        return httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(URI.create(productLink))
                 .thenApply(HttpResponse::body)
                 .thenApply(Jsoup::parse);
     }

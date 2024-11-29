@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "qTime": 30,
+    "responseCode": 200
+  },
+  "queryResults": [
+    {
+      "id": "search",
+      "meta": {
+        "qTime": 29,
+        "noOfResults": 0,
+        "totalResultsFound": 0,
+        "typeOfSearch": "AND",
+        "offset": 0,
+        "debuggingInformation": {},
+        "notificationCode": 1,
+        "searchedTerm": "kipsplaat",
+        "isPersonalised": false
+      },
+      "records": [
+      ],
+      "filters": []
+    }
+  ]
+}

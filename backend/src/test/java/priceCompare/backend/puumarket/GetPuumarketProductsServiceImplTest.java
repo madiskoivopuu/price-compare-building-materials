@@ -1,18 +1,13 @@
 package priceCompare.backend.puumarket;
 
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.stores.espak.service.EspakAPIs;
-import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
 import priceCompare.backend.stores.puumarket.service.EmaterjalToPuumarketCategoryMapping;
 import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
 import priceCompare.backend.stores.puumarket.service.LocationStockInformationFetcherPuumarket;
@@ -23,15 +18,12 @@ import java.net.URI;
 import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
-import static priceCompare.backend.enums.Subcategory.OSB_PLAAT;
 
 public class GetPuumarketProductsServiceImplTest {
     @Test
@@ -72,13 +64,13 @@ public class GetPuumarketProductsServiceImplTest {
                     CompletableFuture<HttpResponse<String>> future = CompletableFuture.supplyAsync(() -> {
                         throw new RuntimeException("test");
                     });
-                    when(httpClientService.GetStringAsync(Mockito.eq(URI.create(pageLink))))
+                    when(httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(Mockito.eq(URI.create(pageLink))))
                             .thenReturn(future);
                 }
 
                 GetPuumarketProductsServiceImpl getPuumarketProductsService = new GetPuumarketProductsServiceImpl(new PuumarketAPIs(httpClientService), new LocationStockInformationFetcherPuumarket());
                 getPuumarketProductsService.searchForProducts("", subcategory);
-                verify(httpClientService, times(EXPECTED_PAGE_VISITS)).GetStringAsync(Mockito.any());
+                verify(httpClientService, times(EXPECTED_PAGE_VISITS)).GetAsyncAndReturnCompletableFutureHttpResponse(Mockito.any());
 
             }
         }

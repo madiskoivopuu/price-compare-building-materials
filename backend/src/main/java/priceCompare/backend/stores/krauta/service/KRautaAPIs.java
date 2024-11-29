@@ -1,13 +1,17 @@
 package priceCompare.backend.stores.krauta.service;
 
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 
 import java.net.URI;
 import java.net.URLEncoder;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class KRautaAPIs {
@@ -38,6 +42,13 @@ public class KRautaAPIs {
      */
     public JSONObject fetchPageFromSearchAPI(String query, Subcategory subcategory, int offset) {
         URI uri = formatSearchUrl(query, subcategory, offset);
-        return httpClientService.GetJson(uri);
+        return httpClientService.GetAndReturnJson(uri);
+    }
+
+    public CompletableFuture<Document> fetchLocationInfoForProduct(String url) {
+        URI locationUri = URI.create(url);
+        return httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(locationUri)
+                .thenApply(HttpResponse::body)
+                .thenApply(Jsoup::parse);
     }
 }

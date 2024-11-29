@@ -62,7 +62,7 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
         List<ProductParseDto> products = new ArrayList<>();
         List<String> categoryPaths = getCategoryCorrespondingCategoryPaths(subcategory);
         for (String categoryPath : categoryPaths) {
-            JSONObject response = httpClientService.PostWithBody(URI.create(BAUHAUS_API_URL),
+            JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
                     buildRequestBodyWithCategory(categoryPath, API_KEY, SEARCH_API_PAGE_SIZE));
             products.addAll(parseResponse(response, null));
         }
@@ -70,7 +70,7 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
     }
 
     public List<ProductParseDto> getProductsByKeyword(String keyword) {
-        JSONObject response = httpClientService.PostWithBody(URI.create(BAUHAUS_API_URL),
+        JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
                 buildRequestBodyWithKeyword(keyword, API_KEY, SEARCH_API_PAGE_SIZE));
         return parseResponse(response, keyword);
     }
@@ -78,7 +78,7 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
     public List<ProductParseDto> getProductsByKeywordAndCategory(String keyword, Subcategory subcategory) {
         List<String> categories = getBauhausCategories(subcategory);
         if (categories.isEmpty()) return new ArrayList<>();
-        JSONObject response = httpClientService.PostWithBody(URI.create(BAUHAUS_API_URL),
+        JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
                 buildRequestBodyWithKeywordAndCategory(keyword, categories , API_KEY, SEARCH_API_PAGE_SIZE));
         return parseResponse(response, keyword);
     }

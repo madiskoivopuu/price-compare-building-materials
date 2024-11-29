@@ -14,4 +14,5 @@ public class ProductParseDto {
     String productPage; // most likmely html, can be some api response
     String locationPage; // html or some api response
     String sku;
+    String linkToProduct;
 }

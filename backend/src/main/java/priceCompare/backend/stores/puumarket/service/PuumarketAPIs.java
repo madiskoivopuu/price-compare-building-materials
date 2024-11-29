@@ -1,6 +1,5 @@
 package priceCompare.backend.stores.puumarket.service;
 
-import ch.qos.logback.core.pattern.parser.Parser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
@@ -39,7 +38,7 @@ public class PuumarketAPIs {
         List<CompletableFuture<Document>> futures = new ArrayList<>();
         for(String categoryUrl : mappedUrls) {
             futures.add(
-                    httpClientService.GetStringAsync(URI.create(categoryUrl))
+                    httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(URI.create(categoryUrl))
                             .thenApply(HttpResponse::body)
                             .thenApply(Jsoup::parse)
             );
@@ -59,7 +58,7 @@ public class PuumarketAPIs {
     
     private Document fetchSearchResults(String query) {
         String searchUrl = SEARCH_URL + formatSearchParams(query);
-        String resHtml = httpClientService.GetString(URI.create(searchUrl));
+        String resHtml = httpClientService.GetAndReturnString(URI.create(searchUrl));
         if(resHtml == null) return null;
 
         return Jsoup.parse(resHtml);

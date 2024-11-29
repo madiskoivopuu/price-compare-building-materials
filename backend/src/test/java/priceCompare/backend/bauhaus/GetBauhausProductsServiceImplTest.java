@@ -43,7 +43,7 @@ class GetBauhausProductsServiceImplTest {
         String keyword = "Product";
         Subcategory subcategory = Subcategory.KILED;
 
-        when(httpClientService.PostWithBody(any(), any()))
+        when(httpClientService.PostWithBodyAndReturnJson(any(), any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/bauhaus/searchResponse.json"))));
         when(locationStockInformationFetcher.fetchLocationInfo(any()))
                 .thenReturn(new ArrayList<>() {ProductParseDto productParseDto;});
@@ -51,7 +51,7 @@ class GetBauhausProductsServiceImplTest {
         ProductsDto result = getBauhausProductsService.searchForProducts(keyword, subcategory);
 
         verify(locationStockInformationFetcher).fetchLocationInfo(any());
-        verify(httpClientService).PostWithBody(any(URI.class), any(String.class));
+        verify(httpClientService).PostWithBodyAndReturnJson(any(URI.class), any(String.class));
         assertNotNull(result);
 
     }
@@ -60,7 +60,7 @@ class GetBauhausProductsServiceImplTest {
     void testSearchForProductsWithKeywordOnlyShouldReturnTwoProducts() throws IOException {
         String keyword = "Product";
 
-        when(httpClientService.PostWithBody(any(), any()))
+        when(httpClientService.PostWithBodyAndReturnJson(any(), any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/bauhaus/searchResponse.json"))));
         when(locationStockInformationFetcher.fetchLocationInfo(any()))
                 .thenReturn(new ArrayList<>() {ProductParseDto productParseDto;});
@@ -68,7 +68,7 @@ class GetBauhausProductsServiceImplTest {
         ProductsDto result = getBauhausProductsService.searchForProducts(keyword, null);
 
         verify(locationStockInformationFetcher).fetchLocationInfo(any());
-        verify(httpClientService).PostWithBody(any(URI.class), any(String.class));
+        verify(httpClientService).PostWithBodyAndReturnJson(any(URI.class), any(String.class));
         assertNotNull(result);
     }
 
@@ -76,7 +76,7 @@ class GetBauhausProductsServiceImplTest {
     void testSearchForProductsWithCategoryOnlyShouldReturnTwoProducts() throws IOException {
         Subcategory subcategory = Subcategory.KILED;
 
-        when(httpClientService.PostWithBody(any(), any()))
+        when(httpClientService.PostWithBodyAndReturnJson(any(), any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/bauhaus/searchResponse.json"))));
         when(locationStockInformationFetcher.fetchLocationInfo(any()))
                 .thenReturn(new ArrayList<>() {ProductParseDto productParseDto;});
@@ -84,7 +84,7 @@ class GetBauhausProductsServiceImplTest {
         ProductsDto result = getBauhausProductsService.searchForProducts(null, subcategory);
 
         verify(locationStockInformationFetcher).fetchLocationInfo(any());
-        verify(httpClientService).PostWithBody(any(URI.class), any(String.class));
+        verify(httpClientService).PostWithBodyAndReturnJson(any(URI.class), any(String.class));
         assertNotNull(result);
     }
 
@@ -94,7 +94,7 @@ class GetBauhausProductsServiceImplTest {
         Subcategory subcategory = Subcategory.KANGAD;
         JSONObject mockedEmptyResponse = new JSONObject("{\"records\": []}");
 
-        when(httpClientService.PostWithBody(any(), any()))
+        when(httpClientService.PostWithBodyAndReturnJson(any(), any()))
                 .thenReturn(mockedEmptyResponse);
 
         ProductsDto result = getBauhausProductsService.searchForProducts(keyword, subcategory);

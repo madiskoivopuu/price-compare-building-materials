@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -45,25 +44,25 @@ class GetEhituseAbcProductsServiceImplTest {
     void searchForProductsWithKeywordAndCategoryReturnsCorrectlyParsedProducts() throws IOException {
         String keyword = "kipsplaat";
         Subcategory subcategory = Subcategory.KIPSPLAAT;
-        when(httpClientService.PostWithBody(any(URI.class), any(String.class)))
+        when(httpClientService.PostWithBodyAndReturnJson(any(URI.class), any(String.class)))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehituseAbc/searchForKipsplaatResponse.json"))));
         ProductsDto result = getEhituseAbcProductsService.searchForProducts(keyword, subcategory);
 
         verify(locationStockInformationFetcher).fetchLocationInfo(any());
-        verify(httpClientService).PostWithBody(any(URI.class), any(String.class));
+        verify(httpClientService).PostWithBodyAndReturnJson(any(URI.class), any(String.class));
         assertNotNull(result);
     }
 
     @Test
     void searchForProductsWithOnlyKeywordReturnsProducts() throws IOException {
         String keyword = "kipsplaat";
-        when(httpClientService.PostWithBody(any(URI.class), any(String.class)))
+        when(httpClientService.PostWithBodyAndReturnJson(any(URI.class), any(String.class)))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehituseAbc/searchForKipsplaatResponse.json"))));
 
         ProductsDto result = getEhituseAbcProductsService.searchForProducts(keyword, null);
 
         verify(locationStockInformationFetcher).fetchLocationInfo(any());
-        verify(httpClientService).PostWithBody(any(URI.class), any(String.class));
+        verify(httpClientService).PostWithBodyAndReturnJson(any(URI.class), any(String.class));
         assertNotNull(result);
     }
 
@@ -71,13 +70,13 @@ class GetEhituseAbcProductsServiceImplTest {
     void getProductsByCategoryWithValidCategoryReturnsProducts() throws IOException {
         Subcategory subcategory = Subcategory.KIPSPLAAT;
 
-        when(httpClientService.PostWithBody(any(URI.class), any(String.class)))
+        when(httpClientService.PostWithBodyAndReturnJson(any(URI.class), any(String.class)))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehituseAbc/searchForKipsplaatResponse.json"))));
 
         ProductsDto result = getEhituseAbcProductsService.searchForProducts(null, subcategory);
 
         verify(locationStockInformationFetcher).fetchLocationInfo(any());
-        verify(httpClientService, times(5)).PostWithBody(any(URI.class), any(String.class));
+        verify(httpClientService, times(5)).PostWithBodyAndReturnJson(any(URI.class), any(String.class));
         assertNotNull(result);
     }
 

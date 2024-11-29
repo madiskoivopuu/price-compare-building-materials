@@ -1,8 +1,6 @@
 package priceCompare.backend.stores.bauhaus.service;
 
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.HttpClientService;
 
@@ -162,7 +160,7 @@ public class BauhausApis {
     public CompletableFuture<JSONObject> fetchLocationInfoForProduct(String sku) {
         URI locationUri = URI.create("https://www.bauhaus.ee/rest/V1/bauhaus/scenarios/product");
         String body = String.format("{\"sku\":\"%s\",\"storeId\":\"5\"}", sku);
-        return httpClientService.PostStringAsync(locationUri, body)
+        return httpClientService.PostWithBodyAsyncAndReturnCompletableFutureHttpResponse(locationUri, body)
                 .thenApply(HttpResponse::body)
                 .thenApply(JSONObject::new);
     }

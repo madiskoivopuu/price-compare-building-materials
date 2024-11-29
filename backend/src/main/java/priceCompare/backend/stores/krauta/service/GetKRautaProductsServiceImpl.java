@@ -1,5 +1,6 @@
 package priceCompare.backend.stores.krauta.service;
 
+import static priceCompare.backend.utils.CategoryKeywordMapping.categoryKeywordMap;
 import static priceCompare.backend.utils.CategoryNameChecker.checkIsCorrectProductCategory;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
@@ -13,13 +14,15 @@ import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import priceCompare.backend.stores.GetStoreProductsService;
+import priceCompare.backend.stores.dto.ProductParseDto;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
-    public static final int FETCH_MAX_NUM_PRODUCTS = 128;
+    public static final int FETCH_MAX_NUM_PRODUCTS = 256;
     private final KRautaAPIs apis;
 
     private final LocationStockInformationFetcherKrauta locationStockInformationFetcherKrauta;
@@ -30,21 +33,22 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
     }
 
     @Override
-    public ProductsDto searchForProducts(String query, Subcategory subcategory) {
-        if (subcategory == null && (query == null || query.isEmpty())) {
+    public ProductsDto searchForProducts(String keyword, Subcategory subcategory) {
+        if (subcategory == null && (keyword == null || keyword.isEmpty())) {
             return ProductsDto.builder().build();
         }
 
-        if(subcategory != null && query.isEmpty())
-            return null;
+        if (keyword == null || keyword.isEmpty()) {
+            keyword = categoryKeywordMap.get(subcategory);
+        }
 
-        return fetchProductsListFromKRauta(query, subcategory);
+        return fetchProductsListFromKRauta(keyword, subcategory);
     }
 
-    private ProductsDto fetchProductsListFromKRauta(String query, Subcategory subcategory) {
+    private ProductsDto fetchProductsListFromKRauta(String query, Subcategory subcategory){
         int offset = 0;
         int numProducts = 0;
-        List<ProductDto> products = new ArrayList<>();
+        List<ProductParseDto> products = new ArrayList<>();
 
         do {
             JSONObject productsJson = apis.fetchPageFromSearchAPI(query, subcategory, offset);
@@ -75,19 +79,21 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
                             EmaterjalToKrautaCategoryMapping.subcatMap)) continue;
 
                     String linkToProduct = String.format("https://k-rauta.ee%s", singleProductJson.getString("url"));
-                    StockInLocationsDto location = locationStockInformationFetcherKrauta.fetchLocationStockInfo(linkToProduct);
 
-                    ProductDto productDto = ProductDto.builder()
+                    ProductDto product = ProductDto.builder()
                             .store(Store.KRAUTA)
                             .linkToProduct(linkToProduct)
                             .linkToPicture(singleProductJson.getString("image"))
                             .unit(Unit.fromDisplayName(singleProductJson.getString("measurementUnit")))
                             .name(productName)
                             .price(singleProductJson.getDouble("priceDefault"))
-                            .stock(location)
                             .build();
 
-                    products.add(productDto);
+                    ProductParseDto productIntermediateInfo = ProductParseDto.builder()
+                            .product(product)
+                            .linkToProduct(linkToProduct)
+                            .build();
+                    products.add(productIntermediateInfo);
 
                 } catch (org.json.JSONException e) {
                     System.err.println("K-rauta products service: Error getting certain values from JSON for product: " + e.getMessage());
@@ -95,14 +101,14 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
                 } catch (IllegalArgumentException e) {
                     System.err.println("K-rauta products service: " + e.getMessage());
                     System.err.println(singleProductJson.getString("url"));
-                } catch (IOException e) {
-                    System.err.println("K-rauta products service: " + e.getMessage());
                 }
             }
         } while (offset < numProducts);
 
+        products = locationStockInformationFetcherKrauta.fetchLocationStockInfo(products);
+
         return ProductsDto.builder()
-                .products(products)
+                .products(products.stream().map(ProductParseDto::getProduct).toList())
                 .build();
     }
 }

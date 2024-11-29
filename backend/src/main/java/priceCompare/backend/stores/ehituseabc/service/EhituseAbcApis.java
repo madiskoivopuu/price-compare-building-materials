@@ -1,6 +1,5 @@
 package priceCompare.backend.stores.ehituseabc.service;
 
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
@@ -161,7 +160,7 @@ public class EhituseAbcApis {
 
     public CompletableFuture<Document> fetchLocationInfoForProduct(String productId) {
         URI locationUri = URI.create(String.format("https://www.ehituseabc.ee/ee/productavailability?productId=%s", productId));
-        return httpClientService.GetStringAsync(locationUri)
+        return httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(locationUri)
                 .thenApply(HttpResponse::body)
                 .thenApply(Jsoup::parse);
     }

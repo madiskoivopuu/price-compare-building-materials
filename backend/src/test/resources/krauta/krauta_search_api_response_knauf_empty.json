@@ -1,0 +1,1243 @@
+{
+  "count_exact": true,
+  "doc_count": 76,
+  "docs": [
+
+  ],
+  "stats": {
+    "priceLoyalty": {
+      "min": 0.6000000238418579,
+      "max": 565.0,
+      "count": 243,
+      "missing": 26,
+      "sum": 4489.109979867935,
+      "sumOfSquares": 635234.4171379297,
+      "mean": 18.4737036208557,
+      "stddev": 47.77287560951038
+    },
+    "priceB2Profi3": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Profi4": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2VIP18": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Nauj1": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Profi2": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Profi1": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Profi6": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Nauj3": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Emplo": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Profi": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Profi5": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Whole": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "priceB2Apzeld": {
+      "min": null,
+      "max": null,
+      "count": 0,
+      "missing": 269,
+      "sum": 0.0,
+      "sumOfSquares": 0.0,
+      "mean": "NaN",
+      "stddev": 0.0
+    },
+    "slidersAttr_VG9vdGUga2FhbCBrb29zIHBha2VuZGlnYSwga2c=": {
+      "min": 0.004999999888241291,
+      "max": 30.0,
+      "count": 20,
+      "missing": 249,
+      "sum": 375.50499999988824,
+      "sumOfSquares": 9381.250024999998,
+      "mean": 18.77524999999441,
+      "stddev": 11.07640872293855
+    },
+    "slidersAttr_VMO2w7Z0ZW1wZXJhdHV1ciwgwrBD": {
+      "min": 5.0,
+      "max": 140.0,
+      "count": 19,
+      "missing": 250,
+      "sum": 400.0,
+      "sumOfSquares": 25150.0,
+      "mean": 21.05263157894737,
+      "stddev": 30.485832199765856
+    },
+    "slidersAttr_UGlra3VzLCBtbQ==": {
+      "min": 10.0,
+      "max": 300.0,
+      "count": 13,
+      "missing": 256,
+      "sum": 825.0,
+      "sumOfSquares": 138471.0,
+      "mean": 63.46153846153846,
+      "stddev": 84.71286343153105
+    },
+    "slidersAttr_TMOkYmltw7XDtXQsIG1t": {
+      "min": 3.5,
+      "max": 3.9000000953674316,
+      "count": 9,
+      "missing": 260,
+      "sum": 31.90000009536743,
+      "sumOfSquares": 113.21000074386598,
+      "mean": 3.544444455040826,
+      "stddev": 0.1333333651224772
+    },
+    "slidersAttr_TGFpdXMsIG1t": {
+      "min": 50.0,
+      "max": 120.0,
+      "count": 7,
+      "missing": 262,
+      "sum": 615.0,
+      "sumOfSquares": 58425.0,
+      "mean": 87.85714285714286,
+      "stddev": 27.0581384641083
+    },
+    "slidersAttr_UGlra3VzLCBjbQ==": {
+      "min": 4.0,
+      "max": 130.0,
+      "count": 7,
+      "missing": 262,
+      "sum": 764.0,
+      "sumOfSquares": 96316.0,
+      "mean": 109.14285714285714,
+      "stddev": 46.42351620830608
+    },
+    "slidersAttr_TGFpdXMsIGNt": {
+      "min": 0.6000000238418579,
+      "max": 90.0,
+      "count": 7,
+      "missing": 262,
+      "sum": 421.60000002384186,
+      "sumOfSquares": 30721.36000002861,
+      "mean": 60.22857143197741,
+      "stddev": 29.8021092175005
+    },
+    "slidersAttr_UGFrc3VzLCBjbQ==": {
+      "min": 1.25,
+      "max": 10.0,
+      "count": 6,
+      "missing": 263,
+      "sum": 35.0,
+      "sumOfSquares": 284.375,
+      "mean": 5.833333333333333,
+      "stddev": 4.005204946899306
+    },
+    "slidersAttr_UGlra3VzLCBt": {
+      "min": 25.0,
+      "max": 40.0,
+      "count": 4,
+      "missing": 265,
+      "sum": 135.0,
+      "sumOfSquares": 4725.0,
+      "mean": 33.75,
+      "stddev": 7.5
+    }
+  },
+  "facets": {
+    "attr_S2F1YmFtw6Ryaw==": {
+      "facets": [
+        {
+          "value": "Knauf",
+          "count": 64,
+          "filtered": false,
+          "filter": "Knauf"
+        }
+      ]
+    },
+    "attr_VG9vdGUgdMO8w7xw": {
+      "facets": [
+        {
+          "value": "Pahtel",
+          "count": 9,
+          "filtered": false,
+          "filter": "Pahtel"
+        },
+        {
+          "value": "Isekeermestavadkruvid",
+          "count": 8,
+          "filtered": false,
+          "filter": "Isekeermestavadkruvid"
+        },
+        {
+          "value": "Kipskrohvisegu",
+          "count": 7,
+          "filtered": false,
+          "filter": "Kipskrohvisegu"
+        },
+        {
+          "value": "Krunt",
+          "count": 4,
+          "filtered": false,
+          "filter": "Krunt"
+        },
+        {
+          "value": "Liim",
+          "count": 4,
+          "filtered": false,
+          "filter": "Liim"
+        },
+        {
+          "value": "Kips",
+          "count": 3,
+          "filtered": false,
+          "filter": "Kips"
+        },
+        {
+          "value": "Dekoratiivkrohv",
+          "count": 2,
+          "filtered": false,
+          "filter": "Dekoratiivkrohv"
+        },
+        {
+          "value": "Konstruktsioon",
+          "count": 2,
+          "filtered": false,
+          "filter": "Konstruktsioon"
+        },
+        {
+          "value": "Puhastustooted",
+          "count": 2,
+          "filtered": false,
+          "filter": "Puhastustooted"
+        },
+        {
+          "value": "Puhastusvahendid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Puhastusvahendid"
+        },
+        {
+          "value": "Segu",
+          "count": 2,
+          "filtered": false,
+          "filter": "Segu"
+        },
+        {
+          "value": "H\u00fcdroisolatsioonikate",
+          "count": 1,
+          "filtered": false,
+          "filter": "H\u00fcdroisolatsioonikate"
+        },
+        {
+          "value": "Klambrid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Klambrid"
+        },
+        {
+          "value": "Kuivpahtlisegu",
+          "count": 1,
+          "filtered": false,
+          "filter": "Kuivpahtlisegu"
+        },
+        {
+          "value": "Puukruvid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Puukruvid"
+        },
+        {
+          "value": "Universaalsedkipspahtlid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Universaalsedkipspahtlid"
+        },
+        {
+          "value": "Veekindlaksmuutevbetoonilisa",
+          "count": 1,
+          "filtered": false,
+          "filter": "Veekindlaksmuutevbetoonilisa"
+        }
+      ]
+    },
+    "attr_S3J1bmRpIHTDvMO8cA==": {
+      "facets": [
+        {
+          "value": "Tavalineehitus-",
+          "count": 2,
+          "filtered": false,
+          "filter": "Tavalineehitus-"
+        },
+        {
+          "value": "Aluskrunt",
+          "count": 1,
+          "filtered": false,
+          "filter": "Aluskrunt"
+        },
+        {
+          "value": "Nakkumise",
+          "count": 1,
+          "filtered": false,
+          "filter": "Nakkumise"
+        }
+      ]
+    },
+    "attr_U2VndSB0w7zDvHA=": {
+      "facets": [
+        {
+          "value": "Remondi",
+          "count": 9,
+          "filtered": false,
+          "filter": "Remondi"
+        },
+        {
+          "value": "Isoleeriv",
+          "count": 4,
+          "filtered": false,
+          "filter": "Isoleeriv"
+        },
+        {
+          "value": "Kaunistamise",
+          "count": 3,
+          "filtered": false,
+          "filter": "Kaunistamise"
+        },
+        {
+          "value": "Tasandav",
+          "count": 1,
+          "filtered": false,
+          "filter": "Tasandav"
+        }
+      ]
+    },
+    "attr_QWluZSAvIHNlZ3Ugb3RzdGFydmU=": {
+      "facets": [
+        {
+          "value": "Viimistlemiset\u00f6\u00f6dele",
+          "count": 10,
+          "filtered": false,
+          "filter": "Viimistlemiset\u00f6\u00f6dele"
+        },
+        {
+          "value": "Krohvimisesiset\u00f6\u00f6dele",
+          "count": 6,
+          "filtered": false,
+          "filter": "Krohvimisesiset\u00f6\u00f6dele"
+        },
+        {
+          "value": "Krohvisegutegemiseks",
+          "count": 5,
+          "filtered": false,
+          "filter": "Krohvisegutegemiseks"
+        },
+        {
+          "value": "Seinajalaekrohvimiseks",
+          "count": 4,
+          "filtered": false,
+          "filter": "Seinajalaekrohvimiseks"
+        },
+        {
+          "value": "Kipskartongplaatideliimimiseks",
+          "count": 2,
+          "filtered": false,
+          "filter": "Kipskartongplaatideliimimiseks"
+        },
+        {
+          "value": "Krohvimisev\u00e4list\u00f6\u00f6dele",
+          "count": 1,
+          "filtered": false,
+          "filter": "Krohvimisev\u00e4list\u00f6\u00f6dele"
+        }
+      ]
+    },
+    "attr_S2F0ZQ==": {
+      "facets": [
+        {
+          "value": "Fosfaadikattega",
+          "count": 9,
+          "filtered": false,
+          "filter": "Fosfaadikattega"
+        },
+        {
+          "value": "Tsingitud",
+          "count": 2,
+          "filtered": false,
+          "filter": "Tsingitud"
+        }
+      ]
+    },
+    "attr_VsOkcnY=": {
+      "facets": [
+        {
+          "value": "Valge",
+          "count": 7,
+          "filtered": false,
+          "filter": "Valge"
+        },
+        {
+          "value": "Roheline",
+          "count": 3,
+          "filtered": false,
+          "filter": "Roheline"
+        },
+        {
+          "value": "Hall",
+          "count": 1,
+          "filtered": false,
+          "filter": "Hall"
+        },
+        {
+          "value": "Must",
+          "count": 1,
+          "filtered": false,
+          "filter": "Must"
+        }
+      ]
+    },
+    "attr_SXNla2VlcmF2YXRlIGtydXZpZGUgdMO8w7xw": {
+      "facets": [
+        {
+          "value": "Lihtsad",
+          "count": 5,
+          "filtered": false,
+          "filter": "Lihtsad"
+        },
+        {
+          "value": "GKs\u00fcsteemidele",
+          "count": 2,
+          "filtered": false,
+          "filter": "GKs\u00fcsteemidele"
+        },
+        {
+          "value": "Pool\u00fcmarapeaga",
+          "count": 2,
+          "filtered": false,
+          "filter": "Pool\u00fcmarapeaga"
+        },
+        {
+          "value": "Puuriga",
+          "count": 1,
+          "filtered": false,
+          "filter": "Puuriga"
+        }
+      ]
+    },
+    "attr_S2lubml0YXRhdiBtYXRlcmphbA==": {
+      "facets": [
+        {
+          "value": "Metall",
+          "count": 9,
+          "filtered": false,
+          "filter": "Metall"
+        },
+        {
+          "value": "Puu",
+          "count": 4,
+          "filtered": false,
+          "filter": "Puu"
+        }
+      ]
+    },
+    "attr_T24gbcO1ZWxkdWQgdmlpbWlzdGx1c3TDtsO2ZGVsZQ==": {
+      "facets": [
+        {
+          "value": "Sise-",
+          "count": 8,
+          "filtered": false,
+          "filter": "Sise-"
+        }
+      ]
+    },
+    "attr_TWF0ZXJqYWw=": {
+      "facets": [
+        {
+          "value": "Klaaskiud",
+          "count": 4,
+          "filtered": false,
+          "filter": "Klaaskiud"
+        },
+        {
+          "value": "Metall",
+          "count": 2,
+          "filtered": false,
+          "filter": "Metall"
+        }
+      ]
+    },
+    "categories1": {
+      "facets": [
+        {
+          "value": "Ehitusjaremont",
+          "count": 52,
+          "filtered": false,
+          "filter": "Ehitusjaremont"
+        },
+        {
+          "value": "Viimistlusmaterjalid",
+          "count": 14,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid"
+        },
+        {
+          "value": "Kodukaubad",
+          "count": 4,
+          "filtered": false,
+          "filter": "Kodukaubad"
+        },
+        {
+          "value": "T\u00f6\u00f6riistad",
+          "count": 1,
+          "filtered": false,
+          "filter": "T\u00f6\u00f6riistad"
+        }
+      ]
+    },
+    "categories2": {
+      "facets": [
+        {
+          "value": "Ehitusjaremont//Puistematerjal",
+          "count": 27,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal"
+        },
+        {
+          "value": "Ehitusjaremont//Ehituspuit,telliskivid",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Ehituspuit,telliskivid"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid",
+          "count": 10,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid",
+          "count": 10,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt",
+          "count": 8,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid",
+          "count": 5,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid",
+          "count": 5,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid"
+        },
+        {
+          "value": "Kodukaubad//Kodukeemia",
+          "count": 4,
+          "filtered": false,
+          "filter": "Kodukaubad//Kodukeemia"
+        },
+        {
+          "value": "Ehitusjaremont//Trepid,aknadjanendeosad",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Trepid,aknadjanendeosad"
+        },
+        {
+          "value": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad",
+          "count": 1,
+          "filtered": false,
+          "filter": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad"
+        },
+        {
+          "value": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid"
+        }
+      ]
+    },
+    "categories3": {
+      "facets": [
+        {
+          "value": "Ehitusjaremont//Ehituspuit,telliskivid//Tellised,t\u00e4navaplaadid,ehitusplokidjm",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Ehituspuit,telliskivid//Tellised,t\u00e4navaplaadid,ehitusplokidjm"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kuivadkrohvisegud",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kuivadkrohvisegud"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid",
+          "count": 9,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted",
+          "count": 7,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kuivpahtel",
+          "count": 7,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kuivpahtel"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim",
+          "count": 5,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid",
+          "count": 5,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid"
+        },
+        {
+          "value": "Kodukaubad//Kodukeemia//Puhastusvahendid",
+          "count": 4,
+          "filtered": false,
+          "filter": "Kodukaubad//Kodukeemia//Puhastusvahendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt//Krunt",
+          "count": 4,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt//Krunt"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt//Pahtel",
+          "count": 4,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt//Pahtel"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Ehituskeemia",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Ehituskeemia"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kips",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kips"
+        },
+        {
+          "value": "Ehitusjaremont//Trepid,aknadjanendeosad//Akna-jauksetihendid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Trepid,aknadjanendeosad//Akna-jauksetihendid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Paigaldussegud",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Paigaldussegud"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonitarvikud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonitarvikud"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Ehitus-jatasandussegud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Ehitus-jatasandussegud"
+        },
+        {
+          "value": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad//Plaatimis-jam\u00fc\u00fcrit\u00f6\u00f6riistad",
+          "count": 1,
+          "filtered": false,
+          "filter": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad//Plaatimis-jam\u00fc\u00fcrit\u00f6\u00f6riistad"
+        },
+        {
+          "value": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid//P\u00f5randaliistud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid//P\u00f5randaliistud"
+        }
+      ]
+    },
+    "categories4": {
+      "facets": [
+        {
+          "value": "Ehitusjaremont//Ehituspuit,telliskivid//Tellised,t\u00e4navaplaadid,ehitusplokidjm//Asfaltbetoonisegud,talad",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Ehituspuit,telliskivid//Tellised,t\u00e4navaplaadid,ehitusplokidjm//Asfaltbetoonisegud,talad"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kuivadkrohvisegud",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kuivadkrohvisegud"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//GK-s\u00fcsteemideisekeermestavadkruvid",
+          "count": 9,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//GK-s\u00fcsteemideisekeermestavadkruvid"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//Isekeermestavadkruvid(DIN7981C)jaisepuurivadkruvid",
+          "count": 9,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//Isekeermestavadkruvid(DIN7981C)jaisepuurivadkruvid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kuivpahtel//Kipsplaadipahtlid",
+          "count": 7,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kuivpahtel//Kipsplaadipahtlid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Ehitusliimid",
+          "count": 5,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Ehitusliimid"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Kivi-jaklaasvill",
+          "count": 4,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Kivi-jaklaasvill"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Plaadiliim",
+          "count": 4,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Plaadiliim"
+        },
+        {
+          "value": "Kodukaubad//Kodukeemia//Puhastusvahendid//\u00dcldpuhastusvahendid",
+          "count": 4,
+          "filtered": false,
+          "filter": "Kodukaubad//Kodukeemia//Puhastusvahendid//\u00dcldpuhastusvahendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt//Krunt//Tavalineehituskrunt",
+          "count": 4,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt//Krunt//Tavalineehituskrunt"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt//Pahtel//Krohvi,betoonipahtel",
+          "count": 4,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt//Pahtel//Krohvi,betoonipahtel"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Tihenduslindid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Tihenduslindid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Ehituskeemia",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Ehituskeemia"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kips",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kips"
+        },
+        {
+          "value": "Ehitusjaremont//Trepid,aknadjanendeosad//Akna-jauksetihendid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Trepid,aknadjanendeosad//Akna-jauksetihendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Montaa\u017eiliimid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Montaa\u017eiliimid"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Krohvi,betoonih\u00fcdroisolatsioonivedelikud",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Krohvi,betoonih\u00fcdroisolatsioonivedelikud"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid//Tavalisedkipsplaadid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid//Tavalisedkipsplaadid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Nurgakinnitused,vardadjne.",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Nurgakinnitused,vardadjne."
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Paigaldussegud",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Paigaldussegud"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonitarvikud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonitarvikud"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Hermeetikudjm",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Hermeetikudjm"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Kipsplaadiliitekohateibid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Kipsplaadiliitekohateibid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Ehitus-jatasandussegud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Ehitus-jatasandussegud"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Vahtplastiliim",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Vahtplastiliim"
+        },
+        {
+          "value": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad//Plaatimis-jam\u00fc\u00fcrit\u00f6\u00f6riistad//Plaatimist\u00f6\u00f6depuhastusvahendid",
+          "count": 1,
+          "filtered": false,
+          "filter": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad//Plaatimis-jam\u00fc\u00fcrit\u00f6\u00f6riistad//Plaatimist\u00f6\u00f6depuhastusvahendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid//P\u00f5randaliistud//Muudliistud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid//P\u00f5randaliistud//Muudliistud"
+        }
+      ]
+    },
+    "categories5": {
+      "facets": [
+        {
+          "value": "Ehitusjaremont//Ehituspuit,telliskivid//Tellised,t\u00e4navaplaadid,ehitusplokidjm//Asfaltbetoonisegud,talad",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Ehituspuit,telliskivid//Tellised,t\u00e4navaplaadid,ehitusplokidjm//Asfaltbetoonisegud,talad"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kuivadkrohvisegud",
+          "count": 16,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kuivadkrohvisegud"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//GK-s\u00fcsteemideisekeermestavadkruvid//Tsingitudfosfaaditudisekeermestavadkruvid",
+          "count": 9,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//GK-s\u00fcsteemideisekeermestavadkruvid//Tsingitudfosfaaditudisekeermestavadkruvid"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//Isekeermestavadkruvid(DIN7981C)jaisepuurivadkruvid",
+          "count": 9,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//Isekeermestavadkruvid(DIN7981C)jaisepuurivadkruvid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kuivpahtel//Kipsplaadipahtlid",
+          "count": 7,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kuivpahtel//Kipsplaadipahtlid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Ehitusliimid",
+          "count": 5,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Ehitusliimid"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Kivi-jaklaasvill//Klaasvill,\u00f6kovill",
+          "count": 4,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Kivi-jaklaasvill//Klaasvill,\u00f6kovill"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Plaadiliim",
+          "count": 4,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Plaadiliim"
+        },
+        {
+          "value": "Kodukaubad//Kodukeemia//Puhastusvahendid//\u00dcldpuhastusvahendid",
+          "count": 4,
+          "filtered": false,
+          "filter": "Kodukaubad//Kodukeemia//Puhastusvahendid//\u00dcldpuhastusvahendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt//Krunt//Tavalineehituskrunt",
+          "count": 4,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt//Krunt//Tavalineehituskrunt"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Pahtel,krunt//Pahtel//Krohvi,betoonipahtel",
+          "count": 4,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Pahtel,krunt//Pahtel//Krohvi,betoonipahtel"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Tihenduslindid//Kleeplindidjasilikoonteibid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//Soojus-jaheliisolatsioonitooted//Tihenduslindid//Kleeplindidjasilikoonteibid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Ehituskeemia",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Ehituskeemia"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Kips",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Kips"
+        },
+        {
+          "value": "Ehitusjaremont//Trepid,aknadjanendeosad//Akna-jauksetihendid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Trepid,aknadjanendeosad//Akna-jauksetihendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Montaa\u017eiliimid",
+          "count": 3,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//Liimid,pindadeettevalmistamisematerjalid//Liimid//Montaa\u017eiliimid"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Krohvi,betoonih\u00fcdroisolatsioonivedelikud",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Krohvi,betoonih\u00fcdroisolatsioonivedelikud"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//GK-s\u00fcsteemideisekeermestavadkruvid//Tigupuuriisekeermestavadkruvid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid//Isekeermestavadkruvid,isepuurivadkruvid//GK-s\u00fcsteemideisekeermestavadkruvid//Tigupuuriisekeermestavadkruvid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid//Tavalisedkipsplaadid",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Kipsplaadid//Tavalisedkipsplaadid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Nurgakinnitused,vardadjne.",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Nurgakinnitused,vardadjne."
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Paigaldussegud",
+          "count": 2,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Paigaldussegud"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonitarvikud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonitarvikud"
+        },
+        {
+          "value": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Hermeetikudjm//H\u00fcdroisolatsioonilindid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Isolatsioonimaterjalid//H\u00fcdroisolatsioonimaterjalid//Hermeetikudjm//H\u00fcdroisolatsioonilindid"
+        },
+        {
+          "value": "Ehitusjaremont//Kinnitusvahendid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kinnitusvahendid"
+        },
+        {
+          "value": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Kipsplaadiliitekohateibid",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Kipsplaadidjapaigalduss\u00fcsteemid//Plaatidepaigaldustarvikud//Kipsplaadiliitekohateibid"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Ehitus-jatasandussegud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Ehitus-jatasandussegud"
+        },
+        {
+          "value": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Vahtplastiliim",
+          "count": 1,
+          "filtered": false,
+          "filter": "Ehitusjaremont//Puistematerjal//Plaadi-jamuuliim//Vahtplastiliim"
+        },
+        {
+          "value": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad//Plaatimis-jam\u00fc\u00fcrit\u00f6\u00f6riistad//Plaatimist\u00f6\u00f6depuhastusvahendid",
+          "count": 1,
+          "filtered": false,
+          "filter": "T\u00f6\u00f6riistad//Mehaanilisedt\u00f6\u00f6riistad//Plaatimis-jam\u00fc\u00fcrit\u00f6\u00f6riistad//Plaatimist\u00f6\u00f6depuhastusvahendid"
+        },
+        {
+          "value": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid//P\u00f5randaliistud//Muudliistud",
+          "count": 1,
+          "filtered": false,
+          "filter": "Viimistlusmaterjalid//P\u00f5randaviimistlusmaterjalid//P\u00f5randaliistud//Muudliistud"
+        }
+      ]
+    },
+    "tags": {
+      "facets": [
+        {
+          "value": "in-shops",
+          "count": 44,
+          "filtered": false,
+          "filter": "in-shops"
+        },
+        {
+          "value": "discount",
+          "count": 22,
+          "filtered": false,
+          "filter": "discount"
+        },
+        {
+          "value": "price-green",
+          "count": 16,
+          "filtered": false,
+          "filter": "price-green"
+        },
+        {
+          "value": "product-discount-coupon",
+          "count": 8,
+          "filtered": false,
+          "filter": "product-discount-coupon"
+        },
+        {
+          "value": "online-only",
+          "count": 6,
+          "filtered": false,
+          "filter": "online-only"
+        },
+        {
+          "value": "in-warehouse",
+          "count": 5,
+          "filtered": false,
+          "filter": "in-warehouse"
+        },
+        {
+          "value": "top-product",
+          "count": 1,
+          "filtered": false,
+          "filter": "top-product"
+        }
+      ]
+    },
+    "deliveryMethods": {
+      "facets": [
+        {
+          "value": "COURIER",
+          "count": 54,
+          "filtered": false,
+          "filter": "COURIER"
+        },
+        {
+          "value": "COLLECT_IN_STORE",
+          "count": 46,
+          "filtered": false,
+          "filter": "COLLECT_IN_STORE"
+        },
+        {
+          "value": "PARCEL_TERMINAL",
+          "count": 16,
+          "filtered": false,
+          "filter": "PARCEL_TERMINAL"
+        }
+      ]
+    },
+    "brand": {
+      "facets": [
+        {
+          "value": "Knauf",
+          "count": 269,
+          "filtered": false,
+          "filter": "Knauf"
+        }
+      ]
+    }
+  },
+  "search_query": "knauf",
+  "limit": "72",
+  "offset": "0",
+  "rules": [],
+  "rulesets": [
+    "b609132c_912b_4d0e_8230_1e62bc28076e",
+    "53309b39_0307_4b7b_88a9_09c1ba23177a"
+  ]
+}

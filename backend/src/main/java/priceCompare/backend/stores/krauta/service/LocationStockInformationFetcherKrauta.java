@@ -1,26 +1,70 @@
 package priceCompare.backend.stores.krauta.service;
 
-import org.jsoup.Jsoup;
+import com.google.common.collect.Lists;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.LocationDto;
+import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.StockDto;
 import priceCompare.backend.dto.StockInLocationsDto;
-import java.io.IOException;
+import priceCompare.backend.stores.dto.ProductParseDto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import java.util.stream.Collectors;
 
 @Service
 public class LocationStockInformationFetcherKrauta {
 
-    public StockInLocationsDto fetchLocationStockInfo(String url) throws IOException {
+    private static final int LOCATION_FETCH_BATCH_SIZE = 20;
+    final KRautaAPIs apis;
+
+    public LocationStockInformationFetcherKrauta(KRautaAPIs apis) {
+        this.apis = apis;
+    }
+
+    public List<ProductParseDto> fetchLocationStockInfo(List<ProductParseDto> products){
+        List<ProductParseDto> newProducts = new ArrayList<>();
+        List<List<ProductParseDto>> batches = Lists.partition(products, LOCATION_FETCH_BATCH_SIZE);
+
+        for(List<ProductParseDto> batch : batches) {
+            List<CompletableFuture<Document>> futures = new ArrayList<>();
+            for(ProductParseDto productParseInfo : batch) {
+                String productUrl = productParseInfo.getLinkToProduct();
+                futures.add(
+                        apis.fetchLocationInfoForProduct(productUrl)
+                );
+            }
+
+            for(int i = 0; i < futures.size(); i++) {
+                CompletableFuture<Document> future = futures.get(i);
+                ProductParseDto productParseInfo = batch.get(i);
+
+                try {
+                    Document locationsHtml = future.join();
+                    ProductDto product = productParseInfo.getProduct();
+                    product = product.toBuilder()
+                            .stock(parseResponse(locationsHtml, product.getUnit().getDisplayName()))
+                            .build();
+                    productParseInfo.setProduct(product);
+                } catch(CompletionException e) {
+                    System.err.printf("EhituseAbc products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
+                } finally {
+                    newProducts.add(productParseInfo);
+                }
+            }
+        }
+        return newProducts;
+    }
+
+    public StockInLocationsDto parseResponse(Document document, String unit) {
         List<StockDto> stockDtoList = new ArrayList<>();
 
-        Document document = Jsoup.connect(url).get();
         Elements cityBlocks = document.select("div.city-block.clearfix");
 
         for (Element cityBlock : cityBlocks) {

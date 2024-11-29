@@ -37,7 +37,7 @@ class GetEhomerProductsServiceImplTest {
         String keyword = "Product";
         Subcategory subcategory = Subcategory.KILED;
 
-        when(httpClientService.GetJson(any()))
+        when(httpClientService.GetAndReturnJson(any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));
 
         ProductsDto result = getEhomerProductsService.searchForProducts(keyword, subcategory);
@@ -62,7 +62,7 @@ class GetEhomerProductsServiceImplTest {
     void testSearchForProductsWithKeywordOnlyShouldReturnTwoProducts() throws IOException {
         String keyword = "Product";
 
-        when(httpClientService.GetJson(any()))
+        when(httpClientService.GetAndReturnJson(any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));
         ProductsDto result = getEhomerProductsService.searchForProducts(keyword, null);
 
@@ -74,7 +74,7 @@ class GetEhomerProductsServiceImplTest {
     void testSearchForProductsWithCategoryOnlyShouldReturnTwoProducts() throws IOException {
         Subcategory subcategory = Subcategory.KILED;
 
-        when(httpClientService.GetJson(any()))
+        when(httpClientService.GetAndReturnJson(any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));
         ProductsDto result = getEhomerProductsService.searchForProducts(null, subcategory);
 
@@ -88,7 +88,7 @@ class GetEhomerProductsServiceImplTest {
         Subcategory subcategory = Subcategory.KANGAD;
         JSONObject mockedResponse = new JSONObject("{\"result\": []}");
 
-        when(httpClientService.GetJson(any())).thenReturn(mockedResponse);
+        when(httpClientService.GetAndReturnJson(any())).thenReturn(mockedResponse);
 
         ProductsDto result = getEhomerProductsService.searchForProducts(keyword, subcategory);
 
@@ -101,7 +101,7 @@ class GetEhomerProductsServiceImplTest {
         String keyword = "Product";
         JSONObject mockedResponse = new JSONObject("{\"invalidKey\": []}");
 
-        when(httpClientService.GetJson(any())).thenReturn(mockedResponse);
+        when(httpClientService.GetAndReturnJson(any())).thenReturn(mockedResponse);
 
         assertThrows(Exception.class, () -> {
             getEhomerProductsService.searchForProducts(keyword, null);
