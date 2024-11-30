@@ -26,7 +26,7 @@ public enum KrautaStoreLocation {
     TARTU("Tartu", LocationDto.builder()
             .locationName(LocationName.TARTU)
             .address("Riia mnt 140e")
-            .address("https://www.google.com/maps/place/K-Rauta+Tartu+parkla/@58.3564396,26.681379,795m/data=!3m2!1e3!4b1!4m6!3m5!1s0x46eb3722d8182bb1:0x8a3de1cf81ecbf89!8m2!3d58.3564369!4d26.6862499!16s%2Fg%2F11pf7dfdxm?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D")
+            .googleMapsLink("https://www.google.com/maps/place/K-Rauta+Tartu+parkla/@58.3564396,26.681379,795m/data=!3m2!1e3!4b1!4m6!3m5!1s0x46eb3722d8182bb1:0x8a3de1cf81ecbf89!8m2!3d58.3564369!4d26.6862499!16s%2Fg%2F11pf7dfdxm?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D")
             .build()),
     PARNU("Papiniidu", LocationDto.builder()
             .locationName(LocationName.PARNU)
