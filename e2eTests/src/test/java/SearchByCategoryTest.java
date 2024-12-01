@@ -1,4 +1,5 @@
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.microsoft.playwright.*;
@@ -10,16 +11,17 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class SearchByCategoryTest extends SearchBaseTest {
     @Test
     void testSelectCategoryClickSearchShouldReturnProducts() {
-        page.navigate(URL_TO_PAGE);
+        Response response = page.navigate(URL_TO_PAGE);
+        assertEquals(response.status(), 200);
 
         page.click("text=Ehitusplaadid");
         page.click("text=Kipsplaat");
 
-        Locator loadingSpinIcon = page.locator("#root > div.w-full.h-max.flex.bg-gray-100 > div.w-full.md\\:w-3\\/4.h-max.md\\:p-10.p-4 > div.w-full.h-max > div > svg");
+        Locator loadingSpinIcon = page.locator("svg.animate-spin");
         assertThat(loadingSpinIcon).isVisible();
 
         page.waitForSelector("ul.flex.flex-col");
-        Locator firstProduct = page.locator("#root > div.w-full.h-max.flex.bg-gray-100 > div.w-full.md\\:w-3\\/4.h-max.md\\:p-10.p-4 > div.w-full.h-max > ul > li:nth-child(1) > div");
+        Locator firstProduct = page.locator("//*[@id=\"root\"]/div[2]/div[2]/div[3]/ul/li[1]/div");
 
         Locator firstProductImage = firstProduct.locator("div.flex.justify-start.items-center.h-full");
         assertThat(firstProductImage).isVisible();
@@ -105,9 +107,12 @@ public class SearchByCategoryTest extends SearchBaseTest {
             "Ehitusmetall, Plekkprofiilid"
     })
     void testAreAllCategoriesAvailable(String category, String subCategory) {
-        page.navigate(URL_TO_PAGE);
+        Response response = page.navigate(URL_TO_PAGE);
+        assertEquals(response.status(), 200);
 
-        page.click(String.format("text=%s",category));
+        Locator categoryButton = page.locator(String.format("text=%s",category));
+        assertThat(categoryButton).isVisible();
+        categoryButton.click();
 
         Locator subCategoryButton = page.locator(String.format("text=%s",subCategory));
         assertTrue(subCategoryButton.isVisible());
