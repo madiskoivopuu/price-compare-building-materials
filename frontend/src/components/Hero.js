@@ -88,7 +88,7 @@ function Hero({ selectedCategory, categoryChange }) {
             <div className='w-full h-max'>
                 {isLoading ?
                     <div className='w-full mt-4 flex justify-center'>
-                        <p className='animate-pulse text-sm'>Take a chill pill, results are coming soon.</p>
+                        <p className='animate-pulse text-sm'>Otsime tooteid, tänan kannatlikuse eest.</p>
                     </div>
                     :
                     (<ul className='flex flex-col gap-4'>
