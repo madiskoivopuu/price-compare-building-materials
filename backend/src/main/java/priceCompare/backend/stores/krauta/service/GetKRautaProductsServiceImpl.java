@@ -1,6 +1,7 @@
 package priceCompare.backend.stores.krauta.service;
 
-import static priceCompare.backend.utils.CategoryKeywordMapping.categoryKeywordMap;
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
+import static priceCompare.backend.utils.CategorySearchKeywordMapping.categoryKeywordMap;
 import static priceCompare.backend.utils.CategoryNameChecker.checkIsCorrectProductCategory;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
@@ -9,14 +10,12 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
-import priceCompare.backend.dto.StockInLocationsDto;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import priceCompare.backend.stores.GetStoreProductsService;
 import priceCompare.backend.stores.dto.ProductParseDto;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,14 +37,17 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
             return ProductsDto.builder().build();
         }
 
+        boolean isCategoryOnlySearch = false;
+
         if (keyword == null || keyword.isEmpty()) {
+            isCategoryOnlySearch = true;
             keyword = categoryKeywordMap.get(subcategory);
         }
 
-        return fetchProductsListFromKRauta(keyword, subcategory);
+        return fetchProductsListFromKRauta(keyword, subcategory, isCategoryOnlySearch);
     }
 
-    private ProductsDto fetchProductsListFromKRauta(String query, Subcategory subcategory){
+    private ProductsDto fetchProductsListFromKRauta(String query, Subcategory subcategory, boolean isCategoryOnlySearch) {
         int offset = 0;
         int numProducts = 0;
         List<ProductParseDto> products = new ArrayList<>();
@@ -73,6 +75,8 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
                 try {
                     String productName = singleProductJson.getString("title");
                     if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
+
+                    if (isCategoryOnlySearch && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
                     String categoryName = singleProductJson.getJSONArray("categories5").toString();
                     if (!checkIsCorrectProductCategory(categoryName, subcategory,

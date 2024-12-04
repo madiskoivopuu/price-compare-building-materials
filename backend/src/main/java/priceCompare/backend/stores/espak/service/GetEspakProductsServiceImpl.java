@@ -1,5 +1,6 @@
 package priceCompare.backend.stores.espak.service;
 
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.google.common.collect.Lists;
@@ -36,17 +37,17 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
 
     /**
      * Returns all the products (up to FETCH_MAX_NUM_PRODUCTS) that the espak.ee search API gives us.
-     * @param query Query to search products with
+     * @param keyword Query to search products with
      * @param subcategory Ematerjal.ee subcategory
      * @return A list of products that are in stock somewhere. Some core ProductDto fields might be filled
      */
-    private List<ProductDto> performEspakSearch(String query, Subcategory subcategory) {
+    private List<ProductDto> performEspakSearch(String keyword, Subcategory subcategory) {
         int page = 0;
         int maxPages = 0;
         List<ProductDto> products = new ArrayList<>();
 
         do {
-            JSONObject searchResponse = apis.fetchPageFromSearchAPI(query, subcategory, page);
+            JSONObject searchResponse = apis.fetchPageFromSearchAPI(keyword, subcategory, page);
             page++;
             if(maxPages == 0 && searchResponse == null) {
                 System.err.println("ESPAK products service: very first search API request failed, cannot continue fetching products");
@@ -64,7 +65,8 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                 JSONObject productJson = productsJsonArr.getJSONObject(i);
 
                 String productName = productJson.getString("post_title");
-                if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
+                if (keyword != null && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+                if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
                 ProductDto product = ProductDto.builder()
                         .store(Store.ESPAK)

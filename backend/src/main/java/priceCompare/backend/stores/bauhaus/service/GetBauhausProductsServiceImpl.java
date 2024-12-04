@@ -20,6 +20,8 @@ import static priceCompare.backend.enums.Unit.TK;
 import static priceCompare.backend.stores.bauhaus.service.BauhausApis.*;
 import static priceCompare.backend.stores.bauhaus.service.EmaterjalToBauhausCategoryMapping.categoryMap;
 import static priceCompare.backend.stores.bauhaus.service.EmaterjalToBauhausCategoryMapping.categoryRootMap;
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
+import static priceCompare.backend.utils.CategorySearchKeywordMapping.categoryKeywordMap;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 @Service
@@ -64,7 +66,7 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
         for (String categoryPath : categoryPaths) {
             JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
                     buildRequestBodyWithCategory(categoryPath, API_KEY, SEARCH_API_PAGE_SIZE));
-            products.addAll(parseResponse(response, null));
+            products.addAll(parseResponse(response, null, subcategory));
         }
         return products;
     }
@@ -72,7 +74,7 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
     public List<ProductParseDto> getProductsByKeyword(String keyword) {
         JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
                 buildRequestBodyWithKeyword(keyword, API_KEY, SEARCH_API_PAGE_SIZE));
-        return parseResponse(response, keyword);
+        return parseResponse(response, keyword, null);
     }
 
     public List<ProductParseDto> getProductsByKeywordAndCategory(String keyword, Subcategory subcategory) {
@@ -80,10 +82,10 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
         if (categories.isEmpty()) return new ArrayList<>();
         JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
                 buildRequestBodyWithKeywordAndCategory(keyword, categories , API_KEY, SEARCH_API_PAGE_SIZE));
-        return parseResponse(response, keyword);
+        return parseResponse(response, keyword, subcategory);
     }
 
-    private List<ProductParseDto> parseResponse(JSONObject response, String keyword) {
+    private List<ProductParseDto> parseResponse(JSONObject response, String keyword, Subcategory subcategory) {
         JSONArray productsArr = response.getJSONArray("queryResults").getJSONObject(0).getJSONArray("records");
 
         List<ProductParseDto> productList = new ArrayList<>();
@@ -92,6 +94,8 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
 
             String productName = productNode.getString("name");
             if (keyword!=null && !keyword.isEmpty() && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+
+            if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
             try {
                 String ifactorUnit = productNode.optString("ifactor_unit", null);

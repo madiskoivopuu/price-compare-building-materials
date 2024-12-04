@@ -34,7 +34,7 @@ class GetEhomerProductsServiceImplTest {
 
     @Test
     void testSearchForProductsWithKeywordAndCategoryShouldReturnTwoProducts() throws IOException {
-        String keyword = "Product";
+        String keyword = "kile";
         Subcategory subcategory = Subcategory.KILED;
 
         when(httpClientService.GetAndReturnJson(any()))
@@ -46,13 +46,13 @@ class GetEhomerProductsServiceImplTest {
         assertEquals(2, result.getProducts().size());
 
         ProductDto product1 = result.getProducts().get(0);
-        assertEquals("Product 1", product1.getName());
+        assertEquals("kile1", product1.getName());
         assertEquals(19.99, product1.getPrice());
         assertEquals("https://example.com/product1", product1.getLinkToProduct());
         assertEquals("https://example.com/image1.jpg", product1.getLinkToPicture());
 
         ProductDto product2 = result.getProducts().get(1);
-        assertEquals("Product 2", product2.getName());
+        assertEquals("kile2", product2.getName());
         assertEquals(29.99, product2.getPrice());
         assertEquals("https://example.com/product2", product2.getLinkToProduct());
         assertEquals("https://example.com/image2.jpg", product2.getLinkToPicture());
@@ -60,7 +60,7 @@ class GetEhomerProductsServiceImplTest {
 
     @Test
     void testSearchForProductsWithKeywordOnlyShouldReturnTwoProducts() throws IOException {
-        String keyword = "Product";
+        String keyword = "kile";
 
         when(httpClientService.GetAndReturnJson(any()))
                 .thenReturn(new JSONObject(Files.readString(Path.of("src/test/resources/ehomer/searchResponse.json"))));

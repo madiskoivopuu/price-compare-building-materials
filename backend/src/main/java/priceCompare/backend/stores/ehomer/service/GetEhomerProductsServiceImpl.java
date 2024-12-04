@@ -16,6 +16,7 @@ import java.util.List;
 import static priceCompare.backend.enums.LocationName.EPOOD;
 import static priceCompare.backend.stores.ehomer.service.EhomerApis.*;
 import static priceCompare.backend.stores.ehomer.service.EmaterjalToEhomerCategoryMapping.categoryMap;
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 @Service
@@ -50,26 +51,26 @@ public class GetEhomerProductsServiceImpl implements GetStoreProductsService {
         List<ProductDto> products = new ArrayList<>();
         for (String categoryName : categoryMap.get(subcategory)) {
             JSONObject response = httpClientService.GetAndReturnJson(getByCategoryUri(categoryName));
-            products.addAll(parseResponse(response, keyword));
+            products.addAll(parseResponse(response, keyword, subcategory));
         }
         return products;
     }
 
     public List<ProductDto> getProductsByKeyword(String keyword) {
         JSONObject response = httpClientService.GetAndReturnJson(getByKeywordUri(keyword));
-        return new ArrayList<>(parseResponse(response, keyword));
+        return new ArrayList<>(parseResponse(response, keyword, null));
     }
 
     public List<ProductDto> getProductsByKeywordAndCategory(String keyword, Subcategory subcategory) {
         List<ProductDto> products = new ArrayList<>();
         for (String categoryName : categoryMap.get(subcategory)) {
             JSONObject response = httpClientService.GetAndReturnJson(getByCategoryAndKeywordUri(keyword, categoryName));
-            products.addAll(parseResponse(response, keyword));
+            products.addAll(parseResponse(response, keyword, subcategory));
         }
         return products;
     }
 
-    private List<ProductDto> parseResponse(JSONObject response, String keyword) {
+    private List<ProductDto> parseResponse(JSONObject response, String keyword, Subcategory subcategory) {
         JSONArray productsArr = response.getJSONArray("result");
 
         List<ProductDto> productList = new ArrayList<>();
@@ -90,6 +91,7 @@ public class GetEhomerProductsServiceImpl implements GetStoreProductsService {
 
             String productName = productNode.getString("name");
             if (keyword!=null && !keyword.isEmpty() && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+            if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
             try {
                 ProductDto product = ProductDto.builder()

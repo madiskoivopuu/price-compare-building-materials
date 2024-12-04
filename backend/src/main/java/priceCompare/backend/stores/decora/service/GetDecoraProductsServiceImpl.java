@@ -1,5 +1,6 @@
 package priceCompare.backend.stores.decora.service;
 
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.google.common.collect.Lists;
@@ -33,17 +34,17 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
     }
     /**
      * Fetches the products matching the query & subcategory using decora.ee search API
-     * @param query Query to search products with
+     * @param keyword Query to search products with
      * @param subcategory Ematerjal.ee subcategory
      * @return Returns a list of ProductDto, with every field except for LocationDto filled
      */
-    private List<ProductParseDto> performDecoraSearch(String query, Subcategory subcategory) {
+    private List<ProductParseDto> performDecoraSearch(String keyword, Subcategory subcategory) {
         int offset = 0;
         int numProducts = 0;
         List<ProductParseDto> products = new ArrayList<>();
 
         do {
-            JSONObject responseJson = apis.fetchPageFromSearchAPI(query, subcategory, offset);
+            JSONObject responseJson = apis.fetchPageFromSearchAPI(keyword, subcategory, offset);
             if (responseJson == null && numProducts == 0) {
                 System.err.println("Decora products service: very first search API request failed, cannot continue fetching products");
                 break;
@@ -60,7 +61,9 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
 
             for(int i = 0; i < productsArr.length(); i++) {
                 JSONObject productJson = productsArr.getJSONObject(i);
-                if (!checkProductNameCorrespondsToSearch(productJson.getString("name"), query)) continue;
+                String productName =productJson.getString("name");
+                if (keyword != null && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+                if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
                 // instock check won't work here, it is only for web store but physical stores can still have stock
                 try {

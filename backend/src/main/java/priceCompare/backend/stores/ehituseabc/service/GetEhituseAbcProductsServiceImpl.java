@@ -3,6 +3,7 @@ package priceCompare.backend.stores.ehituseabc.service;
 import static priceCompare.backend.stores.ehituseabc.service.EhituseAbcApis.*;
 import static priceCompare.backend.stores.ehituseabc.service.EmaterjalToEhituseAbcCategoryMapping.categoryMap;
 import static priceCompare.backend.stores.ehituseabc.service.EmaterjalToEhituseAbcCategoryMapping.categoryRootMap;
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -64,7 +65,7 @@ public class GetEhituseAbcProductsServiceImpl implements GetStoreProductsService
         for (String categoryPath : categoryPaths) {
             JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(EHITUSEABC_API_URL),
                     buildRequestBodyWithCategory(categoryPath, API_KEY, SEARCH_API_PAGE_SIZE));
-            products.addAll(parseResponse(response, null));
+            products.addAll(parseResponse(response, null, subcategory));
         }
         return products;
     }
@@ -72,7 +73,7 @@ public class GetEhituseAbcProductsServiceImpl implements GetStoreProductsService
     public List<ProductParseDto> getProductsByKeyword(String keyword) {
         JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(EHITUSEABC_API_URL),
                 buildRequestBodyWithKeyword(keyword, API_KEY, SEARCH_API_PAGE_SIZE));
-        return parseResponse(response, keyword);
+        return parseResponse(response, keyword, null);
     }
 
     public List<ProductParseDto> getProductsByKeywordAndCategory(String keyword, Subcategory subcategory) {
@@ -80,10 +81,10 @@ public class GetEhituseAbcProductsServiceImpl implements GetStoreProductsService
         if (categories.isEmpty()) return new ArrayList<>();
         JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(EHITUSEABC_API_URL),
                 buildRequestBodyWithKeywordAndCategory(keyword, categories , API_KEY, SEARCH_API_PAGE_SIZE));
-        return parseResponse(response, keyword);
+        return parseResponse(response, keyword, subcategory);
     }
 
-    private List<ProductParseDto> parseResponse(JSONObject response, String keyword) {
+    private List<ProductParseDto> parseResponse(JSONObject response, String keyword, Subcategory subcategory) {
         JSONArray productsArr = response.getJSONArray("queryResults").getJSONObject(0).getJSONArray("records");
 
         List<ProductParseDto> productList = new ArrayList<>();
@@ -92,6 +93,7 @@ public class GetEhituseAbcProductsServiceImpl implements GetStoreProductsService
 
             String productName = productNode.getString("name");
             if (keyword!=null && !keyword.isEmpty() && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+            if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
             try {
                 Unit unit = extractUnit(productNode.getString("additionalDataToReturn"));

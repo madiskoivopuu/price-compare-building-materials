@@ -1,6 +1,7 @@
 package priceCompare.backend.stores.bauhof.service;
 
-import static priceCompare.backend.utils.CategoryKeywordMapping.categoryKeywordMap;
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
+import static priceCompare.backend.utils.CategorySearchKeywordMapping.categoryKeywordMap;
 import static priceCompare.backend.utils.CategoryNameChecker.checkIsCorrectProductCategory;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
@@ -42,8 +43,10 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
     @Override
     public ProductsDto searchForProducts(String keyword, Subcategory subcategory) {
 
-        //search without keyword
+        boolean isCategoryOnlySearch = false;
+
         if (keyword == null || keyword.isEmpty()) {
+            isCategoryOnlySearch = true;
             keyword = categoryKeywordMap.get(subcategory);
         }
 
@@ -67,7 +70,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
             numProductsTotal = Math.min(numProductsTotal, FETCH_MAX_NUM_PRODUCTS); // to avoid very time-consuming product fetches, we set the max number to some arbitrary value
             offset += SEARCH_API_PAGE_SIZE;
 
-            products.addAll(parseResponse(response.toString(), keyword, subcategory));
+            products.addAll(parseResponse(response.toString(), keyword, subcategory, isCategoryOnlySearch));
 
             products = locationStockInformationFetcher.fetchLocationInfo(products);
 
@@ -78,7 +81,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
                 .build();
     }
 
-    private List<ProductParseDto> parseResponse(String response, String keyword, Subcategory subcategory) {
+    private List<ProductParseDto> parseResponse(String response, String keyword, Subcategory subcategory, boolean isCategoryOnlySearch) {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode;
         try {
@@ -93,6 +96,8 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
 
             String productName = productNode.path("name").asText();
             if (!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+            if (isCategoryOnlySearch && !checkContainsRequiredKeyword(productName, subcategory)) continue;
+
 
             String categoryName = productNode.path("klevu_category").asText();
             if (!checkIsCorrectProductCategory(categoryName, subcategory, EmaterjalToBauhofCategoryMapping.categoryMap)) continue;

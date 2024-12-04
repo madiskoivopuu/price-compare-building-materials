@@ -2,7 +2,6 @@ package priceCompare.backend.utils;
 
 import priceCompare.backend.enums.Subcategory;
 
-import java.util.List;
 import java.util.Map;
 
 import static priceCompare.backend.enums.Subcategory.*;
@@ -12,7 +11,7 @@ import static priceCompare.backend.enums.Subcategory.PLEKKPROFIILID;
 bauhof and krauta haved complex search for searching only by category
 for those two stores we use a keyword related to category in search to perform search by category
  */
-public class CategoryKeywordMapping {
+public class CategorySearchKeywordMapping {
     public static final Map<Subcategory, String> categoryKeywordMap = Map.<Subcategory, String>ofEntries(
             Map.entry(KIPSPLAAT, "kipsplaat"),
             Map.entry(OSB_PLAAT, "osb"),

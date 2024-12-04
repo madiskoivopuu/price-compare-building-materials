@@ -16,6 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 @Service
@@ -28,17 +29,18 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
         this.stockFetcher = stockFetcher;
     }
 
-    private ProductsDto performPuumaterjalSearch(String query, Subcategory subcategory) {
+    private ProductsDto performPuumaterjalSearch(String keyword, Subcategory subcategory) {
         List<ProductDto> products = new ArrayList<>();
 
-        for(Document searchResponse : apis.performSearchOrCategoryPageFetch(query, subcategory)) {
+        for(Document searchResponse : apis.performSearchOrCategoryPageFetch(keyword, subcategory)) {
             for(Element productEl : searchResponse.select(".grid > div.item")) {
                 // filter out non-products
                 String productUrl = productEl.select(".product-title > a").attr("href");
                 if(!productUrl.contains("/toode/")) continue;
 
                 String productName = productEl.select(".product-title > a").text();
-                if (!checkProductNameCorrespondsToSearch(productName, query)) continue;
+                if (keyword != null &&!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+                if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
                 try {
                     // we need to proxy the image load due to CORS crap
