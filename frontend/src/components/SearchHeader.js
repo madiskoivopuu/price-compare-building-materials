@@ -17,7 +17,9 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={i}
                         onClick={() => handlePageChange(i)}
-                        className={`w-8 h-8 p-2 border rounded-full flex items-center justify-center border-1 border-gray-700 ${i === currentPage ? 'border' : ''}`}
+                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${
+                            i === currentPage ? 'border' : 'border-gray-700' //i have no idea why this works
+                        }`}
                     >
                         {i}
                     </button>
@@ -28,7 +30,9 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                 <button
                     key={1}
                     onClick={() => handlePageChange(1)}
-                    className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${1 === currentPage ? 'border' : ''}`}
+                    className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${
+                        1 === currentPage ? 'border' : 'border-gray-700'
+                    }`}
                 >
                     1
                 </button>
@@ -54,7 +58,9 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={i}
                         onClick={() => handlePageChange(i)}
-                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${i === currentPage ? 'border' : ''}`}
+                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${
+                            i === currentPage ? 'border' : 'border-gray-700'
+                        }`}
                     >
                         {i}
                     </button>
