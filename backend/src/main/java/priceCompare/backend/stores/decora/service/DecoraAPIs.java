@@ -48,7 +48,7 @@ public class DecoraAPIs {
     public JSONObject fetchPageFromSearchAPI(String query, Subcategory subcategory, int offset) {
         String categoryFilter = "";
         if(subcategory != null) {
-            List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, null);
+            List<String> categoryMappings = EmaterjalToDecoraCategoryMapping.subcatMap.getOrDefault(subcategory, List.of());
 
             if(!categoryMappings.isEmpty()) {
                 String categories = String.format("\"%s\"", String.join("\", \"", categoryMappings));

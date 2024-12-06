@@ -72,7 +72,7 @@ public class CategorySearchKeywordMapping {
             Map.entry(SIDEAINED, "side"),
 
             Map.entry(PUITVOODRILAUAD, "voodrilaud"),
-            Map.entry(TSEMENTVOODRILAUAD, "tsementvoodrilaud"),
+            Map.entry(TSEMENTVOODRILAUAD, "tsement voodrilaud"),
             Map.entry(PLASTVOODER, "plastvooder"),
             Map.entry(FASSAAD_PLAADID, "plaat"),
             Map.entry(PROFIILID, "profiil"),

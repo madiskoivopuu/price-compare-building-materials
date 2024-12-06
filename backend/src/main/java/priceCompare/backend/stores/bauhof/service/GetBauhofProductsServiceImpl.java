@@ -95,7 +95,7 @@ public class GetBauhofProductsServiceImpl implements GetStoreProductsService {
         for (JsonNode productNode : recordsNode) {
 
             String productName = productNode.path("name").asText();
-            if (!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+            if (!isCategoryOnlySearch && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
             if (isCategoryOnlySearch && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
 
