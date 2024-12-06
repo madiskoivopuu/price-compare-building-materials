@@ -11,6 +11,10 @@ function App() {
     setIsMobileMenuExtended(!isMobileMenuExtended)
   }
 
+  const unextendMobileMenu = () => {
+    setIsMobileMenuExtended(false)
+  }
+
   const resizeSetExpandFalse = () => {
     setIsMobileMenuExtended(false)
   }
@@ -22,7 +26,7 @@ function App() {
   return (
     <>
       <Header extendMobileMenu={extendMobileMenu}  />
-      <Main isMobileMenuExtended={isMobileMenuExtended} />
+      <Main isMobileMenuExtended={isMobileMenuExtended} unextendMobileMenu={unextendMobileMenu} />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Category from "./Category";
 
-function Categories({isMobileMenuExtended, categoryChange, selectedCategory}) {
+function Categories({isMobileMenuExtended, categoryChange, selectedCategory, unextendMobileMenu}) {
     
     const [categories, setCategories] = useState([])
     const [selectedSubcategory, setSelectedSubcategory] = useState(null)
@@ -15,7 +15,8 @@ function Categories({isMobileMenuExtended, categoryChange, selectedCategory}) {
         
         setSelectedSubcategory(subCat)
         if(subCat) {
-            categoryChange({ category: selectedCatName, subcategory: subCat });
+            categoryChange({ category: selectedCatName, subcategory: subCat })
+            unextendMobileMenu()
         }
     }
 
