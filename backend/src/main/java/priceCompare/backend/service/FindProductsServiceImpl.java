@@ -16,6 +16,7 @@ import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsService
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -46,6 +47,9 @@ public class FindProductsServiceImpl implements FindProductService {
     @Autowired
     private GetBauhausProductsServiceImpl getBauhausProductsService;
 
+    @Autowired
+    private SearchCachingService cachingService;
+
     @Override
     public ProductsDto findProducts(String keyword, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
@@ -72,6 +76,13 @@ public class FindProductsServiceImpl implements FindProductService {
             throw new RuntimeException("Error occurred while fetching products", e);
         }
 
+        String searchId = UUID.randomUUID().toString();
+        cachingService.addProductsToCache(searchId, products);
+
+        products = products.toBuilder()
+                .searchId(searchId)
+                .build();
+
         return products;
     }
 
@@ -91,7 +102,7 @@ public class FindProductsServiceImpl implements FindProductService {
     }
 
     private ProductsDto AddFetchedProductsToList(ProductsDto products, ProductsDto productsToBeAdded) {
-        if (productsToBeAdded != null) {
+        if (productsToBeAdded != null && productsToBeAdded.getProducts() != null) {
             products.getProducts().addAll(productsToBeAdded.getProducts());
         }
         return products;

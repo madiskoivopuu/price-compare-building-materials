@@ -7,6 +7,8 @@ import lombok.Setter;
 import priceCompare.backend.enums.Store;
 import priceCompare.backend.enums.Unit;
 
+import java.util.Collection;
+
 @Data
 @Builder(toBuilder = true)
 @Getter

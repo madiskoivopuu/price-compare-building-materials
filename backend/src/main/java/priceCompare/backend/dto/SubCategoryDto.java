@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class CategoryDto {
-    private String name;
-    private List<SubCategoryDto> subcategories;
+public class SubCategoryDto {
+    private String displayName;
+    private List<FilterDto> filters;
 }

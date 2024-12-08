@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import SearchResult from './SearchResult';
 import SearchHeader from './SearchHeader';
 import Filters from './Filters';
+import SearchFooter from "./SearchFooter";
 
 function Hero({ selectedCategory, categoryChange }) {
     const [items, setItems] = useState({ products: [] });
@@ -10,8 +11,10 @@ function Hero({ selectedCategory, categoryChange }) {
     const [inputValue, setInputValue] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedLocations, setSelectedLocations] = useState([]);
+    const [filteringData, setFilteringData] = useState([])
     const productsPerPage = 25; // currently a constant
     const [isLoading, setIsLoading] = useState(false);
+    const [searchId, setSearchId] = useState(null);
 
     const queryBuilder = (val) => {
         if (selectedCategory) return val.concat('&subcategory=', selectedCategory.subcategory)
@@ -19,33 +22,92 @@ function Hero({ selectedCategory, categoryChange }) {
     }
 
     useEffect(() => {
+        let abortController = new AbortController(); // Create an instance of AbortController
+        const signal = abortController.signal;
+
         if (q) {
-            console.log(q)
+            console.log(q);
             setIsLoading(true);
-            fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`)
-            //fetch(`http://localhost:8080/request/search?keyword=${q}`)
+
+            // Fetch data with abort signal
+            fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`, { signal })
+            //fetch(`http://localhost:8080/request/search?keyword=${q}`, { signal })
                 .then(async (response) => {
                     const decoder = new TextDecoder('utf-8');
                     const decodedResponse = decoder.decode(await response.arrayBuffer());
                     return JSON.parse(decodedResponse);
                 })
                 .then((res) => {
-                    setItems(res);
+                    setSearchId(res.searchId);
+                    setItems(res || { products: [] });
                     const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
                     setSortedProducts(sorted);
                     setCurrentPage(1);
                 })
                 .then(() => setIsLoading(false))
-                .catch((err) => console.error("Fetch error:", err));
+                .catch((err) => {
+                    if (err.name === "AbortError") {
+                        console.log("Fetch aborted");
+                    } else {
+                        console.error("Fetch error:", err);
+                    }
+                });
         }
+
+        return () => {
+            // Abort fetch on cleanup or when `q` changes
+            abortController.abort();
+        };
     }, [q]);
 
     useEffect(() => {
         if (selectedCategory) { 
             setQ(`&subcategory=${selectedCategory.subcategory}`)
             setInputValue('')
+            setFilteringData([]);
+            setSearchId(null);
         } // Update query upon category selection
     }, [selectedCategory])
+
+    const generateFilterUrl = useCallback((filteringData) => {
+        const filters = filteringData.map(sublist => sublist.join(';'));
+        const filtersParam = encodeURIComponent(filters.join('_'));
+        //const url = `http://localhost:8080/request/filter?searchId=${encodeURIComponent(searchId)}&filters=${filtersParam}`;
+        const url = `http://16.16.186.149:8080/request/filter?searchId=${encodeURIComponent(searchId)}&filters=${filtersParam}`;
+        console.log('Generated URL:', url);
+        return url;
+    }, [searchId]);
+
+
+    useEffect(() => {
+            // Generate the URL based on filteringData
+            const url = generateFilterUrl(filteringData);
+
+            // Log the URL to check it
+            console.log("Fetching data with URL:", url);
+
+            setIsLoading(true); // Set loading to true while fetching data
+
+            // Fetch the filtered data
+            fetch(url)
+                .then(async (response) => {
+                    const decoder = new TextDecoder('utf-8');
+                    const decodedResponse = decoder.decode(await response.arrayBuffer());
+                    return JSON.parse(decodedResponse);
+                })
+                .then((res) => {
+                    // Assuming the response format is the same as in your previous fetch call
+					console.log(res);
+                    setItems(res || { products: [] });
+                    const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
+                    setSortedProducts(sorted);
+                    setCurrentPage(1);
+
+                })
+                .then(() => setIsLoading(false)) // Set loading to false after fetching
+                .catch((err) => console.error("Fetch error:", err)); // Handle errors
+    }, [filteringData, generateFilterUrl]); // This effect will trigger when filteringData changes
+
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -74,7 +136,7 @@ function Hero({ selectedCategory, categoryChange }) {
                 </button>
             </form>
 
-            <Filters selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />
+            <Filters selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} filteringData={filteringData} setFilteringData={setFilteringData} filters={selectedCategory != null ? selectedCategory.filters : []} clearFiltersTrigger={selectedCategory} searchId={searchId}  />
 
             <SearchHeader
                 category={selectedCategory}
@@ -116,6 +178,14 @@ function Hero({ selectedCategory, categoryChange }) {
                     </ul>)
                 }
             </div>
+            <SearchFooter
+                isLoading={isLoading}
+                totalProducts={items.products.length}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+                productsPerPage={productsPerPage}
+            />
+
         </div>
     );
 }

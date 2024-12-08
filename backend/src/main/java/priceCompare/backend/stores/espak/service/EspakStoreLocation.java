@@ -36,7 +36,8 @@ public enum EspakStoreLocation {
             .build()),
     POLVA(LocationDto.builder()
             .locationName(LocationName.POLVA)
-            .address("https://www.google.com/maps/place/Espak+P%C3%B5lva/@58.067032,27.0738238,1829m/data=!3m2!1e3!4b1!4m6!3m5!1s0x46eade47e344c537:0xe78541faf31981ef!8m2!3d58.0670292!4d27.0763987!16s%2Fg%2F1tgx0q8v?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D")
+            .address("Jaama 16d")
+            .googleMapsLink("https://www.google.com/maps/place/Espak+P%C3%B5lva/@58.067032,27.0738238,1829m/data=!3m2!1e3!4b1!4m6!3m5!1s0x46eade47e344c537:0xe78541faf31981ef!8m2!3d58.0670292!4d27.0763987!16s%2Fg%2F1tgx0q8v?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D")
             .build()),
     JOGEVA(LocationDto.builder()
             .locationName(LocationName.JOGEVA)

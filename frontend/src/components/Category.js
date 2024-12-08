@@ -37,9 +37,9 @@ function Category({ category, subcategoryChange, active }) {
                             {
                             selectedSubcat === index
                             ?
-                            <strong>{subcategory}</strong>
+                            <strong>{subcategory.displayName}</strong>
                             :
-                            subcategory 
+                            subcategory.displayName 
                             }
                         </li>
                     ))}

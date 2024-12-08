@@ -19,6 +19,7 @@ public class HttpClientService {
     public HttpClientService() {
         this.client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2) // concurrent requests in 1 connection
+                .followRedirects(HttpClient.Redirect.NORMAL)
                 .connectTimeout(Duration.ofSeconds(30))
                 .build();
     }

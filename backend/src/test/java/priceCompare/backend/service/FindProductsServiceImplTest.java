@@ -53,6 +53,9 @@ public class FindProductsServiceImplTest {
     @InjectMocks
     private FindProductsServiceImpl findProductsService;
 
+    @Mock
+    private SearchCachingService cachingService;
+
     @Test
     public void testFindProducts_WhenBothServicesReturnProducts() {
         ProductDto product1 = ProductDto.builder().name("Product 1").price(10.0).build();

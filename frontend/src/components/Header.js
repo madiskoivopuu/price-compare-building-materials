@@ -17,7 +17,7 @@ function Header({extendMobileMenu}) {
                     onClick={handleClick} 
                 >
                     <svg width="40px" height="40px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" className={`border-1 rounded border-gray-700 hover:bg-gray-200`}>
-                        <g stroke="#000000" stroke-linecap="round" stroke-width="2">
+                        <g stroke="#000000" strokeLinecap="round" strokeWidth="2">
                             <path d="M4 6h16"/>
                             <path d="M4 10h16"/>
                             <path d="M4 14h16"/>

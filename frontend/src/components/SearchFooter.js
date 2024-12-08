@@ -1,15 +1,12 @@
 import React from 'react';
 
-function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerPage, isLoading}) {
+function SearchFooter({ totalProducts, currentPage, setCurrentPage, productsPerPage, isLoading }) {
     const totalPages = Math.ceil(totalProducts / productsPerPage);
-
+    if (totalProducts === 0 || isLoading) {
+        return null;
+    }
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
-    };
-    // manually calculate the margin based on the number of digits to fix massive headache
-    const getMarginClass = () => {
-        const digits = totalProducts.toString().length;
-        return `mr-${digits * 3}`;
     };
 
     const renderPageNumbers = () => {
@@ -22,7 +19,7 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                         key={i}
                         onClick={() => handlePageChange(i)}
                         className={`w-8 h-8 p-2 rounded-full flex items-center justify-center border-1 border-gray-700 ${
-                            i === currentPage ? 'border' : 'border-gray-700' //i have no idea why this works
+                            i === currentPage ? 'border' : 'border-gray-700'
                         }`}
                     >
                         {i}
@@ -80,7 +77,9 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
                     <button
                         key={totalPages}
                         onClick={() => handlePageChange(totalPages)}
-                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center ${totalPages === currentPage ? 'border' : ''}`}
+                        className={`w-8 h-8 p-2 rounded-full flex items-center justify-center ${
+                            totalPages === currentPage ? 'border' : ''
+                        }`}
                     >
                         {totalPages}
                     </button>
@@ -92,40 +91,34 @@ function SearchHeader({ totalProducts, currentPage, setCurrentPage, productsPerP
     };
 
     return (
-        <div className="flex flex-col md:flex-row md:justify-between items-center py-4 border-t border-gray-700">
-            <div className="text-gray-700">
-                <p>Leitud {isLoading ? <span className='animate-pulse'>...</span> : totalProducts} toodet</p>
-            </div>
-            <div className={`flex items-center gap-2 justify-center flex-grow ${getMarginClass()}`}>
-                <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1 || isLoading}
-                    className={`p-2 transition duration-200 ${currentPage === 1 || isLoading ? 'opacity-50' : ''}`}
+        <div className="flex items-center gap-2 justify-center py-4">
+            <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1 || isLoading}
+                className={`p-2 transition duration-200 ${currentPage === 1 || isLoading ? 'opacity-50' : ''}`}
+            >
+                <span
+                    className={`${!isLoading && currentPage !== 1 ? 'hover:text-blue-500' : 'text-gray-500'}`}
                 >
-                    <span
-                        className={`${!isLoading && currentPage !== 1 ? 'hover:text-blue-500' : 'text-gray-500'}`}
-                    >
-                        {'<'}
-                    </span>
-                </button>
-                {!isLoading && (
-                    <div className='flex items-center gap-2'>{renderPageNumbers()}</div>
-                )}
-                <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages || isLoading}
-                    className={`p-2 transition duration-200 ${currentPage === totalPages || isLoading ? 'opacity-50' : ''}`}
+                    {'<'}
+                </span>
+            </button>
+            {!isLoading && (
+                <div className="flex items-center gap-2 justify-center">{renderPageNumbers()}</div>
+            )}
+            <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages || isLoading}
+                className={`p-2 transition duration-200 ${currentPage === totalPages || isLoading ? 'opacity-50' : ''}`}
+            >
+                <span
+                    className={`${!isLoading && currentPage !== totalPages ? 'hover:text-blue-500' : 'text-gray-500'}`}
                 >
-                    <span
-                        className={`${!isLoading && currentPage !== totalPages ? 'hover:text-blue-500' : 'text-gray-500'}`}
-                    >
-                        {'>'}
-                    </span>
-                </button>
-            </div>
-            <div className='w-24'></div>
+                    {'>'}
+                </span>
+            </button>
         </div>
     );
 }
 
-export default SearchHeader;
+export default SearchFooter;

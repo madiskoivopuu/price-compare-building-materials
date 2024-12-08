@@ -15,7 +15,7 @@ function Categories({isMobileMenuExtended, categoryChange, selectedCategory, une
         
         setSelectedSubcategory(subCat)
         if(subCat) {
-            categoryChange({ category: selectedCatName, subcategory: subCat })
+            categoryChange({ category: selectedCatName, subcategory: subCat.displayName,  filters: subCat.filters})
             unextendMobileMenu()
         }
     }

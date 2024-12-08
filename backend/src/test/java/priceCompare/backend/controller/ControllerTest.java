@@ -11,15 +11,14 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import priceCompare.backend.dto.CategoriesDto;
-import priceCompare.backend.dto.CategoryDto;
-import priceCompare.backend.dto.ProductDto;
-import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.dto.*;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.CategoryServiceImpl;
+import priceCompare.backend.service.FilterProductsService;
 import priceCompare.backend.service.FindProductsServiceImpl;
 import priceCompare.backend.service.ProxyImageLoadingService;
+import priceCompare.backend.service.SearchCachingService;
 
 import java.util.List;
 
@@ -36,13 +35,25 @@ class ControllerTest {
     private FindProductsServiceImpl findProductsService;
 
     @MockBean
+    private FilterProductsService filterProductsService;
+
+    @MockBean
+    private SearchCachingService searchCachingService;
+
+    @MockBean
     private ProxyImageLoadingService proxyImageLoadingService;
 
     @Test
     void testGetCategories() throws Exception {
         CategoryDto mockCategoryDto = CategoryDto.builder()
                 .name("Puit")
-                .subcategories(List.of("Prussid", "Lauad", "Höövelpuit"))
+                .subcategories(
+                    List.of(
+                            SubCategoryDto.builder().displayName("Prussid").build(),
+                            SubCategoryDto.builder().displayName("Lauad").build(),
+                            SubCategoryDto.builder().displayName("Höövelpuit").build()
+                    )
+                )
                 .build();
 
         CategoriesDto mockCategoriesDto = CategoriesDto.builder()
@@ -56,9 +67,9 @@ class ControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.categories[0].name").value("Puit"))
-                .andExpect(jsonPath("$.categories[0].subcategories[0]").value("Prussid"))
-                .andExpect(jsonPath("$.categories[0].subcategories[1]").value("Lauad"))
-                .andExpect(jsonPath("$.categories[0].subcategories[2]").value("Höövelpuit"));
+                .andExpect(jsonPath("$.categories[0].subcategories[0].displayName").value("Prussid"))
+                .andExpect(jsonPath("$.categories[0].subcategories[1].displayName").value("Lauad"))
+                .andExpect(jsonPath("$.categories[0].subcategories[2].displayName").value("Höövelpuit"));
     }
 
     @Test

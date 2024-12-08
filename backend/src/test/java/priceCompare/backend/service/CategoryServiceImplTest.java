@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import priceCompare.backend.dto.CategoriesDto;
 import priceCompare.backend.dto.CategoryDto;
+import priceCompare.backend.dto.SubCategoryDto;
 import priceCompare.backend.enums.Category;
 import java.util.List;
 
@@ -35,19 +36,19 @@ class CategoryServiceImplTest {
 
             assertEquals("Puit", categoryDto.getName());
 
-            List<String> subcategories = categoryDto.getSubcategories();
+            List<SubCategoryDto> subcategories = categoryDto.getSubcategories();
             assertEquals(11, subcategories.size());
-            assertEquals("Prussid", subcategories.get(0));
-            assertEquals("Lauad", subcategories.get(1));
-            assertEquals("Kalibreeritud prussid", subcategories.get(2));
-            assertEquals("Kalibreeritud lauad", subcategories.get(3));
-            assertEquals("Höövelprussid", subcategories.get(4));
-            assertEquals("Höövellauad", subcategories.get(5));
-            assertEquals("Servamata", subcategories.get(6));
-            assertEquals("Liimpuit", subcategories.get(7));
-            assertEquals("Põrandalauad", subcategories.get(8));
-            assertEquals("Terrassilauad", subcategories.get(9));
-            assertEquals("Sisevoodrilauad", subcategories.get(10));
+            assertEquals("Prussid", subcategories.get(0).getDisplayName());
+            assertEquals("Lauad", subcategories.get(1).getDisplayName());
+            assertEquals("Kalibreeritud prussid", subcategories.get(2).getDisplayName());
+            assertEquals("Kalibreeritud lauad", subcategories.get(3).getDisplayName());
+            assertEquals("Höövelprussid", subcategories.get(4).getDisplayName());
+            assertEquals("Höövellauad", subcategories.get(5).getDisplayName());
+            assertEquals("Servamata", subcategories.get(6).getDisplayName());
+            assertEquals("Liimpuit", subcategories.get(7).getDisplayName());
+            assertEquals("Põrandalauad", subcategories.get(8).getDisplayName());
+            assertEquals("Terrassilauad", subcategories.get(9).getDisplayName());
+            assertEquals("Sisevoodrilauad", subcategories.get(10).getDisplayName());
         }
     }
 }
