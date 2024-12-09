@@ -14,7 +14,7 @@ public class EspakAPIsTest {
     public void testFiltersFormattedCorrectly_NoCategories() {
         final String expected = String.format("[\"stock_status:in-stock\", \"taxonomies.product_cat:%s\"]", EspakAPIs.NO_CATEGORY);
 
-        EspakAPIs apis = new EspakAPIs(new CachingHttpClientService());
+        EspakAPIs apis = new EspakAPIs(new HttpClientService());
         String res = apis.formatFacetFilters(Subcategory.LAKKAPLOKK);
 
         assertEquals(expected, res);
@@ -24,7 +24,7 @@ public class EspakAPIsTest {
     public void testFiltersFormattedCorrectly_MultipleCategories() {
         final String expected = "[\"stock_status:in-stock\", [\"taxonomies.product_cat:keramsiitplokid\", \"taxonomies.product_cat:keramsiitplokid-fibo\"]]";
 
-        EspakAPIs apis = new EspakAPIs(new CachingHttpClientService());
+        EspakAPIs apis = new EspakAPIs(new HttpClientService());
         String res = apis.formatFacetFilters(Subcategory.FIBO);
 
         assertEquals(expected, res);

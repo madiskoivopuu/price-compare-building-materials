@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.HttpClient.CachingHttpClientService;
+import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.service.SearchCachingService;
 import priceCompare.backend.utils.UserInputEscaper;
@@ -18,9 +19,9 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 public class EspakAPIs {
-    private final CachingHttpClientService httpClientService;
+    private final HttpClientService httpClientService;
 
-    public EspakAPIs(CachingHttpClientService httpClientService) {
+    public EspakAPIs(HttpClientService httpClientService) {
         this.httpClientService = httpClientService;
     }
 
@@ -87,7 +88,7 @@ public class EspakAPIs {
      * @return A future which will return the parsed HTML document with product info
      */
     public CompletableFuture<Document> fetchProductPage(String productLink) {
-        return httpClientService.GetAsyncCached(productLink)
+        return httpClientService.GetAsyncAndReturnCompletableFutureHttpResponse(URI.create(productLink))
                 .thenApply(HttpResponse::body)
                 .thenApply(Jsoup::parse);
     }
