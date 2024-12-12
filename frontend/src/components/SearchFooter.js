@@ -7,7 +7,14 @@ function SearchFooter({ totalProducts, currentPage, setCurrentPage, productsPerP
     }
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
+        scrollToTop()
     };
+
+    const scrollToTop = () => {
+        window.scrollTo({
+          top: 300,
+          behavior: "smooth",
+    })}
 
     const renderPageNumbers = () => {
         const pageNumbers = [];
@@ -89,6 +96,8 @@ function SearchFooter({ totalProducts, currentPage, setCurrentPage, productsPerP
 
         return pageNumbers;
     };
+
+
 
     return (
         <div className="flex items-center gap-2 justify-center py-4">

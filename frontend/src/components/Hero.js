@@ -40,7 +40,9 @@ function Hero({ selectedCategory, categoryChange }) {
                 .then((res) => {
                     setSearchId(res.searchId);
                     setItems(res || { products: [] });
+
                     const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
+                    console.log(sorted)
                     setSortedProducts(sorted);
                     setCurrentPage(1);
                 })
@@ -59,6 +61,41 @@ function Hero({ selectedCategory, categoryChange }) {
             abortController.abort();
         };
     }, [q]);
+    useEffect(() => {
+        //console.log('Selected locations:', selectedLocations);
+
+        // Filter products that have at least one matching location
+        const filteredProductsByLocation = items.products.filter((product) =>
+            selectedLocations.some((requiredLocation) =>
+                product.stock.locations.some(
+                    (loc) => loc.location.locationName === requiredLocation
+                )
+            )
+        );
+
+        // Get products that didn't pass the filter
+        const nonMatchingProducts = items.products.filter(
+            (product) =>
+                !selectedLocations.some((requiredLocation) =>
+                    product.stock.locations.some(
+                        (loc) => loc.location.locationName === requiredLocation
+                    )
+                )
+        );
+
+        // Sort the filtered products by price
+        const sortedMatchingProducts = filteredProductsByLocation?.sort(
+            (a, b) => parseFloat(a.price) - parseFloat(b.price)
+        ) || [];
+
+        // Combine the sorted matching products with non-matching products
+        const combinedProducts = [...sortedMatchingProducts, ...nonMatchingProducts];
+
+        setSortedProducts(combinedProducts);
+
+        //console.log('Filtered, sorted, and combined products:', combinedProducts);
+    }, [selectedLocations, items.products]);
+
 
     useEffect(() => {
         if (selectedCategory) { 
@@ -136,7 +173,14 @@ function Hero({ selectedCategory, categoryChange }) {
                 </button>
             </form>
 
-            <Filters selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} filteringData={filteringData} setFilteringData={setFilteringData} filters={selectedCategory != null ? selectedCategory.filters : []} clearFiltersTrigger={selectedCategory} searchId={searchId}  />
+            <Filters selectedLocations={selectedLocations}
+                     setSelectedLocations={setSelectedLocations}
+                     filteringData={filteringData}
+                     setFilteringData={setFilteringData}
+                     filters={selectedCategory != null ? selectedCategory.filters : []}
+                     clearFiltersTrigger={selectedCategory}
+                     searchId={searchId}
+            />
 
             <SearchHeader
                 category={selectedCategory}
