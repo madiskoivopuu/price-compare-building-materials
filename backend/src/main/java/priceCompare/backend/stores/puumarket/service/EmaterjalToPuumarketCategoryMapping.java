@@ -63,7 +63,7 @@ public class EmaterjalToPuumarketCategoryMapping {
             Map.entry(PORANDATASANDUS, List.of("https://puumarket.ee/tootekategooria/ehitusmaterjalid/segud/porandasegud/")),
             Map.entry(SEGUD_TARVIKUD, List.of("https://puumarket.ee/tootekategooria/ehitusmaterjalid/segud/tarvikud-segud/")),
             Map.entry(SIDEAINED, List.of("https://puumarket.ee/tootekategooria/ehitusmaterjalid/segud/liiv-kruus/")),
-            Map.entry(PUITVOODRILAUAD, List.of("https://puumarket.ee/tootekategooria/puit/valisvoodrilauad/naturaalsed-valisvoodrilauad/", "https://puumarket.ee/tootekategooria/puit/valisvoodrilauad/krunditud-valisvoodrilauad/", "https://puumarket.ee/tootekategooria/puit/valisvoodrilauad/varvitud-valisvoodrilauad/", "https://puumarket.ee/tootekategooria/puit/termotoodeldud-puit/valisvoodrilauad-termotoodeldud/")),
+            Map.entry(VALISVOODRILAUAD, List.of("https://puumarket.ee/tootekategooria/puit/valisvoodrilauad/naturaalsed-valisvoodrilauad/", "https://puumarket.ee/tootekategooria/puit/valisvoodrilauad/krunditud-valisvoodrilauad/", "https://puumarket.ee/tootekategooria/puit/valisvoodrilauad/varvitud-valisvoodrilauad/", "https://puumarket.ee/tootekategooria/puit/termotoodeldud-puit/valisvoodrilauad-termotoodeldud/")),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of()),

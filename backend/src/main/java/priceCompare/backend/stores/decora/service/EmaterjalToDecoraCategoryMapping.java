@@ -61,7 +61,7 @@ public class EmaterjalToDecoraCategoryMapping {
             Map.entry(PORANDATASANDUS, List.of("Põrandasegud ja tarvikud")),
             Map.entry(SEGUD_TARVIKUD, List.of("Fassaadisegud ja tarvikud")),
             Map.entry(SIDEAINED, List.of("Müürisegud ja betoonid")),
-            Map.entry(PUITVOODRILAUAD, List.of()),
+            Map.entry(VALISVOODRILAUAD, List.of()),
             Map.entry(TSEMENTVOODRILAUAD, List.of("Tsementplaadid")),
             Map.entry(PLASTVOODER, List.of("Plastvoodri liistud", "Voodrilaud plastik")),
             Map.entry(FASSAAD_PLAADID, List.of("Tsementplaadid")),

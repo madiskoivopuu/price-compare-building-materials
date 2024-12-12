@@ -58,7 +58,7 @@ public enum Subcategory {
     PORANDATASANDUS("Põrandatasandus", new Filter[]{}),
     SEGUD_TARVIKUD("Tarvikud", new Filter[]{}),
     SIDEAINED("Sideained", new Filter[]{}),
-    PUITVOODRILAUAD("Puitvoodrilauad", new Filter[]{VALISVOODRILAUD_TUUP, VALISVOODRILAUD_LABIMOOT, VALISVOODRILAUD_LAIUS_PIKKUS}),
+    VALISVOODRILAUAD("Välisvoodrilauad", new Filter[]{VALISVOODRILAUD_TUUP, VALISVOODRILAUD_LABIMOOT, VALISVOODRILAUD_LAIUS_PIKKUS}),
     TSEMENTVOODRILAUAD("Tsement voodrilauad", new Filter[]{}),
     PLASTVOODER("Plastvooder", new Filter[]{PLASTVOODER_TUUP}),
     FASSAAD_PLAADID("Plaadid", new Filter[]{}),

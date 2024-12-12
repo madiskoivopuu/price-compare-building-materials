@@ -61,7 +61,7 @@ public class EmaterjalToBauhofCategoryMapping {
             Map.entry(PORANDATASANDUS, List.of("Põrandasegud")),
             Map.entry(SEGUD_TARVIKUD, List.of("Krohvi lisatarvikud")),
             Map.entry(SIDEAINED, List.of("Killustik", "Ehitussegud")),
-            Map.entry(PUITVOODRILAUAD, List.of("Hööveldatud puit")),
+            Map.entry(VALISVOODRILAUAD, List.of("Hööveldatud puit")),
             Map.entry(TSEMENTVOODRILAUAD, List.of("Fassaadiplaadid")),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of("Fassaadiplaadid")),

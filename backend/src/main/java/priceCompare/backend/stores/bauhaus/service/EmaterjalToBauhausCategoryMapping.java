@@ -67,7 +67,7 @@ public class EmaterjalToBauhausCategoryMapping {
             Map.entry(SEGUD_TARVIKUD, List.of("Krohvid ja müürisegud")),
             Map.entry(SIDEAINED, List.of()),
 
-            Map.entry(PUITVOODRILAUAD, List.of("Välisvooderdus")),
+            Map.entry(VALISVOODRILAUAD, List.of("Välisvooderdus")),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of("Sokliplaadid ja tarvikud")),
@@ -152,7 +152,7 @@ public class EmaterjalToBauhausCategoryMapping {
             Map.entry(SEGUD_TARVIKUD, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
             //Map.entry(SIDEAINED, "Tootevalik;Ehitus ja remont;Ehitussegud;"),
 
-            Map.entry(PUITVOODRILAUAD, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
+            Map.entry(VALISVOODRILAUAD, "Tootevalik;Ehitus ja remont;Puitmaterjalid;"),
             //Map.entry(TSEMENTVOODRILAUAD, null),
             //Map.entry(PLASTVOODER, null),
             Map.entry(FASSAAD_PLAADID, "Tootevalik;Ehitus ja remont;Ehitusplaadid;"),

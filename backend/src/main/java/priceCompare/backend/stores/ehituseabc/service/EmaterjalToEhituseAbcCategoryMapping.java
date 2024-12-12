@@ -67,7 +67,7 @@ public class EmaterjalToEhituseAbcCategoryMapping {
             Map.entry(SEGUD_TARVIKUD, List.of("Müüri- ja segutööriistad")),
             Map.entry(SIDEAINED, List.of("Muud ehitussegud")),
 
-            Map.entry(PUITVOODRILAUAD, List.of("Välisvoodrilauad")),
+            Map.entry(VALISVOODRILAUAD, List.of("Välisvoodrilauad")),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of("Fassaadimaterjalid")),
@@ -151,7 +151,7 @@ public class EmaterjalToEhituseAbcCategoryMapping {
             Map.entry(SEGUD_TARVIKUD, "Ehitusmaterjalid;Ehitussegud;"),
             Map.entry(SIDEAINED, "Ehitusmaterjalid;Ehitussegud;"),
 
-            Map.entry(PUITVOODRILAUAD, "Ehitusmaterjalid;Ehituspuit;"),
+            Map.entry(VALISVOODRILAUAD, "Ehitusmaterjalid;Ehituspuit;"),
             //Map.entry(TSEMENTVOODRILAUAD, null),
             //Map.entry(PLASTVOODER, null),
             Map.entry(FASSAAD_PLAADID, "Ehitusmaterjalid;Kergkonstruktsioon, ehitusplaadid;"),

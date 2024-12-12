@@ -61,7 +61,7 @@ public class EmaterjalToEspakCategoryMapping {
             Map.entry(PORANDATASANDUS, List.of("porandasegud")),
             Map.entry(SEGUD_TARVIKUD, List.of()),
             Map.entry(SIDEAINED, List.of("sideained")),
-            Map.entry(PUITVOODRILAUAD, List.of()),
+            Map.entry(VALISVOODRILAUAD, List.of()),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of()),

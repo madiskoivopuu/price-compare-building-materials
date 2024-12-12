@@ -61,7 +61,7 @@ public class EmaterjalToKrautaCategoryMapping {
             Map.entry(PORANDATASANDUS, List.of("Tasandussegud")),
             Map.entry(SEGUD_TARVIKUD, List.of("Ehitusmaterjalide tarvikud")),
             Map.entry(SIDEAINED, List.of("Killustik, kruus, liiv, savi")),
-            Map.entry(PUITVOODRILAUAD, List.of("Voodrilauad")),
+            Map.entry(VALISVOODRILAUAD, List.of("Voodrilauad")),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of("Plastist välisvoodrilauad")),
             Map.entry(FASSAAD_PLAADID, List.of("Voodrilauad, plaadid")),
