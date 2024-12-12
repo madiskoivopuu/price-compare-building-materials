@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 public class EmaterjalToEspakCategoryMapping {
-    // list of product_cat-* CSS classes that represent the category in the product HTML
     public static final Map<Subcategory, List<String>> subcatMap = Map.<Subcategory, List<String>>ofEntries(
             Map.entry(KIPSPLAAT, List.of("kipsplaat")),
             Map.entry(OSB_PLAAT, List.of("osb-plaadid")),

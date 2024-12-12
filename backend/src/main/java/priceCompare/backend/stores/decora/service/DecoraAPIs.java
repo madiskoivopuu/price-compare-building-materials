@@ -1,19 +1,20 @@
 package priceCompare.backend.stores.decora.service;
 
+import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.utils.UserInputEscaper;
-
 import java.net.URI;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@AllArgsConstructor
 public class DecoraAPIs {
     public static final int SEARCH_API_PAGE_SIZE = 100;
 
@@ -34,9 +35,6 @@ public class DecoraAPIs {
             """;
 
     private final HttpClientService httpClientService;
-    public DecoraAPIs(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     /**
      * Fetch one page of results from the search API.

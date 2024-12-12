@@ -1,10 +1,9 @@
 package priceCompare.backend.enums;
 
-import lombok.Getter;
-
-import java.util.List;
-
 import static priceCompare.backend.enums.Keyword.*;
+
+import lombok.Getter;
+import java.util.List;
 
 public enum Filter {
 

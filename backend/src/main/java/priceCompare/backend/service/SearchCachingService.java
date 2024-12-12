@@ -1,21 +1,8 @@
 package priceCompare.backend.service;
 
-
-import com.google.common.collect.Lists;
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.CachingHttpClientService;
-import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.utils.Cache;
-
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
 @Service
 public class SearchCachingService {

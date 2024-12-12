@@ -3,7 +3,6 @@ package priceCompare.backend.stores.ehituseabc.service;
 import lombok.Getter;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.enums.LocationName;
-
 import java.util.HashMap;
 import java.util.Map;
 

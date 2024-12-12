@@ -1,11 +1,10 @@
 package priceCompare.backend.stores.bauhaus.service;
 
-import priceCompare.backend.enums.Subcategory;
+import static priceCompare.backend.enums.Subcategory.*;
 
+import priceCompare.backend.enums.Subcategory;
 import java.util.List;
 import java.util.Map;
-
-import static priceCompare.backend.enums.Subcategory.*;
 
 public class EmaterjalToBauhausCategoryMapping {
     public static final Map<Subcategory, List<String>> categoryMap = Map.<Subcategory, List<String>>ofEntries(

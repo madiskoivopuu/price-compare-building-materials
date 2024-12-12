@@ -1,17 +1,20 @@
 package priceCompare.backend.service;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Keyword;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class FilterProductsService {
+    private static final Logger logger = LogManager.getLogger(FilterProductsService.class);
+
     private final SearchCachingService cachingService;
 
     private boolean productMatchesFilters(ProductDto product, List<List<Keyword>> selectedGroupedFilters) {
@@ -39,7 +42,6 @@ public class FilterProductsService {
                     }
                 }
             }
-
             if (groupMatches) {
                 filterGroupsMatched++;
             }
@@ -51,7 +53,6 @@ public class FilterProductsService {
     private boolean matchesAlias(ProductDto product, String alias) {
         return product.getName().toLowerCase().contains(alias.toLowerCase());
     }
-
 
     public ProductsDto filter(String searchId, List<List<Keyword>> selectedGroupedFilters) {
         System.out.println(selectedGroupedFilters);
@@ -68,7 +69,7 @@ public class FilterProductsService {
                 .forEach(filteredProducts::add);
 
         long end = System.currentTimeMillis();
-        System.out.printf("Filtering API performance: took %dms to filter %d products%n", (end-start), cachedProducts.getProducts().size());
+        logger.info(String.format("Filtering API performance: took %dms to filter %d products%n", (end-start), cachedProducts.getProducts().size()));
 
         return ProductsDto.builder()
                 .products(filteredProducts)

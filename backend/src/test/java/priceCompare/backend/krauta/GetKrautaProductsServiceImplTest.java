@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.dto.ProductParseDto;
-import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
+import priceCompare.backend.stores.krauta.service.GetKRautaProductsService;
 import priceCompare.backend.stores.krauta.service.KRautaAPIs;
-import priceCompare.backend.stores.krauta.service.LocationStockInformationFetcherKrauta;
+import priceCompare.backend.stores.krauta.service.KrautaStockFetcher;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,10 +30,10 @@ public class GetKrautaProductsServiceImplTest {
     private HttpClientService httpClientService;
 
     @InjectMocks
-    private GetKRautaProductsServiceImpl getKrautaProductsService;
+    private GetKRautaProductsService getKrautaProductsService;
 
     @Mock
-    private LocationStockInformationFetcherKrauta locationStockInformationFetcher;
+    private KrautaStockFetcher locationStockInformationFetcher;
 
     @Mock
     private KRautaAPIs kRautaAPIs;

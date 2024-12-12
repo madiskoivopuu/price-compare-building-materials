@@ -4,36 +4,30 @@ import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsReq
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.*;
 import priceCompare.backend.dto.StockInLocationsDto;
 import priceCompare.backend.enums.*;
 import priceCompare.backend.stores.GetStoreProductsService;
-import java.net.URI;
-import java.net.URLEncoder;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
 @Service
-public class GetEspakProductsServiceImpl implements GetStoreProductsService {
+@AllArgsConstructor
+@Log4j2
+public class GetEspakProductsService implements GetStoreProductsService {
     public static final int FETCH_MAX_NUM_PRODUCTS = 128;
     private static final int PRODUCT_BATCH_SIZE = 20;
     private final EspakAPIs apis;
-
-    public GetEspakProductsServiceImpl(EspakAPIs apis) {
-        this.apis = apis;
-    }
 
     /**
      * Returns all the products (up to FETCH_MAX_NUM_PRODUCTS) that the espak.ee search API gives us.
@@ -50,7 +44,7 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
             JSONObject searchResponse = apis.fetchPageFromSearchAPI(keyword, subcategory, page);
             page++;
             if(maxPages == 0 && searchResponse == null) {
-                System.err.println("ESPAK products service: very first search API request failed, cannot continue fetching products");
+                log.warn("ESPAK products service: very first search API request failed, cannot continue fetching products");
                 break;
             }
 
@@ -112,10 +106,10 @@ public class GetEspakProductsServiceImpl implements GetStoreProductsService {
                             .unit(Unit.fromDisplayName(body.select("div.unit").text()))
                             .build();
                 } catch(CompletionException e) {
-                    System.err.printf("ESPAK products service: Error fetching data from URL: %s, Exception: %s\n", product.getLinkToProduct(), e.getMessage());
+                    log.printf(Level.WARN, "ESPAK products service: Error fetching data from URL: %s, Exception: %s\n", product.getLinkToProduct(), e.getMessage());
                 } catch(IllegalArgumentException e) {
-                    System.err.println("ESPAK products service: " + e.getMessage());
-                    System.err.println(product.getLinkToProduct());
+                    log.printf(Level.WARN, "ESPAK products service: ", e.getMessage());
+                    log.warn(product.getLinkToProduct());
                 } finally {
                     newProducts.add(product);
                 }

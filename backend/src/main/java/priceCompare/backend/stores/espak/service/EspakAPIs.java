@@ -1,15 +1,13 @@
 package priceCompare.backend.stores.espak.service;
 
+import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.CachingHttpClientService;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.service.SearchCachingService;
 import priceCompare.backend.utils.UserInputEscaper;
-
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpResponse;
@@ -18,12 +16,9 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@AllArgsConstructor
 public class EspakAPIs {
     private final HttpClientService httpClientService;
-
-    public EspakAPIs(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     public static final String NO_CATEGORY = "olematukategooria";
     private static final String SEARCH_API_URL = "https://utkuha7jt0-dsn.algolia.net/1/indexes/*/queries?x-algolia-agent=Algolia%20for%20JavaScript%20(4.10.5)%3B%20Browser%20(lite)%3B%20autocomplete-core%20(1.17.7)%3B%20autocomplete-js%20(1.17.7)&x-algolia-api-key=b9c55a35ad2799389ce3d4584a5f9def&x-algolia-application-id=UTKUHA7JT0";

@@ -1,8 +1,8 @@
 package priceCompare.backend.enums;
 
-import lombok.Getter;
-
 import static priceCompare.backend.enums.Filter.*;
+
+import lombok.Getter;
 
 public enum Subcategory {
     KIPSPLAAT("Kipsplaat", new Filter[]{KIPS_KLASS, KIPS_LABIMOOT, KIPS_LAIUS_PIKKUS}),

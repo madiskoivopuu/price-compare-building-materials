@@ -2,7 +2,6 @@ package priceCompare.backend.dto;
 
 import lombok.Builder;
 import lombok.Data;
-
 import java.util.List;
 
 @Data

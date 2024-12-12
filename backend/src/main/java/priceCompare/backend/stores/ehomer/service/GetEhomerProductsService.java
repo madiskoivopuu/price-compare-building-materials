@@ -1,32 +1,32 @@
 package priceCompare.backend.stores.ehomer.service;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
-import priceCompare.backend.dto.*;
-import priceCompare.backend.enums.Store;
-import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.enums.Unit;
-import priceCompare.backend.stores.GetStoreProductsService;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static priceCompare.backend.enums.LocationName.EPOOD;
 import static priceCompare.backend.stores.ehomer.service.EhomerApis.*;
 import static priceCompare.backend.stores.ehomer.service.EmaterjalToEhomerCategoryMapping.categoryMap;
 import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.springframework.stereotype.Service;
+import priceCompare.backend.httpclient.HttpClientService;
+import priceCompare.backend.dto.*;
+import priceCompare.backend.enums.Store;
+import priceCompare.backend.enums.Subcategory;
+import priceCompare.backend.enums.Unit;
+import priceCompare.backend.stores.GetStoreProductsService;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
-public class GetEhomerProductsServiceImpl implements GetStoreProductsService {
+@AllArgsConstructor
+@Log4j2
+public class GetEhomerProductsService implements GetStoreProductsService {
 
     private final HttpClientService httpClientService;
-
-    public GetEhomerProductsServiceImpl(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     @Override
     public ProductsDto searchForProducts(String keyword, Subcategory subcategory) {
@@ -105,7 +105,7 @@ public class GetEhomerProductsServiceImpl implements GetStoreProductsService {
                         .build();
                 productList.add(product);
             } catch(IllegalArgumentException e) {
-                System.err.println("Ehomer products service: " + e.getMessage());
+                log.printf(Level.WARN, "Ehomer products service: ", e.getMessage());
             }
         }
         return productList;

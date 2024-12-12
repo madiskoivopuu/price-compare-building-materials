@@ -33,11 +33,11 @@ function Filters({ filters, setFilteringData, selectedLocations, setSelectedLoca
     };
 
     return (
-        <div className="w-full mb-4 p-4 bg-white rounded shadow-md">
+        <div className="w-full mb-10 p-4 bg-white rounded shadow-md">
             <div className="flex justify-between items-center">
                 <h2 className="text-lg font-semibold">Filtrid</h2>
                 <button onClick={() => setIsMinimized(!isMinimized)} className="text-blue-500">
-                    {isMinimized ? 'Näita' : 'Peida'}
+                    {isMinimized ? 'Näita ↓' : 'Peida ↑'}
                 </button>
             </div>
             {!isMinimized && (

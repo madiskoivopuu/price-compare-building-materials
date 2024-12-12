@@ -9,23 +9,23 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.stores.ehomer.service.GetEhomerProductsServiceImpl;
+import priceCompare.backend.stores.ehomer.service.GetEhomerProductsService;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class GetEhomerProductsServiceImplTest {
+class GetEhomerProductsServiceTest {
 
     @Mock
     private HttpClientService httpClientService;
 
     @InjectMocks
-    private GetEhomerProductsServiceImpl getEhomerProductsService;
+    private GetEhomerProductsService getEhomerProductsService;
 
     @BeforeEach
     void setUp() {

@@ -1,8 +1,9 @@
 package priceCompare.backend.stores.bauhof.service;
 
+import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 
 import java.net.URI;
 import java.net.URLEncoder;
@@ -11,16 +12,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@AllArgsConstructor
 public class BauhofApis {
 
     private static final String BAUHOF_API_URL = "https://www.bauhof.ee/api/klevu/search";
     private static final String API_KEY = "---protected---";
 
     private final HttpClientService httpClientService;
-
-    public BauhofApis(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     public URI buildUrl(String keyword){
         return URI.create(String.format("%s?query=%s", BAUHOF_API_URL, URLEncoder.encode(keyword, StandardCharsets.UTF_8)));

@@ -1,9 +1,20 @@
-package priceCompare.backend.stores.bauhaus.service;
+package priceCompare.backend.stores.ehituseabc.service;
 
+import static priceCompare.backend.stores.ehituseabc.service.EhituseAbcApis.*;
+import static priceCompare.backend.stores.ehituseabc.service.EmaterjalToEhituseAbcCategoryMapping.categoryMap;
+import static priceCompare.backend.stores.ehituseabc.service.EmaterjalToEhituseAbcCategoryMapping.categoryRootMap;
+import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
+import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Store;
@@ -11,33 +22,20 @@ import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import priceCompare.backend.stores.GetStoreProductsService;
 import priceCompare.backend.stores.dto.ProductParseDto;
-
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
-import static priceCompare.backend.enums.Unit.TK;
-import static priceCompare.backend.stores.bauhaus.service.BauhausApis.*;
-import static priceCompare.backend.stores.bauhaus.service.EmaterjalToBauhausCategoryMapping.categoryMap;
-import static priceCompare.backend.stores.bauhaus.service.EmaterjalToBauhausCategoryMapping.categoryRootMap;
-import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsRequiredKeyword;
-import static priceCompare.backend.utils.CategorySearchKeywordMapping.categoryKeywordMap;
-import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
-
 @Service
-public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
-
-    private static final String BAUHAUS_API_URL = "https://eucs32v2.ksearchnet.com/cs/v2/search";
-    private static final String API_KEY = "klevu-169590957278116052";
-    private static final int SEARCH_API_PAGE_SIZE = 256;
+@AllArgsConstructor
+@Log4j2
+public class GetEhituseAbcProductsService implements GetStoreProductsService {
+    private static final String EHITUSEABC_API_URL = "https://eucs32v2.ksearchnet.com/cs/v2/search";
+    private static final String API_KEY = "klevu-168180264665813326";
+    private static final int SEARCH_API_PAGE_SIZE = 128;
 
     private final HttpClientService httpClientService;
-    private final LocationStockInformationFetcherBauhaus locationStockInformationFetcher;
-
-    public GetBauhausProductsServiceImpl(HttpClientService httpClientService, LocationStockInformationFetcherBauhaus locationStockInformationFetcher) {
-        this.httpClientService = httpClientService;
-        this.locationStockInformationFetcher = locationStockInformationFetcher;
-    }
+    private final EhituseAbcStockFetcher locationStockInformationFetcher;
 
     @Override
     public ProductsDto searchForProducts(String keyword, Subcategory subcategory) {
@@ -64,7 +62,7 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
         List<ProductParseDto> products = new ArrayList<>();
         List<String> categoryPaths = getCategoryCorrespondingCategoryPaths(subcategory);
         for (String categoryPath : categoryPaths) {
-            JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
+            JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(EHITUSEABC_API_URL),
                     buildRequestBodyWithCategory(categoryPath, API_KEY, SEARCH_API_PAGE_SIZE));
             products.addAll(parseResponse(response, null, subcategory));
         }
@@ -72,15 +70,15 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
     }
 
     public List<ProductParseDto> getProductsByKeyword(String keyword) {
-        JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
+        JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(EHITUSEABC_API_URL),
                 buildRequestBodyWithKeyword(keyword, API_KEY, SEARCH_API_PAGE_SIZE));
         return parseResponse(response, keyword, null);
     }
 
     public List<ProductParseDto> getProductsByKeywordAndCategory(String keyword, Subcategory subcategory) {
-        List<String> categories = getBauhausCategories(subcategory);
+        List<String> categories = getEhituseAbcCategories(subcategory);
         if (categories.isEmpty()) return new ArrayList<>();
-        JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(BAUHAUS_API_URL),
+        JSONObject response = httpClientService.PostWithBodyAndReturnJson(URI.create(EHITUSEABC_API_URL),
                 buildRequestBodyWithKeywordAndCategory(keyword, categories , API_KEY, SEARCH_API_PAGE_SIZE));
         return parseResponse(response, keyword, subcategory);
     }
@@ -94,34 +92,42 @@ public class GetBauhausProductsServiceImpl implements GetStoreProductsService {
 
             String productName = productNode.getString("name");
             if (keyword!=null && !keyword.isEmpty() && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
-
             if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
 
             try {
-                String ifactorUnit = productNode.optString("ifactor_unit", null);
-                Unit unit = (ifactorUnit != null) ? Unit.fromDisplayName(ifactorUnit) : TK;
-
+                Unit unit = extractUnit(productNode.getString("additionalDataToReturn"));
                 ProductDto product = ProductDto.builder()
-                        .store(Store.BAUHAUS)
+                        .store(Store.EHITUSEABC)
                         .name(productName)
-                        .price(productNode.getDouble("price"))
+                        .price(productNode.getDouble("salePrice"))
                         .unit(unit)
                         .linkToProduct(productNode.getString("url"))
-                        .linkToPicture(productNode.getString("imageUrl").replace("needtochange/",""))
+                        .linkToPicture(productNode.getString("imageUrl"))
                         .build();
                 ProductParseDto productIntermediateInfo = ProductParseDto.builder()
                         .product(product)
-                        .sku(productNode.getString("sku"))
+                        .searchApiProductInfo(productNode.toString())
                         .build();
                 productList.add(productIntermediateInfo);
             } catch(IllegalArgumentException e) {
-                System.err.println("Bauhaus products service: " + e.getMessage());
+                log.printf(Level.WARN, "EhituseAbc products service: %s%n", e.getMessage());
             }
         }
         return productList;
     }
 
-    private List<String> getBauhausCategories(Subcategory subcategory) {
+    public Unit extractUnit(String additionalDataToReturn) {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode additionalData = mapper.readTree(additionalDataToReturn);
+            String unitDisplayName = additionalData.path("priceUnit").asText();
+            return Unit.fromDisplayName(unitDisplayName);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to parse unit from additionalDataToReturn: " + additionalDataToReturn, e);
+        }
+    }
+
+    private List<String> getEhituseAbcCategories(Subcategory subcategory) {
         return categoryMap.get(subcategory);
     }
 

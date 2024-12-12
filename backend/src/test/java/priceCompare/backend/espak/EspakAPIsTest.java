@@ -1,10 +1,8 @@
 package priceCompare.backend.espak;
 
 import org.junit.jupiter.api.Test;
-import priceCompare.backend.HttpClient.CachingHttpClientService;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.service.SearchCachingService;
 import priceCompare.backend.stores.espak.service.EspakAPIs;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

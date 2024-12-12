@@ -7,7 +7,6 @@ import java.util.Map;
 
 import static priceCompare.backend.enums.Subcategory.*;
 
-// keeps links of every category page in puumarket.ee that we mapped to ematerjal.ee category
 public class EmaterjalToPuumarketCategoryMapping {
     public static final Map<Subcategory, List<String>> categoryMap = Map.<Subcategory, List<String>>ofEntries(
             Map.entry(KIPSPLAAT, List.of("https://puumarket.ee/tootekategooria/ehitusmaterjalid/ehitusplaadid/kipsplaadid/")),

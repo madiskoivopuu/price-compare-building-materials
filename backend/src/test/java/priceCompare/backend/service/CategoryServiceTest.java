@@ -17,7 +17,7 @@ import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
-class CategoryServiceImplTest {
+class CategoryServiceTest {
 
     @Autowired
     private CategoryService categoryService;

@@ -4,6 +4,9 @@ import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsReq
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jsoup.nodes.Document;
@@ -23,15 +26,13 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
 @Service
-public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
-
+@AllArgsConstructor
+@Log4j2
+public class GetDecoraProductsService implements GetStoreProductsService {
     private final int FETCH_MAX_NUM_PRODUCTS = 256;
     private static final int LOCATION_FETCH_BATCH_SIZE = 20;
     private final DecoraAPIs apis;
 
-    public GetDecoraProductsServiceImpl(DecoraAPIs apis) {
-        this.apis = apis;
-    }
     /**
      * Fetches the products matching the query & subcategory using decora.ee search API
      * @param keyword Query to search products with
@@ -46,7 +47,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
         do {
             JSONObject responseJson = apis.fetchPageFromSearchAPI(keyword, subcategory, offset);
             if (responseJson == null && numProducts == 0) {
-                System.err.println("Decora products service: very first search API request failed, cannot continue fetching products");
+                log.warn("Decora products service: very first search API request failed, cannot continue fetching products");
                 break;
             }
             if (responseJson == null) { // we should still continue with the rest of the request even if part of products are missing
@@ -83,11 +84,11 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
 
                     products.add(productIntermediateInfo);
                 } catch(org.json.JSONException e) {
-                    System.err.println("Decora products service: Error getting certain values from JSON for product: " + e.getMessage());
-                    System.err.println(productJson);
+                    log.printf(Level.WARN, "Decora products service: Error getting certain values from JSON for product: %s%n", e.getMessage());
+                    log.warn(productJson);
                 } catch(IllegalArgumentException e) {
-                    System.err.println("Decora products service: " + e.getMessage());
-                    System.err.println(productJson.getString("url"));
+                    log.printf(Level.WARN, "Decora products service: %s%n", e.getMessage());
+                    log.warn(productJson.getString("url"));
                 }
             }
         } while(offset < numProducts);
@@ -126,7 +127,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
                             .build();
                     productParseInfo.setProduct(product);
                 } catch(CompletionException e) {
-                    System.err.printf("ESPAK products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
+                    log.printf(Level.WARN, "Decora products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
                 } finally {
                     newProducts.add(productParseInfo);
                 }
@@ -150,7 +151,7 @@ public class GetDecoraProductsServiceImpl implements GetStoreProductsService {
                 String quantity = String.format("%s tk", tr.select("td.store-stock").text());
                 stockForLoc.put(location, quantity);
             } catch (NumberFormatException e) {
-                System.err.printf("ESPAK products service: Error parsing quantity for location %s, Exception: %s\n", location, e.getMessage());
+                log.printf(Level.WARN, "Decora products service: Error parsing quantity for location %s, Exception: %s\n", location, e.getMessage());
             }
         }
 

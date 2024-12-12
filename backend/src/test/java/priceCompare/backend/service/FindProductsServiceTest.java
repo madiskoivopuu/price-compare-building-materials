@@ -11,47 +11,47 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsServiceImpl;
-import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
-import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
-import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
-import priceCompare.backend.stores.ehomer.service.GetEhomerProductsServiceImpl;
-import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
-import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
-import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
+import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsService;
+import priceCompare.backend.stores.bauhof.service.GetBauhofProductsService;
+import priceCompare.backend.stores.decora.service.GetDecoraProductsService;
+import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsService;
+import priceCompare.backend.stores.ehomer.service.GetEhomerProductsService;
+import priceCompare.backend.stores.espak.service.GetEspakProductsService;
+import priceCompare.backend.stores.krauta.service.GetKRautaProductsService;
+import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsService;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 @ExtendWith(MockitoExtension.class)
-public class FindProductsServiceImplTest {
+public class FindProductsServiceTest {
 
     @Mock
-    private GetBauhofProductsServiceImpl getBauhofProductsService;
+    private GetBauhofProductsService getBauhofProductsService;
 
     @Mock
-    private GetKRautaProductsServiceImpl getKRautaProductsService;
+    private GetKRautaProductsService getKRautaProductsService;
 
     @Mock
-    private GetEspakProductsServiceImpl getEspakProductsService;
+    private GetEspakProductsService getEspakProductsService;
 
     @Mock
-    private GetDecoraProductsServiceImpl getDecoraProductsService;
+    private GetDecoraProductsService getDecoraProductsService;
 
     @Mock
-    private GetPuumarketProductsServiceImpl getPuumarketProductsService;
+    private GetPuumarketProductsService getPuumarketProductsService;
 
     @Mock
-    private GetEhituseAbcProductsServiceImpl getEhituseAbcProductsService;
+    private GetEhituseAbcProductsService getEhituseAbcProductsService;
 
     @Mock
-    private GetEhomerProductsServiceImpl getEhomerProductsService;
+    private GetEhomerProductsService getEhomerProductsService;
 
     @Mock
-    private GetBauhausProductsServiceImpl getBauhausProductsService;
+    private GetBauhausProductsService getBauhausProductsService;
 
     @InjectMocks
-    private FindProductsServiceImpl findProductsService;
+    private FindProductsService findProductsService;
 
     @Mock
     private SearchCachingService cachingService;

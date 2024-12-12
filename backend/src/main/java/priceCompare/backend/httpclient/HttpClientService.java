@@ -1,4 +1,4 @@
-package priceCompare.backend.HttpClient;
+package priceCompare.backend.httpclient;
 
 import java.io.IOException;
 import java.net.URI;
@@ -7,13 +7,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
-
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 @Service
+@Log4j2
 public class HttpClientService {
-
     private HttpClient client;
 
     public HttpClientService() {
@@ -33,12 +34,12 @@ public class HttpClientService {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                System.err.printf("Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
+                log.printf(Level.WARN, "Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
                 return null;
             }
             return new JSONObject(response.body());
         } catch (IOException | InterruptedException e) {
-            System.err.printf("Error fetching data from URL: %s, Exception: %s%n", url, e.getMessage());
+            log.printf(Level.WARN, "Error fetching data from URL: %s, exception: %s %n", e.getMessage(), url);
             return null;
         }
     }
@@ -52,12 +53,12 @@ public class HttpClientService {
         try {
             HttpResponse<byte[]> response = client.send(request, HttpResponse.BodyHandlers.ofByteArray());
             if (response.statusCode() != 200) {
-                System.err.printf("Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
+                log.printf(Level.WARN, "Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
                 return null;
             }
             return response;
         } catch (IOException | InterruptedException e) {
-            System.err.printf("Error fetching data from URL: %s, Exception: %s%n", url, e.getMessage());
+            log.printf(Level.WARN, "Error fetching data from URL: %s, exception: %s %n", e.getMessage(), url);
             return null;
         }
     }
@@ -71,12 +72,12 @@ public class HttpClientService {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                System.err.printf("Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
+                log.printf(Level.WARN, "Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
                 return null;
             }
             return response.body();
         } catch (IOException | InterruptedException e) {
-            System.err.printf("Error fetching data from URL: %s, Exception: %s%n", url, e.getMessage());
+            log.printf(Level.WARN, "Error fetching data from URL: %s, exception: %s %n", e.getMessage(), url);
             return null;
         }
     }
@@ -110,13 +111,12 @@ public class HttpClientService {
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             if (response.statusCode() != 200) {
-                System.err.printf("Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
-                System.err.printf(response.body());
+                log.printf(Level.WARN, "Failed to fetch data from URL: %s, Status code: %d%n", url, response.statusCode());
                 return null;
             }
             return new JSONObject(response.body());
         } catch (IOException | InterruptedException e) {
-            System.err.printf("Error fetching data from URL: %s, Exception: %s%n", url, e.getMessage());
+            log.printf(Level.WARN, "Error fetching data from URL: %s, exception: %s %n", e.getMessage(), url);
             return null;
         }
     }

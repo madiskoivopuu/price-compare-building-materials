@@ -7,12 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.bauhof.service.BauhofApis;
-import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
-import priceCompare.backend.stores.bauhof.service.LocationStockInformationFetcherBauhof;
+import priceCompare.backend.stores.bauhof.service.GetBauhofProductsService;
+import priceCompare.backend.stores.bauhof.service.BauhofStockFetcher;
 import priceCompare.backend.stores.dto.ProductParseDto;
 
 import java.io.IOException;
@@ -27,15 +27,15 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class GetBauhofProductsServiceImplTest {
+public class GetBauhofProductsServiceTest {
     @Mock
     private HttpClientService httpClientService;
 
     @InjectMocks
-    private GetBauhofProductsServiceImpl getBauhofProductsService;
+    private GetBauhofProductsService getBauhofProductsService;
 
     @Mock
-    private LocationStockInformationFetcherBauhof locationStockInformationFetcher;
+    private BauhofStockFetcher locationStockInformationFetcher;
 
     @Mock
     private BauhofApis apis;

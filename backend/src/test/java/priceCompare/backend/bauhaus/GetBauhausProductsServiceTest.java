@@ -10,11 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsServiceImpl;
-import priceCompare.backend.stores.bauhaus.service.LocationStockInformationFetcherBauhaus;
+import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsService;
+import priceCompare.backend.stores.bauhaus.service.BauhausStockFetcher;
 import priceCompare.backend.stores.dto.ProductParseDto;
 import java.io.IOException;
 import java.net.URI;
@@ -22,16 +22,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-class GetBauhausProductsServiceImplTest {
+class GetBauhausProductsServiceTest {
 
     @Mock
     private HttpClientService httpClientService;
 
     @InjectMocks
-    private GetBauhausProductsServiceImpl getBauhausProductsService;
+    private GetBauhausProductsService getBauhausProductsService;
 
     @Mock
-    private LocationStockInformationFetcherBauhaus locationStockInformationFetcher;
+    private BauhausStockFetcher locationStockInformationFetcher;
 
     @BeforeEach
     void setUp() {

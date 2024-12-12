@@ -1,18 +1,20 @@
 package priceCompare.backend.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.GetStoreProductsService;
-import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsServiceImpl;
-import priceCompare.backend.stores.bauhof.service.GetBauhofProductsServiceImpl;
-import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
-import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
-import priceCompare.backend.stores.ehomer.service.GetEhomerProductsServiceImpl;
-import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
-import priceCompare.backend.stores.krauta.service.GetKRautaProductsServiceImpl;
-import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
+import priceCompare.backend.stores.bauhaus.service.GetBauhausProductsService;
+import priceCompare.backend.stores.bauhof.service.GetBauhofProductsService;
+import priceCompare.backend.stores.decora.service.GetDecoraProductsService;
+import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsService;
+import priceCompare.backend.stores.ehomer.service.GetEhomerProductsService;
+import priceCompare.backend.stores.espak.service.GetEspakProductsService;
+import priceCompare.backend.stores.krauta.service.GetKRautaProductsService;
+import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,36 +23,19 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public class FindProductsServiceImpl implements FindProductService {
-
-    @Autowired
-    private GetBauhofProductsServiceImpl getBauhofProductsService;
-
-    @Autowired
-    private GetKRautaProductsServiceImpl getKRautaProductsService;
-
-    @Autowired
-    private GetEspakProductsServiceImpl getEspakProductsService;
-
-    @Autowired
-    private GetDecoraProductsServiceImpl getDecoraProductsService;
-
-    @Autowired
-    private GetPuumarketProductsServiceImpl getPuumarketProductsService;
-
-    @Autowired
-    private GetEhituseAbcProductsServiceImpl getEhituseAbcProductsService;
-
-    @Autowired
-    private GetEhomerProductsServiceImpl getEhomerProductsService;
-
-    @Autowired
-    private GetBauhausProductsServiceImpl getBauhausProductsService;
-
-    @Autowired
+@AllArgsConstructor
+@Log4j2
+public class FindProductsService {
+    private GetBauhofProductsService getBauhofProductsService;
+    private GetKRautaProductsService getKRautaProductsService;
+    private GetEspakProductsService getEspakProductsService;
+    private GetDecoraProductsService getDecoraProductsService;
+    private GetPuumarketProductsService getPuumarketProductsService;
+    private GetEhituseAbcProductsService getEhituseAbcProductsService;
+    private GetEhomerProductsService getEhomerProductsService;
+    private GetBauhausProductsService getBauhausProductsService;
     private SearchCachingService cachingService;
 
-    @Override
     public ProductsDto findProducts(String keyword, Subcategory subcategory) {
         ProductsDto products = ProductsDto.builder().products(new ArrayList<>()).build();
 
@@ -92,7 +77,7 @@ public class FindProductsServiceImpl implements FindProductService {
             ProductsDto fetchedProducts = service.searchForProducts(keyword, subcategory);
             long endTime = System.currentTimeMillis();
             long duration = (endTime - startTime) / 1000;
-            System.out.println(storeName + " - Time taken: " + duration + " seconds");
+            log.printf(Level.INFO,"%s - Time taken: %d seconds" ,storeName, duration);
 
             // Add fetched products to the main product list
             synchronized (products) {

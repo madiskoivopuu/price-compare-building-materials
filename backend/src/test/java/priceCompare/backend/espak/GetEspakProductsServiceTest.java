@@ -5,25 +5,21 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.stores.espak.service.EspakAPIs;
-import priceCompare.backend.stores.espak.service.GetEspakProductsServiceImpl;
+import priceCompare.backend.stores.espak.service.GetEspakProductsService;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Future;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GetEspakProductsServiceImplTest {
+public class GetEspakProductsServiceTest {
     private CompletableFuture<Document> makeFutureForHTML(String htmlDocumentPath) throws IOException {
         CompletableFuture<Document> future = new CompletableFuture<>();
         Document doc = Jsoup.parse(Files.readString(Path.of(htmlDocumentPath)));
@@ -46,7 +42,7 @@ public class GetEspakProductsServiceImplTest {
         when(apis.fetchProductPage(Mockito.eq("https://espak.ee/epood/toode/kruvikeeraja-otsak-t4057mm-flextorq-5tk-dt7399t/")))
                 .thenReturn(makeFutureForHTML("src/test/resources/espak/product-kruvikeeraja-otsak-t4057mm-flextorq-5tk-dt7399t.txt"));
 
-        GetEspakProductsServiceImpl getEspakProductsService = new GetEspakProductsServiceImpl(apis);
+        GetEspakProductsService getEspakProductsService = new GetEspakProductsService(apis);
         ProductsDto products = getEspakProductsService.searchForProducts(keyword, null);
 
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");

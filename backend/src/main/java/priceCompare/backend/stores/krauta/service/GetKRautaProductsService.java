@@ -5,6 +5,7 @@ import static priceCompare.backend.utils.CategorySearchKeywordMapping.categoryKe
 import static priceCompare.backend.utils.CategoryNameChecker.checkIsCorrectProductCategory;
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
+import lombok.AllArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
@@ -20,16 +21,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
+@AllArgsConstructor
+public class GetKRautaProductsService implements GetStoreProductsService {
     public static final int FETCH_MAX_NUM_PRODUCTS = 256;
     private final KRautaAPIs apis;
 
-    private final LocationStockInformationFetcherKrauta locationStockInformationFetcherKrauta;
-
-    public GetKRautaProductsServiceImpl(KRautaAPIs apis, LocationStockInformationFetcherKrauta locationStockInformationFetcherKrauta) {
-        this.apis = apis;
-        this.locationStockInformationFetcherKrauta = locationStockInformationFetcherKrauta;
-    }
+    private final KrautaStockFetcher krautaStockFetcher;
 
     @Override
     public ProductsDto searchForProducts(String keyword, Subcategory subcategory) {
@@ -109,7 +106,7 @@ public class GetKRautaProductsServiceImpl implements GetStoreProductsService {
             }
         } while (offset < numProducts);
 
-        products = locationStockInformationFetcherKrauta.fetchLocationStockInfo(products);
+        products = krautaStockFetcher.fetchLocationStockInfo(products);
 
         return ProductsDto.builder()
                 .products(products.stream().map(ProductParseDto::getProduct).toList())
