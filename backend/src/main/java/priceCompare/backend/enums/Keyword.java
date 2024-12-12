@@ -7,6 +7,7 @@ import priceCompare.backend.utils.Tuple;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 public enum Keyword {
@@ -20,61 +21,61 @@ public enum Keyword {
     REMONDI("Remondi", List.of("remondi", "remont")),
     PÕRAND("Põrand", List.of("põrand")),
 
-    L3("3.5", List.of(" 3 ", " 3x", "x3 ", " 3*", "*3 ")),
-    L3_2("3.2", List.of(" 3,2 ", " 3.2 ", " 3.2x", "x3.2 ", " 3.2*", "*3.2 ")),
-    L3_5("3.5", List.of(" 3,5 ", " 3.5 ", " 3.5x", "x3.5 ", " 3.5*", "*3.5 ")),
-    L4("4", List.of(" 4 ", " 4x", "x4 ", " 4*", "*4 ")),
-    L6("6", List.of(" 6 ", " 6x", "x6 ", " 6*", "*6 ")),
-    L6_5("6.5", List.of(" 6,5 ", " 6.5 ", " 6.5x", "x6.5 ", " 6.5*", "*6.5 ")),
-    L8("8", List.of(" 8 ", " 8x", "x8 ", " 8*", "*8 ")),
-    L9("9", List.of(" 9 ", " 9x", "x9 ", " 9*", "*9 ")),
-    L9_5("9.5", List.of(" 9,5 ", " 9.5 ", " 9.5x", "x9.5 ", " 9.5*", "*9.5 ")),
-    L10("10", List.of(" 10 ", " 10x", "x10 ", " 10*", "*10 ")),
-    L11("11", List.of(" 11 ", " 11x", "x11 ", " 11*", "*11 ")),
-    L12("12", List.of(" 12 ", " 12x", "x12 ", " 12*", "*12 ")),
-    L12_5("12.5", List.of(" 12,5 ", " 12.5 ", " 12.5x", "x12.5 ", " 12.5*", "*12.5 ")),
-    L13("13", List.of(" 13 ", " 13x", "x13 ", " 13*", "*13 ")),
-    L14("14", List.of(" 14 ", " 14x", "x14 ", " 14*", "*14 ")),
-    L15("15", List.of(" 15 ", " 15x", "x15 ", " 15*", "*15 ")),
-    L15_5("15.5", List.of(" 15,5 ", " 15.5 ", " 15.5x", "x15.5 ", " 15.5*", "*15.5 ")),
-    L16("16", List.of(" 16 ", " 16x", "x16 ", " 16*", "*16 ")),
-    L18("18", List.of(" 18 ", " 18x", "x18 ", " 18*", "*18 ")),
-    L19("19", List.of(" 19 ", " 19x", "x19 ", " 19*", "*19 ")),
-    L20("20", List.of(" 20 ", " 20x", "x20 ", " 20*", "*20 ")),
-    L21("21", List.of(" 21 ", " 21x", "x21 ", " 21*", "*21 ")),
-    L22("22", List.of(" 22 ", " 22x", "x22 ", " 22*", "*22 ")),
-    L24("24", List.of(" 24 ", " 24x", "x24 ", " 24*", "*24 ")),
-    L25("25", List.of(" 25 ", " 25x", "x25 ", " 25*", "*25 ")),
-    L26("26", List.of(" 26 ", " 26x", "x26 ", " 26*", "*26 ")),
-    L27("27", List.of(" 27 ", " 27x", "x27 ", " 27*", "*27 ")),
-    L28("28", List.of(" 28 ", " 28x", "x28 ", " 28*", "*28 ")),
-    L30("30", List.of(" 30 ", " 30x", "x30 ", " 30*", "*30 ")),
-    L32("32", List.of(" 32 ", " 32x", "x32 ", " 32*", "*32 ")),
-    L33("33", List.of(" 33 ", " 33x", "x33 ", " 33*", "*33 ")),
-    L35("35", List.of(" 35 ", " 35x", "x35 ", " 35*", "*35 ")),
-    L37("37", List.of(" 37 ", " 37x", "x37 ", " 37*", "*37 ")),
-    L39("39", List.of(" 39 ", " 39x", "x39 ", " 39*", "*39 ")),
-    L40("40", List.of(" 40 ", " 40x", "x40 ", " 40*", "*40 ")),
-    L42("42", List.of(" 42 ", " 42x", "x42 ", " 42*", "*42 ")),
-    L45("45", List.of(" 45 ", " 45x", "x45 ", " 45*", "*45 ")),
-    L50("50", List.of(" 50 ", " 50x", "x50 ", " 50*", "*50 ")),
-    L51("51", List.of(" 51 ", " 51x", "x51 ", " 51*", "*51 ")),
-    L66("66", List.of(" 66 ", " 66x", "x66 ", " 66*", "*66 ")),
-    L70("70", List.of(" 70 ", " 70x", "x70 ", " 70*", "*70 ")),
-    L75("75", List.of(" 75 ", " 75x", "x75 ", " 75*", "*75 ")),
-    L90("90", List.of(" 90 ", " 90x", "x90 ", " 90*", "*90 ")),
-    L95("95", List.of(" 95 ", " 95x", "x95 ", " 95*", "*95 ")),
-    L100("100", List.of(" 100 ", " 100x", "x100 ", " 100*", "*100 ")),
-    L115("115", List.of(" 115 ", " 115x", "x115 ", " 115*", "*115 ")),
-    L120("120", List.of(" 120 ", " 120x", "x120 ", " 120*", "*120 ")),
-    L125("125", List.of(" 125 ", " 125x", "x125 ", " 125*", "*125 ")),
-    L140("140", List.of(" 140 ", " 140x", "x140 ", " 140*", "*140 ")),
-    L150("150", List.of(" 150 ", " 150x", "x150 ", " 150*", "*150 ")),
-    L180("180", List.of(" 180 ", " 180x", "x180 ", " 180*", "*180 ")),
-    L200("200", List.of(" 200 ", " 200x", "x200 ", " 200*", "*200 ")),
-    L205("205", List.of(" 205 ", " 205x", "x205 ", " 205*", "*205 ")),
-    L250("250", List.of(" 250 ", " 250x", "x250 ", " 250*", "*250 ")),
-    L300("300", List.of(" 300 ", " 300x", "x300 ", " 300*", "*300 ")),
+    L3("3", generateSingleUnitCombination(3, false, 1)),
+    L3_2("3.2", generateSingleUnitCombination(3.2f, true, 2)),
+    L3_5("3.5", generateSingleUnitCombination(3.5f, true, 2)),
+    L4("4", generateSingleUnitCombination(4, false, 1)),
+    L6("6", generateSingleUnitCombination(6, false, 1)),
+    L6_5("6.5", generateSingleUnitCombination(6.5f, true, 2)),
+    L8("8", generateSingleUnitCombination(8, false, 1)),
+    L9("9", generateSingleUnitCombination(9, false,1 )),
+    L9_5("9.5", generateSingleUnitCombination(9.5f, true, 2)),
+    L10("10", generateSingleUnitCombination(10, false, 1)),
+    L11("11", generateSingleUnitCombination(11, false, 1)),
+    L12("12", generateSingleUnitCombination(12, false, 1)),
+    L12_5("12.5", generateSingleUnitCombination(12.5f, true, 2)),
+    L13("13", generateSingleUnitCombination(13, false, 1)),
+    L14("14", generateSingleUnitCombination(14, false, 1)),
+    L15("15", generateSingleUnitCombination(15, false, 1)),
+    L15_5("15.5", generateSingleUnitCombination(15.5f, true, 2)),
+    L16("16", generateSingleUnitCombination(16, false, 1)),
+    L18("18", generateSingleUnitCombination(18, false, 1)),
+    L19("19", generateSingleUnitCombination(19, false, 1)),
+    L20("20", generateSingleUnitCombination(20, false, 1)),
+    L21("21", generateSingleUnitCombination(21, false, 1)),
+    L22("22", generateSingleUnitCombination(22, false, 1)),
+    L24("24", generateSingleUnitCombination(24, false, 1)),
+    L25("25", generateSingleUnitCombination(25, false, 1)),
+    L26("26", generateSingleUnitCombination(26, false, 1)),
+    L27("27", generateSingleUnitCombination(27, false, 1)),
+    L28("28", generateSingleUnitCombination(28, false, 1)),
+    L30("30", generateSingleUnitCombination(30, false, 1)),
+    L32("32", generateSingleUnitCombination(32, false, 1)),
+    L33("33", generateSingleUnitCombination(33, false, 1)),
+    L35("35", generateSingleUnitCombination(35, false, 1)),
+    L37("37", generateSingleUnitCombination(37, false, 1)),
+    L39("39", generateSingleUnitCombination(39, false, 1)),
+    L40("40", generateSingleUnitCombination(40, false, 1)),
+    L42("42", generateSingleUnitCombination(42, false, 1)),
+    L45("45", generateSingleUnitCombination(45, false, 1)),
+    L50("50", generateSingleUnitCombination(50, false, 1)),
+    L51("51", generateSingleUnitCombination(51, false, 1)),
+    L66("66", generateSingleUnitCombination(66, false, 1)),
+    L70("70", generateSingleUnitCombination(70, false, 1)),
+    L75("75", generateSingleUnitCombination(75, false, 1)),
+    L90("90", generateSingleUnitCombination(90, false, 1)),
+    L95("95", generateSingleUnitCombination(95, false, 1)),
+    L100("100", generateSingleUnitCombination(100, false, 1)),
+    L115("115", generateSingleUnitCombination(115, false, 1)),
+    L120("120", generateSingleUnitCombination(120, false, 1)),
+    L125("125", generateSingleUnitCombination(125, false, 1)),
+    L140("140", generateSingleUnitCombination(140, false, 1)),
+    L150("150", generateSingleUnitCombination(150, false, 1)),
+    L180("180", generateSingleUnitCombination(180, false, 1)),
+    L200("200", generateSingleUnitCombination(200, false, 1)),
+    L205("205", generateSingleUnitCombination(205, false, 1)),
+    L250("250", generateSingleUnitCombination(250, false, 1)),
+    L300("300", generateSingleUnitCombination(300, false, 1)),
 
 
 
@@ -452,8 +453,14 @@ public enum Keyword {
         throw new IllegalArgumentException("Invalid filter display name: " + displayName);
     }
 
-    private static List<MetricUnit> generateNumberAndUnitDisplay(float valueInMm) {
+    private static List<MetricUnit> generateNumberAndUnitDisplay(float valueInMm, boolean includeIntegerValues) {
         final List<String> units = List.of("mm", "cm", "m");
+        final List<Integer> divisionToNextUnit = List.of(10, 100, 1);
+        final Map<String, Integer> precisions = Map.of(
+                "mm", 1,
+                "cm", 2,
+                "m", 1
+        );
         final List<Boolean> whitespaceInclusion = List.of(false, true);
         List<MetricUnit> generatedDisplays = new ArrayList<>();
 
@@ -461,42 +468,84 @@ public enum Keyword {
                 MetricUnit.builder()
                         .numericValue(valueInMm)
                         .unit("")
-                        .toInt(true)
+                        .toInt(false)
                         .withWhitespace(false)
                         .commaValue(",")
+                        .decimalPrecision(1)
                         .build()
         );
+        generatedDisplays.add(generatedDisplays.getLast()
+                .toBuilder()
+                .commaValue(".")
+                .build());
+        if(includeIntegerValues) {
+            generatedDisplays.add(
+                    MetricUnit.builder()
+                            .numericValue(valueInMm)
+                            .unit("")
+                            .toInt(true)
+                            .withWhitespace(false)
+                            .build()
+            );
+        }
 
         int currUnitIdx = 0;
         float currentValue = valueInMm;
         do {
+            String currentUnit = units.get(currUnitIdx);
+
             for(Boolean useWhitespace : whitespaceInclusion) {
-                if(currentValue >= 1) {
+                for(int currPrecision = 1; currPrecision <= precisions.get(currentUnit); currPrecision++) {
+                    if(currentValue >= 1 && includeIntegerValues) {
+                        generatedDisplays.add(
+                                MetricUnit.builder()
+                                        .numericValue(currentValue)
+                                        .unit(units.get(currUnitIdx))
+                                        .toInt(true)
+                                        .withWhitespace(useWhitespace)
+                                        .build()
+                        );
+                    }
+
                     generatedDisplays.add(
                             MetricUnit.builder()
                                     .numericValue(currentValue)
                                     .unit(units.get(currUnitIdx))
-                                    .toInt(true)
+                                    .toInt(false)
                                     .withWhitespace(useWhitespace)
+                                    .commaValue(",")
+                                    .decimalPrecision(precisions.get(currentUnit))
                                     .build()
                     );
+                    generatedDisplays.add(generatedDisplays.getLast()
+                            .toBuilder()
+                            .commaValue(".")
+                            .build());
                 }
-                generatedDisplays.add(
-                        MetricUnit.builder()
-                                .numericValue(currentValue)
-                                .unit(units.get(currUnitIdx))
-                                .toInt(false)
-                                .withWhitespace(useWhitespace)
-                                .commaValue(",")
-                                .build()
-                );
             }
 
-            currentValue /= 100;
+            currentValue /= divisionToNextUnit.get(currUnitIdx);
             currUnitIdx++;
         } while(currUnitIdx < units.size() && currentValue >= 0.1);
 
         return generatedDisplays;
+    }
+
+    public static List<String> generateSingleUnitCombination(float valMm, boolean excludeIntegerValues, int precision) {
+        final List<String> separators = List.of("x", " x ", "*", " * ");
+        List<String> results = new ArrayList<>();
+        for (String separator : separators) {
+            for(MetricUnit value : generateNumberAndUnitDisplay(valMm, !excludeIntegerValues)) {
+                String humanReadableValue = value.getHumanReadableValue();
+                if(excludeIntegerValues && !(humanReadableValue.contains(".") || humanReadableValue.contains(",")))
+                    continue;
+
+                results.add(String.format(" %s%s", humanReadableValue, separator));
+                results.add(String.format("%s%s", separator, humanReadableValue));
+            }
+        }
+
+        return results;
     }
 
     public static List<String> generateTwoUnitCombinations(float valMm1, float valMm2) {
@@ -504,8 +553,8 @@ public enum Keyword {
         List<String> results = new ArrayList<>();
         for (String separator : separators) {
             List<Tuple<MetricUnit, MetricUnit>> lengthWidthCombinations = CombiationGen.create(
-                    generateNumberAndUnitDisplay(valMm1),
-                    generateNumberAndUnitDisplay(valMm2)
+                    generateNumberAndUnitDisplay(valMm1, true),
+                    generateNumberAndUnitDisplay(valMm2, true)
             );
 
             for(Tuple<MetricUnit, MetricUnit> combination : lengthWidthCombinations) {
