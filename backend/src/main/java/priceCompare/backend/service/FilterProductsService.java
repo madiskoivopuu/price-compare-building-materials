@@ -65,7 +65,11 @@ public class FilterProductsService {
         cachedProducts.getProducts().stream()
                 .parallel()
                 .filter(products -> productMatchesFilters(products, selectedGroupedFilters))
-                .forEach(filteredProducts::add);
+                .forEach(product -> {
+                    synchronized (filteredProducts) {
+                        filteredProducts.add(product);
+                    }
+                });
 
         long end = System.currentTimeMillis();
         System.out.printf("Filtering API performance: took %dms to filter %d products%n", (end-start), cachedProducts.getProducts().size());
