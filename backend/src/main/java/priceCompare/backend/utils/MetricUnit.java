@@ -12,13 +12,14 @@ public class MetricUnit {
     final boolean toInt;
     final boolean withWhitespace;
     final String commaValue;
+    final int decimalPrecision;
 
     public String getHumanReadableValue() {
         String whitespace = withWhitespace ? " " : "";
         if(toInt)
             return String.format("%d%s%s", (int)numericValue, whitespace, unit);
         else {
-            return String.format("%.1f%s%s", numericValue, whitespace, unit).replace(".", commaValue);
+            return String.format("%." + decimalPrecision +"f%s%s", numericValue, whitespace, unit).replace(".", commaValue);
         }
     }
 }

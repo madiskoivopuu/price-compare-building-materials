@@ -68,7 +68,7 @@ public enum Category {
             Subcategory.SIDEAINED,
     }),
     FASSAAD("Fassaad", new Subcategory[]{
-            Subcategory.PUITVOODRILAUAD,
+            Subcategory.VALISVOODRILAUAD,
             Subcategory.TSEMENTVOODRILAUAD,
             Subcategory.PLASTVOODER,
             Subcategory.FASSAAD_PLAADID,

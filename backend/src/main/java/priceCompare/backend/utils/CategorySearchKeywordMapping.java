@@ -71,7 +71,7 @@ public class CategorySearchKeywordMapping {
             Map.entry(SEGUD_TARVIKUD, "tarvik"),
             Map.entry(SIDEAINED, "side"),
 
-            Map.entry(PUITVOODRILAUAD, "voodrilaud"),
+            Map.entry(VALISVOODRILAUAD, "voodrilaud"),
             Map.entry(TSEMENTVOODRILAUAD, "tsement voodrilaud"),
             Map.entry(PLASTVOODER, "plastvooder"),
             Map.entry(FASSAAD_PLAADID, "plaat"),

@@ -62,7 +62,7 @@ public class EmaterjalToEhomerCategoryMapping {
             Map.entry(PORANDATASANDUS, List.of("porandasegud")),
             Map.entry(SEGUD_TARVIKUD, List.of()),
             Map.entry(SIDEAINED, List.of()),
-            Map.entry(PUITVOODRILAUAD, List.of("valisvoodrilaud", "kuumolitatud%20laudis")),
+            Map.entry(VALISVOODRILAUAD, List.of("valisvoodrilaud", "kuumolitatud%20laudis")),
             Map.entry(TSEMENTVOODRILAUAD, List.of()),
             Map.entry(PLASTVOODER, List.of()),
             Map.entry(FASSAAD_PLAADID, List.of("fassaadiplaat%20tempsi")),

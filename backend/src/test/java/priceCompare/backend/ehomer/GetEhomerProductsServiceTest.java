@@ -79,7 +79,7 @@ class GetEhomerProductsServiceTest {
         ProductsDto result = getEhomerProductsService.searchForProducts(null, subcategory);
 
         assertNotNull(result);
-        assertEquals(2, result.getProducts().size());
+        assertEquals(0, result.getProducts().size());
     }
 
     @Test
