@@ -6,13 +6,11 @@ import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.StockDto;
 import priceCompare.backend.dto.StockInLocationsDto;
-
 import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class LocationStockInformationFetcherPuumarket {
-    public LocationStockInformationFetcherPuumarket() {}
+public class PuumarketStockFetcher {
 
     private StockDto parseStock(Element htmlCityStockEl) {
         Elements locAndStock = htmlCityStockEl.getElementsByTag("span");

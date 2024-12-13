@@ -1,10 +1,11 @@
 package priceCompare.backend.stores.krauta.service;
 
+import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.enums.Subcategory;
 
 import java.net.URI;
@@ -14,14 +15,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.CompletableFuture;
 
 @Service
+@AllArgsConstructor
 public class KRautaAPIs {
     public static final String QUERY_KEY_FETCH_PRODUCTS = "NSykN7XLeh4CPAauPZ4TAvVuFUjPt7QY";
     public static final int SEARCH_API_PAGE_SIZE = 72;
 
     private final HttpClientService httpClientService;
-    public KRautaAPIs(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     public URI formatSearchUrl(String query, Subcategory subcategory, int offset) {
         return URI.create(String.format("https://sd.searchnode.net/v1/query/docs?query_key=%s" +

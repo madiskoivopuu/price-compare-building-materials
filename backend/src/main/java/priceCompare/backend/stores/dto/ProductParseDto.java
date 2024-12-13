@@ -10,9 +10,9 @@ import priceCompare.backend.dto.ProductDto;
 @Setter
 public class ProductParseDto {
     ProductDto product;
-    String searchApiProductInfo; // product info fetched from the search api
-    String productPage; // most likmely html, can be some api response
-    String locationPage; // html or some api response
+    String searchApiProductInfo;
+    String productPage;
+    String locationPage;
     String sku;
     String linkToProduct;
 }

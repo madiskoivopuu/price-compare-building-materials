@@ -1,100 +1,98 @@
-package priceCompare.backend.stores.ehituseabc.service;
+package priceCompare.backend.stores.bauhof.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.json.JSONObject;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.StockDto;
 import priceCompare.backend.dto.StockInLocationsDto;
 import priceCompare.backend.stores.dto.ProductParseDto;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.stream.Collectors;
 
 @Service
-public class LocationStockInformationFetcherEhituseAbc {
-
+@AllArgsConstructor
+@Log4j2
+public class BauhofStockFetcher {
     private static final int LOCATION_FETCH_BATCH_SIZE = 20;
-    final EhituseAbcApis apis;
-
-    public LocationStockInformationFetcherEhituseAbc(EhituseAbcApis apis) {
-        this.apis = apis;
-    }
+    final BauhofApis apis;
 
     public List<ProductParseDto> fetchLocationInfo(List<ProductParseDto> products) {
         List<ProductParseDto> newProducts = new ArrayList<>();
         List<List<ProductParseDto>> batches = Lists.partition(products, LOCATION_FETCH_BATCH_SIZE);
 
         for(List<ProductParseDto> batch : batches) {
-            List<CompletableFuture<Document>> futures = new ArrayList<>();
+            List<CompletableFuture<JSONObject>> futures = new ArrayList<>();
             for(ProductParseDto productParseInfo : batch) {
-                JSONObject productJson = new JSONObject(productParseInfo.getSearchApiProductInfo());
                 futures.add(
-                        apis.fetchLocationInfoForProduct(productJson.getString("id").substring(1))
+                        apis.fetchLocationInfoForProduct(productParseInfo.getSku())
                 );
             }
 
             for(int i = 0; i < futures.size(); i++) {
-                CompletableFuture<Document> future = futures.get(i);
+                CompletableFuture<JSONObject> future = futures.get(i);
                 ProductParseDto productParseInfo = batch.get(i);
 
                 try {
-                    Document locationsHtml = future.join();
                     ProductDto product = productParseInfo.getProduct();
                     product = product.toBuilder()
-                            .stock(parseResponse(locationsHtml, product.getUnit().getDisplayName()))
+                            .stock(parseResponse(future.join()))
                             .build();
                     productParseInfo.setProduct(product);
                 } catch(CompletionException e) {
-                    System.err.printf("EhituseAbc products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
+                    log.printf(Level.WARN, "Bauhof products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
                 } finally {
                     newProducts.add(productParseInfo);
                 }
             }
         }
-
         return newProducts;
     }
 
-    public StockInLocationsDto parseResponse(Document doc, String unit) {
+    public StockInLocationsDto parseResponse(JSONObject response) {
+        ObjectMapper objectMapper = new ObjectMapper();
         List<StockDto> stockList = new ArrayList<>();
-
         try {
-            Elements rows = doc.select("table.table tbody tr");
+            JsonNode rootNode = objectMapper.readTree(response.toString());
+            JsonNode itemsNode = rootNode.path("data").path("products").path("items");
 
-            for (Element row : rows) {
-                Elements columns = row.select("td");
-                if (columns.size() < 2) continue;
+            for (JsonNode itemNode : itemsNode) {
+                JsonNode availabilityNode = itemNode.path("availability_in_stores");
+                String unit = itemNode.path("unit_id").asText();
+                for (JsonNode storeNode : availabilityNode) {
+                    String quantity = storeNode.path("qty").asText();
+                    String sourceName = storeNode.path("source_name").asText();
 
-                String storeName = columns.get(0).text();
-                String quantityText = columns.get(1).text();
+                    LocationDto location = mapToBauhofStoreLocation(sourceName);
+                    if (location==null) continue;
 
-                LocationDto location = mapToEhituseAbcStoreLocation(storeName);
-                if (location == null) continue;
+                    StockDto stock = StockDto.builder()
+                            .location(location)
+                            .quantityText(String.format("%s %s", quantity, unit))
+                            .build();
 
-                stockList.add(
-                        StockDto.builder()
-                                .location(location)
-                                .quantityText(quantityText + " " + unit)
-                                .build()
-                );
+                    stockList.add(stock);
+                }
             }
         } catch (Exception e) {
-            System.err.printf("Failed to parse stock information: %s%n", e);
+            log.printf(Level.WARN, "Failed to parse stock information: %s%n", e);
         }
-
         stockList = addLocationsWithNoStock(stockList);
         return StockInLocationsDto.builder().locations(stockList).build();
     }
 
-
-    private LocationDto mapToEhituseAbcStoreLocation(String sourceName) {
-        return EhituseAbcStoreLocation.locationFromSourceName(sourceName);
+    private LocationDto mapToBauhofStoreLocation(String sourceName) {
+        return BauhofStoreLocation.locationFromSourceName(sourceName);
     }
 
     public List<StockDto> addLocationsWithNoStock(List<StockDto> stockDtoList) {
@@ -104,7 +102,7 @@ public class LocationStockInformationFetcherEhituseAbc {
                 .map(StockDto::getLocation)
                 .collect(Collectors.toSet());
 
-        for (EhituseAbcStoreLocation krautaStoreLocation : EhituseAbcStoreLocation.values()) {
+        for (BauhofStoreLocation krautaStoreLocation : BauhofStoreLocation.values()) {
             LocationDto location = krautaStoreLocation.getLocation();
             if (!existingLocations.contains(location)) {
                 stockDtoListWithLocationsWithNoStock.add(createEmptyStockDto(location));

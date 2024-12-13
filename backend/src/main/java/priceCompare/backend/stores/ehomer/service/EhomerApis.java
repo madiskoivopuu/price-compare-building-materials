@@ -1,7 +1,5 @@
 package priceCompare.backend.stores.ehomer.service;
 
-import priceCompare.backend.enums.Subcategory;
-
 import java.net.URI;
 
 public class EhomerApis {

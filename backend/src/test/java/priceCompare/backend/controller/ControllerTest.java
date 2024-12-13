@@ -12,11 +12,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import priceCompare.backend.dto.*;
-import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
-import priceCompare.backend.service.CategoryServiceImpl;
+import priceCompare.backend.service.CategoryService;
 import priceCompare.backend.service.FilterProductsService;
-import priceCompare.backend.service.FindProductsServiceImpl;
+import priceCompare.backend.service.FindProductsService;
 import priceCompare.backend.service.ProxyImageLoadingService;
 import priceCompare.backend.service.SearchCachingService;
 
@@ -29,10 +28,10 @@ class ControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private CategoryServiceImpl categoryService;
+    private CategoryService categoryService;
 
     @MockBean
-    private FindProductsServiceImpl findProductsService;
+    private FindProductsService findProductsService;
 
     @MockBean
     private FilterProductsService filterProductsService;

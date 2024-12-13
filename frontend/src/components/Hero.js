@@ -4,8 +4,8 @@ import SearchHeader from './SearchHeader';
 import Filters from './Filters';
 import SearchFooter from "./SearchFooter";
 
-function Hero({ selectedCategory, categoryChange }) {
-    const [items, setItems] = useState({ products: [] });
+function Hero({selectedCategory, categoryChange}) {
+    const [items, setItems] = useState({products: []});
     const [sortedProducts, setSortedProducts] = useState([]);
     const [q, setQ] = useState('');
     const [inputValue, setInputValue] = useState('');
@@ -31,7 +31,7 @@ function Hero({ selectedCategory, categoryChange }) {
 
             // Fetch data with abort signal
             fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`, { signal })
-            //fetch(`http://localhost:8080/request/search?keyword=${q}`, { signal })
+            //fetch(`http://localhost:8080/request/search?keyword=${q}`, {signal})
                 .then(async (response) => {
                     const decoder = new TextDecoder('utf-8');
                     const decodedResponse = decoder.decode(await response.arrayBuffer());
@@ -39,8 +39,10 @@ function Hero({ selectedCategory, categoryChange }) {
                 })
                 .then((res) => {
                     setSearchId(res.searchId);
-                    setItems(res || { products: [] });
+                    setItems(res || {products: []});
+
                     const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
+                    console.log(sorted)
                     setSortedProducts(sorted);
                     setCurrentPage(1);
                 })
@@ -59,9 +61,44 @@ function Hero({ selectedCategory, categoryChange }) {
             abortController.abort();
         };
     }, [q]);
+    useEffect(() => {
+        //console.log('Selected locations:', selectedLocations);
+
+        // Filter products that have at least one matching location
+        const filteredProductsByLocation = items.products.filter((product) =>
+            selectedLocations.some((requiredLocation) =>
+                product.stock.locations.some(
+                    (loc) => loc.location.locationName === requiredLocation
+                )
+            )
+        );
+
+        // Get products that didn't pass the filter
+        const nonMatchingProducts = items.products.filter(
+            (product) =>
+                !selectedLocations.some((requiredLocation) =>
+                    product.stock.locations.some(
+                        (loc) => loc.location.locationName === requiredLocation
+                    )
+                )
+        );
+
+        // Sort the filtered products by price
+        const sortedMatchingProducts = filteredProductsByLocation?.sort(
+            (a, b) => parseFloat(a.price) - parseFloat(b.price)
+        ) || [];
+
+        // Combine the sorted matching products with non-matching products
+        const combinedProducts = [...sortedMatchingProducts, ...nonMatchingProducts];
+
+        setSortedProducts(combinedProducts);
+
+        //console.log('Filtered, sorted, and combined products:', combinedProducts);
+    }, [selectedLocations, items.products]);
+
 
     useEffect(() => {
-        if (selectedCategory) { 
+        if (selectedCategory) {
             setQ(`&subcategory=${selectedCategory.subcategory}`)
             setInputValue('')
             setFilteringData([]);
@@ -80,6 +117,7 @@ function Hero({ selectedCategory, categoryChange }) {
 
 
     useEffect(() => {
+        if (searchId != null) {
             // Generate the URL based on filteringData
             const url = generateFilterUrl(filteringData);
 
@@ -97,8 +135,8 @@ function Hero({ selectedCategory, categoryChange }) {
                 })
                 .then((res) => {
                     // Assuming the response format is the same as in your previous fetch call
-					console.log(res);
-                    setItems(res || { products: [] });
+                    console.log(res);
+                    setItems(res || {products: []});
                     const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
                     setSortedProducts(sorted);
                     setCurrentPage(1);
@@ -106,7 +144,8 @@ function Hero({ selectedCategory, categoryChange }) {
                 })
                 .then(() => setIsLoading(false)) // Set loading to false after fetching
                 .catch((err) => console.error("Fetch error:", err)); // Handle errors
-    }, [filteringData, generateFilterUrl]); // This effect will trigger when filteringData changes
+        }
+    }, [filteringData, generateFilterUrl, searchId]); // This effect will trigger when filteringData changes
 
 
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -115,7 +154,10 @@ function Hero({ selectedCategory, categoryChange }) {
 
     return (
         <div className='w-full md:w-3/4 h-max md:p-10 p-4'>
-            <p className='mb-2 text-sm'>{`${selectedCategory ? 'Valitud kategooria: '.concat(selectedCategory.category).concat(' / ').concat(selectedCategory.subcategory) : ''} `}<span className='underline text-red-600 hover:cursor-pointer' onClick={() => {categoryChange(null)}}>{`${selectedCategory ? 'Eemalda' : ''}`}</span></p>
+            <p className='mb-2 text-sm'>{`${selectedCategory ? 'Valitud kategooria: '.concat(selectedCategory.category).concat(' / ').concat(selectedCategory.subcategory) : ''} `}<span
+                className='underline text-red-600 hover:cursor-pointer' onClick={() => {
+                categoryChange(null)
+            }}>{`${selectedCategory ? 'Eemalda' : ''}`}</span></p>
             <form onSubmit={(e) => {
                 e.preventDefault();
                 setQ(queryBuilder(inputValue));
@@ -131,12 +173,19 @@ function Hero({ selectedCategory, categoryChange }) {
                     <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                            stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                 </button>
             </form>
 
-            <Filters selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} filteringData={filteringData} setFilteringData={setFilteringData} filters={selectedCategory != null ? selectedCategory.filters : []} clearFiltersTrigger={selectedCategory} searchId={searchId}  />
+            <Filters selectedLocations={selectedLocations}
+                     setSelectedLocations={setSelectedLocations}
+                     filteringData={filteringData}
+                     setFilteringData={setFilteringData}
+                     filters={selectedCategory != null ? selectedCategory.filters : []}
+                     clearFiltersTrigger={selectedCategory}
+                     searchId={searchId}
+            />
 
             <SearchHeader
                 category={selectedCategory}

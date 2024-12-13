@@ -1,5 +1,8 @@
 package priceCompare.backend.stores.puumarket.service;
 
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
@@ -20,27 +23,25 @@ import static priceCompare.backend.utils.CategoryKeywordChecker.checkContainsReq
 import static priceCompare.backend.utils.ProductNameChecker.checkProductNameCorrespondsToSearch;
 
 @Service
-public class GetPuumarketProductsServiceImpl implements GetStoreProductsService {
+@AllArgsConstructor
+@Log4j2
+public class GetPuumarketProductsService implements GetStoreProductsService {
     private final PuumarketAPIs apis;
-    private final LocationStockInformationFetcherPuumarket stockFetcher;
-
-    public GetPuumarketProductsServiceImpl(PuumarketAPIs apis, LocationStockInformationFetcherPuumarket stockFetcher) {
-        this.apis = apis;
-        this.stockFetcher = stockFetcher;
-    }
+    private final PuumarketStockFetcher stockFetcher;
 
     private ProductsDto performPuumaterjalSearch(String keyword, Subcategory subcategory) {
         List<ProductDto> products = new ArrayList<>();
 
-        for(Document searchResponse : apis.performSearchOrCategoryPageFetch(keyword, subcategory)) {
-            for(Element productEl : searchResponse.select(".grid > div.item")) {
+        for (Document searchResponse : apis.performSearchOrCategoryPageFetch(keyword, subcategory)) {
+            for (Element productEl : searchResponse.select(".grid > div.item")) {
                 // filter out non-products
                 String productUrl = productEl.select(".product-title > a").attr("href");
-                if(!productUrl.contains("/toode/")) continue;
+                if (!productUrl.contains("/toode/")) continue;
 
                 String productName = productEl.select(".product-title > a").text();
-                if (keyword != null &&!checkProductNameCorrespondsToSearch(productName, keyword)) continue;
-                if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory)) continue;
+                if (keyword != null && !checkProductNameCorrespondsToSearch(productName, keyword)) continue;
+                if ((keyword == null || keyword.isEmpty()) && !checkContainsRequiredKeyword(productName, subcategory))
+                    continue;
 
                 try {
                     // we need to proxy the image load due to CORS crap
@@ -58,13 +59,11 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
                             .build();
                     products.add(product);
                 } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                    System.err.println("Puumarket products service: " + e.getMessage());
-                    System.err.println(searchResponse.select(".product-title > a").attr("href"));
+                    log.printf(Level.WARN, "Puumarket products service: %s%n", e.getMessage());
+                    log.warn(searchResponse.select(".product-title > a").attr("href"));
                 }
             }
         }
-
         return ProductsDto.builder()
                 .products(products)
                 .build();
@@ -72,7 +71,7 @@ public class GetPuumarketProductsServiceImpl implements GetStoreProductsService 
 
     @Override
     public ProductsDto searchForProducts(String query, Subcategory subcategory) {
-        if((query == null || query.length() < 2) && subcategory == null)
+        if ((query == null || query.length() < 2) && subcategory == null)
             return ProductsDto.builder().build();
 
         return performPuumaterjalSearch(query, subcategory);

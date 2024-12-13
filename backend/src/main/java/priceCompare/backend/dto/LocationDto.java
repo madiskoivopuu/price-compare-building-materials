@@ -2,9 +2,7 @@ package priceCompare.backend.dto;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 import priceCompare.backend.enums.LocationName;
-
 import java.util.Objects;
 
 @Builder(toBuilder=true)

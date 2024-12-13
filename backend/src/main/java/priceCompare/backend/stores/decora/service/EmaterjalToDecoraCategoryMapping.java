@@ -6,7 +6,6 @@ import priceCompare.backend.enums.Subcategory;
 import java.util.List;
 import java.util.Map;
 
-// Mappings of ematerjal.ee categories to decora.ee categories that klevu search api accepts
 public class EmaterjalToDecoraCategoryMapping {
     public static final Map<Subcategory, List<String>> subcatMap = Map.<Subcategory, List<String>>ofEntries(
             Map.entry(KIPSPLAAT, List.of("Kipsplaadid")),

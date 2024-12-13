@@ -9,31 +9,31 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.enums.Unit;
 import priceCompare.backend.stores.ehituseabc.service.EhituseAbcApis;
-import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsServiceImpl;
-import priceCompare.backend.stores.ehituseabc.service.LocationStockInformationFetcherEhituseAbc;
+import priceCompare.backend.stores.ehituseabc.service.GetEhituseAbcProductsService;
+import priceCompare.backend.stores.ehituseabc.service.EhituseAbcStockFetcher;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class GetEhituseAbcProductsServiceImplTest {
+class GetEhituseAbcProductsServiceTest {
 
     @Mock
     private HttpClientService httpClientService;
 
     @Mock
-    private LocationStockInformationFetcherEhituseAbc locationStockInformationFetcher;
+    private EhituseAbcStockFetcher locationStockInformationFetcher;
 
     @Mock
     private EhituseAbcApis apis;
 
     @InjectMocks
-    private GetEhituseAbcProductsServiceImpl getEhituseAbcProductsService;
+    private GetEhituseAbcProductsService getEhituseAbcProductsService;
 
     @BeforeEach
     void setUp() {

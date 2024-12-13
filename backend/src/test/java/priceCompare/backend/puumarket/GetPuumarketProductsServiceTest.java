@@ -3,14 +3,14 @@ package priceCompare.backend.puumarket;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.enums.Category;
 import priceCompare.backend.enums.Subcategory;
 import priceCompare.backend.stores.puumarket.service.EmaterjalToPuumarketCategoryMapping;
-import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsServiceImpl;
-import priceCompare.backend.stores.puumarket.service.LocationStockInformationFetcherPuumarket;
+import priceCompare.backend.stores.puumarket.service.GetPuumarketProductsService;
+import priceCompare.backend.stores.puumarket.service.PuumarketStockFetcher;
 import priceCompare.backend.stores.puumarket.service.PuumarketAPIs;
 
 import java.io.IOException;
@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-public class GetPuumarketProductsServiceImplTest {
+public class GetPuumarketProductsServiceTest {
     @Test
     void testSearchByKeyword() throws IOException {
         final int EXPECTED_NUM_RESULTS = 26; // only 26 products contained keyword
@@ -35,7 +35,7 @@ public class GetPuumarketProductsServiceImplTest {
         when(apis.performSearchOrCategoryPageFetch(Mockito.eq(keyword), Mockito.eq(null)))
             .thenReturn(List.of(Jsoup.parse(Files.readString(Path.of("src/test/resources/puumarket/keyword_puu_search_resp.txt")))));
 
-        GetPuumarketProductsServiceImpl getPuumarketProductsService = new GetPuumarketProductsServiceImpl(apis, new LocationStockInformationFetcherPuumarket());
+        GetPuumarketProductsService getPuumarketProductsService = new GetPuumarketProductsService(apis, new PuumarketStockFetcher());
         ProductsDto products = getPuumarketProductsService.searchForProducts(keyword, null);
 
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
@@ -68,7 +68,7 @@ public class GetPuumarketProductsServiceImplTest {
                             .thenReturn(future);
                 }
 
-                GetPuumarketProductsServiceImpl getPuumarketProductsService = new GetPuumarketProductsServiceImpl(new PuumarketAPIs(httpClientService), new LocationStockInformationFetcherPuumarket());
+                GetPuumarketProductsService getPuumarketProductsService = new GetPuumarketProductsService(new PuumarketAPIs(httpClientService), new PuumarketStockFetcher());
                 getPuumarketProductsService.searchForProducts("", subcategory);
                 verify(httpClientService, times(EXPECTED_PAGE_VISITS)).GetAsyncAndReturnCompletableFutureHttpResponse(Mockito.any());
 

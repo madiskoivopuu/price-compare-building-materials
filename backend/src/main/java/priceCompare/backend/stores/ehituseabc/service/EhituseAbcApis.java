@@ -1,10 +1,10 @@
 package priceCompare.backend.stores.ehituseabc.service;
 
+import lombok.AllArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
-
+import priceCompare.backend.httpclient.HttpClientService;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import java.util.List;
@@ -12,12 +12,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class EhituseAbcApis {
 
     private final HttpClientService httpClientService;
-    public EhituseAbcApis(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     static String buildRequestBodyWithKeyword(String keyword, String apiKey, int searchApiPageSize) {
         return String.format(
@@ -164,5 +162,4 @@ public class EhituseAbcApis {
                 .thenApply(HttpResponse::body)
                 .thenApply(Jsoup::parse);
     }
-
 }

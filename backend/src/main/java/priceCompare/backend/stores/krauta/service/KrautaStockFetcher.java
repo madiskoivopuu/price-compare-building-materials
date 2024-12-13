@@ -1,6 +1,9 @@
 package priceCompare.backend.stores.krauta.service;
 
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.Level;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -19,14 +22,12 @@ import java.util.concurrent.CompletionException;
 import java.util.stream.Collectors;
 
 @Service
-public class LocationStockInformationFetcherKrauta {
+@AllArgsConstructor
+@Log4j2
+public class KrautaStockFetcher {
 
     private static final int LOCATION_FETCH_BATCH_SIZE = 20;
     final KRautaAPIs apis;
-
-    public LocationStockInformationFetcherKrauta(KRautaAPIs apis) {
-        this.apis = apis;
-    }
 
     public List<ProductParseDto> fetchLocationStockInfo(List<ProductParseDto> products){
         List<ProductParseDto> newProducts = new ArrayList<>();
@@ -53,7 +54,7 @@ public class LocationStockInformationFetcherKrauta {
                             .build();
                     productParseInfo.setProduct(product);
                 } catch(CompletionException e) {
-                    System.err.printf("EhituseAbc products service: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
+                    log.printf(Level.WARN, "K-rauta location fetcher: Error fetching data from URL: %s, Exception: %s\n", productParseInfo.getProduct().getLinkToProduct(), e.getMessage());
                 } finally {
                     newProducts.add(productParseInfo);
                 }

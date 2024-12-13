@@ -3,7 +3,7 @@ package priceCompare.backend.service;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
+import priceCompare.backend.httpclient.HttpClientService;
 
 import java.io.ByteArrayInputStream;
 import java.net.URI;

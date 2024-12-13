@@ -1,4 +1,5 @@
 package priceCompare.backend.enums;
+
 import lombok.Getter;
 
 @Getter

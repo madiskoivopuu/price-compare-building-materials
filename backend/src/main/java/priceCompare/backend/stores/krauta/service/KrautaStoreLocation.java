@@ -4,9 +4,6 @@ import lombok.Getter;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.enums.LocationName;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public enum KrautaStoreLocation {
     HAABERSTI("Haabersti", LocationDto.builder()
             .locationName(LocationName.TALLINN)

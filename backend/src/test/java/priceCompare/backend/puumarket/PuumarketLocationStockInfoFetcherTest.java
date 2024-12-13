@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import priceCompare.backend.dto.LocationDto;
 import priceCompare.backend.dto.StockDto;
 import priceCompare.backend.dto.StockInLocationsDto;
-import priceCompare.backend.stores.puumarket.service.LocationStockInformationFetcherPuumarket;
+import priceCompare.backend.stores.puumarket.service.PuumarketStockFetcher;
 import priceCompare.backend.stores.puumarket.service.PuumarketStoreLocation;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class PuumarketLocationStockInfoFetcherTest {
         // prep
         final String productHtml = Files.readString(Path.of("src/test/resources/puumarket/search_res_single_product_w_all_locs.txt"));
         final Document productEl = Jsoup.parseBodyFragment(productHtml);
-        final LocationStockInformationFetcherPuumarket stockFetcher = new LocationStockInformationFetcherPuumarket();
+        final PuumarketStockFetcher stockFetcher = new PuumarketStockFetcher();
         Map<LocationDto, String> expectedStock = Map.ofEntries(
                 Map.entry(PuumarketStoreLocation.TALLINN_1.getLocation(), "1143 jm"),
                 Map.entry(PuumarketStoreLocation.TALLINN_1_VALISLADU.getLocation(), "Tellitav"),
@@ -50,7 +50,7 @@ public class PuumarketLocationStockInfoFetcherTest {
         // prep
         final String productHtml = Files.readString(Path.of("src/test/resources/puumarket/search_res_single_product_w_one_loc.txt"));
         final Document productEl = Jsoup.parseBodyFragment(productHtml);
-        final LocationStockInformationFetcherPuumarket stockFetcher = new LocationStockInformationFetcherPuumarket();
+        final PuumarketStockFetcher stockFetcher = new PuumarketStockFetcher();
         Map<LocationDto, String> expectedStock = Map.ofEntries(
                 Map.entry(PuumarketStoreLocation.TALLINN_1.getLocation(), "0 tk"),
                 Map.entry(PuumarketStoreLocation.TALLINN_1_VALISLADU.getLocation(), "0 tk"),

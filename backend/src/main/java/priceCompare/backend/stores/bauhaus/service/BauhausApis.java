@@ -1,9 +1,9 @@
 package priceCompare.backend.stores.bauhaus.service;
 
+import lombok.AllArgsConstructor;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
-import priceCompare.backend.HttpClient.HttpClientService;
-
+import priceCompare.backend.httpclient.HttpClientService;
 import java.net.URI;
 import java.net.http.HttpResponse;
 import java.util.List;
@@ -11,12 +11,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class BauhausApis {
 
     private final HttpClientService httpClientService;
-    public BauhausApis(HttpClientService httpClientService) {
-        this.httpClientService = httpClientService;
-    }
 
     static String buildRequestBodyWithKeyword(String keyword, String apiKey, int searchApiPageSize) {
         return String.format(

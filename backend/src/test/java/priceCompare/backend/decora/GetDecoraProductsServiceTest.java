@@ -1,26 +1,20 @@
 package priceCompare.backend.decora;
 
-import org.checkerframework.checker.units.qual.C;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import priceCompare.backend.HttpClient.HttpClientService;
 import priceCompare.backend.dto.ProductDto;
 import priceCompare.backend.dto.ProductsDto;
 import priceCompare.backend.dto.StockDto;
-import priceCompare.backend.dto.StockInLocationsDto;
 import priceCompare.backend.stores.decora.service.DecoraAPIs;
 import priceCompare.backend.stores.decora.service.DecoraStoreLocation;
-import priceCompare.backend.stores.decora.service.GetDecoraProductsServiceImpl;
+import priceCompare.backend.stores.decora.service.GetDecoraProductsService;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpResponse;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -28,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class GetDecoraProductsServiceImplTest {
+public class GetDecoraProductsServiceTest {
     @Test
     public void testDecoraSearchReturnsProductsWithStock() throws IOException {
         // mock prep
@@ -50,7 +44,7 @@ public class GetDecoraProductsServiceImplTest {
                 .thenReturn(stock2);
 
         // actual testing
-        GetDecoraProductsServiceImpl service = new GetDecoraProductsServiceImpl(apis);
+        GetDecoraProductsService service = new GetDecoraProductsService(apis);
         ProductsDto products = service.searchForProducts(query, null);
 
         assertFalse(products.getProducts().isEmpty(), "Product list should not be empty");
@@ -106,7 +100,7 @@ public class GetDecoraProductsServiceImplTest {
                 .thenReturn(stock1);
 
         // actual testing
-        GetDecoraProductsServiceImpl service = new GetDecoraProductsServiceImpl(apis);
+        GetDecoraProductsService service = new GetDecoraProductsService(apis);
         ProductsDto products = service.searchForProducts("kipsplaat", null);
 
         for(ProductDto product : products.getProducts()) {
