@@ -26,11 +26,11 @@ function Hero({selectedCategory, categoryChange}) {
         const signal = abortController.signal;
 
         if (q) {
-            console.log(q);
+            //console.log(q);
             setIsLoading(true);
 
             // Fetch data with abort signal
-            fetch(`http://16.16.186.149:8080/request/search?keyword=${q}`, { signal })
+            fetch(`http://13.61.25.83:8080/request/search?keyword=${q}`, { signal })
             //fetch(`http://localhost:8080/request/search?keyword=${q}`, {signal})
                 .then(async (response) => {
                     const decoder = new TextDecoder('utf-8');
@@ -42,7 +42,7 @@ function Hero({selectedCategory, categoryChange}) {
                     setItems(res || {products: []});
 
                     const sorted = res.products?.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)) || [];
-                    console.log(sorted)
+                    //console.log(sorted)
                     setSortedProducts(sorted);
                     setCurrentPage(1);
                 })
@@ -62,38 +62,21 @@ function Hero({selectedCategory, categoryChange}) {
         };
     }, [q]);
     useEffect(() => {
-        //console.log('Selected locations:', selectedLocations);
-
-        // Filter products that have at least one matching location
-        const filteredProductsByLocation = items.products.filter((product) =>
-            selectedLocations.some((requiredLocation) =>
-                product.stock.locations.some(
-                    (loc) => loc.location.locationName === requiredLocation
-                )
-            )
-        );
-
-        // Get products that didn't pass the filter
-        const nonMatchingProducts = items.products.filter(
-            (product) =>
-                !selectedLocations.some((requiredLocation) =>
+        if (selectedLocations.length === 0) {
+            // If no locations are selected, display all products
+            setSortedProducts(items.products);
+        } else {
+            // Filter products that have at least one matching location
+            const filteredProductsByLocation = items.products.filter((product) =>
+                selectedLocations.some((requiredLocation) =>
                     product.stock.locations.some(
                         (loc) => loc.location.locationName === requiredLocation
                     )
                 )
-        );
+            );
 
-        // Sort the filtered products by price
-        const sortedMatchingProducts = filteredProductsByLocation?.sort(
-            (a, b) => parseFloat(a.price) - parseFloat(b.price)
-        ) || [];
-
-        // Combine the sorted matching products with non-matching products
-        const combinedProducts = [...sortedMatchingProducts, ...nonMatchingProducts];
-
-        setSortedProducts(combinedProducts);
-
-        //console.log('Filtered, sorted, and combined products:', combinedProducts);
+            setSortedProducts(filteredProductsByLocation);
+        }
     }, [selectedLocations, items.products]);
 
 
@@ -110,8 +93,8 @@ function Hero({selectedCategory, categoryChange}) {
         const filters = filteringData.map(sublist => sublist.join(';'));
         const filtersParam = encodeURIComponent(filters.join('_'));
         //const url = `http://localhost:8080/request/filter?searchId=${encodeURIComponent(searchId)}&filters=${filtersParam}`;
-        const url = `http://16.16.186.149:8080/request/filter?searchId=${encodeURIComponent(searchId)}&filters=${filtersParam}`;
-        console.log('Generated URL:', url);
+        const url = `http://13.61.25.83:8080/request/filter?searchId=${encodeURIComponent(searchId)}&filters=${filtersParam}`;
+        //console.log('Generated URL:', url);
         return url;
     }, [searchId]);
 
@@ -122,7 +105,7 @@ function Hero({selectedCategory, categoryChange}) {
             const url = generateFilterUrl(filteringData);
 
             // Log the URL to check it
-            console.log("Fetching data with URL:", url);
+            //console.log("Fetching data with URL:", url);
 
             setIsLoading(true); // Set loading to true while fetching data
 
@@ -151,7 +134,12 @@ function Hero({selectedCategory, categoryChange}) {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
-
+    useEffect(() => {
+        const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
+        if (currentPage > totalPages) {
+            setCurrentPage(1); // Reset to first page
+        }
+    }, [sortedProducts, currentPage, productsPerPage]);
     return (
         <div className='w-full md:w-3/4 h-max md:p-10 p-4'>
             <p className='mb-2 text-sm'>{`${selectedCategory ? 'Valitud kategooria: '.concat(selectedCategory.category).concat(' / ').concat(selectedCategory.subcategory) : ''} `}<span
@@ -190,46 +178,49 @@ function Hero({selectedCategory, categoryChange}) {
             <SearchHeader
                 category={selectedCategory}
                 isLoading={isLoading}
-                totalProducts={items.products.length}
+                totalProducts={sortedProducts.length}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
                 productsPerPage={productsPerPage}
             />
 
             <div className='w-full h-max'>
-                {isLoading ?
+                {isLoading ? (
                     <div className='w-full mt-4 flex justify-center'>
                         <p className='animate-pulse text-sm'>Otsime tooteid, tänan kannatlikuse eest.</p>
                     </div>
-                    :
-                    (<ul className='flex flex-col gap-4'>
+                ) : selectedLocations.length > 0 && sortedProducts.length === 0 ? (
+                    <div className='w-full mt-4 flex justify-center'>
+                        <p className='text-sm'>Tooteid selles asukohas ei leidu.</p>
+                    </div>
+                ) : (
+                    <ul className='flex flex-col gap-4'>
                         {currentProducts?.map((item, index) => {
                             const locations = item.stock?.locations || [];
                             return (
-                                sortedProducts.length > 0
-                                    ? (
-                                        <li key={index}>
-                                            <SearchResult
-                                                name={item.name}
-                                                store={item.store}
-                                                linkToPicture={item.linkToPicture}
-                                                linkToProduct={item.linkToProduct}
-                                                price={item.price.toFixed(2)}
-                                                unit={item.unit}
-                                                locations={locations}
-                                                selectedLocations={selectedLocations} // Pass selected locations to filter
-                                            />
-                                        </li>
-                                    )
-                                    : <></>
+                                sortedProducts.length > 0 && (
+                                    <li key={index}>
+                                        <SearchResult
+                                            name={item.name}
+                                            store={item.store}
+                                            linkToPicture={item.linkToPicture}
+                                            linkToProduct={item.linkToProduct}
+                                            price={item.price.toFixed(2)}
+                                            unit={item.unit}
+                                            locations={locations}
+                                            selectedLocations={selectedLocations} // Pass selected locations to filter
+                                        />
+                                    </li>
+                                )
                             );
                         })}
-                    </ul>)
-                }
+                    </ul>
+                )}
             </div>
+
             <SearchFooter
                 isLoading={isLoading}
-                totalProducts={items.products.length}
+                totalProducts={sortedProducts.length}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
                 productsPerPage={productsPerPage}

@@ -42,9 +42,9 @@ function Filters({ filters, setFilteringData, selectedLocations, setSelectedLoca
             </div>
             {!isMinimized && (
                 <div className="mt-2 flex flex-wrap gap-4">
-                    <div className="w-full">
+
                         <LocationFilter selectedLocations={selectedLocations} setSelectedLocations={setSelectedLocations} />
-                    </div>
+
                     {filters.map((filter) => (
                         <Filter
                             key={filter.displayName}

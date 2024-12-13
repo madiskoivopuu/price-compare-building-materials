@@ -21,7 +21,7 @@ function Categories({isMobileMenuExtended, categoryChange, selectedCategory, une
     }
 
     useEffect(() => {
-        fetch('http://16.16.186.149:8080/request/categories')  // This is for testing environment
+        fetch('http://13.61.25.83:8080/request/categories')  // This is for testing environment
         //fetch('http://localhost:8080/request/categories')  // This is for testing environment
             .then(response => response.json())
             .then(data => {
