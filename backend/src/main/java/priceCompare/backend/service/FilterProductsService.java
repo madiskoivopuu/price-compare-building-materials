@@ -17,7 +17,7 @@ public class FilterProductsService {
 
     private final SearchCachingService cachingService;
 
-    private boolean productMatchesFilters(ProductDto product, List<List<Keyword>> selectedGroupedFilters) {
+    boolean productMatchesFilters(ProductDto product, List<List<Keyword>> selectedGroupedFilters) {
         int filterGroupsMatched = 0;
 
         for (List<Keyword> filtersInGroup : selectedGroupedFilters) {
@@ -50,7 +50,7 @@ public class FilterProductsService {
         return filterGroupsMatched == selectedGroupedFilters.size();
     }
 
-    private boolean matchesAlias(ProductDto product, String alias) {
+    boolean matchesAlias(ProductDto product, String alias) {
         return product.getName().toLowerCase().contains(alias.toLowerCase());
     }
 

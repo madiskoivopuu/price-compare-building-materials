@@ -1,175 +1,116 @@
 package priceCompare.backend.service;
 
-import org.checkerframework.checker.units.qual.C;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import priceCompare.backend.dto.ProductDto;
-import priceCompare.backend.dto.ProductsDto;
-import priceCompare.backend.enums.Keyword;
-
-import java.io.IOException;
-import java.net.http.HttpResponse;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
-import java.util.concurrent.CompletableFuture;
-
+import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import priceCompare.backend.dto.ProductDto;
+import priceCompare.backend.dto.ProductsDto;
+import priceCompare.backend.enums.Keyword;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class FilterProductsServiceTest {
-    /*
-    @Mock
-    private SearchCachingService cachingService;
-    @Mock
-    private CachingHttpClientService cachingHttpClientService;
-    @InjectMocks
     private FilterProductsService filterProductsService;
 
-    static Map<String, String> productPages;
-    static List<ProductDto> productDtoList;
-
-    @BeforeAll
-    static void setup() throws IOException {
-        productPages = new HashMap<>();
-        productDtoList = new ArrayList<>();
-
-        productPages.put(
-                "https://www.bauhof.ee/et/p/713218/kipsplaat-knauf-gkb-12-5x1200x2600mm-standard-3-12m2-tk",
-                Files.readString(Path.of("src/test/resources/service/filterproducts/page-bauhof.ee_et_p_713218_kipsplaat-knauf-gkb-12-5x1200x2600mm-standard-3-12m2-tk.txt"))
-        );
-        productPages.put(
-                "https://www.ehituseabc.ee/ee/kipsplaat-knauf-gkb13-2500x1200",
-                Files.readString(Path.of("src/test/resources/service/filterproducts/page-ehituseabc.ee_ee_kipsplaat-knauf-gkb13-2500x1200.txt"))
-        );
-        productPages.put(
-                "https://www.k-rauta.ee/p/kipsplaat-norgips-260-cm-x-120-cm-x-1-3-cm-tulekindel/sxnu",
-                Files.readString(Path.of("src/test/resources/service/filterproducts/page-k-rauta.ee_p_kipsplaat-norgips-260-cm-x-120-cm-x-1-3-cm-tulekindel_sxnu.txt"))
-        );
-        productPages.put(
-                "https://www.k-rauta.ee/p/kipsplaat-300-cm-x-120-cm-x-1-3-cm/1ez4",
-                Files.readString(Path.of("src/test/resources/service/filterproducts/page-k-rauta.ee_p_kipsplaat-300-cm-x-120-cm-x-1-3-cm_1ez4.txt"))
-        );
-
-        productDtoList.add(ProductDto.builder()
-                .name("KIPSPLAAT KNAUF GKB 12,5X1200X2600MM STANDARD 3,12M2/TK")
-                .linkToProduct("https://www.bauhof.ee/et/p/713218/kipsplaat-knauf-gkb-12-5x1200x2600mm-standard-3-12m2-tk")
-                .build()
-        );
-        productDtoList.add(
-                ProductDto.builder()
-                        .name("KIPSPLAAT KNAUF GKB13 2500X1200")
-                        .linkToProduct("https://www.ehituseabc.ee/ee/kipsplaat-knauf-gkb13-2500x1200")
-                        .build()
-        );
-        productDtoList.add(
-                ProductDto.builder()
-                        .name("Kipsplaat Norgips, 260 cm x 120 cm x 1.3 cm, tulekindel")
-                        .linkToProduct("https://www.k-rauta.ee/p/kipsplaat-norgips-260-cm-x-120-cm-x-1-3-cm-tulekindel/sxnu")
-                        .build()
-        );
-        productDtoList.add(
-                ProductDto.builder()
-                        .name("Kipsplaat, 300 cm x 120 cm x 1.3 cm")
-                        .linkToProduct("https://www.k-rauta.ee/p/kipsplaat-300-cm-x-120-cm-x-1-3-cm/1ez4")
-                        .build()
-        );
-    }
-
-    CompletableFuture<HttpResponse<String>> makeResponse(String pageContent) {
-        HttpResponse<String> resp = mock(HttpResponse.class);
-        when(resp.body())
-                .thenReturn(pageContent);
-
-        CompletableFuture<HttpResponse<String>> future = new CompletableFuture<>();
-        future.complete(resp);
-        return future;
-    }
+    @Mock
+    private SearchCachingService cachingService;
 
     @BeforeEach
-    public void setupTest() {
-        for(Map.Entry<String, String> urlAndPage : productPages.entrySet()) {
-            CompletableFuture<HttpResponse<String>> future = makeResponse(urlAndPage.getValue());
-            when(cachingHttpClientService.GetAsyncCached(eq(urlAndPage.getKey())))
-                    .thenReturn(future);
-        }
-
-        when(cachingService.getSearchResultFromCache(any()))
-                .thenReturn(ProductsDto.builder()
-                        .products(productDtoList)
-                        .build()
-                );
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        filterProductsService = new FilterProductsService(cachingService);
     }
 
     @Test
-    public void testFilteringBySize() {
-        // prep
-        final List<List<Keyword>> filters = List.of(
-            List.of(Keyword.D1200x3000, Keyword.D1200x2600)
-        ); // filters in the same filter category should be under the same 1d list
-        final Set<ProductDto> expectedResults = Set.of(productDtoList.get(0), productDtoList.get(2), productDtoList.get(3));
-        // test
-        ProductsDto filtered = filterProductsService.filter("", filters);
-        assertEquals(expectedResults.size(), filtered.getProducts().size());
+    void testMatchesAlias() {
+        ProductDto product = ProductDto.builder().name("TestProduct").build();
 
-        for(ProductDto product : filtered.getProducts())
-            assertTrue(expectedResults.contains(product), String.format("Product %s should pass the filters", product.getName()));
+        assertTrue(filterProductsService.matchesAlias(product, "test"));
+
+        assertFalse(filterProductsService.matchesAlias(product, "other"));
+
+        assertTrue(filterProductsService.matchesAlias(product, "TEST"));
     }
 
     @Test
-    public void testFilteringByType() {
-        // prep
-        final List<List<Keyword>> filters = List.of(
-                List.of(Keyword.STANDARD)
-        ); // filters in the same filter category should be under the same 1d list
-        final Set<ProductDto> expectedResults = Set.of(productDtoList.get(0), productDtoList.get(1));
+    void testProductMatchesFilters_withNoAliasMatching() {
+        ProductDto product = ProductDto.builder().name("kipsplaat").build();
 
-        // test
-        ProductsDto filtered = filterProductsService.filter("", filters);
-        assertEquals(expectedResults.size(), filtered.getProducts().size());
+        Keyword keyword1 = mockKeyword("osb", false);
 
-        for(ProductDto product : filtered.getProducts())
-            assertTrue(expectedResults.contains(product), String.format("Product %s should pass the filters", product.getName()));
+        List<List<Keyword>> groupedFilters = Collections.singletonList(
+                Collections.singletonList(keyword1)
+        );
+
+        assertFalse(filterProductsService.productMatchesFilters(product, groupedFilters));
     }
 
     @Test
-    public void testFilteringImpossibleFilter() {
-        // prep
-        final List<List<Keyword>> filters = List.of(
-                List.of(Keyword.VINEER_VEEKINDEL)
-        ); // filters in the same filter category should be under the same 1d list
+    void testProductMatchesFilters_withCheckThatDoesNotContainAnyKeywordsInList() {
+        ProductDto product = ProductDto.builder().name("kipsplaat").build();
 
-        // test
-        ProductsDto filtered = filterProductsService.filter("", filters);
-        assertEquals(0, filtered.getProducts().size());
+        Keyword keyword = mockKeyword("osb", true);
+
+        List<List<Keyword>> groupedFilters = Collections.singletonList(
+                Collections.singletonList(keyword)
+        );
+
+        assertTrue(filterProductsService.productMatchesFilters(product, groupedFilters));
     }
 
     @Test
-    public void testFiltersFromMultipleFilterCategories() {
-        // prep
-        final List<List<Keyword>> filters = List.of(
-                List.of(Keyword.STANDARD),
-                List.of(Keyword.D1200x3000, Keyword.D1200x2600)
-        ); // filters in the same filter category should be under the same 1d list
-        final Set<ProductDto> expectedResults = Set.of(productDtoList.get(0));
+    void testProductDoesNotMatchFilters_withCheckThatDoesNotContainAnyKeywordsInList() {
+        ProductDto product = ProductDto.builder().name("kipsplaat").build();
 
-        // test
-        ProductsDto filtered = filterProductsService.filter("", filters);
-        assertEquals(expectedResults.size(), filtered.getProducts().size());
+        Keyword keyword = mockKeyword("kips", true);
 
-        for(ProductDto product : filtered.getProducts())
-            assertTrue(expectedResults.contains(product), String.format("Product %s should pass the filters", product.getName()));
+        List<List<Keyword>> groupedFilters = Collections.singletonList(
+                Collections.singletonList(keyword)
+        );
+
+        assertFalse(filterProductsService.productMatchesFilters(product, groupedFilters));
     }
-    */
 
+    @Test
+    void testFilter_withValidCacheAndFilters() {
+        String searchId = "testId";
+
+        ProductDto product1 = ProductDto.builder().name("kipsplaat").build();
+        ProductDto product2 = ProductDto.builder().name("osb-plaat").build();
+        ProductsDto cachedProducts = ProductsDto.builder()
+                .products(Arrays.asList(product1, product2))
+                .build();
+
+        when(cachingService.getSearchResultFromCache(searchId)).thenReturn(cachedProducts);
+
+        Keyword keyword = mockKeyword("kipsplaat", false);
+        List<List<Keyword>> groupedFilters = Collections.singletonList(
+                Collections.singletonList(keyword)
+        );
+
+        ProductsDto result = filterProductsService.filter(searchId, groupedFilters);
+
+        assertNotNull(result);
+        assertEquals(1, result.getProducts().size());
+        assertEquals("kipsplaat", result.getProducts().get(0).getName());
+
+        verify(cachingService, times(1)).getSearchResultFromCache(searchId);
+    }
+
+    private Keyword mockKeyword(String alias, boolean checkThatDoesNotContainAnyKeywordsInList) {
+        Keyword keyword = mock(Keyword.class);
+        when(keyword.getAliases()).thenReturn(Collections.singletonList(alias));
+        when(keyword.isCheckThatDoesNotContainAnyKeywordsInList()).thenReturn(checkThatDoesNotContainAnyKeywordsInList);
+        return keyword;
+    }
 }

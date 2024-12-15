@@ -3,7 +3,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 public class SearchBaseTest {
-    protected static String URL_TO_PAGE = "http://16.16.186.149:3000/";
+    protected static String URL_TO_PAGE = "http://13.61.25.83:3000/";
 
     protected static Playwright playwright;
     protected static Browser browser;

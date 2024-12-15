@@ -17,8 +17,8 @@ public class SearchByCategoryTest extends SearchBaseTest {
         page.click("text=Ehitusplaadid");
         page.click("text=Kipsplaat");
 
-        Locator loadingSpinIcon = page.locator("svg.animate-spin");
-        assertThat(loadingSpinIcon).isVisible();
+        Locator loadingAnimateIcon = page.locator("text=Otsime tooteid, tänan kannatlikuse eest.");
+        assertThat(loadingAnimateIcon).isVisible();
 
         page.waitForSelector("ul.flex.flex-col");
         Locator firstProduct = page.locator("//*[@id=\"root\"]/div[2]/div[2]/div[3]/ul/li[1]/div");
@@ -29,8 +29,42 @@ public class SearchByCategoryTest extends SearchBaseTest {
         Locator firstProductPrice = firstProduct.locator("text=€");
         assertThat(firstProductPrice).isVisible();
 
-        Locator firstProductQuantity = firstProduct.locator("text=TK");
-        assertThat(firstProductQuantity).isVisible();
+        Locator firstProductAvailabilityButton = firstProduct.locator("text=Saadavus");
+        assertThat(firstProductAvailabilityButton).isVisible();
+
+        Locator firstProductRedirectToShopButton = firstProduct.locator("text=E-poodi");
+        assertThat(firstProductRedirectToShopButton).isVisible();
+    }
+
+    @Test
+    void testSelectCategoryClickSearchSelectFiltersShouldReturnProducts() {
+        Response response = page.navigate(URL_TO_PAGE);
+        assertEquals(response.status(), 200);
+
+        page.click("text=Ehitusplaadid");
+        page.click("text=Kipsplaat");
+
+        Locator loadingAnimateIcon = page.locator("text=Otsime tooteid, tänan kannatlikuse eest.");
+        assertThat(loadingAnimateIcon).isVisible();
+
+        page.waitForSelector("ul.flex.flex-col");
+
+        Locator classDropdown = page.locator("span.text-gray-500:has-text('Vali klass')");
+        assertThat(classDropdown).isVisible();
+        classDropdown.click();
+
+        page.waitForSelector("input[type='checkbox'][value='Standard (A, GN13)']");
+        Locator classCheckbox = page.locator("input[type='checkbox'][value='Standard (A, GN13)']");
+        assertThat(classCheckbox).isVisible();
+        classCheckbox.click();
+
+        Locator firstProduct = page.locator("//*[@id=\"root\"]/div[2]/div[2]/div[3]/ul/li[1]/div");
+
+        Locator firstProductImage = firstProduct.locator("div.flex.justify-start.items-center.h-full");
+        assertThat(firstProductImage).isVisible();
+
+        Locator firstProductPrice = firstProduct.locator("text=€");
+        assertThat(firstProductPrice).isVisible();
 
         Locator firstProductAvailabilityButton = firstProduct.locator("text=Saadavus");
         assertThat(firstProductAvailabilityButton).isVisible();

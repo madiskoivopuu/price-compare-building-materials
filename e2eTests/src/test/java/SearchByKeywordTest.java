@@ -21,8 +21,8 @@ public class SearchByKeywordTest extends SearchBaseTest {
         assertThat(searchButton).isVisible();
         searchButton.click();
 
-        Locator loadingSpinIcon = page.locator("svg.animate-spin");
-        assertThat(loadingSpinIcon).isVisible();
+        Locator loadingAnimateIcon = page.locator("text=Otsime tooteid, tänan kannatlikuse eest.");
+        assertThat(loadingAnimateIcon).isVisible();
 
         page.waitForSelector("ul.flex.flex-col");
         Locator firstProduct = page.locator("//*[@id=\"root\"]/div[2]/div[2]/div[3]/ul/li[1]/div");
@@ -54,8 +54,8 @@ public class SearchByKeywordTest extends SearchBaseTest {
         assertThat(searchButton).isVisible();
         searchButton.click();
 
-        Locator loadingSpinIcon = page.locator("svg.animate-spin");
-        assertThat(loadingSpinIcon).isVisible();
+        Locator loadingAnimateIcon = page.locator("text=Otsime tooteid, tänan kannatlikuse eest.");
+        assertThat(loadingAnimateIcon).isVisible();
 
         page.waitForSelector("div.text-gray-700");
 
@@ -77,7 +77,7 @@ public class SearchByKeywordTest extends SearchBaseTest {
         assertThat(searchButton).isVisible();
         searchButton.click();
 
-        Locator loadingSpinIcon = page.locator("svg.animate-spin");
-        assertThat(loadingSpinIcon).not().isVisible();
+        Locator loadingAnimateIcon = page.locator("text=Otsime tooteid, tänan kannatlikuse eest.");
+        assertThat(loadingAnimateIcon).not().isVisible();
     }
 }
