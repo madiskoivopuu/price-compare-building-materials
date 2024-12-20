@@ -70,7 +70,7 @@ function Filter({ displayName, keywords, filteringData, onFilterChange}) {
     }, []);
 
     return (
-        <div className="mt-2 md:w-1/4 w-full" ref={dropdownRef}>
+        <div className="mt-2 w-max" ref={dropdownRef}>
             <label className="block mb-1 font-medium">Vali {displayName.toLowerCase()}</label>
             <div className="relative">
                 <div
@@ -135,7 +135,7 @@ function Filter({ displayName, keywords, filteringData, onFilterChange}) {
                     </div>
                 </div>
                 {isDropdownOpen && (
-                    <div className="absolute z-10 w-full border rounded bg-white shadow-lg max-h-[13.5rem] overflow-y-auto mt-1">
+                    <div className="absolute z-10 w-max border rounded bg-white shadow-lg max-h-[13.5rem] overflow-y-auto mt-1">
                         <input
                             type="text"
                             placeholder={`Otsi ${displayName.toLowerCase()}...`}
